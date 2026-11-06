@@ -1,0 +1,22 @@
+{
+  "columns": [
+    {
+      "TABLE_NAME": "tbl_household",
+      "COLUMN_NAME": "ip_label",
+      "COLUMN_TYPE": "int",
+      "COLUMN_COMMENT": ""
+    },
+    {
+      "TABLE_NAME": "tbl_person",
+      "COLUMN_NAME": "ext_name_id",
+      "COLUMN_TYPE": "int unsigned",
+      "COLUMN_COMMENT": "Extended Name"
+    },
+    {
+      "TABLE_NAME": "tbl_person",
+      "COLUMN_NAME": "ip_group_id",
+      "COLUMN_TYPE": "int unsigned",
+      "COLUMN_COMMENT": ""
+    }
+  ]
+}

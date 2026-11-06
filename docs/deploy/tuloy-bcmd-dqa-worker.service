@@ -1,0 +1,33 @@
+# TULOY BCMD DQA worker: processes queued DQA runs (QUEUED -> RUNNING -> COMPLETED).
+# Without it every DQA run stays "Queued, 0% processed" and no NAPA file can be exported.
+#
+# Template for the host administrator. Replace the three <...> values with the ones the
+# API service already uses, then:
+#   sudo cp tuloy-bcmd-dqa-worker.service /etc/systemd/system/
+#   sudo systemctl daemon-reload
+#   sudo systemctl enable --now tuloy-bcmd-dqa-worker
+#   systemctl status tuloy-bcmd-dqa-worker      # expect "active (running)"
+# Also add "systemctl restart tuloy-bcmd-dqa-worker" to update-tuloy.sh after the API
+# restart, so the worker runs the same code as the API after every deploy.
+#
+# The worker reads the same .env as the API (from WorkingDirectory). It needs no new
+# secret, grant, port or migration. Its log line on a failure is
+# "bcmd_dqa_worker_unavailable"; it then retries every second.
+
+[Unit]
+Description=TULOY BCMD DQA worker
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=<user the API service runs as>
+WorkingDirectory=<API checkout directory, the one holding the API .env>
+ExecStart=<API virtualenv>/bin/python -m scripts.bcmd_dqa_worker
+Restart=always
+RestartSec=10
+NoNewPrivileges=true
+PrivateTmp=true
+
+[Install]
+WantedBy=multi-user.target

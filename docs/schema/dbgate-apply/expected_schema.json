@@ -1,0 +1,5711 @@
+{
+  "expiry_before": {
+    "table": [
+      {
+        "ENGINE": "InnoDB",
+        "TABLE_COLLATION": "utf8mb4_0900_ai_ci"
+      }
+    ],
+    "columns": [
+      {
+        "COLUMN_NAME": "grant_id",
+        "ORDINAL_POSITION": 1,
+        "COLUMN_TYPE": "bigint unsigned",
+        "IS_NULLABLE": "NO",
+        "COLUMN_DEFAULT": null,
+        "EXTRA": "auto_increment",
+        "CHARACTER_SET_NAME": null,
+        "COLLATION_NAME": null,
+        "GENERATION_EXPRESSION": "",
+        "COLUMN_COMMENT": ""
+      },
+      {
+        "COLUMN_NAME": "user_id",
+        "ORDINAL_POSITION": 2,
+        "COLUMN_TYPE": "int",
+        "IS_NULLABLE": "NO",
+        "COLUMN_DEFAULT": null,
+        "EXTRA": "",
+        "CHARACTER_SET_NAME": null,
+        "COLLATION_NAME": null,
+        "GENERATION_EXPRESSION": "",
+        "COLUMN_COMMENT": ""
+      },
+      {
+        "COLUMN_NAME": "scope",
+        "ORDINAL_POSITION": 3,
+        "COLUMN_TYPE": "varchar(64)",
+        "IS_NULLABLE": "NO",
+        "COLUMN_DEFAULT": null,
+        "EXTRA": "",
+        "CHARACTER_SET_NAME": "utf8mb4",
+        "COLLATION_NAME": "utf8mb4_0900_ai_ci",
+        "GENERATION_EXPRESSION": "",
+        "COLUMN_COMMENT": ""
+      },
+      {
+        "COLUMN_NAME": "partner_id",
+        "ORDINAL_POSITION": 4,
+        "COLUMN_TYPE": "varchar(64)",
+        "IS_NULLABLE": "NO",
+        "COLUMN_DEFAULT": null,
+        "EXTRA": "",
+        "CHARACTER_SET_NAME": "utf8mb4",
+        "COLLATION_NAME": "utf8mb4_0900_ai_ci",
+        "GENERATION_EXPRESSION": "",
+        "COLUMN_COMMENT": ""
+      },
+      {
+        "COLUMN_NAME": "agency",
+        "ORDINAL_POSITION": 5,
+        "COLUMN_TYPE": "varchar(16)",
+        "IS_NULLABLE": "NO",
+        "COLUMN_DEFAULT": null,
+        "EXTRA": "",
+        "CHARACTER_SET_NAME": "utf8mb4",
+        "COLLATION_NAME": "utf8mb4_0900_ai_ci",
+        "GENERATION_EXPRESSION": "",
+        "COLUMN_COMMENT": ""
+      },
+      {
+        "COLUMN_NAME": "granted_by",
+        "ORDINAL_POSITION": 6,
+        "COLUMN_TYPE": "varchar(255)",
+        "IS_NULLABLE": "NO",
+        "COLUMN_DEFAULT": null,
+        "EXTRA": "",
+        "CHARACTER_SET_NAME": "utf8mb4",
+        "COLLATION_NAME": "utf8mb4_0900_ai_ci",
+        "GENERATION_EXPRESSION": "",
+        "COLUMN_COMMENT": ""
+      },
+      {
+        "COLUMN_NAME": "granted_at",
+        "ORDINAL_POSITION": 7,
+        "COLUMN_TYPE": "timestamp",
+        "IS_NULLABLE": "NO",
+        "COLUMN_DEFAULT": "CURRENT_TIMESTAMP",
+        "EXTRA": "DEFAULT_GENERATED",
+        "CHARACTER_SET_NAME": null,
+        "COLLATION_NAME": null,
+        "GENERATION_EXPRESSION": "",
+        "COLUMN_COMMENT": ""
+      },
+      {
+        "COLUMN_NAME": "expires_at",
+        "ORDINAL_POSITION": 8,
+        "COLUMN_TYPE": "timestamp",
+        "IS_NULLABLE": "NO",
+        "COLUMN_DEFAULT": null,
+        "EXTRA": "",
+        "CHARACTER_SET_NAME": null,
+        "COLLATION_NAME": null,
+        "GENERATION_EXPRESSION": "",
+        "COLUMN_COMMENT": ""
+      },
+      {
+        "COLUMN_NAME": "revoked_at",
+        "ORDINAL_POSITION": 9,
+        "COLUMN_TYPE": "timestamp",
+        "IS_NULLABLE": "YES",
+        "COLUMN_DEFAULT": null,
+        "EXTRA": "",
+        "CHARACTER_SET_NAME": null,
+        "COLLATION_NAME": null,
+        "GENERATION_EXPRESSION": "",
+        "COLUMN_COMMENT": ""
+      },
+      {
+        "COLUMN_NAME": "revoked_by",
+        "ORDINAL_POSITION": 10,
+        "COLUMN_TYPE": "varchar(255)",
+        "IS_NULLABLE": "YES",
+        "COLUMN_DEFAULT": null,
+        "EXTRA": "",
+        "CHARACTER_SET_NAME": "utf8mb4",
+        "COLLATION_NAME": "utf8mb4_0900_ai_ci",
+        "GENERATION_EXPRESSION": "",
+        "COLUMN_COMMENT": ""
+      },
+      {
+        "COLUMN_NAME": "is_active",
+        "ORDINAL_POSITION": 11,
+        "COLUMN_TYPE": "tinyint",
+        "IS_NULLABLE": "YES",
+        "COLUMN_DEFAULT": null,
+        "EXTRA": "STORED GENERATED",
+        "CHARACTER_SET_NAME": null,
+        "COLLATION_NAME": null,
+        "GENERATION_EXPRESSION": "if((`revoked_at` is null),1,NULL)",
+        "COLUMN_COMMENT": ""
+      }
+    ],
+    "indexes": [
+      {
+        "INDEX_NAME": "ix_api_user_scopes_lookup",
+        "NON_UNIQUE": 1,
+        "SEQ_IN_INDEX": 1,
+        "COLUMN_NAME": "user_id",
+        "SUB_PART": null,
+        "COLLATION": "A",
+        "INDEX_TYPE": "BTREE",
+        "IS_VISIBLE": "YES",
+        "EXPRESSION": null
+      },
+      {
+        "INDEX_NAME": "ix_api_user_scopes_lookup",
+        "NON_UNIQUE": 1,
+        "SEQ_IN_INDEX": 2,
+        "COLUMN_NAME": "revoked_at",
+        "SUB_PART": null,
+        "COLLATION": "A",
+        "INDEX_TYPE": "BTREE",
+        "IS_VISIBLE": "YES",
+        "EXPRESSION": null
+      },
+      {
+        "INDEX_NAME": "ix_api_user_scopes_lookup",
+        "NON_UNIQUE": 1,
+        "SEQ_IN_INDEX": 3,
+        "COLUMN_NAME": "expires_at",
+        "SUB_PART": null,
+        "COLLATION": "A",
+        "INDEX_TYPE": "BTREE",
+        "IS_VISIBLE": "YES",
+        "EXPRESSION": null
+      },
+      {
+        "INDEX_NAME": "PRIMARY",
+        "NON_UNIQUE": 0,
+        "SEQ_IN_INDEX": 1,
+        "COLUMN_NAME": "grant_id",
+        "SUB_PART": null,
+        "COLLATION": "A",
+        "INDEX_TYPE": "BTREE",
+        "IS_VISIBLE": "YES",
+        "EXPRESSION": null
+      },
+      {
+        "INDEX_NAME": "uq_api_user_scopes_active",
+        "NON_UNIQUE": 0,
+        "SEQ_IN_INDEX": 1,
+        "COLUMN_NAME": "user_id",
+        "SUB_PART": null,
+        "COLLATION": "A",
+        "INDEX_TYPE": "BTREE",
+        "IS_VISIBLE": "YES",
+        "EXPRESSION": null
+      },
+      {
+        "INDEX_NAME": "uq_api_user_scopes_active",
+        "NON_UNIQUE": 0,
+        "SEQ_IN_INDEX": 2,
+        "COLUMN_NAME": "scope",
+        "SUB_PART": null,
+        "COLLATION": "A",
+        "INDEX_TYPE": "BTREE",
+        "IS_VISIBLE": "YES",
+        "EXPRESSION": null
+      },
+      {
+        "INDEX_NAME": "uq_api_user_scopes_active",
+        "NON_UNIQUE": 0,
+        "SEQ_IN_INDEX": 3,
+        "COLUMN_NAME": "partner_id",
+        "SUB_PART": null,
+        "COLLATION": "A",
+        "INDEX_TYPE": "BTREE",
+        "IS_VISIBLE": "YES",
+        "EXPRESSION": null
+      },
+      {
+        "INDEX_NAME": "uq_api_user_scopes_active",
+        "NON_UNIQUE": 0,
+        "SEQ_IN_INDEX": 4,
+        "COLUMN_NAME": "agency",
+        "SUB_PART": null,
+        "COLLATION": "A",
+        "INDEX_TYPE": "BTREE",
+        "IS_VISIBLE": "YES",
+        "EXPRESSION": null
+      },
+      {
+        "INDEX_NAME": "uq_api_user_scopes_active",
+        "NON_UNIQUE": 0,
+        "SEQ_IN_INDEX": 5,
+        "COLUMN_NAME": "is_active",
+        "SUB_PART": null,
+        "COLLATION": "A",
+        "INDEX_TYPE": "BTREE",
+        "IS_VISIBLE": "YES",
+        "EXPRESSION": null
+      }
+    ],
+    "fks": [
+      {
+        "CONSTRAINT_NAME": "fk_api_user_scopes_user",
+        "COLUMN_NAME": "user_id",
+        "ORDINAL_POSITION": 1,
+        "POSITION_IN_UNIQUE_CONSTRAINT": 1,
+        "REFERENCED_TABLE_NAME": "api_users",
+        "REFERENCED_COLUMN_NAME": "id"
+      }
+    ],
+    "fk_rules": [
+      {
+        "CONSTRAINT_NAME": "fk_api_user_scopes_user",
+        "UNIQUE_CONSTRAINT_NAME": "PRIMARY",
+        "MATCH_OPTION": "NONE",
+        "UPDATE_RULE": "NO ACTION",
+        "DELETE_RULE": "RESTRICT"
+      }
+    ],
+    "checks": [
+      {
+        "CONSTRAINT_NAME": "ck_api_user_scopes_expiry",
+        "CHECK_CLAUSE": "(`expires_at` > `granted_at`)",
+        "ENFORCED": "YES"
+      },
+      {
+        "CONSTRAINT_NAME": "ck_api_user_scopes_fields",
+        "CHECK_CLAUSE": "((`scope` <> _utf8mb4\\'\\') and (`partner_id` <> _utf8mb4\\'\\') and (`agency` <> _utf8mb4\\'\\') and (`granted_by` <> _utf8mb4\\'\\'))",
+        "ENFORCED": "YES"
+      },
+      {
+        "CONSTRAINT_NAME": "ck_api_user_scopes_revoker",
+        "CHECK_CLAUSE": "((`revoked_at` is null) = (`revoked_by` is null))",
+        "ENFORCED": "YES"
+      }
+    ]
+  },
+  "expiry_after": {
+    "table": [
+      {
+        "ENGINE": "InnoDB",
+        "TABLE_COLLATION": "utf8mb4_0900_ai_ci"
+      }
+    ],
+    "columns": [
+      {
+        "COLUMN_NAME": "grant_id",
+        "ORDINAL_POSITION": 1,
+        "COLUMN_TYPE": "bigint unsigned",
+        "IS_NULLABLE": "NO",
+        "COLUMN_DEFAULT": null,
+        "EXTRA": "auto_increment",
+        "CHARACTER_SET_NAME": null,
+        "COLLATION_NAME": null,
+        "GENERATION_EXPRESSION": "",
+        "COLUMN_COMMENT": ""
+      },
+      {
+        "COLUMN_NAME": "user_id",
+        "ORDINAL_POSITION": 2,
+        "COLUMN_TYPE": "int",
+        "IS_NULLABLE": "NO",
+        "COLUMN_DEFAULT": null,
+        "EXTRA": "",
+        "CHARACTER_SET_NAME": null,
+        "COLLATION_NAME": null,
+        "GENERATION_EXPRESSION": "",
+        "COLUMN_COMMENT": ""
+      },
+      {
+        "COLUMN_NAME": "scope",
+        "ORDINAL_POSITION": 3,
+        "COLUMN_TYPE": "varchar(64)",
+        "IS_NULLABLE": "NO",
+        "COLUMN_DEFAULT": null,
+        "EXTRA": "",
+        "CHARACTER_SET_NAME": "utf8mb4",
+        "COLLATION_NAME": "utf8mb4_0900_ai_ci",
+        "GENERATION_EXPRESSION": "",
+        "COLUMN_COMMENT": ""
+      },
+      {
+        "COLUMN_NAME": "partner_id",
+        "ORDINAL_POSITION": 4,
+        "COLUMN_TYPE": "varchar(64)",
+        "IS_NULLABLE": "NO",
+        "COLUMN_DEFAULT": null,
+        "EXTRA": "",
+        "CHARACTER_SET_NAME": "utf8mb4",
+        "COLLATION_NAME": "utf8mb4_0900_ai_ci",
+        "GENERATION_EXPRESSION": "",
+        "COLUMN_COMMENT": ""
+      },
+      {
+        "COLUMN_NAME": "agency",
+        "ORDINAL_POSITION": 5,
+        "COLUMN_TYPE": "varchar(16)",
+        "IS_NULLABLE": "NO",
+        "COLUMN_DEFAULT": null,
+        "EXTRA": "",
+        "CHARACTER_SET_NAME": "utf8mb4",
+        "COLLATION_NAME": "utf8mb4_0900_ai_ci",
+        "GENERATION_EXPRESSION": "",
+        "COLUMN_COMMENT": ""
+      },
+      {
+        "COLUMN_NAME": "granted_by",
+        "ORDINAL_POSITION": 6,
+        "COLUMN_TYPE": "varchar(255)",
+        "IS_NULLABLE": "NO",
+        "COLUMN_DEFAULT": null,
+        "EXTRA": "",
+        "CHARACTER_SET_NAME": "utf8mb4",
+        "COLLATION_NAME": "utf8mb4_0900_ai_ci",
+        "GENERATION_EXPRESSION": "",
+        "COLUMN_COMMENT": ""
+      },
+      {
+        "COLUMN_NAME": "granted_at",
+        "ORDINAL_POSITION": 7,
+        "COLUMN_TYPE": "timestamp",
+        "IS_NULLABLE": "NO",
+        "COLUMN_DEFAULT": "CURRENT_TIMESTAMP",
+        "EXTRA": "DEFAULT_GENERATED",
+        "CHARACTER_SET_NAME": null,
+        "COLLATION_NAME": null,
+        "GENERATION_EXPRESSION": "",
+        "COLUMN_COMMENT": ""
+      },
+      {
+        "COLUMN_NAME": "expires_at",
+        "ORDINAL_POSITION": 8,
+        "COLUMN_TYPE": "timestamp",
+        "IS_NULLABLE": "YES",
+        "COLUMN_DEFAULT": null,
+        "EXTRA": "",
+        "CHARACTER_SET_NAME": null,
+        "COLLATION_NAME": null,
+        "GENERATION_EXPRESSION": "",
+        "COLUMN_COMMENT": ""
+      },
+      {
+        "COLUMN_NAME": "revoked_at",
+        "ORDINAL_POSITION": 9,
+        "COLUMN_TYPE": "timestamp",
+        "IS_NULLABLE": "YES",
+        "COLUMN_DEFAULT": null,
+        "EXTRA": "",
+        "CHARACTER_SET_NAME": null,
+        "COLLATION_NAME": null,
+        "GENERATION_EXPRESSION": "",
+        "COLUMN_COMMENT": ""
+      },
+      {
+        "COLUMN_NAME": "revoked_by",
+        "ORDINAL_POSITION": 10,
+        "COLUMN_TYPE": "varchar(255)",
+        "IS_NULLABLE": "YES",
+        "COLUMN_DEFAULT": null,
+        "EXTRA": "",
+        "CHARACTER_SET_NAME": "utf8mb4",
+        "COLLATION_NAME": "utf8mb4_0900_ai_ci",
+        "GENERATION_EXPRESSION": "",
+        "COLUMN_COMMENT": ""
+      },
+      {
+        "COLUMN_NAME": "is_active",
+        "ORDINAL_POSITION": 11,
+        "COLUMN_TYPE": "tinyint",
+        "IS_NULLABLE": "YES",
+        "COLUMN_DEFAULT": null,
+        "EXTRA": "STORED GENERATED",
+        "CHARACTER_SET_NAME": null,
+        "COLLATION_NAME": null,
+        "GENERATION_EXPRESSION": "if((`revoked_at` is null),1,NULL)",
+        "COLUMN_COMMENT": ""
+      }
+    ],
+    "indexes": [
+      {
+        "INDEX_NAME": "ix_api_user_scopes_lookup",
+        "NON_UNIQUE": 1,
+        "SEQ_IN_INDEX": 1,
+        "COLUMN_NAME": "user_id",
+        "SUB_PART": null,
+        "COLLATION": "A",
+        "INDEX_TYPE": "BTREE",
+        "IS_VISIBLE": "YES",
+        "EXPRESSION": null
+      },
+      {
+        "INDEX_NAME": "ix_api_user_scopes_lookup",
+        "NON_UNIQUE": 1,
+        "SEQ_IN_INDEX": 2,
+        "COLUMN_NAME": "revoked_at",
+        "SUB_PART": null,
+        "COLLATION": "A",
+        "INDEX_TYPE": "BTREE",
+        "IS_VISIBLE": "YES",
+        "EXPRESSION": null
+      },
+      {
+        "INDEX_NAME": "ix_api_user_scopes_lookup",
+        "NON_UNIQUE": 1,
+        "SEQ_IN_INDEX": 3,
+        "COLUMN_NAME": "expires_at",
+        "SUB_PART": null,
+        "COLLATION": "A",
+        "INDEX_TYPE": "BTREE",
+        "IS_VISIBLE": "YES",
+        "EXPRESSION": null
+      },
+      {
+        "INDEX_NAME": "PRIMARY",
+        "NON_UNIQUE": 0,
+        "SEQ_IN_INDEX": 1,
+        "COLUMN_NAME": "grant_id",
+        "SUB_PART": null,
+        "COLLATION": "A",
+        "INDEX_TYPE": "BTREE",
+        "IS_VISIBLE": "YES",
+        "EXPRESSION": null
+      },
+      {
+        "INDEX_NAME": "uq_api_user_scopes_active",
+        "NON_UNIQUE": 0,
+        "SEQ_IN_INDEX": 1,
+        "COLUMN_NAME": "user_id",
+        "SUB_PART": null,
+        "COLLATION": "A",
+        "INDEX_TYPE": "BTREE",
+        "IS_VISIBLE": "YES",
+        "EXPRESSION": null
+      },
+      {
+        "INDEX_NAME": "uq_api_user_scopes_active",
+        "NON_UNIQUE": 0,
+        "SEQ_IN_INDEX": 2,
+        "COLUMN_NAME": "scope",
+        "SUB_PART": null,
+        "COLLATION": "A",
+        "INDEX_TYPE": "BTREE",
+        "IS_VISIBLE": "YES",
+        "EXPRESSION": null
+      },
+      {
+        "INDEX_NAME": "uq_api_user_scopes_active",
+        "NON_UNIQUE": 0,
+        "SEQ_IN_INDEX": 3,
+        "COLUMN_NAME": "partner_id",
+        "SUB_PART": null,
+        "COLLATION": "A",
+        "INDEX_TYPE": "BTREE",
+        "IS_VISIBLE": "YES",
+        "EXPRESSION": null
+      },
+      {
+        "INDEX_NAME": "uq_api_user_scopes_active",
+        "NON_UNIQUE": 0,
+        "SEQ_IN_INDEX": 4,
+        "COLUMN_NAME": "agency",
+        "SUB_PART": null,
+        "COLLATION": "A",
+        "INDEX_TYPE": "BTREE",
+        "IS_VISIBLE": "YES",
+        "EXPRESSION": null
+      },
+      {
+        "INDEX_NAME": "uq_api_user_scopes_active",
+        "NON_UNIQUE": 0,
+        "SEQ_IN_INDEX": 5,
+        "COLUMN_NAME": "is_active",
+        "SUB_PART": null,
+        "COLLATION": "A",
+        "INDEX_TYPE": "BTREE",
+        "IS_VISIBLE": "YES",
+        "EXPRESSION": null
+      }
+    ],
+    "fks": [
+      {
+        "CONSTRAINT_NAME": "fk_api_user_scopes_user",
+        "COLUMN_NAME": "user_id",
+        "ORDINAL_POSITION": 1,
+        "POSITION_IN_UNIQUE_CONSTRAINT": 1,
+        "REFERENCED_TABLE_NAME": "api_users",
+        "REFERENCED_COLUMN_NAME": "id"
+      }
+    ],
+    "fk_rules": [
+      {
+        "CONSTRAINT_NAME": "fk_api_user_scopes_user",
+        "UNIQUE_CONSTRAINT_NAME": "PRIMARY",
+        "MATCH_OPTION": "NONE",
+        "UPDATE_RULE": "NO ACTION",
+        "DELETE_RULE": "RESTRICT"
+      }
+    ],
+    "checks": [
+      {
+        "CONSTRAINT_NAME": "ck_api_user_scopes_expiry",
+        "CHECK_CLAUSE": "((`expires_at` is null) or (`expires_at` > `granted_at`))",
+        "ENFORCED": "YES"
+      },
+      {
+        "CONSTRAINT_NAME": "ck_api_user_scopes_fields",
+        "CHECK_CLAUSE": "((`scope` <> _utf8mb4\\'\\') and (`partner_id` <> _utf8mb4\\'\\') and (`agency` <> _utf8mb4\\'\\') and (`granted_by` <> _utf8mb4\\'\\'))",
+        "ENFORCED": "YES"
+      },
+      {
+        "CONSTRAINT_NAME": "ck_api_user_scopes_revoker",
+        "CHECK_CLAUSE": "((`revoked_at` is null) = (`revoked_by` is null))",
+        "ENFORCED": "YES"
+      }
+    ]
+  },
+  "app_settings": {
+    "table": [
+      {
+        "ENGINE": "InnoDB",
+        "TABLE_COLLATION": "utf8mb4_0900_ai_ci"
+      }
+    ],
+    "columns": [
+      {
+        "COLUMN_NAME": "id",
+        "ORDINAL_POSITION": 1,
+        "COLUMN_TYPE": "int",
+        "IS_NULLABLE": "NO",
+        "COLUMN_DEFAULT": null,
+        "EXTRA": "auto_increment",
+        "CHARACTER_SET_NAME": null,
+        "COLLATION_NAME": null,
+        "GENERATION_EXPRESSION": "",
+        "COLUMN_COMMENT": ""
+      },
+      {
+        "COLUMN_NAME": "app_name",
+        "ORDINAL_POSITION": 2,
+        "COLUMN_TYPE": "varchar(255)",
+        "IS_NULLABLE": "NO",
+        "COLUMN_DEFAULT": null,
+        "EXTRA": "",
+        "CHARACTER_SET_NAME": "utf8mb4",
+        "COLLATION_NAME": "utf8mb4_0900_ai_ci",
+        "GENERATION_EXPRESSION": "",
+        "COLUMN_COMMENT": ""
+      },
+      {
+        "COLUMN_NAME": "app_tagline",
+        "ORDINAL_POSITION": 3,
+        "COLUMN_TYPE": "varchar(255)",
+        "IS_NULLABLE": "YES",
+        "COLUMN_DEFAULT": null,
+        "EXTRA": "",
+        "CHARACTER_SET_NAME": "utf8mb4",
+        "COLLATION_NAME": "utf8mb4_0900_ai_ci",
+        "GENERATION_EXPRESSION": "",
+        "COLUMN_COMMENT": ""
+      },
+      {
+        "COLUMN_NAME": "app_subtext",
+        "ORDINAL_POSITION": 4,
+        "COLUMN_TYPE": "varchar(500)",
+        "IS_NULLABLE": "YES",
+        "COLUMN_DEFAULT": null,
+        "EXTRA": "",
+        "CHARACTER_SET_NAME": "utf8mb4",
+        "COLLATION_NAME": "utf8mb4_0900_ai_ci",
+        "GENERATION_EXPRESSION": "",
+        "COLUMN_COMMENT": ""
+      },
+      {
+        "COLUMN_NAME": "app_logo_url",
+        "ORDINAL_POSITION": 5,
+        "COLUMN_TYPE": "longtext",
+        "IS_NULLABLE": "YES",
+        "COLUMN_DEFAULT": null,
+        "EXTRA": "",
+        "CHARACTER_SET_NAME": "utf8mb4",
+        "COLLATION_NAME": "utf8mb4_0900_ai_ci",
+        "GENERATION_EXPRESSION": "",
+        "COLUMN_COMMENT": ""
+      },
+      {
+        "COLUMN_NAME": "app_logo_fit",
+        "ORDINAL_POSITION": 6,
+        "COLUMN_TYPE": "varchar(20)",
+        "IS_NULLABLE": "YES",
+        "COLUMN_DEFAULT": null,
+        "EXTRA": "",
+        "CHARACTER_SET_NAME": "utf8mb4",
+        "COLLATION_NAME": "utf8mb4_0900_ai_ci",
+        "GENERATION_EXPRESSION": "",
+        "COLUMN_COMMENT": ""
+      },
+      {
+        "COLUMN_NAME": "app_logo_height",
+        "ORDINAL_POSITION": 7,
+        "COLUMN_TYPE": "int",
+        "IS_NULLABLE": "YES",
+        "COLUMN_DEFAULT": null,
+        "EXTRA": "",
+        "CHARACTER_SET_NAME": null,
+        "COLLATION_NAME": null,
+        "GENERATION_EXPRESSION": "",
+        "COLUMN_COMMENT": ""
+      },
+      {
+        "COLUMN_NAME": "app_logo_sidebar_height",
+        "ORDINAL_POSITION": 8,
+        "COLUMN_TYPE": "int",
+        "IS_NULLABLE": "YES",
+        "COLUMN_DEFAULT": null,
+        "EXTRA": "",
+        "CHARACTER_SET_NAME": null,
+        "COLLATION_NAME": null,
+        "GENERATION_EXPRESSION": "",
+        "COLUMN_COMMENT": ""
+      },
+      {
+        "COLUMN_NAME": "favicon_url",
+        "ORDINAL_POSITION": 9,
+        "COLUMN_TYPE": "longtext",
+        "IS_NULLABLE": "YES",
+        "COLUMN_DEFAULT": null,
+        "EXTRA": "",
+        "CHARACTER_SET_NAME": "utf8mb4",
+        "COLLATION_NAME": "utf8mb4_0900_ai_ci",
+        "GENERATION_EXPRESSION": "",
+        "COLUMN_COMMENT": ""
+      },
+      {
+        "COLUMN_NAME": "bg_type",
+        "ORDINAL_POSITION": 10,
+        "COLUMN_TYPE": "varchar(20)",
+        "IS_NULLABLE": "NO",
+        "COLUMN_DEFAULT": null,
+        "EXTRA": "",
+        "CHARACTER_SET_NAME": "utf8mb4",
+        "COLLATION_NAME": "utf8mb4_0900_ai_ci",
+        "GENERATION_EXPRESSION": "",
+        "COLUMN_COMMENT": ""
+      },
+      {
+        "COLUMN_NAME": "bg_color",
+        "ORDINAL_POSITION": 11,
+        "COLUMN_TYPE": "varchar(255)",
+        "IS_NULLABLE": "YES",
+        "COLUMN_DEFAULT": null,
+        "EXTRA": "",
+        "CHARACTER_SET_NAME": "utf8mb4",
+        "COLLATION_NAME": "utf8mb4_0900_ai_ci",
+        "GENERATION_EXPRESSION": "",
+        "COLUMN_COMMENT": ""
+      },
+      {
+        "COLUMN_NAME": "bg_image_url",
+        "ORDINAL_POSITION": 12,
+        "COLUMN_TYPE": "longtext",
+        "IS_NULLABLE": "YES",
+        "COLUMN_DEFAULT": null,
+        "EXTRA": "",
+        "CHARACTER_SET_NAME": "utf8mb4",
+        "COLLATION_NAME": "utf8mb4_0900_ai_ci",
+        "GENERATION_EXPRESSION": "",
+        "COLUMN_COMMENT": ""
+      },
+      {
+        "COLUMN_NAME": "bg_overlay_color",
+        "ORDINAL_POSITION": 13,
+        "COLUMN_TYPE": "varchar(255)",
+        "IS_NULLABLE": "YES",
+        "COLUMN_DEFAULT": null,
+        "EXTRA": "",
+        "CHARACTER_SET_NAME": "utf8mb4",
+        "COLLATION_NAME": "utf8mb4_0900_ai_ci",
+        "GENERATION_EXPRESSION": "",
+        "COLUMN_COMMENT": ""
+      },
+      {
+        "COLUMN_NAME": "bg_overlay_opacity",
+        "ORDINAL_POSITION": 14,
+        "COLUMN_TYPE": "int",
+        "IS_NULLABLE": "YES",
+        "COLUMN_DEFAULT": null,
+        "EXTRA": "",
+        "CHARACTER_SET_NAME": null,
+        "COLLATION_NAME": null,
+        "GENERATION_EXPRESSION": "",
+        "COLUMN_COMMENT": ""
+      },
+      {
+        "COLUMN_NAME": "text_title_color",
+        "ORDINAL_POSITION": 15,
+        "COLUMN_TYPE": "varchar(255)",
+        "IS_NULLABLE": "YES",
+        "COLUMN_DEFAULT": null,
+        "EXTRA": "",
+        "CHARACTER_SET_NAME": "utf8mb4",
+        "COLLATION_NAME": "utf8mb4_0900_ai_ci",
+        "GENERATION_EXPRESSION": "",
+        "COLUMN_COMMENT": ""
+      },
+      {
+        "COLUMN_NAME": "text_tagline_color",
+        "ORDINAL_POSITION": 16,
+        "COLUMN_TYPE": "varchar(255)",
+        "IS_NULLABLE": "YES",
+        "COLUMN_DEFAULT": null,
+        "EXTRA": "",
+        "CHARACTER_SET_NAME": "utf8mb4",
+        "COLLATION_NAME": "utf8mb4_0900_ai_ci",
+        "GENERATION_EXPRESSION": "",
+        "COLUMN_COMMENT": ""
+      },
+      {
+        "COLUMN_NAME": "text_subtext_color",
+        "ORDINAL_POSITION": 17,
+        "COLUMN_TYPE": "varchar(255)",
+        "IS_NULLABLE": "YES",
+        "COLUMN_DEFAULT": null,
+        "EXTRA": "",
+        "CHARACTER_SET_NAME": "utf8mb4",
+        "COLLATION_NAME": "utf8mb4_0900_ai_ci",
+        "GENERATION_EXPRESSION": "",
+        "COLUMN_COMMENT": ""
+      },
+      {
+        "COLUMN_NAME": "logos_json",
+        "ORDINAL_POSITION": 18,
+        "COLUMN_TYPE": "longtext",
+        "IS_NULLABLE": "YES",
+        "COLUMN_DEFAULT": null,
+        "EXTRA": "",
+        "CHARACTER_SET_NAME": "utf8mb4",
+        "COLLATION_NAME": "utf8mb4_0900_ai_ci",
+        "GENERATION_EXPRESSION": "",
+        "COLUMN_COMMENT": ""
+      },
+      {
+        "COLUMN_NAME": "updated_at",
+        "ORDINAL_POSITION": 19,
+        "COLUMN_TYPE": "datetime",
+        "IS_NULLABLE": "YES",
+        "COLUMN_DEFAULT": "CURRENT_TIMESTAMP",
+        "EXTRA": "DEFAULT_GENERATED",
+        "CHARACTER_SET_NAME": null,
+        "COLLATION_NAME": null,
+        "GENERATION_EXPRESSION": "",
+        "COLUMN_COMMENT": ""
+      }
+    ],
+    "indexes": [
+      {
+        "INDEX_NAME": "ix_app_settings_id",
+        "NON_UNIQUE": 1,
+        "SEQ_IN_INDEX": 1,
+        "COLUMN_NAME": "id",
+        "SUB_PART": null,
+        "COLLATION": "A",
+        "INDEX_TYPE": "BTREE",
+        "IS_VISIBLE": "YES",
+        "EXPRESSION": null
+      },
+      {
+        "INDEX_NAME": "PRIMARY",
+        "NON_UNIQUE": 0,
+        "SEQ_IN_INDEX": 1,
+        "COLUMN_NAME": "id",
+        "SUB_PART": null,
+        "COLLATION": "A",
+        "INDEX_TYPE": "BTREE",
+        "IS_VISIBLE": "YES",
+        "EXPRESSION": null
+      }
+    ],
+    "fks": [],
+    "fk_rules": [],
+    "checks": []
+  },
+  "bcmd_batch": {
+    "table": [
+      {
+        "ENGINE": "InnoDB",
+        "TABLE_COLLATION": "utf8mb4_0900_ai_ci"
+      }
+    ],
+    "columns": [
+      {
+        "COLUMN_NAME": "id",
+        "ORDINAL_POSITION": 1,
+        "COLUMN_TYPE": "bigint unsigned",
+        "IS_NULLABLE": "NO",
+        "COLUMN_DEFAULT": null,
+        "EXTRA": "auto_increment",
+        "CHARACTER_SET_NAME": null,
+        "COLLATION_NAME": null,
+        "GENERATION_EXPRESSION": "",
+        "COLUMN_COMMENT": ""
+      },
+      {
+        "COLUMN_NAME": "public_id",
+        "ORDINAL_POSITION": 2,
+        "COLUMN_TYPE": "char(36)",
+        "IS_NULLABLE": "NO",
+        "COLUMN_DEFAULT": null,
+        "EXTRA": "",
+        "CHARACTER_SET_NAME": "ascii",
+        "COLLATION_NAME": "ascii_bin",
+        "GENERATION_EXPRESSION": "",
+        "COLUMN_COMMENT": ""
+      },
+      {
+        "COLUMN_NAME": "name",
+        "ORDINAL_POSITION": 3,
+        "COLUMN_TYPE": "varchar(120)",
+        "IS_NULLABLE": "NO",
+        "COLUMN_DEFAULT": null,
+        "EXTRA": "",
+        "CHARACTER_SET_NAME": "utf8mb4",
+        "COLLATION_NAME": "utf8mb4_0900_ai_ci",
+        "GENERATION_EXPRESSION": "",
+        "COLUMN_COMMENT": ""
+      },
+      {
+        "COLUMN_NAME": "category",
+        "ORDINAL_POSITION": 4,
+        "COLUMN_TYPE": "char(2)",
+        "IS_NULLABLE": "NO",
+        "COLUMN_DEFAULT": null,
+        "EXTRA": "",
+        "CHARACTER_SET_NAME": "utf8mb4",
+        "COLLATION_NAME": "utf8mb4_0900_ai_ci",
+        "GENERATION_EXPRESSION": "",
+        "COLUMN_COMMENT": ""
+      },
+      {
+        "COLUMN_NAME": "source_agency",
+        "ORDINAL_POSITION": 5,
+        "COLUMN_TYPE": "varchar(5)",
+        "IS_NULLABLE": "NO",
+        "COLUMN_DEFAULT": "CHED",
+        "EXTRA": "",
+        "CHARACTER_SET_NAME": "utf8mb4",
+        "COLLATION_NAME": "utf8mb4_0900_ai_ci",
+        "GENERATION_EXPRESSION": "",
+        "COLUMN_COMMENT": ""
+      },
+      {
+        "COLUMN_NAME": "criteria",
+        "ORDINAL_POSITION": 6,
+        "COLUMN_TYPE": "json",
+        "IS_NULLABLE": "NO",
+        "COLUMN_DEFAULT": null,
+        "EXTRA": "",
+        "CHARACTER_SET_NAME": null,
+        "COLLATION_NAME": null,
+        "GENERATION_EXPRESSION": "",
+        "COLUMN_COMMENT": ""
+      },
+      {
+        "COLUMN_NAME": "status",
+        "ORDINAL_POSITION": 7,
+        "COLUMN_TYPE": "varchar(16)",
+        "IS_NULLABLE": "NO",
+        "COLUMN_DEFAULT": "DQA_COMPLETED",
+        "EXTRA": "",
+        "CHARACTER_SET_NAME": "utf8mb4",
+        "COLLATION_NAME": "utf8mb4_0900_ai_ci",
+        "GENERATION_EXPRESSION": "",
+        "COLUMN_COMMENT": ""
+      },
+      {
+        "COLUMN_NAME": "policy_version",
+        "ORDINAL_POSITION": 8,
+        "COLUMN_TYPE": "varchar(32)",
+        "IS_NULLABLE": "NO",
+        "COLUMN_DEFAULT": null,
+        "EXTRA": "",
+        "CHARACTER_SET_NAME": "utf8mb4",
+        "COLLATION_NAME": "utf8mb4_0900_ai_ci",
+        "GENERATION_EXPRESSION": "",
+        "COLUMN_COMMENT": ""
+      },
+      {
+        "COLUMN_NAME": "entitlement_def_version",
+        "ORDINAL_POSITION": 9,
+        "COLUMN_TYPE": "varchar(16)",
+        "IS_NULLABLE": "NO",
+        "COLUMN_DEFAULT": null,
+        "EXTRA": "",
+        "CHARACTER_SET_NAME": "utf8mb4",
+        "COLLATION_NAME": "utf8mb4_0900_ai_ci",
+        "GENERATION_EXPRESSION": "",
+        "COLUMN_COMMENT": ""
+      },
+      {
+        "COLUMN_NAME": "dqa_ruleset_id",
+        "ORDINAL_POSITION": 10,
+        "COLUMN_TYPE": "varchar(32)",
+        "IS_NULLABLE": "NO",
+        "COLUMN_DEFAULT": null,
+        "EXTRA": "",
+        "CHARACTER_SET_NAME": "utf8mb4",
+        "COLLATION_NAME": "utf8mb4_0900_ai_ci",
+        "GENERATION_EXPRESSION": "",
+        "COLUMN_COMMENT": ""
+      },
+      {
+        "COLUMN_NAME": "dqa_ruleset_version",
+        "ORDINAL_POSITION": 11,
+        "COLUMN_TYPE": "varchar(32)",
+        "IS_NULLABLE": "NO",
+        "COLUMN_DEFAULT": null,
+        "EXTRA": "",
+        "CHARACTER_SET_NAME": "utf8mb4",
+        "COLLATION_NAME": "utf8mb4_0900_ai_ci",
+        "GENERATION_EXPRESSION": "",
+        "COLUMN_COMMENT": ""
+      },
+      {
+        "COLUMN_NAME": "dqa_ruleset_sha256",
+        "ORDINAL_POSITION": 12,
+        "COLUMN_TYPE": "char(64)",
+        "IS_NULLABLE": "NO",
+        "COLUMN_DEFAULT": null,
+        "EXTRA": "",
+        "CHARACTER_SET_NAME": "ascii",
+        "COLLATION_NAME": "ascii_bin",
+        "GENERATION_EXPRESSION": "",
+        "COLUMN_COMMENT": ""
+      },
+      {
+        "COLUMN_NAME": "dqa_config_sha256",
+        "ORDINAL_POSITION": 13,
+        "COLUMN_TYPE": "char(64)",
+        "IS_NULLABLE": "NO",
+        "COLUMN_DEFAULT": null,
+        "EXTRA": "",
+        "CHARACTER_SET_NAME": "ascii",
+        "COLLATION_NAME": "ascii_bin",
+        "GENERATION_EXPRESSION": "",
+        "COLUMN_COMMENT": ""
+      },
+      {
+        "COLUMN_NAME": "dqa_config_canonical",
+        "ORDINAL_POSITION": 14,
+        "COLUMN_TYPE": "text",
+        "IS_NULLABLE": "NO",
+        "COLUMN_DEFAULT": null,
+        "EXTRA": "",
+        "CHARACTER_SET_NAME": "ascii",
+        "COLLATION_NAME": "ascii_bin",
+        "GENERATION_EXPRESSION": "",
+        "COLUMN_COMMENT": ""
+      },
+      {
+        "COLUMN_NAME": "dqa_evaluation_date",
+        "ORDINAL_POSITION": 15,
+        "COLUMN_TYPE": "date",
+        "IS_NULLABLE": "NO",
+        "COLUMN_DEFAULT": null,
+        "EXTRA": "",
+        "CHARACTER_SET_NAME": null,
+        "COLLATION_NAME": null,
+        "GENERATION_EXPRESSION": "",
+        "COLUMN_COMMENT": ""
+      },
+      {
+        "COLUMN_NAME": "snapshot_started_at",
+        "ORDINAL_POSITION": 16,
+        "COLUMN_TYPE": "datetime(3)",
+        "IS_NULLABLE": "NO",
+        "COLUMN_DEFAULT": null,
+        "EXTRA": "",
+        "CHARACTER_SET_NAME": null,
+        "COLLATION_NAME": null,
+        "GENERATION_EXPRESSION": "",
+        "COLUMN_COMMENT": ""
+      },
+      {
+        "COLUMN_NAME": "source_input_sha256",
+        "ORDINAL_POSITION": 17,
+        "COLUMN_TYPE": "char(64)",
+        "IS_NULLABLE": "NO",
+        "COLUMN_DEFAULT": null,
+        "EXTRA": "",
+        "CHARACTER_SET_NAME": "ascii",
+        "COLLATION_NAME": "ascii_bin",
+        "GENERATION_EXPRESSION": "",
+        "COLUMN_COMMENT": ""
+      },
+      {
+        "COLUMN_NAME": "dqa_completed_at",
+        "ORDINAL_POSITION": 18,
+        "COLUMN_TYPE": "datetime(3)",
+        "IS_NULLABLE": "NO",
+        "COLUMN_DEFAULT": null,
+        "EXTRA": "",
+        "CHARACTER_SET_NAME": null,
+        "COLLATION_NAME": null,
+        "GENERATION_EXPRESSION": "",
+        "COLUMN_COMMENT": ""
+      },
+      {
+        "COLUMN_NAME": "candidate_count",
+        "ORDINAL_POSITION": 19,
+        "COLUMN_TYPE": "int unsigned",
+        "IS_NULLABLE": "NO",
+        "COLUMN_DEFAULT": null,
+        "EXTRA": "",
+        "CHARACTER_SET_NAME": null,
+        "COLLATION_NAME": null,
+        "GENERATION_EXPRESSION": "",
+        "COLUMN_COMMENT": ""
+      },
+      {
+        "COLUMN_NAME": "member_count",
+        "ORDINAL_POSITION": 20,
+        "COLUMN_TYPE": "int unsigned",
+        "IS_NULLABLE": "NO",
+        "COLUMN_DEFAULT": null,
+        "EXTRA": "",
+        "CHARACTER_SET_NAME": null,
+        "COLLATION_NAME": null,
+        "GENERATION_EXPRESSION": "",
+        "COLUMN_COMMENT": ""
+      },
+      {
+        "COLUMN_NAME": "excluded_not_eligible",
+        "ORDINAL_POSITION": 21,
+        "COLUMN_TYPE": "int unsigned",
+        "IS_NULLABLE": "NO",
+        "COLUMN_DEFAULT": null,
+        "EXTRA": "",
+        "CHARACTER_SET_NAME": null,
+        "COLLATION_NAME": null,
+        "GENERATION_EXPRESSION": "",
+        "COLUMN_COMMENT": ""
+      },
+      {
+        "COLUMN_NAME": "excluded_no_tuloy_id",
+        "ORDINAL_POSITION": 22,
+        "COLUMN_TYPE": "int unsigned",
+        "IS_NULLABLE": "NO",
+        "COLUMN_DEFAULT": null,
+        "EXTRA": "",
+        "CHARACTER_SET_NAME": null,
+        "COLLATION_NAME": null,
+        "GENERATION_EXPRESSION": "",
+        "COLUMN_COMMENT": ""
+      },
+      {
+        "COLUMN_NAME": "excluded_duplicate_episode",
+        "ORDINAL_POSITION": 23,
+        "COLUMN_TYPE": "int unsigned",
+        "IS_NULLABLE": "NO",
+        "COLUMN_DEFAULT": null,
+        "EXTRA": "",
+        "CHARACTER_SET_NAME": null,
+        "COLLATION_NAME": null,
+        "GENERATION_EXPRESSION": "",
+        "COLUMN_COMMENT": ""
+      },
+      {
+        "COLUMN_NAME": "dqa_pass_count",
+        "ORDINAL_POSITION": 24,
+        "COLUMN_TYPE": "int unsigned",
+        "IS_NULLABLE": "NO",
+        "COLUMN_DEFAULT": null,
+        "EXTRA": "",
+        "CHARACTER_SET_NAME": null,
+        "COLLATION_NAME": null,
+        "GENERATION_EXPRESSION": "",
+        "COLUMN_COMMENT": ""
+      },
+      {
+        "COLUMN_NAME": "dqa_warn_count",
+        "ORDINAL_POSITION": 25,
+        "COLUMN_TYPE": "int unsigned",
+        "IS_NULLABLE": "NO",
+        "COLUMN_DEFAULT": null,
+        "EXTRA": "",
+        "CHARACTER_SET_NAME": null,
+        "COLLATION_NAME": null,
+        "GENERATION_EXPRESSION": "",
+        "COLUMN_COMMENT": ""
+      },
+      {
+        "COLUMN_NAME": "dqa_block_count",
+        "ORDINAL_POSITION": 26,
+        "COLUMN_TYPE": "int unsigned",
+        "IS_NULLABLE": "NO",
+        "COLUMN_DEFAULT": null,
+        "EXTRA": "",
+        "CHARACTER_SET_NAME": null,
+        "COLLATION_NAME": null,
+        "GENERATION_EXPRESSION": "",
+        "COLUMN_COMMENT": ""
+      },
+      {
+        "COLUMN_NAME": "dqa_warn_issue_count",
+        "ORDINAL_POSITION": 27,
+        "COLUMN_TYPE": "int unsigned",
+        "IS_NULLABLE": "NO",
+        "COLUMN_DEFAULT": null,
+        "EXTRA": "",
+        "CHARACTER_SET_NAME": null,
+        "COLLATION_NAME": null,
+        "GENERATION_EXPRESSION": "",
+        "COLUMN_COMMENT": ""
+      },
+      {
+        "COLUMN_NAME": "dqa_block_issue_count",
+        "ORDINAL_POSITION": 28,
+        "COLUMN_TYPE": "int unsigned",
+        "IS_NULLABLE": "NO",
+        "COLUMN_DEFAULT": null,
+        "EXTRA": "",
+        "CHARACTER_SET_NAME": null,
+        "COLLATION_NAME": null,
+        "GENERATION_EXPRESSION": "",
+        "COLUMN_COMMENT": ""
+      },
+      {
+        "COLUMN_NAME": "dqa_outcome",
+        "ORDINAL_POSITION": 29,
+        "COLUMN_TYPE": "varchar(8)",
+        "IS_NULLABLE": "NO",
+        "COLUMN_DEFAULT": null,
+        "EXTRA": "",
+        "CHARACTER_SET_NAME": "utf8mb4",
+        "COLLATION_NAME": "utf8mb4_0900_ai_ci",
+        "GENERATION_EXPRESSION": "",
+        "COLUMN_COMMENT": ""
+      },
+      {
+        "COLUMN_NAME": "export_seq",
+        "ORDINAL_POSITION": 30,
+        "COLUMN_TYPE": "int unsigned",
+        "IS_NULLABLE": "NO",
+        "COLUMN_DEFAULT": "0",
+        "EXTRA": "",
+        "CHARACTER_SET_NAME": null,
+        "COLLATION_NAME": null,
+        "GENERATION_EXPRESSION": "",
+        "COLUMN_COMMENT": ""
+      },
+      {
+        "COLUMN_NAME": "created_by_api_user_id",
+        "ORDINAL_POSITION": 31,
+        "COLUMN_TYPE": "int",
+        "IS_NULLABLE": "YES",
+        "COLUMN_DEFAULT": null,
+        "EXTRA": "",
+        "CHARACTER_SET_NAME": null,
+        "COLLATION_NAME": null,
+        "GENERATION_EXPRESSION": "",
+        "COLUMN_COMMENT": ""
+      },
+      {
+        "COLUMN_NAME": "created_by_staff_user_id",
+        "ORDINAL_POSITION": 32,
+        "COLUMN_TYPE": "bigint unsigned",
+        "IS_NULLABLE": "YES",
+        "COLUMN_DEFAULT": null,
+        "EXTRA": "",
+        "CHARACTER_SET_NAME": null,
+        "COLLATION_NAME": null,
+        "GENERATION_EXPRESSION": "",
+        "COLUMN_COMMENT": ""
+      },
+      {
+        "COLUMN_NAME": "created_by_agency",
+        "ORDINAL_POSITION": 33,
+        "COLUMN_TYPE": "varchar(16)",
+        "IS_NULLABLE": "NO",
+        "COLUMN_DEFAULT": null,
+        "EXTRA": "",
+        "CHARACTER_SET_NAME": "utf8mb4",
+        "COLLATION_NAME": "utf8mb4_0900_ai_ci",
+        "GENERATION_EXPRESSION": "",
+        "COLUMN_COMMENT": ""
+      },
+      {
+        "COLUMN_NAME": "request_id",
+        "ORDINAL_POSITION": 34,
+        "COLUMN_TYPE": "varchar(64)",
+        "IS_NULLABLE": "NO",
+        "COLUMN_DEFAULT": null,
+        "EXTRA": "",
+        "CHARACTER_SET_NAME": "utf8mb4",
+        "COLLATION_NAME": "utf8mb4_0900_ai_ci",
+        "GENERATION_EXPRESSION": "",
+        "COLUMN_COMMENT": ""
+      },
+      {
+        "COLUMN_NAME": "idempotency_key",
+        "ORDINAL_POSITION": 35,
+        "COLUMN_TYPE": "char(36)",
+        "IS_NULLABLE": "NO",
+        "COLUMN_DEFAULT": null,
+        "EXTRA": "",
+        "CHARACTER_SET_NAME": "ascii",
+        "COLLATION_NAME": "ascii_bin",
+        "GENERATION_EXPRESSION": "",
+        "COLUMN_COMMENT": ""
+      },
+      {
+        "COLUMN_NAME": "request_hash",
+        "ORDINAL_POSITION": 36,
+        "COLUMN_TYPE": "char(64)",
+        "IS_NULLABLE": "NO",
+        "COLUMN_DEFAULT": null,
+        "EXTRA": "",
+        "CHARACTER_SET_NAME": "ascii",
+        "COLLATION_NAME": "ascii_bin",
+        "GENERATION_EXPRESSION": "",
+        "COLUMN_COMMENT": ""
+      },
+      {
+        "COLUMN_NAME": "created_at",
+        "ORDINAL_POSITION": 37,
+        "COLUMN_TYPE": "timestamp(3)",
+        "IS_NULLABLE": "NO",
+        "COLUMN_DEFAULT": "CURRENT_TIMESTAMP(3)",
+        "EXTRA": "DEFAULT_GENERATED",
+        "CHARACTER_SET_NAME": null,
+        "COLLATION_NAME": null,
+        "GENERATION_EXPRESSION": "",
+        "COLUMN_COMMENT": ""
+      },
+      {
+        "COLUMN_NAME": "purged_at",
+        "ORDINAL_POSITION": 38,
+        "COLUMN_TYPE": "timestamp(3)",
+        "IS_NULLABLE": "YES",
+        "COLUMN_DEFAULT": null,
+        "EXTRA": "",
+        "CHARACTER_SET_NAME": null,
+        "COLLATION_NAME": null,
+        "GENERATION_EXPRESSION": "",
+        "COLUMN_COMMENT": ""
+      },
+      {
+        "COLUMN_NAME": "purged_by",
+        "ORDINAL_POSITION": 39,
+        "COLUMN_TYPE": "varchar(255)",
+        "IS_NULLABLE": "YES",
+        "COLUMN_DEFAULT": null,
+        "EXTRA": "",
+        "CHARACTER_SET_NAME": "utf8mb4",
+        "COLLATION_NAME": "utf8mb4_0900_ai_ci",
+        "GENERATION_EXPRESSION": "",
+        "COLUMN_COMMENT": ""
+      },
+      {
+        "COLUMN_NAME": "claim_epoch",
+        "ORDINAL_POSITION": 40,
+        "COLUMN_TYPE": "int unsigned",
+        "IS_NULLABLE": "NO",
+        "COLUMN_DEFAULT": "0",
+        "EXTRA": "",
+        "CHARACTER_SET_NAME": null,
+        "COLLATION_NAME": null,
+        "GENERATION_EXPRESSION": "",
+        "COLUMN_COMMENT": ""
+      },
+      {
+        "COLUMN_NAME": "payment_excluded_count",
+        "ORDINAL_POSITION": 41,
+        "COLUMN_TYPE": "int unsigned",
+        "IS_NULLABLE": "YES",
+        "COLUMN_DEFAULT": null,
+        "EXTRA": "",
+        "CHARACTER_SET_NAME": null,
+        "COLLATION_NAME": null,
+        "GENERATION_EXPRESSION": "",
+        "COLUMN_COMMENT": ""
+      }
+    ],
+    "indexes": [
+      {
+        "INDEX_NAME": "ix_bcmd_batch_list",
+        "NON_UNIQUE": 1,
+        "SEQ_IN_INDEX": 1,
+        "COLUMN_NAME": "created_at",
+        "SUB_PART": null,
+        "COLLATION": "A",
+        "INDEX_TYPE": "BTREE",
+        "IS_VISIBLE": "YES",
+        "EXPRESSION": null
+      },
+      {
+        "INDEX_NAME": "ix_bcmd_batch_list",
+        "NON_UNIQUE": 1,
+        "SEQ_IN_INDEX": 2,
+        "COLUMN_NAME": "id",
+        "SUB_PART": null,
+        "COLLATION": "A",
+        "INDEX_TYPE": "BTREE",
+        "IS_VISIBLE": "YES",
+        "EXPRESSION": null
+      },
+      {
+        "INDEX_NAME": "PRIMARY",
+        "NON_UNIQUE": 0,
+        "SEQ_IN_INDEX": 1,
+        "COLUMN_NAME": "id",
+        "SUB_PART": null,
+        "COLLATION": "A",
+        "INDEX_TYPE": "BTREE",
+        "IS_VISIBLE": "YES",
+        "EXPRESSION": null
+      },
+      {
+        "INDEX_NAME": "uq_bcmd_batch_idem",
+        "NON_UNIQUE": 0,
+        "SEQ_IN_INDEX": 1,
+        "COLUMN_NAME": "created_by_api_user_id",
+        "SUB_PART": null,
+        "COLLATION": "A",
+        "INDEX_TYPE": "BTREE",
+        "IS_VISIBLE": "YES",
+        "EXPRESSION": null
+      },
+      {
+        "INDEX_NAME": "uq_bcmd_batch_idem",
+        "NON_UNIQUE": 0,
+        "SEQ_IN_INDEX": 2,
+        "COLUMN_NAME": "idempotency_key",
+        "SUB_PART": null,
+        "COLLATION": "A",
+        "INDEX_TYPE": "BTREE",
+        "IS_VISIBLE": "YES",
+        "EXPRESSION": null
+      },
+      {
+        "INDEX_NAME": "uq_bcmd_batch_name",
+        "NON_UNIQUE": 0,
+        "SEQ_IN_INDEX": 1,
+        "COLUMN_NAME": "name",
+        "SUB_PART": null,
+        "COLLATION": "A",
+        "INDEX_TYPE": "BTREE",
+        "IS_VISIBLE": "YES",
+        "EXPRESSION": null
+      },
+      {
+        "INDEX_NAME": "uq_bcmd_batch_public",
+        "NON_UNIQUE": 0,
+        "SEQ_IN_INDEX": 1,
+        "COLUMN_NAME": "public_id",
+        "SUB_PART": null,
+        "COLLATION": "A",
+        "INDEX_TYPE": "BTREE",
+        "IS_VISIBLE": "YES",
+        "EXPRESSION": null
+      },
+      {
+        "INDEX_NAME": "uq_bcmd_batch_staff_idem",
+        "NON_UNIQUE": 0,
+        "SEQ_IN_INDEX": 1,
+        "COLUMN_NAME": "created_by_staff_user_id",
+        "SUB_PART": null,
+        "COLLATION": "A",
+        "INDEX_TYPE": "BTREE",
+        "IS_VISIBLE": "YES",
+        "EXPRESSION": null
+      },
+      {
+        "INDEX_NAME": "uq_bcmd_batch_staff_idem",
+        "NON_UNIQUE": 0,
+        "SEQ_IN_INDEX": 2,
+        "COLUMN_NAME": "idempotency_key",
+        "SUB_PART": null,
+        "COLLATION": "A",
+        "INDEX_TYPE": "BTREE",
+        "IS_VISIBLE": "YES",
+        "EXPRESSION": null
+      }
+    ],
+    "fks": [
+      {
+        "CONSTRAINT_NAME": "fk_bcmd_batch_creator",
+        "COLUMN_NAME": "created_by_api_user_id",
+        "ORDINAL_POSITION": 1,
+        "POSITION_IN_UNIQUE_CONSTRAINT": 1,
+        "REFERENCED_TABLE_NAME": "api_users",
+        "REFERENCED_COLUMN_NAME": "id"
+      },
+      {
+        "CONSTRAINT_NAME": "fk_bcmd_batch_staff_creator",
+        "COLUMN_NAME": "created_by_staff_user_id",
+        "ORDINAL_POSITION": 1,
+        "POSITION_IN_UNIQUE_CONSTRAINT": 1,
+        "REFERENCED_TABLE_NAME": "staff_users",
+        "REFERENCED_COLUMN_NAME": "id"
+      }
+    ],
+    "fk_rules": [
+      {
+        "CONSTRAINT_NAME": "fk_bcmd_batch_creator",
+        "UNIQUE_CONSTRAINT_NAME": "PRIMARY",
+        "MATCH_OPTION": "NONE",
+        "UPDATE_RULE": "NO ACTION",
+        "DELETE_RULE": "RESTRICT"
+      },
+      {
+        "CONSTRAINT_NAME": "fk_bcmd_batch_staff_creator",
+        "UNIQUE_CONSTRAINT_NAME": "PRIMARY",
+        "MATCH_OPTION": "NONE",
+        "UPDATE_RULE": "NO ACTION",
+        "DELETE_RULE": "RESTRICT"
+      }
+    ],
+    "checks": [
+      {
+        "CONSTRAINT_NAME": "ck_bcmd_batch_accounting",
+        "CHECK_CLAUSE": "(`candidate_count` = (((`member_count` + `excluded_not_eligible`) + `excluded_no_tuloy_id`) + `excluded_duplicate_episode`))",
+        "ENFORCED": "YES"
+      },
+      {
+        "CONSTRAINT_NAME": "ck_bcmd_batch_category",
+        "CHECK_CLAUSE": "(`category` in (_utf8mb4\\'TK\\',_utf8mb4\\'TA\\',_utf8mb4\\'TT\\'))",
+        "ENFORCED": "YES"
+      },
+      {
+        "CONSTRAINT_NAME": "ck_bcmd_batch_clean",
+        "CHECK_CLAUSE": "((`dqa_outcome` <> _utf8mb4\\'CLEAN\\') or ((`dqa_pass_count` = `member_count`) and (`member_count` > 0)))",
+        "ENFORCED": "YES"
+      },
+      {
+        "CONSTRAINT_NAME": "ck_bcmd_batch_config_hash",
+        "CHECK_CLAUSE": "(`dqa_config_sha256` = sha2(`dqa_config_canonical`,256))",
+        "ENFORCED": "YES"
+      },
+      {
+        "CONSTRAINT_NAME": "ck_bcmd_batch_creator_identity",
+        "CHECK_CLAUSE": "(((`created_by_api_user_id` is not null) + (`created_by_staff_user_id` is not null)) = 1)",
+        "ENFORCED": "YES"
+      },
+      {
+        "CONSTRAINT_NAME": "ck_bcmd_batch_members",
+        "CHECK_CLAUSE": "(((`dqa_pass_count` + `dqa_warn_count`) + `dqa_block_count`) = `member_count`)",
+        "ENFORCED": "YES"
+      },
+      {
+        "CONSTRAINT_NAME": "ck_bcmd_batch_outcome",
+        "CHECK_CLAUSE": "(`dqa_outcome` in (_utf8mb4\\'CLEAN\\',_utf8mb4\\'WARN\\',_utf8mb4\\'BLOCKED\\'))",
+        "ENFORCED": "YES"
+      },
+      {
+        "CONSTRAINT_NAME": "ck_bcmd_batch_outcome_rule",
+        "CHECK_CLAUSE": "(`dqa_outcome` = (case when (`dqa_block_issue_count` > 0) then _utf8mb4\\'BLOCKED\\' when (`dqa_warn_issue_count` > 0) then _utf8mb4\\'WARN\\' else _utf8mb4\\'CLEAN\\' end))",
+        "ENFORCED": "YES"
+      },
+      {
+        "CONSTRAINT_NAME": "ck_bcmd_batch_purge",
+        "CHECK_CLAUSE": "((`status` = _utf8mb4\\'PURGED\\') = (`purged_at` is not null))",
+        "ENFORCED": "YES"
+      },
+      {
+        "CONSTRAINT_NAME": "ck_bcmd_batch_source",
+        "CHECK_CLAUSE": "(`source_agency` in (_utf8mb4\\'CHED\\',_utf8mb4\\'TESDA\\',_utf8mb4\\'MIXED\\'))",
+        "ENFORCED": "YES"
+      },
+      {
+        "CONSTRAINT_NAME": "ck_bcmd_batch_status",
+        "CHECK_CLAUSE": "(`status` in (_utf8mb4\\'DQA_COMPLETED\\',_utf8mb4\\'EXPORTED\\',_utf8mb4\\'PURGED\\'))",
+        "ENFORCED": "YES"
+      }
+    ]
+  },
+  "bcmd_batch_member": {
+    "table": [
+      {
+        "ENGINE": "InnoDB",
+        "TABLE_COLLATION": "utf8mb4_0900_ai_ci"
+      }
+    ],
+    "columns": [
+      {
+        "COLUMN_NAME": "id",
+        "ORDINAL_POSITION": 1,
+        "COLUMN_TYPE": "bigint unsigned",
+        "IS_NULLABLE": "NO",
+        "COLUMN_DEFAULT": null,
+        "EXTRA": "auto_increment",
+        "CHARACTER_SET_NAME": null,
+        "COLLATION_NAME": null,
+        "GENERATION_EXPRESSION": "",
+        "COLUMN_COMMENT": ""
+      },
+      {
+        "COLUMN_NAME": "batch_id",
+        "ORDINAL_POSITION": 2,
+        "COLUMN_TYPE": "bigint unsigned",
+        "IS_NULLABLE": "NO",
+        "COLUMN_DEFAULT": null,
+        "EXTRA": "",
+        "CHARACTER_SET_NAME": null,
+        "COLLATION_NAME": null,
+        "GENERATION_EXPRESSION": "",
+        "COLUMN_COMMENT": ""
+      },
+      {
+        "COLUMN_NAME": "line_no",
+        "ORDINAL_POSITION": 3,
+        "COLUMN_TYPE": "int unsigned",
+        "IS_NULLABLE": "NO",
+        "COLUMN_DEFAULT": null,
+        "EXTRA": "",
+        "CHARACTER_SET_NAME": null,
+        "COLLATION_NAME": null,
+        "GENERATION_EXPRESSION": "",
+        "COLUMN_COMMENT": ""
+      },
+      {
+        "COLUMN_NAME": "tuloy_id",
+        "ORDINAL_POSITION": 4,
+        "COLUMN_TYPE": "varchar(50)",
+        "IS_NULLABLE": "NO",
+        "COLUMN_DEFAULT": null,
+        "EXTRA": "",
+        "CHARACTER_SET_NAME": "utf8mb4",
+        "COLLATION_NAME": "utf8mb4_0900_ai_ci",
+        "GENERATION_EXPRESSION": "",
+        "COLUMN_COMMENT": ""
+      },
+      {
+        "COLUMN_NAME": "academic_year",
+        "ORDINAL_POSITION": 5,
+        "COLUMN_TYPE": "varchar(20)",
+        "IS_NULLABLE": "NO",
+        "COLUMN_DEFAULT": "",
+        "EXTRA": "",
+        "CHARACTER_SET_NAME": "utf8mb4",
+        "COLLATION_NAME": "utf8mb4_0900_ai_ci",
+        "GENERATION_EXPRESSION": "",
+        "COLUMN_COMMENT": ""
+      },
+      {
+        "COLUMN_NAME": "semester",
+        "ORDINAL_POSITION": 6,
+        "COLUMN_TYPE": "int",
+        "IS_NULLABLE": "NO",
+        "COLUMN_DEFAULT": "0",
+        "EXTRA": "",
+        "CHARACTER_SET_NAME": null,
+        "COLLATION_NAME": null,
+        "GENERATION_EXPRESSION": "",
+        "COLUMN_COMMENT": ""
+      },
+      {
+        "COLUMN_NAME": "source_record_id",
+        "ORDINAL_POSITION": 7,
+        "COLUMN_TYPE": "int unsigned",
+        "IS_NULLABLE": "NO",
+        "COLUMN_DEFAULT": null,
+        "EXTRA": "",
+        "CHARACTER_SET_NAME": null,
+        "COLLATION_NAME": null,
+        "GENERATION_EXPRESSION": "",
+        "COLUMN_COMMENT": ""
+      },
+      {
+        "COLUMN_NAME": "entitlement_hash",
+        "ORDINAL_POSITION": 8,
+        "COLUMN_TYPE": "char(64)",
+        "IS_NULLABLE": "NO",
+        "COLUMN_DEFAULT": null,
+        "EXTRA": "",
+        "CHARACTER_SET_NAME": "ascii",
+        "COLLATION_NAME": "ascii_bin",
+        "GENERATION_EXPRESSION": "",
+        "COLUMN_COMMENT": ""
+      },
+      {
+        "COLUMN_NAME": "dqa_status",
+        "ORDINAL_POSITION": 9,
+        "COLUMN_TYPE": "varchar(5)",
+        "IS_NULLABLE": "NO",
+        "COLUMN_DEFAULT": null,
+        "EXTRA": "",
+        "CHARACTER_SET_NAME": "utf8mb4",
+        "COLLATION_NAME": "utf8mb4_0900_ai_ci",
+        "GENERATION_EXPRESSION": "",
+        "COLUMN_COMMENT": ""
+      },
+      {
+        "COLUMN_NAME": "region_name",
+        "ORDINAL_POSITION": 10,
+        "COLUMN_TYPE": "varchar(150)",
+        "IS_NULLABLE": "YES",
+        "COLUMN_DEFAULT": null,
+        "EXTRA": "",
+        "CHARACTER_SET_NAME": "utf8mb4",
+        "COLLATION_NAME": "utf8mb4_0900_ai_ci",
+        "GENERATION_EXPRESSION": "",
+        "COLUMN_COMMENT": ""
+      },
+      {
+        "COLUMN_NAME": "region_psgc",
+        "ORDINAL_POSITION": 11,
+        "COLUMN_TYPE": "varchar(12)",
+        "IS_NULLABLE": "YES",
+        "COLUMN_DEFAULT": null,
+        "EXTRA": "",
+        "CHARACTER_SET_NAME": "utf8mb4",
+        "COLLATION_NAME": "utf8mb4_0900_ai_ci",
+        "GENERATION_EXPRESSION": "",
+        "COLUMN_COMMENT": ""
+      },
+      {
+        "COLUMN_NAME": "province_name",
+        "ORDINAL_POSITION": 12,
+        "COLUMN_TYPE": "varchar(150)",
+        "IS_NULLABLE": "YES",
+        "COLUMN_DEFAULT": null,
+        "EXTRA": "",
+        "CHARACTER_SET_NAME": "utf8mb4",
+        "COLLATION_NAME": "utf8mb4_0900_ai_ci",
+        "GENERATION_EXPRESSION": "",
+        "COLUMN_COMMENT": ""
+      },
+      {
+        "COLUMN_NAME": "province_psgc",
+        "ORDINAL_POSITION": 13,
+        "COLUMN_TYPE": "varchar(12)",
+        "IS_NULLABLE": "YES",
+        "COLUMN_DEFAULT": null,
+        "EXTRA": "",
+        "CHARACTER_SET_NAME": "utf8mb4",
+        "COLLATION_NAME": "utf8mb4_0900_ai_ci",
+        "GENERATION_EXPRESSION": "",
+        "COLUMN_COMMENT": ""
+      },
+      {
+        "COLUMN_NAME": "municipality_name",
+        "ORDINAL_POSITION": 14,
+        "COLUMN_TYPE": "varchar(150)",
+        "IS_NULLABLE": "YES",
+        "COLUMN_DEFAULT": null,
+        "EXTRA": "",
+        "CHARACTER_SET_NAME": "utf8mb4",
+        "COLLATION_NAME": "utf8mb4_0900_ai_ci",
+        "GENERATION_EXPRESSION": "",
+        "COLUMN_COMMENT": ""
+      },
+      {
+        "COLUMN_NAME": "municipality_psgc",
+        "ORDINAL_POSITION": 15,
+        "COLUMN_TYPE": "varchar(12)",
+        "IS_NULLABLE": "YES",
+        "COLUMN_DEFAULT": null,
+        "EXTRA": "",
+        "CHARACTER_SET_NAME": "utf8mb4",
+        "COLLATION_NAME": "utf8mb4_0900_ai_ci",
+        "GENERATION_EXPRESSION": "",
+        "COLUMN_COMMENT": ""
+      },
+      {
+        "COLUMN_NAME": "barangay_name",
+        "ORDINAL_POSITION": 16,
+        "COLUMN_TYPE": "varchar(150)",
+        "IS_NULLABLE": "YES",
+        "COLUMN_DEFAULT": null,
+        "EXTRA": "",
+        "CHARACTER_SET_NAME": "utf8mb4",
+        "COLLATION_NAME": "utf8mb4_0900_ai_ci",
+        "GENERATION_EXPRESSION": "",
+        "COLUMN_COMMENT": ""
+      },
+      {
+        "COLUMN_NAME": "barangay_psgc",
+        "ORDINAL_POSITION": 17,
+        "COLUMN_TYPE": "varchar(12)",
+        "IS_NULLABLE": "YES",
+        "COLUMN_DEFAULT": null,
+        "EXTRA": "",
+        "CHARACTER_SET_NAME": "utf8mb4",
+        "COLLATION_NAME": "utf8mb4_0900_ai_ci",
+        "GENERATION_EXPRESSION": "",
+        "COLUMN_COMMENT": ""
+      },
+      {
+        "COLUMN_NAME": "hhid",
+        "ORDINAL_POSITION": 18,
+        "COLUMN_TYPE": "varchar(32)",
+        "IS_NULLABLE": "YES",
+        "COLUMN_DEFAULT": null,
+        "EXTRA": "",
+        "CHARACTER_SET_NAME": "utf8mb4",
+        "COLLATION_NAME": "utf8mb4_0900_ai_ci",
+        "GENERATION_EXPRESSION": "",
+        "COLUMN_COMMENT": ""
+      },
+      {
+        "COLUMN_NAME": "family_id",
+        "ORDINAL_POSITION": 19,
+        "COLUMN_TYPE": "varchar(32)",
+        "IS_NULLABLE": "YES",
+        "COLUMN_DEFAULT": null,
+        "EXTRA": "",
+        "CHARACTER_SET_NAME": "utf8mb4",
+        "COLLATION_NAME": "utf8mb4_0900_ai_ci",
+        "GENERATION_EXPRESSION": "",
+        "COLUMN_COMMENT": ""
+      },
+      {
+        "COLUMN_NAME": "member_ref",
+        "ORDINAL_POSITION": 20,
+        "COLUMN_TYPE": "varchar(32)",
+        "IS_NULLABLE": "YES",
+        "COLUMN_DEFAULT": null,
+        "EXTRA": "",
+        "CHARACTER_SET_NAME": "utf8mb4",
+        "COLLATION_NAME": "utf8mb4_0900_ai_ci",
+        "GENERATION_EXPRESSION": "",
+        "COLUMN_COMMENT": ""
+      },
+      {
+        "COLUMN_NAME": "last_name",
+        "ORDINAL_POSITION": 21,
+        "COLUMN_TYPE": "varchar(100)",
+        "IS_NULLABLE": "YES",
+        "COLUMN_DEFAULT": null,
+        "EXTRA": "",
+        "CHARACTER_SET_NAME": "utf8mb4",
+        "COLLATION_NAME": "utf8mb4_0900_ai_ci",
+        "GENERATION_EXPRESSION": "",
+        "COLUMN_COMMENT": ""
+      },
+      {
+        "COLUMN_NAME": "first_name",
+        "ORDINAL_POSITION": 22,
+        "COLUMN_TYPE": "varchar(100)",
+        "IS_NULLABLE": "YES",
+        "COLUMN_DEFAULT": null,
+        "EXTRA": "",
+        "CHARACTER_SET_NAME": "utf8mb4",
+        "COLLATION_NAME": "utf8mb4_0900_ai_ci",
+        "GENERATION_EXPRESSION": "",
+        "COLUMN_COMMENT": ""
+      },
+      {
+        "COLUMN_NAME": "middle_name",
+        "ORDINAL_POSITION": 23,
+        "COLUMN_TYPE": "varchar(100)",
+        "IS_NULLABLE": "YES",
+        "COLUMN_DEFAULT": null,
+        "EXTRA": "",
+        "CHARACTER_SET_NAME": "utf8mb4",
+        "COLLATION_NAME": "utf8mb4_0900_ai_ci",
+        "GENERATION_EXPRESSION": "",
+        "COLUMN_COMMENT": ""
+      },
+      {
+        "COLUMN_NAME": "ext_name",
+        "ORDINAL_POSITION": 24,
+        "COLUMN_TYPE": "varchar(20)",
+        "IS_NULLABLE": "YES",
+        "COLUMN_DEFAULT": null,
+        "EXTRA": "",
+        "CHARACTER_SET_NAME": "utf8mb4",
+        "COLLATION_NAME": "utf8mb4_0900_ai_ci",
+        "GENERATION_EXPRESSION": "",
+        "COLUMN_COMMENT": ""
+      },
+      {
+        "COLUMN_NAME": "sex",
+        "ORDINAL_POSITION": 25,
+        "COLUMN_TYPE": "varchar(6)",
+        "IS_NULLABLE": "YES",
+        "COLUMN_DEFAULT": null,
+        "EXTRA": "",
+        "CHARACTER_SET_NAME": "utf8mb4",
+        "COLLATION_NAME": "utf8mb4_0900_ai_ci",
+        "GENERATION_EXPRESSION": "",
+        "COLUMN_COMMENT": ""
+      },
+      {
+        "COLUMN_NAME": "ip_indicator",
+        "ORDINAL_POSITION": 26,
+        "COLUMN_TYPE": "varchar(3)",
+        "IS_NULLABLE": "YES",
+        "COLUMN_DEFAULT": null,
+        "EXTRA": "",
+        "CHARACTER_SET_NAME": "utf8mb4",
+        "COLLATION_NAME": "utf8mb4_0900_ai_ci",
+        "GENERATION_EXPRESSION": "",
+        "COLUMN_COMMENT": ""
+      },
+      {
+        "COLUMN_NAME": "date_of_birth_raw",
+        "ORDINAL_POSITION": 27,
+        "COLUMN_TYPE": "varchar(32)",
+        "IS_NULLABLE": "YES",
+        "COLUMN_DEFAULT": null,
+        "EXTRA": "",
+        "CHARACTER_SET_NAME": "utf8mb4",
+        "COLLATION_NAME": "utf8mb4_0900_ai_ci",
+        "GENERATION_EXPRESSION": "",
+        "COLUMN_COMMENT": ""
+      },
+      {
+        "COLUMN_NAME": "source_agency",
+        "ORDINAL_POSITION": 28,
+        "COLUMN_TYPE": "varchar(5)",
+        "IS_NULLABLE": "NO",
+        "COLUMN_DEFAULT": "CHED",
+        "EXTRA": "",
+        "CHARACTER_SET_NAME": "utf8mb4",
+        "COLLATION_NAME": "utf8mb4_0900_ai_ci",
+        "GENERATION_EXPRESSION": "",
+        "COLUMN_COMMENT": ""
+      },
+      {
+        "COLUMN_NAME": "course_type",
+        "ORDINAL_POSITION": 29,
+        "COLUMN_TYPE": "varchar(16)",
+        "IS_NULLABLE": "NO",
+        "COLUMN_DEFAULT": "degree",
+        "EXTRA": "",
+        "CHARACTER_SET_NAME": "utf8mb4",
+        "COLLATION_NAME": "utf8mb4_0900_ai_ci",
+        "GENERATION_EXPRESSION": "",
+        "COLUMN_COMMENT": ""
+      }
+    ],
+    "indexes": [
+      {
+        "INDEX_NAME": "ix_bcmd_member_claim",
+        "NON_UNIQUE": 1,
+        "SEQ_IN_INDEX": 1,
+        "COLUMN_NAME": "member_ref",
+        "SUB_PART": null,
+        "COLLATION": "A",
+        "INDEX_TYPE": "BTREE",
+        "IS_VISIBLE": "YES",
+        "EXPRESSION": null
+      },
+      {
+        "INDEX_NAME": "ix_bcmd_member_claim",
+        "NON_UNIQUE": 1,
+        "SEQ_IN_INDEX": 2,
+        "COLUMN_NAME": "academic_year",
+        "SUB_PART": null,
+        "COLLATION": "A",
+        "INDEX_TYPE": "BTREE",
+        "IS_VISIBLE": "YES",
+        "EXPRESSION": null
+      },
+      {
+        "INDEX_NAME": "ix_bcmd_member_claim",
+        "NON_UNIQUE": 1,
+        "SEQ_IN_INDEX": 3,
+        "COLUMN_NAME": "semester",
+        "SUB_PART": null,
+        "COLLATION": "A",
+        "INDEX_TYPE": "BTREE",
+        "IS_VISIBLE": "YES",
+        "EXPRESSION": null
+      },
+      {
+        "INDEX_NAME": "ix_bcmd_member_dqa",
+        "NON_UNIQUE": 1,
+        "SEQ_IN_INDEX": 1,
+        "COLUMN_NAME": "batch_id",
+        "SUB_PART": null,
+        "COLLATION": "A",
+        "INDEX_TYPE": "BTREE",
+        "IS_VISIBLE": "YES",
+        "EXPRESSION": null
+      },
+      {
+        "INDEX_NAME": "ix_bcmd_member_dqa",
+        "NON_UNIQUE": 1,
+        "SEQ_IN_INDEX": 2,
+        "COLUMN_NAME": "dqa_status",
+        "SUB_PART": null,
+        "COLLATION": "A",
+        "INDEX_TYPE": "BTREE",
+        "IS_VISIBLE": "YES",
+        "EXPRESSION": null
+      },
+      {
+        "INDEX_NAME": "ix_bcmd_member_dqa",
+        "NON_UNIQUE": 1,
+        "SEQ_IN_INDEX": 3,
+        "COLUMN_NAME": "line_no",
+        "SUB_PART": null,
+        "COLLATION": "A",
+        "INDEX_TYPE": "BTREE",
+        "IS_VISIBLE": "YES",
+        "EXPRESSION": null
+      },
+      {
+        "INDEX_NAME": "PRIMARY",
+        "NON_UNIQUE": 0,
+        "SEQ_IN_INDEX": 1,
+        "COLUMN_NAME": "id",
+        "SUB_PART": null,
+        "COLLATION": "A",
+        "INDEX_TYPE": "BTREE",
+        "IS_VISIBLE": "YES",
+        "EXPRESSION": null
+      },
+      {
+        "INDEX_NAME": "uq_bcmd_member_batch_id",
+        "NON_UNIQUE": 0,
+        "SEQ_IN_INDEX": 1,
+        "COLUMN_NAME": "batch_id",
+        "SUB_PART": null,
+        "COLLATION": "A",
+        "INDEX_TYPE": "BTREE",
+        "IS_VISIBLE": "YES",
+        "EXPRESSION": null
+      },
+      {
+        "INDEX_NAME": "uq_bcmd_member_batch_id",
+        "NON_UNIQUE": 0,
+        "SEQ_IN_INDEX": 2,
+        "COLUMN_NAME": "id",
+        "SUB_PART": null,
+        "COLLATION": "A",
+        "INDEX_TYPE": "BTREE",
+        "IS_VISIBLE": "YES",
+        "EXPRESSION": null
+      },
+      {
+        "INDEX_NAME": "uq_bcmd_member_entitlement",
+        "NON_UNIQUE": 0,
+        "SEQ_IN_INDEX": 1,
+        "COLUMN_NAME": "batch_id",
+        "SUB_PART": null,
+        "COLLATION": "A",
+        "INDEX_TYPE": "BTREE",
+        "IS_VISIBLE": "YES",
+        "EXPRESSION": null
+      },
+      {
+        "INDEX_NAME": "uq_bcmd_member_entitlement",
+        "NON_UNIQUE": 0,
+        "SEQ_IN_INDEX": 2,
+        "COLUMN_NAME": "entitlement_hash",
+        "SUB_PART": null,
+        "COLLATION": "A",
+        "INDEX_TYPE": "BTREE",
+        "IS_VISIBLE": "YES",
+        "EXPRESSION": null
+      },
+      {
+        "INDEX_NAME": "uq_bcmd_member_line",
+        "NON_UNIQUE": 0,
+        "SEQ_IN_INDEX": 1,
+        "COLUMN_NAME": "batch_id",
+        "SUB_PART": null,
+        "COLLATION": "A",
+        "INDEX_TYPE": "BTREE",
+        "IS_VISIBLE": "YES",
+        "EXPRESSION": null
+      },
+      {
+        "INDEX_NAME": "uq_bcmd_member_line",
+        "NON_UNIQUE": 0,
+        "SEQ_IN_INDEX": 2,
+        "COLUMN_NAME": "line_no",
+        "SUB_PART": null,
+        "COLLATION": "A",
+        "INDEX_TYPE": "BTREE",
+        "IS_VISIBLE": "YES",
+        "EXPRESSION": null
+      },
+      {
+        "INDEX_NAME": "uq_bcmd_member_source",
+        "NON_UNIQUE": 0,
+        "SEQ_IN_INDEX": 1,
+        "COLUMN_NAME": "batch_id",
+        "SUB_PART": null,
+        "COLLATION": "A",
+        "INDEX_TYPE": "BTREE",
+        "IS_VISIBLE": "YES",
+        "EXPRESSION": null
+      },
+      {
+        "INDEX_NAME": "uq_bcmd_member_source",
+        "NON_UNIQUE": 0,
+        "SEQ_IN_INDEX": 2,
+        "COLUMN_NAME": "source_agency",
+        "SUB_PART": null,
+        "COLLATION": "A",
+        "INDEX_TYPE": "BTREE",
+        "IS_VISIBLE": "YES",
+        "EXPRESSION": null
+      },
+      {
+        "INDEX_NAME": "uq_bcmd_member_source",
+        "NON_UNIQUE": 0,
+        "SEQ_IN_INDEX": 3,
+        "COLUMN_NAME": "course_type",
+        "SUB_PART": null,
+        "COLLATION": "A",
+        "INDEX_TYPE": "BTREE",
+        "IS_VISIBLE": "YES",
+        "EXPRESSION": null
+      },
+      {
+        "INDEX_NAME": "uq_bcmd_member_source",
+        "NON_UNIQUE": 0,
+        "SEQ_IN_INDEX": 4,
+        "COLUMN_NAME": "source_record_id",
+        "SUB_PART": null,
+        "COLLATION": "A",
+        "INDEX_TYPE": "BTREE",
+        "IS_VISIBLE": "YES",
+        "EXPRESSION": null
+      }
+    ],
+    "fks": [
+      {
+        "CONSTRAINT_NAME": "fk_bcmd_member_batch",
+        "COLUMN_NAME": "batch_id",
+        "ORDINAL_POSITION": 1,
+        "POSITION_IN_UNIQUE_CONSTRAINT": 1,
+        "REFERENCED_TABLE_NAME": "bcmd_batch",
+        "REFERENCED_COLUMN_NAME": "id"
+      }
+    ],
+    "fk_rules": [
+      {
+        "CONSTRAINT_NAME": "fk_bcmd_member_batch",
+        "UNIQUE_CONSTRAINT_NAME": "PRIMARY",
+        "MATCH_OPTION": "NONE",
+        "UPDATE_RULE": "NO ACTION",
+        "DELETE_RULE": "RESTRICT"
+      }
+    ],
+    "checks": [
+      {
+        "CONSTRAINT_NAME": "ck_bcmd_member_dqa",
+        "CHECK_CLAUSE": "(`dqa_status` in (_utf8mb4\\'PASS\\',_utf8mb4\\'WARN\\',_utf8mb4\\'BLOCK\\'))",
+        "ENFORCED": "YES"
+      },
+      {
+        "CONSTRAINT_NAME": "ck_bcmd_member_source",
+        "CHECK_CLAUSE": "(((`source_agency` = _utf8mb4\\'CHED\\') and (`course_type` = _utf8mb4\\'degree\\')) or ((`source_agency` = _utf8mb4\\'TESDA\\') and (`course_type` = _utf8mb4\\'diploma\\')))",
+        "ENFORCED": "YES"
+      }
+    ]
+  },
+  "bcmd_dqa_issue": {
+    "table": [
+      {
+        "ENGINE": "InnoDB",
+        "TABLE_COLLATION": "utf8mb4_0900_ai_ci"
+      }
+    ],
+    "columns": [
+      {
+        "COLUMN_NAME": "id",
+        "ORDINAL_POSITION": 1,
+        "COLUMN_TYPE": "bigint unsigned",
+        "IS_NULLABLE": "NO",
+        "COLUMN_DEFAULT": null,
+        "EXTRA": "auto_increment",
+        "CHARACTER_SET_NAME": null,
+        "COLLATION_NAME": null,
+        "GENERATION_EXPRESSION": "",
+        "COLUMN_COMMENT": ""
+      },
+      {
+        "COLUMN_NAME": "batch_id",
+        "ORDINAL_POSITION": 2,
+        "COLUMN_TYPE": "bigint unsigned",
+        "IS_NULLABLE": "NO",
+        "COLUMN_DEFAULT": null,
+        "EXTRA": "",
+        "CHARACTER_SET_NAME": null,
+        "COLLATION_NAME": null,
+        "GENERATION_EXPRESSION": "",
+        "COLUMN_COMMENT": ""
+      },
+      {
+        "COLUMN_NAME": "member_id",
+        "ORDINAL_POSITION": 3,
+        "COLUMN_TYPE": "bigint unsigned",
+        "IS_NULLABLE": "YES",
+        "COLUMN_DEFAULT": null,
+        "EXTRA": "",
+        "CHARACTER_SET_NAME": null,
+        "COLLATION_NAME": null,
+        "GENERATION_EXPRESSION": "",
+        "COLUMN_COMMENT": ""
+      },
+      {
+        "COLUMN_NAME": "member_key",
+        "ORDINAL_POSITION": 4,
+        "COLUMN_TYPE": "bigint unsigned",
+        "IS_NULLABLE": "NO",
+        "COLUMN_DEFAULT": null,
+        "EXTRA": "STORED GENERATED",
+        "CHARACTER_SET_NAME": null,
+        "COLLATION_NAME": null,
+        "GENERATION_EXPRESSION": "ifnull(`member_id`,0)",
+        "COLUMN_COMMENT": ""
+      },
+      {
+        "COLUMN_NAME": "rule_code",
+        "ORDINAL_POSITION": 5,
+        "COLUMN_TYPE": "varchar(40)",
+        "IS_NULLABLE": "NO",
+        "COLUMN_DEFAULT": null,
+        "EXTRA": "",
+        "CHARACTER_SET_NAME": "ascii",
+        "COLLATION_NAME": "ascii_bin",
+        "GENERATION_EXPRESSION": "",
+        "COLUMN_COMMENT": ""
+      },
+      {
+        "COLUMN_NAME": "field_no",
+        "ORDINAL_POSITION": 6,
+        "COLUMN_TYPE": "tinyint unsigned",
+        "IS_NULLABLE": "NO",
+        "COLUMN_DEFAULT": "0",
+        "EXTRA": "",
+        "CHARACTER_SET_NAME": null,
+        "COLLATION_NAME": null,
+        "GENERATION_EXPRESSION": "",
+        "COLUMN_COMMENT": ""
+      },
+      {
+        "COLUMN_NAME": "severity",
+        "ORDINAL_POSITION": 7,
+        "COLUMN_TYPE": "varchar(5)",
+        "IS_NULLABLE": "NO",
+        "COLUMN_DEFAULT": null,
+        "EXTRA": "",
+        "CHARACTER_SET_NAME": "utf8mb4",
+        "COLLATION_NAME": "utf8mb4_0900_ai_ci",
+        "GENERATION_EXPRESSION": "",
+        "COLUMN_COMMENT": ""
+      }
+    ],
+    "indexes": [
+      {
+        "INDEX_NAME": "fk_bcmd_issue_member",
+        "NON_UNIQUE": 1,
+        "SEQ_IN_INDEX": 1,
+        "COLUMN_NAME": "batch_id",
+        "SUB_PART": null,
+        "COLLATION": "A",
+        "INDEX_TYPE": "BTREE",
+        "IS_VISIBLE": "YES",
+        "EXPRESSION": null
+      },
+      {
+        "INDEX_NAME": "fk_bcmd_issue_member",
+        "NON_UNIQUE": 1,
+        "SEQ_IN_INDEX": 2,
+        "COLUMN_NAME": "member_id",
+        "SUB_PART": null,
+        "COLLATION": "A",
+        "INDEX_TYPE": "BTREE",
+        "IS_VISIBLE": "YES",
+        "EXPRESSION": null
+      },
+      {
+        "INDEX_NAME": "ix_bcmd_issue_rule",
+        "NON_UNIQUE": 1,
+        "SEQ_IN_INDEX": 1,
+        "COLUMN_NAME": "batch_id",
+        "SUB_PART": null,
+        "COLLATION": "A",
+        "INDEX_TYPE": "BTREE",
+        "IS_VISIBLE": "YES",
+        "EXPRESSION": null
+      },
+      {
+        "INDEX_NAME": "ix_bcmd_issue_rule",
+        "NON_UNIQUE": 1,
+        "SEQ_IN_INDEX": 2,
+        "COLUMN_NAME": "rule_code",
+        "SUB_PART": null,
+        "COLLATION": "A",
+        "INDEX_TYPE": "BTREE",
+        "IS_VISIBLE": "YES",
+        "EXPRESSION": null
+      },
+      {
+        "INDEX_NAME": "PRIMARY",
+        "NON_UNIQUE": 0,
+        "SEQ_IN_INDEX": 1,
+        "COLUMN_NAME": "id",
+        "SUB_PART": null,
+        "COLLATION": "A",
+        "INDEX_TYPE": "BTREE",
+        "IS_VISIBLE": "YES",
+        "EXPRESSION": null
+      },
+      {
+        "INDEX_NAME": "uq_bcmd_issue",
+        "NON_UNIQUE": 0,
+        "SEQ_IN_INDEX": 1,
+        "COLUMN_NAME": "batch_id",
+        "SUB_PART": null,
+        "COLLATION": "A",
+        "INDEX_TYPE": "BTREE",
+        "IS_VISIBLE": "YES",
+        "EXPRESSION": null
+      },
+      {
+        "INDEX_NAME": "uq_bcmd_issue",
+        "NON_UNIQUE": 0,
+        "SEQ_IN_INDEX": 2,
+        "COLUMN_NAME": "member_key",
+        "SUB_PART": null,
+        "COLLATION": "A",
+        "INDEX_TYPE": "BTREE",
+        "IS_VISIBLE": "YES",
+        "EXPRESSION": null
+      },
+      {
+        "INDEX_NAME": "uq_bcmd_issue",
+        "NON_UNIQUE": 0,
+        "SEQ_IN_INDEX": 3,
+        "COLUMN_NAME": "field_no",
+        "SUB_PART": null,
+        "COLLATION": "A",
+        "INDEX_TYPE": "BTREE",
+        "IS_VISIBLE": "YES",
+        "EXPRESSION": null
+      },
+      {
+        "INDEX_NAME": "uq_bcmd_issue",
+        "NON_UNIQUE": 0,
+        "SEQ_IN_INDEX": 4,
+        "COLUMN_NAME": "rule_code",
+        "SUB_PART": null,
+        "COLLATION": "A",
+        "INDEX_TYPE": "BTREE",
+        "IS_VISIBLE": "YES",
+        "EXPRESSION": null
+      }
+    ],
+    "fks": [
+      {
+        "CONSTRAINT_NAME": "fk_bcmd_issue_batch",
+        "COLUMN_NAME": "batch_id",
+        "ORDINAL_POSITION": 1,
+        "POSITION_IN_UNIQUE_CONSTRAINT": 1,
+        "REFERENCED_TABLE_NAME": "bcmd_batch",
+        "REFERENCED_COLUMN_NAME": "id"
+      },
+      {
+        "CONSTRAINT_NAME": "fk_bcmd_issue_member",
+        "COLUMN_NAME": "batch_id",
+        "ORDINAL_POSITION": 1,
+        "POSITION_IN_UNIQUE_CONSTRAINT": 1,
+        "REFERENCED_TABLE_NAME": "bcmd_batch_member",
+        "REFERENCED_COLUMN_NAME": "batch_id"
+      },
+      {
+        "CONSTRAINT_NAME": "fk_bcmd_issue_member",
+        "COLUMN_NAME": "member_id",
+        "ORDINAL_POSITION": 2,
+        "POSITION_IN_UNIQUE_CONSTRAINT": 2,
+        "REFERENCED_TABLE_NAME": "bcmd_batch_member",
+        "REFERENCED_COLUMN_NAME": "id"
+      }
+    ],
+    "fk_rules": [
+      {
+        "CONSTRAINT_NAME": "fk_bcmd_issue_batch",
+        "UNIQUE_CONSTRAINT_NAME": "PRIMARY",
+        "MATCH_OPTION": "NONE",
+        "UPDATE_RULE": "NO ACTION",
+        "DELETE_RULE": "RESTRICT"
+      },
+      {
+        "CONSTRAINT_NAME": "fk_bcmd_issue_member",
+        "UNIQUE_CONSTRAINT_NAME": "uq_bcmd_member_batch_id",
+        "MATCH_OPTION": "NONE",
+        "UPDATE_RULE": "NO ACTION",
+        "DELETE_RULE": "RESTRICT"
+      }
+    ],
+    "checks": [
+      {
+        "CONSTRAINT_NAME": "ck_bcmd_issue_sev",
+        "CHECK_CLAUSE": "(`severity` in (_utf8mb4\\'WARN\\',_utf8mb4\\'BLOCK\\'))",
+        "ENFORCED": "YES"
+      }
+    ]
+  },
+  "bcmd_batch_export": {
+    "table": [
+      {
+        "ENGINE": "InnoDB",
+        "TABLE_COLLATION": "utf8mb4_0900_ai_ci"
+      }
+    ],
+    "columns": [
+      {
+        "COLUMN_NAME": "id",
+        "ORDINAL_POSITION": 1,
+        "COLUMN_TYPE": "bigint unsigned",
+        "IS_NULLABLE": "NO",
+        "COLUMN_DEFAULT": null,
+        "EXTRA": "auto_increment",
+        "CHARACTER_SET_NAME": null,
+        "COLLATION_NAME": null,
+        "GENERATION_EXPRESSION": "",
+        "COLUMN_COMMENT": ""
+      },
+      {
+        "COLUMN_NAME": "batch_id",
+        "ORDINAL_POSITION": 2,
+        "COLUMN_TYPE": "bigint unsigned",
+        "IS_NULLABLE": "NO",
+        "COLUMN_DEFAULT": null,
+        "EXTRA": "",
+        "CHARACTER_SET_NAME": null,
+        "COLLATION_NAME": null,
+        "GENERATION_EXPRESSION": "",
+        "COLUMN_COMMENT": ""
+      },
+      {
+        "COLUMN_NAME": "dqa_run_id",
+        "ORDINAL_POSITION": 3,
+        "COLUMN_TYPE": "bigint unsigned",
+        "IS_NULLABLE": "YES",
+        "COLUMN_DEFAULT": null,
+        "EXTRA": "",
+        "CHARACTER_SET_NAME": null,
+        "COLLATION_NAME": null,
+        "GENERATION_EXPRESSION": "",
+        "COLUMN_COMMENT": ""
+      },
+      {
+        "COLUMN_NAME": "export_no",
+        "ORDINAL_POSITION": 4,
+        "COLUMN_TYPE": "int unsigned",
+        "IS_NULLABLE": "NO",
+        "COLUMN_DEFAULT": null,
+        "EXTRA": "",
+        "CHARACTER_SET_NAME": null,
+        "COLLATION_NAME": null,
+        "GENERATION_EXPRESSION": "",
+        "COLUMN_COMMENT": ""
+      },
+      {
+        "COLUMN_NAME": "file_type",
+        "ORDINAL_POSITION": 5,
+        "COLUMN_TYPE": "varchar(8)",
+        "IS_NULLABLE": "NO",
+        "COLUMN_DEFAULT": "DETAIL",
+        "EXTRA": "",
+        "CHARACTER_SET_NAME": "utf8mb4",
+        "COLLATION_NAME": "utf8mb4_0900_ai_ci",
+        "GENERATION_EXPRESSION": "",
+        "COLUMN_COMMENT": ""
+      },
+      {
+        "COLUMN_NAME": "status",
+        "ORDINAL_POSITION": 6,
+        "COLUMN_TYPE": "varchar(9)",
+        "IS_NULLABLE": "NO",
+        "COLUMN_DEFAULT": null,
+        "EXTRA": "",
+        "CHARACTER_SET_NAME": "utf8mb4",
+        "COLLATION_NAME": "utf8mb4_0900_ai_ci",
+        "GENERATION_EXPRESSION": "",
+        "COLUMN_COMMENT": ""
+      },
+      {
+        "COLUMN_NAME": "generator_version",
+        "ORDINAL_POSITION": 7,
+        "COLUMN_TYPE": "varchar(24)",
+        "IS_NULLABLE": "NO",
+        "COLUMN_DEFAULT": null,
+        "EXTRA": "",
+        "CHARACTER_SET_NAME": "utf8mb4",
+        "COLLATION_NAME": "utf8mb4_0900_ai_ci",
+        "GENERATION_EXPRESSION": "",
+        "COLUMN_COMMENT": ""
+      },
+      {
+        "COLUMN_NAME": "serialization_version",
+        "ORDINAL_POSITION": 8,
+        "COLUMN_TYPE": "varchar(24)",
+        "IS_NULLABLE": "NO",
+        "COLUMN_DEFAULT": null,
+        "EXTRA": "",
+        "CHARACTER_SET_NAME": "utf8mb4",
+        "COLLATION_NAME": "utf8mb4_0900_ai_ci",
+        "GENERATION_EXPRESSION": "",
+        "COLUMN_COMMENT": ""
+      },
+      {
+        "COLUMN_NAME": "header_set_sha256",
+        "ORDINAL_POSITION": 9,
+        "COLUMN_TYPE": "char(64)",
+        "IS_NULLABLE": "NO",
+        "COLUMN_DEFAULT": null,
+        "EXTRA": "",
+        "CHARACTER_SET_NAME": "ascii",
+        "COLLATION_NAME": "ascii_bin",
+        "GENERATION_EXPRESSION": "",
+        "COLUMN_COMMENT": ""
+      },
+      {
+        "COLUMN_NAME": "sha256",
+        "ORDINAL_POSITION": 10,
+        "COLUMN_TYPE": "char(64)",
+        "IS_NULLABLE": "YES",
+        "COLUMN_DEFAULT": null,
+        "EXTRA": "",
+        "CHARACTER_SET_NAME": "ascii",
+        "COLLATION_NAME": "ascii_bin",
+        "GENERATION_EXPRESSION": "",
+        "COLUMN_COMMENT": ""
+      },
+      {
+        "COLUMN_NAME": "byte_count",
+        "ORDINAL_POSITION": 11,
+        "COLUMN_TYPE": "bigint unsigned",
+        "IS_NULLABLE": "YES",
+        "COLUMN_DEFAULT": null,
+        "EXTRA": "",
+        "CHARACTER_SET_NAME": null,
+        "COLLATION_NAME": null,
+        "GENERATION_EXPRESSION": "",
+        "COLUMN_COMMENT": ""
+      },
+      {
+        "COLUMN_NAME": "row_count",
+        "ORDINAL_POSITION": 12,
+        "COLUMN_TYPE": "int unsigned",
+        "IS_NULLABLE": "YES",
+        "COLUMN_DEFAULT": null,
+        "EXTRA": "",
+        "CHARACTER_SET_NAME": null,
+        "COLLATION_NAME": null,
+        "GENERATION_EXPRESSION": "",
+        "COLUMN_COMMENT": ""
+      },
+      {
+        "COLUMN_NAME": "idempotency_key",
+        "ORDINAL_POSITION": 13,
+        "COLUMN_TYPE": "char(36)",
+        "IS_NULLABLE": "NO",
+        "COLUMN_DEFAULT": null,
+        "EXTRA": "",
+        "CHARACTER_SET_NAME": "ascii",
+        "COLLATION_NAME": "ascii_bin",
+        "GENERATION_EXPRESSION": "",
+        "COLUMN_COMMENT": ""
+      },
+      {
+        "COLUMN_NAME": "request_hash",
+        "ORDINAL_POSITION": 14,
+        "COLUMN_TYPE": "char(64)",
+        "IS_NULLABLE": "NO",
+        "COLUMN_DEFAULT": null,
+        "EXTRA": "",
+        "CHARACTER_SET_NAME": "ascii",
+        "COLLATION_NAME": "ascii_bin",
+        "GENERATION_EXPRESSION": "",
+        "COLUMN_COMMENT": ""
+      },
+      {
+        "COLUMN_NAME": "created_by_api_user_id",
+        "ORDINAL_POSITION": 15,
+        "COLUMN_TYPE": "int",
+        "IS_NULLABLE": "YES",
+        "COLUMN_DEFAULT": null,
+        "EXTRA": "",
+        "CHARACTER_SET_NAME": null,
+        "COLLATION_NAME": null,
+        "GENERATION_EXPRESSION": "",
+        "COLUMN_COMMENT": ""
+      },
+      {
+        "COLUMN_NAME": "created_by_staff_user_id",
+        "ORDINAL_POSITION": 16,
+        "COLUMN_TYPE": "bigint unsigned",
+        "IS_NULLABLE": "YES",
+        "COLUMN_DEFAULT": null,
+        "EXTRA": "",
+        "CHARACTER_SET_NAME": null,
+        "COLLATION_NAME": null,
+        "GENERATION_EXPRESSION": "",
+        "COLUMN_COMMENT": ""
+      },
+      {
+        "COLUMN_NAME": "created_by_agency",
+        "ORDINAL_POSITION": 17,
+        "COLUMN_TYPE": "varchar(16)",
+        "IS_NULLABLE": "NO",
+        "COLUMN_DEFAULT": null,
+        "EXTRA": "",
+        "CHARACTER_SET_NAME": "utf8mb4",
+        "COLLATION_NAME": "utf8mb4_0900_ai_ci",
+        "GENERATION_EXPRESSION": "",
+        "COLUMN_COMMENT": ""
+      },
+      {
+        "COLUMN_NAME": "request_id",
+        "ORDINAL_POSITION": 18,
+        "COLUMN_TYPE": "varchar(64)",
+        "IS_NULLABLE": "NO",
+        "COLUMN_DEFAULT": null,
+        "EXTRA": "",
+        "CHARACTER_SET_NAME": "utf8mb4",
+        "COLLATION_NAME": "utf8mb4_0900_ai_ci",
+        "GENERATION_EXPRESSION": "",
+        "COLUMN_COMMENT": ""
+      },
+      {
+        "COLUMN_NAME": "failure_code",
+        "ORDINAL_POSITION": 19,
+        "COLUMN_TYPE": "varchar(32)",
+        "IS_NULLABLE": "YES",
+        "COLUMN_DEFAULT": null,
+        "EXTRA": "",
+        "CHARACTER_SET_NAME": "utf8mb4",
+        "COLLATION_NAME": "utf8mb4_0900_ai_ci",
+        "GENERATION_EXPRESSION": "",
+        "COLUMN_COMMENT": ""
+      },
+      {
+        "COLUMN_NAME": "started_at",
+        "ORDINAL_POSITION": 20,
+        "COLUMN_TYPE": "timestamp(3)",
+        "IS_NULLABLE": "NO",
+        "COLUMN_DEFAULT": "CURRENT_TIMESTAMP(3)",
+        "EXTRA": "DEFAULT_GENERATED",
+        "CHARACTER_SET_NAME": null,
+        "COLLATION_NAME": null,
+        "GENERATION_EXPRESSION": "",
+        "COLUMN_COMMENT": ""
+      },
+      {
+        "COLUMN_NAME": "completed_at",
+        "ORDINAL_POSITION": 21,
+        "COLUMN_TYPE": "timestamp(3)",
+        "IS_NULLABLE": "YES",
+        "COLUMN_DEFAULT": null,
+        "EXTRA": "",
+        "CHARACTER_SET_NAME": null,
+        "COLLATION_NAME": null,
+        "GENERATION_EXPRESSION": "",
+        "COLUMN_COMMENT": ""
+      }
+    ],
+    "indexes": [
+      {
+        "INDEX_NAME": "fk_bcmd_export_creator",
+        "NON_UNIQUE": 1,
+        "SEQ_IN_INDEX": 1,
+        "COLUMN_NAME": "created_by_api_user_id",
+        "SUB_PART": null,
+        "COLLATION": "A",
+        "INDEX_TYPE": "BTREE",
+        "IS_VISIBLE": "YES",
+        "EXPRESSION": null
+      },
+      {
+        "INDEX_NAME": "fk_bcmd_export_staff_creator",
+        "NON_UNIQUE": 1,
+        "SEQ_IN_INDEX": 1,
+        "COLUMN_NAME": "created_by_staff_user_id",
+        "SUB_PART": null,
+        "COLLATION": "A",
+        "INDEX_TYPE": "BTREE",
+        "IS_VISIBLE": "YES",
+        "EXPRESSION": null
+      },
+      {
+        "INDEX_NAME": "ix_bcmd_export_reap",
+        "NON_UNIQUE": 1,
+        "SEQ_IN_INDEX": 1,
+        "COLUMN_NAME": "status",
+        "SUB_PART": null,
+        "COLLATION": "A",
+        "INDEX_TYPE": "BTREE",
+        "IS_VISIBLE": "YES",
+        "EXPRESSION": null
+      },
+      {
+        "INDEX_NAME": "ix_bcmd_export_reap",
+        "NON_UNIQUE": 1,
+        "SEQ_IN_INDEX": 2,
+        "COLUMN_NAME": "started_at",
+        "SUB_PART": null,
+        "COLLATION": "A",
+        "INDEX_TYPE": "BTREE",
+        "IS_VISIBLE": "YES",
+        "EXPRESSION": null
+      },
+      {
+        "INDEX_NAME": "PRIMARY",
+        "NON_UNIQUE": 0,
+        "SEQ_IN_INDEX": 1,
+        "COLUMN_NAME": "id",
+        "SUB_PART": null,
+        "COLLATION": "A",
+        "INDEX_TYPE": "BTREE",
+        "IS_VISIBLE": "YES",
+        "EXPRESSION": null
+      },
+      {
+        "INDEX_NAME": "uq_bcmd_export_idem",
+        "NON_UNIQUE": 0,
+        "SEQ_IN_INDEX": 1,
+        "COLUMN_NAME": "batch_id",
+        "SUB_PART": null,
+        "COLLATION": "A",
+        "INDEX_TYPE": "BTREE",
+        "IS_VISIBLE": "YES",
+        "EXPRESSION": null
+      },
+      {
+        "INDEX_NAME": "uq_bcmd_export_idem",
+        "NON_UNIQUE": 0,
+        "SEQ_IN_INDEX": 2,
+        "COLUMN_NAME": "created_by_api_user_id",
+        "SUB_PART": null,
+        "COLLATION": "A",
+        "INDEX_TYPE": "BTREE",
+        "IS_VISIBLE": "YES",
+        "EXPRESSION": null
+      },
+      {
+        "INDEX_NAME": "uq_bcmd_export_idem",
+        "NON_UNIQUE": 0,
+        "SEQ_IN_INDEX": 3,
+        "COLUMN_NAME": "idempotency_key",
+        "SUB_PART": null,
+        "COLLATION": "A",
+        "INDEX_TYPE": "BTREE",
+        "IS_VISIBLE": "YES",
+        "EXPRESSION": null
+      },
+      {
+        "INDEX_NAME": "uq_bcmd_export_no",
+        "NON_UNIQUE": 0,
+        "SEQ_IN_INDEX": 1,
+        "COLUMN_NAME": "batch_id",
+        "SUB_PART": null,
+        "COLLATION": "A",
+        "INDEX_TYPE": "BTREE",
+        "IS_VISIBLE": "YES",
+        "EXPRESSION": null
+      },
+      {
+        "INDEX_NAME": "uq_bcmd_export_no",
+        "NON_UNIQUE": 0,
+        "SEQ_IN_INDEX": 2,
+        "COLUMN_NAME": "export_no",
+        "SUB_PART": null,
+        "COLLATION": "A",
+        "INDEX_TYPE": "BTREE",
+        "IS_VISIBLE": "YES",
+        "EXPRESSION": null
+      },
+      {
+        "INDEX_NAME": "uq_bcmd_export_run_type",
+        "NON_UNIQUE": 0,
+        "SEQ_IN_INDEX": 1,
+        "COLUMN_NAME": "dqa_run_id",
+        "SUB_PART": null,
+        "COLLATION": "A",
+        "INDEX_TYPE": "BTREE",
+        "IS_VISIBLE": "YES",
+        "EXPRESSION": null
+      },
+      {
+        "INDEX_NAME": "uq_bcmd_export_run_type",
+        "NON_UNIQUE": 0,
+        "SEQ_IN_INDEX": 2,
+        "COLUMN_NAME": "file_type",
+        "SUB_PART": null,
+        "COLLATION": "A",
+        "INDEX_TYPE": "BTREE",
+        "IS_VISIBLE": "YES",
+        "EXPRESSION": null
+      },
+      {
+        "INDEX_NAME": "uq_bcmd_export_staff_idem",
+        "NON_UNIQUE": 0,
+        "SEQ_IN_INDEX": 1,
+        "COLUMN_NAME": "batch_id",
+        "SUB_PART": null,
+        "COLLATION": "A",
+        "INDEX_TYPE": "BTREE",
+        "IS_VISIBLE": "YES",
+        "EXPRESSION": null
+      },
+      {
+        "INDEX_NAME": "uq_bcmd_export_staff_idem",
+        "NON_UNIQUE": 0,
+        "SEQ_IN_INDEX": 2,
+        "COLUMN_NAME": "created_by_staff_user_id",
+        "SUB_PART": null,
+        "COLLATION": "A",
+        "INDEX_TYPE": "BTREE",
+        "IS_VISIBLE": "YES",
+        "EXPRESSION": null
+      },
+      {
+        "INDEX_NAME": "uq_bcmd_export_staff_idem",
+        "NON_UNIQUE": 0,
+        "SEQ_IN_INDEX": 3,
+        "COLUMN_NAME": "idempotency_key",
+        "SUB_PART": null,
+        "COLLATION": "A",
+        "INDEX_TYPE": "BTREE",
+        "IS_VISIBLE": "YES",
+        "EXPRESSION": null
+      }
+    ],
+    "fks": [
+      {
+        "CONSTRAINT_NAME": "fk_bcmd_export_batch",
+        "COLUMN_NAME": "batch_id",
+        "ORDINAL_POSITION": 1,
+        "POSITION_IN_UNIQUE_CONSTRAINT": 1,
+        "REFERENCED_TABLE_NAME": "bcmd_batch",
+        "REFERENCED_COLUMN_NAME": "id"
+      },
+      {
+        "CONSTRAINT_NAME": "fk_bcmd_export_creator",
+        "COLUMN_NAME": "created_by_api_user_id",
+        "ORDINAL_POSITION": 1,
+        "POSITION_IN_UNIQUE_CONSTRAINT": 1,
+        "REFERENCED_TABLE_NAME": "api_users",
+        "REFERENCED_COLUMN_NAME": "id"
+      },
+      {
+        "CONSTRAINT_NAME": "fk_bcmd_export_dqa_run",
+        "COLUMN_NAME": "dqa_run_id",
+        "ORDINAL_POSITION": 1,
+        "POSITION_IN_UNIQUE_CONSTRAINT": 1,
+        "REFERENCED_TABLE_NAME": "bcmd_dqa_run",
+        "REFERENCED_COLUMN_NAME": "id"
+      },
+      {
+        "CONSTRAINT_NAME": "fk_bcmd_export_staff_creator",
+        "COLUMN_NAME": "created_by_staff_user_id",
+        "ORDINAL_POSITION": 1,
+        "POSITION_IN_UNIQUE_CONSTRAINT": 1,
+        "REFERENCED_TABLE_NAME": "staff_users",
+        "REFERENCED_COLUMN_NAME": "id"
+      }
+    ],
+    "fk_rules": [
+      {
+        "CONSTRAINT_NAME": "fk_bcmd_export_batch",
+        "UNIQUE_CONSTRAINT_NAME": "PRIMARY",
+        "MATCH_OPTION": "NONE",
+        "UPDATE_RULE": "NO ACTION",
+        "DELETE_RULE": "RESTRICT"
+      },
+      {
+        "CONSTRAINT_NAME": "fk_bcmd_export_creator",
+        "UNIQUE_CONSTRAINT_NAME": "PRIMARY",
+        "MATCH_OPTION": "NONE",
+        "UPDATE_RULE": "NO ACTION",
+        "DELETE_RULE": "RESTRICT"
+      },
+      {
+        "CONSTRAINT_NAME": "fk_bcmd_export_dqa_run",
+        "UNIQUE_CONSTRAINT_NAME": "PRIMARY",
+        "MATCH_OPTION": "NONE",
+        "UPDATE_RULE": "NO ACTION",
+        "DELETE_RULE": "RESTRICT"
+      },
+      {
+        "CONSTRAINT_NAME": "fk_bcmd_export_staff_creator",
+        "UNIQUE_CONSTRAINT_NAME": "PRIMARY",
+        "MATCH_OPTION": "NONE",
+        "UPDATE_RULE": "NO ACTION",
+        "DELETE_RULE": "RESTRICT"
+      }
+    ],
+    "checks": [
+      {
+        "CONSTRAINT_NAME": "ck_bcmd_export_creator_identity",
+        "CHECK_CLAUSE": "(((`created_by_api_user_id` is not null) + (`created_by_staff_user_id` is not null)) = 1)",
+        "ENFORCED": "YES"
+      },
+      {
+        "CONSTRAINT_NAME": "ck_bcmd_export_done",
+        "CHECK_CLAUSE": "((`status` = _utf8mb4\\'COMPLETED\\') = ((`sha256` is not null) and (`byte_count` is not null) and (`row_count` is not null) and (`completed_at` is not null)))",
+        "ENFORCED": "YES"
+      },
+      {
+        "CONSTRAINT_NAME": "ck_bcmd_export_file",
+        "CHECK_CLAUSE": "(`file_type` in (_utf8mb4\\'DETAIL\\',_utf8mb4\\'SUMMARY\\',_utf8mb4\\'FAILED\\'))",
+        "ENFORCED": "YES"
+      },
+      {
+        "CONSTRAINT_NAME": "ck_bcmd_export_status",
+        "CHECK_CLAUSE": "(`status` in (_utf8mb4\\'STARTED\\',_utf8mb4\\'COMPLETED\\',_utf8mb4\\'FAILED\\',_utf8mb4\\'ABORTED\\'))",
+        "ENFORCED": "YES"
+      }
+    ]
+  },
+  "bcmd_audit_event": {
+    "table": [
+      {
+        "ENGINE": "InnoDB",
+        "TABLE_COLLATION": "utf8mb4_0900_ai_ci"
+      }
+    ],
+    "columns": [
+      {
+        "COLUMN_NAME": "id",
+        "ORDINAL_POSITION": 1,
+        "COLUMN_TYPE": "bigint unsigned",
+        "IS_NULLABLE": "NO",
+        "COLUMN_DEFAULT": null,
+        "EXTRA": "auto_increment",
+        "CHARACTER_SET_NAME": null,
+        "COLLATION_NAME": null,
+        "GENERATION_EXPRESSION": "",
+        "COLUMN_COMMENT": ""
+      },
+      {
+        "COLUMN_NAME": "occurred_at",
+        "ORDINAL_POSITION": 2,
+        "COLUMN_TYPE": "timestamp(3)",
+        "IS_NULLABLE": "NO",
+        "COLUMN_DEFAULT": "CURRENT_TIMESTAMP(3)",
+        "EXTRA": "DEFAULT_GENERATED",
+        "CHARACTER_SET_NAME": null,
+        "COLLATION_NAME": null,
+        "GENERATION_EXPRESSION": "",
+        "COLUMN_COMMENT": ""
+      },
+      {
+        "COLUMN_NAME": "event_type",
+        "ORDINAL_POSITION": 3,
+        "COLUMN_TYPE": "varchar(24)",
+        "IS_NULLABLE": "NO",
+        "COLUMN_DEFAULT": null,
+        "EXTRA": "",
+        "CHARACTER_SET_NAME": "utf8mb4",
+        "COLLATION_NAME": "utf8mb4_0900_ai_ci",
+        "GENERATION_EXPRESSION": "",
+        "COLUMN_COMMENT": ""
+      },
+      {
+        "COLUMN_NAME": "batch_id",
+        "ORDINAL_POSITION": 4,
+        "COLUMN_TYPE": "bigint unsigned",
+        "IS_NULLABLE": "YES",
+        "COLUMN_DEFAULT": null,
+        "EXTRA": "",
+        "CHARACTER_SET_NAME": null,
+        "COLLATION_NAME": null,
+        "GENERATION_EXPRESSION": "",
+        "COLUMN_COMMENT": ""
+      },
+      {
+        "COLUMN_NAME": "export_id",
+        "ORDINAL_POSITION": 5,
+        "COLUMN_TYPE": "bigint unsigned",
+        "IS_NULLABLE": "YES",
+        "COLUMN_DEFAULT": null,
+        "EXTRA": "",
+        "CHARACTER_SET_NAME": null,
+        "COLLATION_NAME": null,
+        "GENERATION_EXPRESSION": "",
+        "COLUMN_COMMENT": ""
+      },
+      {
+        "COLUMN_NAME": "parent_event_id",
+        "ORDINAL_POSITION": 6,
+        "COLUMN_TYPE": "bigint unsigned",
+        "IS_NULLABLE": "YES",
+        "COLUMN_DEFAULT": null,
+        "EXTRA": "",
+        "CHARACTER_SET_NAME": null,
+        "COLLATION_NAME": null,
+        "GENERATION_EXPRESSION": "",
+        "COLUMN_COMMENT": ""
+      },
+      {
+        "COLUMN_NAME": "actor_api_user_id",
+        "ORDINAL_POSITION": 7,
+        "COLUMN_TYPE": "int",
+        "IS_NULLABLE": "YES",
+        "COLUMN_DEFAULT": null,
+        "EXTRA": "",
+        "CHARACTER_SET_NAME": null,
+        "COLLATION_NAME": null,
+        "GENERATION_EXPRESSION": "",
+        "COLUMN_COMMENT": ""
+      },
+      {
+        "COLUMN_NAME": "actor_staff_user_id",
+        "ORDINAL_POSITION": 8,
+        "COLUMN_TYPE": "bigint unsigned",
+        "IS_NULLABLE": "YES",
+        "COLUMN_DEFAULT": null,
+        "EXTRA": "",
+        "CHARACTER_SET_NAME": null,
+        "COLLATION_NAME": null,
+        "GENERATION_EXPRESSION": "",
+        "COLUMN_COMMENT": ""
+      },
+      {
+        "COLUMN_NAME": "actor_label",
+        "ORDINAL_POSITION": 9,
+        "COLUMN_TYPE": "varchar(64)",
+        "IS_NULLABLE": "YES",
+        "COLUMN_DEFAULT": null,
+        "EXTRA": "",
+        "CHARACTER_SET_NAME": "utf8mb4",
+        "COLLATION_NAME": "utf8mb4_0900_ai_ci",
+        "GENERATION_EXPRESSION": "",
+        "COLUMN_COMMENT": ""
+      },
+      {
+        "COLUMN_NAME": "actor_agency",
+        "ORDINAL_POSITION": 10,
+        "COLUMN_TYPE": "varchar(16)",
+        "IS_NULLABLE": "YES",
+        "COLUMN_DEFAULT": null,
+        "EXTRA": "",
+        "CHARACTER_SET_NAME": "utf8mb4",
+        "COLLATION_NAME": "utf8mb4_0900_ai_ci",
+        "GENERATION_EXPRESSION": "",
+        "COLUMN_COMMENT": ""
+      },
+      {
+        "COLUMN_NAME": "request_id",
+        "ORDINAL_POSITION": 11,
+        "COLUMN_TYPE": "varchar(64)",
+        "IS_NULLABLE": "NO",
+        "COLUMN_DEFAULT": null,
+        "EXTRA": "",
+        "CHARACTER_SET_NAME": "utf8mb4",
+        "COLLATION_NAME": "utf8mb4_0900_ai_ci",
+        "GENERATION_EXPRESSION": "",
+        "COLUMN_COMMENT": ""
+      },
+      {
+        "COLUMN_NAME": "client_ip",
+        "ORDINAL_POSITION": 12,
+        "COLUMN_TYPE": "varchar(45)",
+        "IS_NULLABLE": "YES",
+        "COLUMN_DEFAULT": null,
+        "EXTRA": "",
+        "CHARACTER_SET_NAME": "utf8mb4",
+        "COLLATION_NAME": "utf8mb4_0900_ai_ci",
+        "GENERATION_EXPRESSION": "",
+        "COLUMN_COMMENT": ""
+      },
+      {
+        "COLUMN_NAME": "reason_code",
+        "ORDINAL_POSITION": 13,
+        "COLUMN_TYPE": "varchar(32)",
+        "IS_NULLABLE": "YES",
+        "COLUMN_DEFAULT": null,
+        "EXTRA": "",
+        "CHARACTER_SET_NAME": "utf8mb4",
+        "COLLATION_NAME": "utf8mb4_0900_ai_ci",
+        "GENERATION_EXPRESSION": "",
+        "COLUMN_COMMENT": ""
+      },
+      {
+        "COLUMN_NAME": "sha256",
+        "ORDINAL_POSITION": 14,
+        "COLUMN_TYPE": "char(64)",
+        "IS_NULLABLE": "YES",
+        "COLUMN_DEFAULT": null,
+        "EXTRA": "",
+        "CHARACTER_SET_NAME": "ascii",
+        "COLLATION_NAME": "ascii_bin",
+        "GENERATION_EXPRESSION": "",
+        "COLUMN_COMMENT": ""
+      }
+    ],
+    "indexes": [
+      {
+        "INDEX_NAME": "fk_bcmd_audit_actor",
+        "NON_UNIQUE": 1,
+        "SEQ_IN_INDEX": 1,
+        "COLUMN_NAME": "actor_api_user_id",
+        "SUB_PART": null,
+        "COLLATION": "A",
+        "INDEX_TYPE": "BTREE",
+        "IS_VISIBLE": "YES",
+        "EXPRESSION": null
+      },
+      {
+        "INDEX_NAME": "fk_bcmd_audit_export",
+        "NON_UNIQUE": 1,
+        "SEQ_IN_INDEX": 1,
+        "COLUMN_NAME": "export_id",
+        "SUB_PART": null,
+        "COLLATION": "A",
+        "INDEX_TYPE": "BTREE",
+        "IS_VISIBLE": "YES",
+        "EXPRESSION": null
+      },
+      {
+        "INDEX_NAME": "fk_bcmd_audit_staff_actor",
+        "NON_UNIQUE": 1,
+        "SEQ_IN_INDEX": 1,
+        "COLUMN_NAME": "actor_staff_user_id",
+        "SUB_PART": null,
+        "COLLATION": "A",
+        "INDEX_TYPE": "BTREE",
+        "IS_VISIBLE": "YES",
+        "EXPRESSION": null
+      },
+      {
+        "INDEX_NAME": "ix_bcmd_audit_batch",
+        "NON_UNIQUE": 1,
+        "SEQ_IN_INDEX": 1,
+        "COLUMN_NAME": "batch_id",
+        "SUB_PART": null,
+        "COLLATION": "A",
+        "INDEX_TYPE": "BTREE",
+        "IS_VISIBLE": "YES",
+        "EXPRESSION": null
+      },
+      {
+        "INDEX_NAME": "ix_bcmd_audit_batch",
+        "NON_UNIQUE": 1,
+        "SEQ_IN_INDEX": 2,
+        "COLUMN_NAME": "id",
+        "SUB_PART": null,
+        "COLLATION": "A",
+        "INDEX_TYPE": "BTREE",
+        "IS_VISIBLE": "YES",
+        "EXPRESSION": null
+      },
+      {
+        "INDEX_NAME": "ix_bcmd_audit_pending",
+        "NON_UNIQUE": 1,
+        "SEQ_IN_INDEX": 1,
+        "COLUMN_NAME": "event_type",
+        "SUB_PART": null,
+        "COLLATION": "A",
+        "INDEX_TYPE": "BTREE",
+        "IS_VISIBLE": "YES",
+        "EXPRESSION": null
+      },
+      {
+        "INDEX_NAME": "ix_bcmd_audit_pending",
+        "NON_UNIQUE": 1,
+        "SEQ_IN_INDEX": 2,
+        "COLUMN_NAME": "occurred_at",
+        "SUB_PART": null,
+        "COLLATION": "A",
+        "INDEX_TYPE": "BTREE",
+        "IS_VISIBLE": "YES",
+        "EXPRESSION": null
+      },
+      {
+        "INDEX_NAME": "PRIMARY",
+        "NON_UNIQUE": 0,
+        "SEQ_IN_INDEX": 1,
+        "COLUMN_NAME": "id",
+        "SUB_PART": null,
+        "COLLATION": "A",
+        "INDEX_TYPE": "BTREE",
+        "IS_VISIBLE": "YES",
+        "EXPRESSION": null
+      },
+      {
+        "INDEX_NAME": "uq_bcmd_audit_result",
+        "NON_UNIQUE": 0,
+        "SEQ_IN_INDEX": 1,
+        "COLUMN_NAME": "parent_event_id",
+        "SUB_PART": null,
+        "COLLATION": "A",
+        "INDEX_TYPE": "BTREE",
+        "IS_VISIBLE": "YES",
+        "EXPRESSION": null
+      }
+    ],
+    "fks": [
+      {
+        "CONSTRAINT_NAME": "fk_bcmd_audit_actor",
+        "COLUMN_NAME": "actor_api_user_id",
+        "ORDINAL_POSITION": 1,
+        "POSITION_IN_UNIQUE_CONSTRAINT": 1,
+        "REFERENCED_TABLE_NAME": "api_users",
+        "REFERENCED_COLUMN_NAME": "id"
+      },
+      {
+        "CONSTRAINT_NAME": "fk_bcmd_audit_batch",
+        "COLUMN_NAME": "batch_id",
+        "ORDINAL_POSITION": 1,
+        "POSITION_IN_UNIQUE_CONSTRAINT": 1,
+        "REFERENCED_TABLE_NAME": "bcmd_batch",
+        "REFERENCED_COLUMN_NAME": "id"
+      },
+      {
+        "CONSTRAINT_NAME": "fk_bcmd_audit_export",
+        "COLUMN_NAME": "export_id",
+        "ORDINAL_POSITION": 1,
+        "POSITION_IN_UNIQUE_CONSTRAINT": 1,
+        "REFERENCED_TABLE_NAME": "bcmd_batch_export",
+        "REFERENCED_COLUMN_NAME": "id"
+      },
+      {
+        "CONSTRAINT_NAME": "fk_bcmd_audit_parent",
+        "COLUMN_NAME": "parent_event_id",
+        "ORDINAL_POSITION": 1,
+        "POSITION_IN_UNIQUE_CONSTRAINT": 1,
+        "REFERENCED_TABLE_NAME": "bcmd_audit_event",
+        "REFERENCED_COLUMN_NAME": "id"
+      },
+      {
+        "CONSTRAINT_NAME": "fk_bcmd_audit_staff_actor",
+        "COLUMN_NAME": "actor_staff_user_id",
+        "ORDINAL_POSITION": 1,
+        "POSITION_IN_UNIQUE_CONSTRAINT": 1,
+        "REFERENCED_TABLE_NAME": "staff_users",
+        "REFERENCED_COLUMN_NAME": "id"
+      }
+    ],
+    "fk_rules": [
+      {
+        "CONSTRAINT_NAME": "fk_bcmd_audit_actor",
+        "UNIQUE_CONSTRAINT_NAME": "PRIMARY",
+        "MATCH_OPTION": "NONE",
+        "UPDATE_RULE": "NO ACTION",
+        "DELETE_RULE": "RESTRICT"
+      },
+      {
+        "CONSTRAINT_NAME": "fk_bcmd_audit_batch",
+        "UNIQUE_CONSTRAINT_NAME": "PRIMARY",
+        "MATCH_OPTION": "NONE",
+        "UPDATE_RULE": "NO ACTION",
+        "DELETE_RULE": "RESTRICT"
+      },
+      {
+        "CONSTRAINT_NAME": "fk_bcmd_audit_export",
+        "UNIQUE_CONSTRAINT_NAME": "PRIMARY",
+        "MATCH_OPTION": "NONE",
+        "UPDATE_RULE": "NO ACTION",
+        "DELETE_RULE": "RESTRICT"
+      },
+      {
+        "CONSTRAINT_NAME": "fk_bcmd_audit_parent",
+        "UNIQUE_CONSTRAINT_NAME": "PRIMARY",
+        "MATCH_OPTION": "NONE",
+        "UPDATE_RULE": "NO ACTION",
+        "DELETE_RULE": "RESTRICT"
+      },
+      {
+        "CONSTRAINT_NAME": "fk_bcmd_audit_staff_actor",
+        "UNIQUE_CONSTRAINT_NAME": "PRIMARY",
+        "MATCH_OPTION": "NONE",
+        "UPDATE_RULE": "NO ACTION",
+        "DELETE_RULE": "RESTRICT"
+      }
+    ],
+    "checks": [
+      {
+        "CONSTRAINT_NAME": "ck_bcmd_audit_actor",
+        "CHECK_CLAUSE": "(((`actor_api_user_id` is null) or (`actor_staff_user_id` is null)) and ((`actor_api_user_id` is not null) or (`actor_staff_user_id` is not null) or (`actor_label` is not null)))",
+        "ENFORCED": "YES"
+      },
+      {
+        "CONSTRAINT_NAME": "ck_bcmd_audit_type",
+        "CHECK_CLAUSE": "(`event_type` in (_utf8mb4\\'BATCH_CREATED\\',_utf8mb4\\'DQA_COMPLETED\\',_utf8mb4\\'EXPORT_STARTED\\',_utf8mb4\\'EXPORT_COMPLETED\\',_utf8mb4\\'EXPORT_FAILED\\',_utf8mb4\\'EXPORT_ABORTED\\',_utf8mb4\\'DOWNLOAD_ADMITTED\\',_utf8mb4\\'DOWNLOAD_COMPLETED\\',_utf8mb4\\'DOWNLOAD_FAILED\\',_utf8mb4\\'DOWNLOAD_UNCERTAIN\\',_utf8mb4\\'ACCESS_DENIED\\',_utf8mb4\\'TAMPER_DETECTED\\',_utf8mb4\\'BATCH_PURGED\\',_utf8mb4\\'DQA_RUN_QUEUED\\',_utf8mb4\\'DQA_RUN_COMPLETED\\',_utf8mb4\\'DQA_RUN_FAILED\\',_utf8mb4\\'CLAIM_RESOLVED\\',_utf8mb4\\'CLAIM_REVERSED\\',_utf8mb4\\'DQA_RUN_INVALIDATED\\',_utf8mb4\\'NAPA_HANDOFF_RECORDED\\'))",
+        "ENFORCED": "YES"
+      }
+    ]
+  },
+  "bcmd_approval": {
+    "table": [
+      {
+        "ENGINE": "InnoDB",
+        "TABLE_COLLATION": "utf8mb4_0900_ai_ci"
+      }
+    ],
+    "columns": [
+      {
+        "COLUMN_NAME": "id",
+        "ORDINAL_POSITION": 1,
+        "COLUMN_TYPE": "bigint unsigned",
+        "IS_NULLABLE": "NO",
+        "COLUMN_DEFAULT": null,
+        "EXTRA": "auto_increment",
+        "CHARACTER_SET_NAME": null,
+        "COLLATION_NAME": null,
+        "GENERATION_EXPRESSION": "",
+        "COLUMN_COMMENT": ""
+      },
+      {
+        "COLUMN_NAME": "gate_code",
+        "ORDINAL_POSITION": 2,
+        "COLUMN_TYPE": "varchar(24)",
+        "IS_NULLABLE": "NO",
+        "COLUMN_DEFAULT": null,
+        "EXTRA": "",
+        "CHARACTER_SET_NAME": "ascii",
+        "COLLATION_NAME": "ascii_bin",
+        "GENERATION_EXPRESSION": "",
+        "COLUMN_COMMENT": ""
+      },
+      {
+        "COLUMN_NAME": "decision",
+        "ORDINAL_POSITION": 3,
+        "COLUMN_TYPE": "varchar(8)",
+        "IS_NULLABLE": "NO",
+        "COLUMN_DEFAULT": null,
+        "EXTRA": "",
+        "CHARACTER_SET_NAME": "utf8mb4",
+        "COLLATION_NAME": "utf8mb4_0900_ai_ci",
+        "GENERATION_EXPRESSION": "",
+        "COLUMN_COMMENT": ""
+      },
+      {
+        "COLUMN_NAME": "approver_role",
+        "ORDINAL_POSITION": 4,
+        "COLUMN_TYPE": "varchar(24)",
+        "IS_NULLABLE": "NO",
+        "COLUMN_DEFAULT": null,
+        "EXTRA": "",
+        "CHARACTER_SET_NAME": "utf8mb4",
+        "COLLATION_NAME": "utf8mb4_0900_ai_ci",
+        "GENERATION_EXPRESSION": "",
+        "COLUMN_COMMENT": ""
+      },
+      {
+        "COLUMN_NAME": "approver_label",
+        "ORDINAL_POSITION": 5,
+        "COLUMN_TYPE": "varchar(64)",
+        "IS_NULLABLE": "NO",
+        "COLUMN_DEFAULT": null,
+        "EXTRA": "",
+        "CHARACTER_SET_NAME": "utf8mb4",
+        "COLLATION_NAME": "utf8mb4_0900_ai_ci",
+        "GENERATION_EXPRESSION": "",
+        "COLUMN_COMMENT": ""
+      },
+      {
+        "COLUMN_NAME": "reference",
+        "ORDINAL_POSITION": 6,
+        "COLUMN_TYPE": "varchar(120)",
+        "IS_NULLABLE": "NO",
+        "COLUMN_DEFAULT": null,
+        "EXTRA": "",
+        "CHARACTER_SET_NAME": "utf8mb4",
+        "COLLATION_NAME": "utf8mb4_0900_ai_ci",
+        "GENERATION_EXPRESSION": "",
+        "COLUMN_COMMENT": ""
+      },
+      {
+        "COLUMN_NAME": "approved_on",
+        "ORDINAL_POSITION": 7,
+        "COLUMN_TYPE": "date",
+        "IS_NULLABLE": "NO",
+        "COLUMN_DEFAULT": null,
+        "EXTRA": "",
+        "CHARACTER_SET_NAME": null,
+        "COLLATION_NAME": null,
+        "GENERATION_EXPRESSION": "",
+        "COLUMN_COMMENT": ""
+      },
+      {
+        "COLUMN_NAME": "artifact_sha256",
+        "ORDINAL_POSITION": 8,
+        "COLUMN_TYPE": "char(64)",
+        "IS_NULLABLE": "YES",
+        "COLUMN_DEFAULT": null,
+        "EXTRA": "",
+        "CHARACTER_SET_NAME": "ascii",
+        "COLLATION_NAME": "ascii_bin",
+        "GENERATION_EXPRESSION": "",
+        "COLUMN_COMMENT": ""
+      },
+      {
+        "COLUMN_NAME": "recorded_at",
+        "ORDINAL_POSITION": 9,
+        "COLUMN_TYPE": "timestamp(3)",
+        "IS_NULLABLE": "NO",
+        "COLUMN_DEFAULT": "CURRENT_TIMESTAMP(3)",
+        "EXTRA": "DEFAULT_GENERATED",
+        "CHARACTER_SET_NAME": null,
+        "COLLATION_NAME": null,
+        "GENERATION_EXPRESSION": "",
+        "COLUMN_COMMENT": ""
+      }
+    ],
+    "indexes": [
+      {
+        "INDEX_NAME": "ix_bcmd_approval_gate",
+        "NON_UNIQUE": 1,
+        "SEQ_IN_INDEX": 1,
+        "COLUMN_NAME": "gate_code",
+        "SUB_PART": null,
+        "COLLATION": "A",
+        "INDEX_TYPE": "BTREE",
+        "IS_VISIBLE": "YES",
+        "EXPRESSION": null
+      },
+      {
+        "INDEX_NAME": "ix_bcmd_approval_gate",
+        "NON_UNIQUE": 1,
+        "SEQ_IN_INDEX": 2,
+        "COLUMN_NAME": "id",
+        "SUB_PART": null,
+        "COLLATION": "A",
+        "INDEX_TYPE": "BTREE",
+        "IS_VISIBLE": "YES",
+        "EXPRESSION": null
+      },
+      {
+        "INDEX_NAME": "PRIMARY",
+        "NON_UNIQUE": 0,
+        "SEQ_IN_INDEX": 1,
+        "COLUMN_NAME": "id",
+        "SUB_PART": null,
+        "COLLATION": "A",
+        "INDEX_TYPE": "BTREE",
+        "IS_VISIBLE": "YES",
+        "EXPRESSION": null
+      }
+    ],
+    "fks": [],
+    "fk_rules": [],
+    "checks": [
+      {
+        "CONSTRAINT_NAME": "ck_bcmd_approval_artifact",
+        "CHECK_CLAUSE": "((`gate_code` = _utf8mb4\\'PAYROLL_SEPARATION\\') or (`artifact_sha256` is not null))",
+        "ENFORCED": "YES"
+      },
+      {
+        "CONSTRAINT_NAME": "ck_bcmd_approval_decision",
+        "CHECK_CLAUSE": "(`decision` in (_utf8mb4\\'APPROVED\\',_utf8mb4\\'REVOKED\\'))",
+        "ENFORCED": "YES"
+      },
+      {
+        "CONSTRAINT_NAME": "ck_bcmd_approval_gate",
+        "CHECK_CLAUSE": "(`gate_code` in (_utf8mb4\\'HEADER_FORMAT\\',_utf8mb4\\'COLUMN_MAPPING\\',_utf8mb4\\'DQA_RULES\\',_utf8mb4\\'DPO_DISCLOSURE\\',_utf8mb4\\'PAYROLL_SEPARATION\\'))",
+        "ENFORCED": "YES"
+      },
+      {
+        "CONSTRAINT_NAME": "ck_bcmd_approval_role",
+        "CHECK_CLAUSE": "(((`gate_code` = _utf8mb4\\'HEADER_FORMAT\\') and (`approver_role` = _utf8mb4\\'BCMD_OWNER\\')) or ((`gate_code` = _utf8mb4\\'COLUMN_MAPPING\\') and (`approver_role` in (_utf8mb4\\'DBA\\',_utf8mb4\\'DATA_OWNER\\'))) or ((`gate_code` = _utf8mb4\\'DQA_RULES\\') and (`approver_role` = _utf8mb4\\'BCMD_OWNER\\')) or ((`gate_code` = _utf8mb4\\'DPO_DISCLOSURE\\') and (`approver_role` = _utf8mb4\\'DPO\\')) or ((`gate_code` = _utf8mb4\\'PAYROLL_SEPARATION\\') and (`approver_role` = _utf8mb4\\'MARTIN\\')))",
+        "ENFORCED": "YES"
+      }
+    ]
+  },
+  "bcmd_dqa_run": {
+    "table": [
+      {
+        "ENGINE": "InnoDB",
+        "TABLE_COLLATION": "utf8mb4_0900_ai_ci"
+      }
+    ],
+    "columns": [
+      {
+        "COLUMN_NAME": "id",
+        "ORDINAL_POSITION": 1,
+        "COLUMN_TYPE": "bigint unsigned",
+        "IS_NULLABLE": "NO",
+        "COLUMN_DEFAULT": null,
+        "EXTRA": "auto_increment",
+        "CHARACTER_SET_NAME": null,
+        "COLLATION_NAME": null,
+        "GENERATION_EXPRESSION": "",
+        "COLUMN_COMMENT": ""
+      },
+      {
+        "COLUMN_NAME": "public_id",
+        "ORDINAL_POSITION": 2,
+        "COLUMN_TYPE": "char(36)",
+        "IS_NULLABLE": "NO",
+        "COLUMN_DEFAULT": null,
+        "EXTRA": "",
+        "CHARACTER_SET_NAME": "ascii",
+        "COLLATION_NAME": "ascii_bin",
+        "GENERATION_EXPRESSION": "",
+        "COLUMN_COMMENT": ""
+      },
+      {
+        "COLUMN_NAME": "batch_id",
+        "ORDINAL_POSITION": 3,
+        "COLUMN_TYPE": "bigint unsigned",
+        "IS_NULLABLE": "NO",
+        "COLUMN_DEFAULT": null,
+        "EXTRA": "",
+        "CHARACTER_SET_NAME": null,
+        "COLLATION_NAME": null,
+        "GENERATION_EXPRESSION": "",
+        "COLUMN_COMMENT": ""
+      },
+      {
+        "COLUMN_NAME": "run_no",
+        "ORDINAL_POSITION": 4,
+        "COLUMN_TYPE": "int unsigned",
+        "IS_NULLABLE": "NO",
+        "COLUMN_DEFAULT": null,
+        "EXTRA": "",
+        "CHARACTER_SET_NAME": null,
+        "COLLATION_NAME": null,
+        "GENERATION_EXPRESSION": "",
+        "COLUMN_COMMENT": ""
+      },
+      {
+        "COLUMN_NAME": "actor_ref",
+        "ORDINAL_POSITION": 5,
+        "COLUMN_TYPE": "varchar(64)",
+        "IS_NULLABLE": "NO",
+        "COLUMN_DEFAULT": null,
+        "EXTRA": "",
+        "CHARACTER_SET_NAME": "utf8mb4",
+        "COLLATION_NAME": "utf8mb4_0900_ai_ci",
+        "GENERATION_EXPRESSION": "",
+        "COLUMN_COMMENT": ""
+      },
+      {
+        "COLUMN_NAME": "request_id",
+        "ORDINAL_POSITION": 6,
+        "COLUMN_TYPE": "varchar(64)",
+        "IS_NULLABLE": "NO",
+        "COLUMN_DEFAULT": null,
+        "EXTRA": "",
+        "CHARACTER_SET_NAME": "utf8mb4",
+        "COLLATION_NAME": "utf8mb4_0900_ai_ci",
+        "GENERATION_EXPRESSION": "",
+        "COLUMN_COMMENT": ""
+      },
+      {
+        "COLUMN_NAME": "idempotency_key",
+        "ORDINAL_POSITION": 7,
+        "COLUMN_TYPE": "char(36)",
+        "IS_NULLABLE": "NO",
+        "COLUMN_DEFAULT": null,
+        "EXTRA": "",
+        "CHARACTER_SET_NAME": "ascii",
+        "COLLATION_NAME": "ascii_bin",
+        "GENERATION_EXPRESSION": "",
+        "COLUMN_COMMENT": ""
+      },
+      {
+        "COLUMN_NAME": "ruleset_version",
+        "ORDINAL_POSITION": 8,
+        "COLUMN_TYPE": "varchar(64)",
+        "IS_NULLABLE": "NO",
+        "COLUMN_DEFAULT": null,
+        "EXTRA": "",
+        "CHARACTER_SET_NAME": "utf8mb4",
+        "COLLATION_NAME": "utf8mb4_0900_ai_ci",
+        "GENERATION_EXPRESSION": "",
+        "COLUMN_COMMENT": ""
+      },
+      {
+        "COLUMN_NAME": "ruleset_sha256",
+        "ORDINAL_POSITION": 9,
+        "COLUMN_TYPE": "char(64)",
+        "IS_NULLABLE": "NO",
+        "COLUMN_DEFAULT": null,
+        "EXTRA": "",
+        "CHARACTER_SET_NAME": "ascii",
+        "COLLATION_NAME": "ascii_bin",
+        "GENERATION_EXPRESSION": "",
+        "COLUMN_COMMENT": ""
+      },
+      {
+        "COLUMN_NAME": "ruleset_json",
+        "ORDINAL_POSITION": 10,
+        "COLUMN_TYPE": "json",
+        "IS_NULLABLE": "NO",
+        "COLUMN_DEFAULT": null,
+        "EXTRA": "",
+        "CHARACTER_SET_NAME": null,
+        "COLLATION_NAME": null,
+        "GENERATION_EXPRESSION": "",
+        "COLUMN_COMMENT": ""
+      },
+      {
+        "COLUMN_NAME": "evaluation_date",
+        "ORDINAL_POSITION": 11,
+        "COLUMN_TYPE": "date",
+        "IS_NULLABLE": "NO",
+        "COLUMN_DEFAULT": null,
+        "EXTRA": "",
+        "CHARACTER_SET_NAME": null,
+        "COLLATION_NAME": null,
+        "GENERATION_EXPRESSION": "",
+        "COLUMN_COMMENT": ""
+      },
+      {
+        "COLUMN_NAME": "status",
+        "ORDINAL_POSITION": 12,
+        "COLUMN_TYPE": "varchar(16)",
+        "IS_NULLABLE": "NO",
+        "COLUMN_DEFAULT": "QUEUED",
+        "EXTRA": "",
+        "CHARACTER_SET_NAME": "utf8mb4",
+        "COLLATION_NAME": "utf8mb4_0900_ai_ci",
+        "GENERATION_EXPRESSION": "",
+        "COLUMN_COMMENT": ""
+      },
+      {
+        "COLUMN_NAME": "total",
+        "ORDINAL_POSITION": 13,
+        "COLUMN_TYPE": "int unsigned",
+        "IS_NULLABLE": "NO",
+        "COLUMN_DEFAULT": null,
+        "EXTRA": "",
+        "CHARACTER_SET_NAME": null,
+        "COLLATION_NAME": null,
+        "GENERATION_EXPRESSION": "",
+        "COLUMN_COMMENT": ""
+      },
+      {
+        "COLUMN_NAME": "processed",
+        "ORDINAL_POSITION": 14,
+        "COLUMN_TYPE": "int unsigned",
+        "IS_NULLABLE": "NO",
+        "COLUMN_DEFAULT": "0",
+        "EXTRA": "",
+        "CHARACTER_SET_NAME": null,
+        "COLLATION_NAME": null,
+        "GENERATION_EXPRESSION": "",
+        "COLUMN_COMMENT": ""
+      },
+      {
+        "COLUMN_NAME": "passed",
+        "ORDINAL_POSITION": 15,
+        "COLUMN_TYPE": "int unsigned",
+        "IS_NULLABLE": "NO",
+        "COLUMN_DEFAULT": "0",
+        "EXTRA": "",
+        "CHARACTER_SET_NAME": null,
+        "COLLATION_NAME": null,
+        "GENERATION_EXPRESSION": "",
+        "COLUMN_COMMENT": ""
+      },
+      {
+        "COLUMN_NAME": "failed",
+        "ORDINAL_POSITION": 16,
+        "COLUMN_TYPE": "int unsigned",
+        "IS_NULLABLE": "NO",
+        "COLUMN_DEFAULT": "0",
+        "EXTRA": "",
+        "CHARACTER_SET_NAME": null,
+        "COLLATION_NAME": null,
+        "GENERATION_EXPRESSION": "",
+        "COLUMN_COMMENT": ""
+      },
+      {
+        "COLUMN_NAME": "review_count",
+        "ORDINAL_POSITION": 17,
+        "COLUMN_TYPE": "int unsigned",
+        "IS_NULLABLE": "NO",
+        "COLUMN_DEFAULT": "0",
+        "EXTRA": "",
+        "CHARACTER_SET_NAME": null,
+        "COLLATION_NAME": null,
+        "GENERATION_EXPRESSION": "",
+        "COLUMN_COMMENT": ""
+      },
+      {
+        "COLUMN_NAME": "checkpoint_member_id",
+        "ORDINAL_POSITION": 18,
+        "COLUMN_TYPE": "bigint unsigned",
+        "IS_NULLABLE": "NO",
+        "COLUMN_DEFAULT": "0",
+        "EXTRA": "",
+        "CHARACTER_SET_NAME": null,
+        "COLLATION_NAME": null,
+        "GENERATION_EXPRESSION": "",
+        "COLUMN_COMMENT": ""
+      },
+      {
+        "COLUMN_NAME": "attempts",
+        "ORDINAL_POSITION": 19,
+        "COLUMN_TYPE": "int unsigned",
+        "IS_NULLABLE": "NO",
+        "COLUMN_DEFAULT": "0",
+        "EXTRA": "",
+        "CHARACTER_SET_NAME": null,
+        "COLLATION_NAME": null,
+        "GENERATION_EXPRESSION": "",
+        "COLUMN_COMMENT": ""
+      },
+      {
+        "COLUMN_NAME": "next_attempt_at",
+        "ORDINAL_POSITION": 20,
+        "COLUMN_TYPE": "datetime(6)",
+        "IS_NULLABLE": "NO",
+        "COLUMN_DEFAULT": "CURRENT_TIMESTAMP(6)",
+        "EXTRA": "DEFAULT_GENERATED",
+        "CHARACTER_SET_NAME": null,
+        "COLLATION_NAME": null,
+        "GENERATION_EXPRESSION": "",
+        "COLUMN_COMMENT": ""
+      },
+      {
+        "COLUMN_NAME": "lease_token",
+        "ORDINAL_POSITION": 21,
+        "COLUMN_TYPE": "char(36)",
+        "IS_NULLABLE": "YES",
+        "COLUMN_DEFAULT": null,
+        "EXTRA": "",
+        "CHARACTER_SET_NAME": "ascii",
+        "COLLATION_NAME": "ascii_bin",
+        "GENERATION_EXPRESSION": "",
+        "COLUMN_COMMENT": ""
+      },
+      {
+        "COLUMN_NAME": "lease_until",
+        "ORDINAL_POSITION": 22,
+        "COLUMN_TYPE": "datetime(6)",
+        "IS_NULLABLE": "YES",
+        "COLUMN_DEFAULT": null,
+        "EXTRA": "",
+        "CHARACTER_SET_NAME": null,
+        "COLLATION_NAME": null,
+        "GENERATION_EXPRESSION": "",
+        "COLUMN_COMMENT": ""
+      },
+      {
+        "COLUMN_NAME": "last_error_code",
+        "ORDINAL_POSITION": 23,
+        "COLUMN_TYPE": "varchar(64)",
+        "IS_NULLABLE": "YES",
+        "COLUMN_DEFAULT": null,
+        "EXTRA": "",
+        "CHARACTER_SET_NAME": "utf8mb4",
+        "COLLATION_NAME": "utf8mb4_0900_ai_ci",
+        "GENERATION_EXPRESSION": "",
+        "COLUMN_COMMENT": ""
+      },
+      {
+        "COLUMN_NAME": "created_at",
+        "ORDINAL_POSITION": 24,
+        "COLUMN_TYPE": "datetime(6)",
+        "IS_NULLABLE": "NO",
+        "COLUMN_DEFAULT": "CURRENT_TIMESTAMP(6)",
+        "EXTRA": "DEFAULT_GENERATED",
+        "CHARACTER_SET_NAME": null,
+        "COLLATION_NAME": null,
+        "GENERATION_EXPRESSION": "",
+        "COLUMN_COMMENT": ""
+      },
+      {
+        "COLUMN_NAME": "completed_at",
+        "ORDINAL_POSITION": 25,
+        "COLUMN_TYPE": "datetime(6)",
+        "IS_NULLABLE": "YES",
+        "COLUMN_DEFAULT": null,
+        "EXTRA": "",
+        "CHARACTER_SET_NAME": null,
+        "COLLATION_NAME": null,
+        "GENERATION_EXPRESSION": "",
+        "COLUMN_COMMENT": ""
+      },
+      {
+        "COLUMN_NAME": "excluded_count",
+        "ORDINAL_POSITION": 26,
+        "COLUMN_TYPE": "int unsigned",
+        "IS_NULLABLE": "NO",
+        "COLUMN_DEFAULT": "0",
+        "EXTRA": "",
+        "CHARACTER_SET_NAME": null,
+        "COLLATION_NAME": null,
+        "GENERATION_EXPRESSION": "",
+        "COLUMN_COMMENT": ""
+      },
+      {
+        "COLUMN_NAME": "claim_epoch",
+        "ORDINAL_POSITION": 27,
+        "COLUMN_TYPE": "int unsigned",
+        "IS_NULLABLE": "NO",
+        "COLUMN_DEFAULT": "0",
+        "EXTRA": "",
+        "CHARACTER_SET_NAME": null,
+        "COLLATION_NAME": null,
+        "GENERATION_EXPRESSION": "",
+        "COLUMN_COMMENT": ""
+      }
+    ],
+    "indexes": [
+      {
+        "INDEX_NAME": "ix_dqa_queue",
+        "NON_UNIQUE": 1,
+        "SEQ_IN_INDEX": 1,
+        "COLUMN_NAME": "status",
+        "SUB_PART": null,
+        "COLLATION": "A",
+        "INDEX_TYPE": "BTREE",
+        "IS_VISIBLE": "YES",
+        "EXPRESSION": null
+      },
+      {
+        "INDEX_NAME": "ix_dqa_queue",
+        "NON_UNIQUE": 1,
+        "SEQ_IN_INDEX": 2,
+        "COLUMN_NAME": "next_attempt_at",
+        "SUB_PART": null,
+        "COLLATION": "A",
+        "INDEX_TYPE": "BTREE",
+        "IS_VISIBLE": "YES",
+        "EXPRESSION": null
+      },
+      {
+        "INDEX_NAME": "ix_dqa_queue",
+        "NON_UNIQUE": 1,
+        "SEQ_IN_INDEX": 3,
+        "COLUMN_NAME": "id",
+        "SUB_PART": null,
+        "COLLATION": "A",
+        "INDEX_TYPE": "BTREE",
+        "IS_VISIBLE": "YES",
+        "EXPRESSION": null
+      },
+      {
+        "INDEX_NAME": "PRIMARY",
+        "NON_UNIQUE": 0,
+        "SEQ_IN_INDEX": 1,
+        "COLUMN_NAME": "id",
+        "SUB_PART": null,
+        "COLLATION": "A",
+        "INDEX_TYPE": "BTREE",
+        "IS_VISIBLE": "YES",
+        "EXPRESSION": null
+      },
+      {
+        "INDEX_NAME": "uq_dqa_idempotency",
+        "NON_UNIQUE": 0,
+        "SEQ_IN_INDEX": 1,
+        "COLUMN_NAME": "batch_id",
+        "SUB_PART": null,
+        "COLLATION": "A",
+        "INDEX_TYPE": "BTREE",
+        "IS_VISIBLE": "YES",
+        "EXPRESSION": null
+      },
+      {
+        "INDEX_NAME": "uq_dqa_idempotency",
+        "NON_UNIQUE": 0,
+        "SEQ_IN_INDEX": 2,
+        "COLUMN_NAME": "actor_ref",
+        "SUB_PART": null,
+        "COLLATION": "A",
+        "INDEX_TYPE": "BTREE",
+        "IS_VISIBLE": "YES",
+        "EXPRESSION": null
+      },
+      {
+        "INDEX_NAME": "uq_dqa_idempotency",
+        "NON_UNIQUE": 0,
+        "SEQ_IN_INDEX": 3,
+        "COLUMN_NAME": "idempotency_key",
+        "SUB_PART": null,
+        "COLLATION": "A",
+        "INDEX_TYPE": "BTREE",
+        "IS_VISIBLE": "YES",
+        "EXPRESSION": null
+      },
+      {
+        "INDEX_NAME": "uq_dqa_number",
+        "NON_UNIQUE": 0,
+        "SEQ_IN_INDEX": 1,
+        "COLUMN_NAME": "batch_id",
+        "SUB_PART": null,
+        "COLLATION": "A",
+        "INDEX_TYPE": "BTREE",
+        "IS_VISIBLE": "YES",
+        "EXPRESSION": null
+      },
+      {
+        "INDEX_NAME": "uq_dqa_number",
+        "NON_UNIQUE": 0,
+        "SEQ_IN_INDEX": 2,
+        "COLUMN_NAME": "run_no",
+        "SUB_PART": null,
+        "COLLATION": "A",
+        "INDEX_TYPE": "BTREE",
+        "IS_VISIBLE": "YES",
+        "EXPRESSION": null
+      },
+      {
+        "INDEX_NAME": "uq_dqa_public",
+        "NON_UNIQUE": 0,
+        "SEQ_IN_INDEX": 1,
+        "COLUMN_NAME": "public_id",
+        "SUB_PART": null,
+        "COLLATION": "A",
+        "INDEX_TYPE": "BTREE",
+        "IS_VISIBLE": "YES",
+        "EXPRESSION": null
+      }
+    ],
+    "fks": [
+      {
+        "CONSTRAINT_NAME": "fk_dqa_run_batch",
+        "COLUMN_NAME": "batch_id",
+        "ORDINAL_POSITION": 1,
+        "POSITION_IN_UNIQUE_CONSTRAINT": 1,
+        "REFERENCED_TABLE_NAME": "bcmd_batch",
+        "REFERENCED_COLUMN_NAME": "id"
+      }
+    ],
+    "fk_rules": [
+      {
+        "CONSTRAINT_NAME": "fk_dqa_run_batch",
+        "UNIQUE_CONSTRAINT_NAME": "PRIMARY",
+        "MATCH_OPTION": "NONE",
+        "UPDATE_RULE": "NO ACTION",
+        "DELETE_RULE": "RESTRICT"
+      }
+    ],
+    "checks": [
+      {
+        "CONSTRAINT_NAME": "ck_dqa_run_complete",
+        "CHECK_CLAUSE": "((`status` <> _utf8mb4\\'COMPLETED\\') or ((`processed` = `total`) and (`completed_at` is not null)))",
+        "ENFORCED": "YES"
+      },
+      {
+        "CONSTRAINT_NAME": "ck_dqa_run_counts",
+        "CHECK_CLAUSE": "((`processed` = (((`passed` + `failed`) + `review_count`) + `excluded_count`)) and (`processed` <= `total`))",
+        "ENFORCED": "YES"
+      },
+      {
+        "CONSTRAINT_NAME": "ck_dqa_run_status",
+        "CHECK_CLAUSE": "(`status` in (_utf8mb4\\'QUEUED\\',_utf8mb4\\'RUNNING\\',_utf8mb4\\'RETRYING\\',_utf8mb4\\'FAILED\\',_utf8mb4\\'COMPLETED\\'))",
+        "ENFORCED": "YES"
+      }
+    ]
+  },
+  "bcmd_dqa_result": {
+    "table": [
+      {
+        "ENGINE": "InnoDB",
+        "TABLE_COLLATION": "utf8mb4_0900_ai_ci"
+      }
+    ],
+    "columns": [
+      {
+        "COLUMN_NAME": "id",
+        "ORDINAL_POSITION": 1,
+        "COLUMN_TYPE": "bigint unsigned",
+        "IS_NULLABLE": "NO",
+        "COLUMN_DEFAULT": null,
+        "EXTRA": "auto_increment",
+        "CHARACTER_SET_NAME": null,
+        "COLLATION_NAME": null,
+        "GENERATION_EXPRESSION": "",
+        "COLUMN_COMMENT": ""
+      },
+      {
+        "COLUMN_NAME": "run_id",
+        "ORDINAL_POSITION": 2,
+        "COLUMN_TYPE": "bigint unsigned",
+        "IS_NULLABLE": "NO",
+        "COLUMN_DEFAULT": null,
+        "EXTRA": "",
+        "CHARACTER_SET_NAME": null,
+        "COLLATION_NAME": null,
+        "GENERATION_EXPRESSION": "",
+        "COLUMN_COMMENT": ""
+      },
+      {
+        "COLUMN_NAME": "member_id",
+        "ORDINAL_POSITION": 3,
+        "COLUMN_TYPE": "bigint unsigned",
+        "IS_NULLABLE": "NO",
+        "COLUMN_DEFAULT": null,
+        "EXTRA": "",
+        "CHARACTER_SET_NAME": null,
+        "COLLATION_NAME": null,
+        "GENERATION_EXPRESSION": "",
+        "COLUMN_COMMENT": ""
+      },
+      {
+        "COLUMN_NAME": "line_no",
+        "ORDINAL_POSITION": 4,
+        "COLUMN_TYPE": "int unsigned",
+        "IS_NULLABLE": "NO",
+        "COLUMN_DEFAULT": null,
+        "EXTRA": "",
+        "CHARACTER_SET_NAME": null,
+        "COLLATION_NAME": null,
+        "GENERATION_EXPRESSION": "",
+        "COLUMN_COMMENT": ""
+      },
+      {
+        "COLUMN_NAME": "outcome",
+        "ORDINAL_POSITION": 5,
+        "COLUMN_TYPE": "varchar(8)",
+        "IS_NULLABLE": "NO",
+        "COLUMN_DEFAULT": null,
+        "EXTRA": "",
+        "CHARACTER_SET_NAME": "utf8mb4",
+        "COLLATION_NAME": "utf8mb4_0900_ai_ci",
+        "GENERATION_EXPRESSION": "",
+        "COLUMN_COMMENT": ""
+      },
+      {
+        "COLUMN_NAME": "findings_json",
+        "ORDINAL_POSITION": 6,
+        "COLUMN_TYPE": "json",
+        "IS_NULLABLE": "NO",
+        "COLUMN_DEFAULT": null,
+        "EXTRA": "",
+        "CHARACTER_SET_NAME": null,
+        "COLLATION_NAME": null,
+        "GENERATION_EXPRESSION": "",
+        "COLUMN_COMMENT": ""
+      }
+    ],
+    "indexes": [
+      {
+        "INDEX_NAME": "fk_dqa_result_member",
+        "NON_UNIQUE": 1,
+        "SEQ_IN_INDEX": 1,
+        "COLUMN_NAME": "member_id",
+        "SUB_PART": null,
+        "COLLATION": "A",
+        "INDEX_TYPE": "BTREE",
+        "IS_VISIBLE": "YES",
+        "EXPRESSION": null
+      },
+      {
+        "INDEX_NAME": "ix_dqa_result_page",
+        "NON_UNIQUE": 1,
+        "SEQ_IN_INDEX": 1,
+        "COLUMN_NAME": "run_id",
+        "SUB_PART": null,
+        "COLLATION": "A",
+        "INDEX_TYPE": "BTREE",
+        "IS_VISIBLE": "YES",
+        "EXPRESSION": null
+      },
+      {
+        "INDEX_NAME": "ix_dqa_result_page",
+        "NON_UNIQUE": 1,
+        "SEQ_IN_INDEX": 2,
+        "COLUMN_NAME": "line_no",
+        "SUB_PART": null,
+        "COLLATION": "A",
+        "INDEX_TYPE": "BTREE",
+        "IS_VISIBLE": "YES",
+        "EXPRESSION": null
+      },
+      {
+        "INDEX_NAME": "PRIMARY",
+        "NON_UNIQUE": 0,
+        "SEQ_IN_INDEX": 1,
+        "COLUMN_NAME": "id",
+        "SUB_PART": null,
+        "COLLATION": "A",
+        "INDEX_TYPE": "BTREE",
+        "IS_VISIBLE": "YES",
+        "EXPRESSION": null
+      },
+      {
+        "INDEX_NAME": "uq_dqa_result",
+        "NON_UNIQUE": 0,
+        "SEQ_IN_INDEX": 1,
+        "COLUMN_NAME": "run_id",
+        "SUB_PART": null,
+        "COLLATION": "A",
+        "INDEX_TYPE": "BTREE",
+        "IS_VISIBLE": "YES",
+        "EXPRESSION": null
+      },
+      {
+        "INDEX_NAME": "uq_dqa_result",
+        "NON_UNIQUE": 0,
+        "SEQ_IN_INDEX": 2,
+        "COLUMN_NAME": "member_id",
+        "SUB_PART": null,
+        "COLLATION": "A",
+        "INDEX_TYPE": "BTREE",
+        "IS_VISIBLE": "YES",
+        "EXPRESSION": null
+      }
+    ],
+    "fks": [
+      {
+        "CONSTRAINT_NAME": "fk_dqa_result_member",
+        "COLUMN_NAME": "member_id",
+        "ORDINAL_POSITION": 1,
+        "POSITION_IN_UNIQUE_CONSTRAINT": 1,
+        "REFERENCED_TABLE_NAME": "bcmd_batch_member",
+        "REFERENCED_COLUMN_NAME": "id"
+      },
+      {
+        "CONSTRAINT_NAME": "fk_dqa_result_run",
+        "COLUMN_NAME": "run_id",
+        "ORDINAL_POSITION": 1,
+        "POSITION_IN_UNIQUE_CONSTRAINT": 1,
+        "REFERENCED_TABLE_NAME": "bcmd_dqa_run",
+        "REFERENCED_COLUMN_NAME": "id"
+      }
+    ],
+    "fk_rules": [
+      {
+        "CONSTRAINT_NAME": "fk_dqa_result_member",
+        "UNIQUE_CONSTRAINT_NAME": "PRIMARY",
+        "MATCH_OPTION": "NONE",
+        "UPDATE_RULE": "NO ACTION",
+        "DELETE_RULE": "RESTRICT"
+      },
+      {
+        "CONSTRAINT_NAME": "fk_dqa_result_run",
+        "UNIQUE_CONSTRAINT_NAME": "PRIMARY",
+        "MATCH_OPTION": "NONE",
+        "UPDATE_RULE": "NO ACTION",
+        "DELETE_RULE": "RESTRICT"
+      }
+    ],
+    "checks": [
+      {
+        "CONSTRAINT_NAME": "ck_dqa_result_outcome",
+        "CHECK_CLAUSE": "(`outcome` in (_utf8mb4\\'PASS\\',_utf8mb4\\'FAIL\\',_utf8mb4\\'REVIEW\\',_utf8mb4\\'EXCLUDED\\'))",
+        "ENFORCED": "YES"
+      }
+    ]
+  },
+  "bcmd_claim_conflict": {
+    "table": [
+      {
+        "ENGINE": "InnoDB",
+        "TABLE_COLLATION": "utf8mb4_0900_ai_ci"
+      }
+    ],
+    "columns": [
+      {
+        "COLUMN_NAME": "id",
+        "ORDINAL_POSITION": 1,
+        "COLUMN_TYPE": "bigint unsigned",
+        "IS_NULLABLE": "NO",
+        "COLUMN_DEFAULT": null,
+        "EXTRA": "auto_increment",
+        "CHARACTER_SET_NAME": null,
+        "COLLATION_NAME": null,
+        "GENERATION_EXPRESSION": "",
+        "COLUMN_COMMENT": ""
+      },
+      {
+        "COLUMN_NAME": "public_id",
+        "ORDINAL_POSITION": 2,
+        "COLUMN_TYPE": "char(36)",
+        "IS_NULLABLE": "NO",
+        "COLUMN_DEFAULT": null,
+        "EXTRA": "",
+        "CHARACTER_SET_NAME": "ascii",
+        "COLLATION_NAME": "ascii_bin",
+        "GENERATION_EXPRESSION": "",
+        "COLUMN_COMMENT": ""
+      },
+      {
+        "COLUMN_NAME": "member_ref",
+        "ORDINAL_POSITION": 3,
+        "COLUMN_TYPE": "varchar(32)",
+        "IS_NULLABLE": "NO",
+        "COLUMN_DEFAULT": null,
+        "EXTRA": "",
+        "CHARACTER_SET_NAME": "utf8mb4",
+        "COLLATION_NAME": "utf8mb4_0900_ai_ci",
+        "GENERATION_EXPRESSION": "",
+        "COLUMN_COMMENT": ""
+      },
+      {
+        "COLUMN_NAME": "academic_year",
+        "ORDINAL_POSITION": 4,
+        "COLUMN_TYPE": "varchar(20)",
+        "IS_NULLABLE": "NO",
+        "COLUMN_DEFAULT": "",
+        "EXTRA": "",
+        "CHARACTER_SET_NAME": "utf8mb4",
+        "COLLATION_NAME": "utf8mb4_0900_ai_ci",
+        "GENERATION_EXPRESSION": "",
+        "COLUMN_COMMENT": ""
+      },
+      {
+        "COLUMN_NAME": "semester",
+        "ORDINAL_POSITION": 5,
+        "COLUMN_TYPE": "int",
+        "IS_NULLABLE": "NO",
+        "COLUMN_DEFAULT": "0",
+        "EXTRA": "",
+        "CHARACTER_SET_NAME": null,
+        "COLLATION_NAME": null,
+        "GENERATION_EXPRESSION": "",
+        "COLUMN_COMMENT": ""
+      },
+      {
+        "COLUMN_NAME": "version",
+        "ORDINAL_POSITION": 6,
+        "COLUMN_TYPE": "int unsigned",
+        "IS_NULLABLE": "NO",
+        "COLUMN_DEFAULT": "0",
+        "EXTRA": "",
+        "CHARACTER_SET_NAME": null,
+        "COLLATION_NAME": null,
+        "GENERATION_EXPRESSION": "",
+        "COLUMN_COMMENT": ""
+      },
+      {
+        "COLUMN_NAME": "current_resolution_id",
+        "ORDINAL_POSITION": 7,
+        "COLUMN_TYPE": "bigint unsigned",
+        "IS_NULLABLE": "YES",
+        "COLUMN_DEFAULT": null,
+        "EXTRA": "",
+        "CHARACTER_SET_NAME": null,
+        "COLLATION_NAME": null,
+        "GENERATION_EXPRESSION": "",
+        "COLUMN_COMMENT": ""
+      },
+      {
+        "COLUMN_NAME": "created_at",
+        "ORDINAL_POSITION": 8,
+        "COLUMN_TYPE": "datetime(6)",
+        "IS_NULLABLE": "NO",
+        "COLUMN_DEFAULT": "CURRENT_TIMESTAMP(6)",
+        "EXTRA": "DEFAULT_GENERATED",
+        "CHARACTER_SET_NAME": null,
+        "COLLATION_NAME": null,
+        "GENERATION_EXPRESSION": "",
+        "COLUMN_COMMENT": ""
+      },
+      {
+        "COLUMN_NAME": "updated_at",
+        "ORDINAL_POSITION": 9,
+        "COLUMN_TYPE": "datetime(6)",
+        "IS_NULLABLE": "NO",
+        "COLUMN_DEFAULT": "CURRENT_TIMESTAMP(6)",
+        "EXTRA": "DEFAULT_GENERATED",
+        "CHARACTER_SET_NAME": null,
+        "COLLATION_NAME": null,
+        "GENERATION_EXPRESSION": "",
+        "COLUMN_COMMENT": ""
+      }
+    ],
+    "indexes": [
+      {
+        "INDEX_NAME": "ix_bcmd_conflict_current",
+        "NON_UNIQUE": 1,
+        "SEQ_IN_INDEX": 1,
+        "COLUMN_NAME": "id",
+        "SUB_PART": null,
+        "COLLATION": "A",
+        "INDEX_TYPE": "BTREE",
+        "IS_VISIBLE": "YES",
+        "EXPRESSION": null
+      },
+      {
+        "INDEX_NAME": "ix_bcmd_conflict_current",
+        "NON_UNIQUE": 1,
+        "SEQ_IN_INDEX": 2,
+        "COLUMN_NAME": "current_resolution_id",
+        "SUB_PART": null,
+        "COLLATION": "A",
+        "INDEX_TYPE": "BTREE",
+        "IS_VISIBLE": "YES",
+        "EXPRESSION": null
+      },
+      {
+        "INDEX_NAME": "PRIMARY",
+        "NON_UNIQUE": 0,
+        "SEQ_IN_INDEX": 1,
+        "COLUMN_NAME": "id",
+        "SUB_PART": null,
+        "COLLATION": "A",
+        "INDEX_TYPE": "BTREE",
+        "IS_VISIBLE": "YES",
+        "EXPRESSION": null
+      },
+      {
+        "INDEX_NAME": "uq_bcmd_conflict_claim",
+        "NON_UNIQUE": 0,
+        "SEQ_IN_INDEX": 1,
+        "COLUMN_NAME": "member_ref",
+        "SUB_PART": null,
+        "COLLATION": "A",
+        "INDEX_TYPE": "BTREE",
+        "IS_VISIBLE": "YES",
+        "EXPRESSION": null
+      },
+      {
+        "INDEX_NAME": "uq_bcmd_conflict_claim",
+        "NON_UNIQUE": 0,
+        "SEQ_IN_INDEX": 2,
+        "COLUMN_NAME": "academic_year",
+        "SUB_PART": null,
+        "COLLATION": "A",
+        "INDEX_TYPE": "BTREE",
+        "IS_VISIBLE": "YES",
+        "EXPRESSION": null
+      },
+      {
+        "INDEX_NAME": "uq_bcmd_conflict_claim",
+        "NON_UNIQUE": 0,
+        "SEQ_IN_INDEX": 3,
+        "COLUMN_NAME": "semester",
+        "SUB_PART": null,
+        "COLLATION": "A",
+        "INDEX_TYPE": "BTREE",
+        "IS_VISIBLE": "YES",
+        "EXPRESSION": null
+      },
+      {
+        "INDEX_NAME": "uq_bcmd_conflict_public",
+        "NON_UNIQUE": 0,
+        "SEQ_IN_INDEX": 1,
+        "COLUMN_NAME": "public_id",
+        "SUB_PART": null,
+        "COLLATION": "A",
+        "INDEX_TYPE": "BTREE",
+        "IS_VISIBLE": "YES",
+        "EXPRESSION": null
+      }
+    ],
+    "fks": [
+      {
+        "CONSTRAINT_NAME": "fk_bcmd_conflict_current",
+        "COLUMN_NAME": "id",
+        "ORDINAL_POSITION": 1,
+        "POSITION_IN_UNIQUE_CONSTRAINT": 1,
+        "REFERENCED_TABLE_NAME": "bcmd_claim_resolution",
+        "REFERENCED_COLUMN_NAME": "conflict_id"
+      },
+      {
+        "CONSTRAINT_NAME": "fk_bcmd_conflict_current",
+        "COLUMN_NAME": "current_resolution_id",
+        "ORDINAL_POSITION": 2,
+        "POSITION_IN_UNIQUE_CONSTRAINT": 2,
+        "REFERENCED_TABLE_NAME": "bcmd_claim_resolution",
+        "REFERENCED_COLUMN_NAME": "id"
+      }
+    ],
+    "fk_rules": [
+      {
+        "CONSTRAINT_NAME": "fk_bcmd_conflict_current",
+        "UNIQUE_CONSTRAINT_NAME": "uq_bcmd_resolution_conflict",
+        "MATCH_OPTION": "NONE",
+        "UPDATE_RULE": "NO ACTION",
+        "DELETE_RULE": "RESTRICT"
+      }
+    ],
+    "checks": [
+      {
+        "CONSTRAINT_NAME": "ck_bcmd_conflict_ref",
+        "CHECK_CLAUSE": "(`member_ref` <> _utf8mb4\\'\\')",
+        "ENFORCED": "YES"
+      }
+    ]
+  },
+  "bcmd_claim_resolution": {
+    "table": [
+      {
+        "ENGINE": "InnoDB",
+        "TABLE_COLLATION": "utf8mb4_0900_ai_ci"
+      }
+    ],
+    "columns": [
+      {
+        "COLUMN_NAME": "id",
+        "ORDINAL_POSITION": 1,
+        "COLUMN_TYPE": "bigint unsigned",
+        "IS_NULLABLE": "NO",
+        "COLUMN_DEFAULT": null,
+        "EXTRA": "auto_increment",
+        "CHARACTER_SET_NAME": null,
+        "COLLATION_NAME": null,
+        "GENERATION_EXPRESSION": "",
+        "COLUMN_COMMENT": ""
+      },
+      {
+        "COLUMN_NAME": "public_id",
+        "ORDINAL_POSITION": 2,
+        "COLUMN_TYPE": "char(36)",
+        "IS_NULLABLE": "NO",
+        "COLUMN_DEFAULT": null,
+        "EXTRA": "",
+        "CHARACTER_SET_NAME": "ascii",
+        "COLLATION_NAME": "ascii_bin",
+        "GENERATION_EXPRESSION": "",
+        "COLUMN_COMMENT": ""
+      },
+      {
+        "COLUMN_NAME": "conflict_id",
+        "ORDINAL_POSITION": 3,
+        "COLUMN_TYPE": "bigint unsigned",
+        "IS_NULLABLE": "NO",
+        "COLUMN_DEFAULT": null,
+        "EXTRA": "",
+        "CHARACTER_SET_NAME": null,
+        "COLLATION_NAME": null,
+        "GENERATION_EXPRESSION": "",
+        "COLUMN_COMMENT": ""
+      },
+      {
+        "COLUMN_NAME": "version",
+        "ORDINAL_POSITION": 4,
+        "COLUMN_TYPE": "int unsigned",
+        "IS_NULLABLE": "NO",
+        "COLUMN_DEFAULT": null,
+        "EXTRA": "",
+        "CHARACTER_SET_NAME": null,
+        "COLLATION_NAME": null,
+        "GENERATION_EXPRESSION": "",
+        "COLUMN_COMMENT": ""
+      },
+      {
+        "COLUMN_NAME": "action",
+        "ORDINAL_POSITION": 5,
+        "COLUMN_TYPE": "varchar(8)",
+        "IS_NULLABLE": "NO",
+        "COLUMN_DEFAULT": null,
+        "EXTRA": "",
+        "CHARACTER_SET_NAME": "utf8mb4",
+        "COLLATION_NAME": "utf8mb4_0900_ai_ci",
+        "GENERATION_EXPRESSION": "",
+        "COLUMN_COMMENT": ""
+      },
+      {
+        "COLUMN_NAME": "retained_batch_id",
+        "ORDINAL_POSITION": 6,
+        "COLUMN_TYPE": "bigint unsigned",
+        "IS_NULLABLE": "YES",
+        "COLUMN_DEFAULT": null,
+        "EXTRA": "",
+        "CHARACTER_SET_NAME": null,
+        "COLLATION_NAME": null,
+        "GENERATION_EXPRESSION": "",
+        "COLUMN_COMMENT": ""
+      },
+      {
+        "COLUMN_NAME": "retained_member_id",
+        "ORDINAL_POSITION": 7,
+        "COLUMN_TYPE": "bigint unsigned",
+        "IS_NULLABLE": "YES",
+        "COLUMN_DEFAULT": null,
+        "EXTRA": "",
+        "CHARACTER_SET_NAME": null,
+        "COLLATION_NAME": null,
+        "GENERATION_EXPRESSION": "",
+        "COLUMN_COMMENT": ""
+      },
+      {
+        "COLUMN_NAME": "reverses_resolution_id",
+        "ORDINAL_POSITION": 8,
+        "COLUMN_TYPE": "bigint unsigned",
+        "IS_NULLABLE": "YES",
+        "COLUMN_DEFAULT": null,
+        "EXTRA": "",
+        "CHARACTER_SET_NAME": null,
+        "COLLATION_NAME": null,
+        "GENERATION_EXPRESSION": "",
+        "COLUMN_COMMENT": ""
+      },
+      {
+        "COLUMN_NAME": "reason",
+        "ORDINAL_POSITION": 9,
+        "COLUMN_TYPE": "varchar(500)",
+        "IS_NULLABLE": "NO",
+        "COLUMN_DEFAULT": null,
+        "EXTRA": "",
+        "CHARACTER_SET_NAME": "utf8mb4",
+        "COLLATION_NAME": "utf8mb4_0900_ai_ci",
+        "GENERATION_EXPRESSION": "",
+        "COLUMN_COMMENT": ""
+      },
+      {
+        "COLUMN_NAME": "actor_api_user_id",
+        "ORDINAL_POSITION": 10,
+        "COLUMN_TYPE": "int",
+        "IS_NULLABLE": "YES",
+        "COLUMN_DEFAULT": null,
+        "EXTRA": "",
+        "CHARACTER_SET_NAME": null,
+        "COLLATION_NAME": null,
+        "GENERATION_EXPRESSION": "",
+        "COLUMN_COMMENT": ""
+      },
+      {
+        "COLUMN_NAME": "actor_staff_user_id",
+        "ORDINAL_POSITION": 11,
+        "COLUMN_TYPE": "bigint unsigned",
+        "IS_NULLABLE": "YES",
+        "COLUMN_DEFAULT": null,
+        "EXTRA": "",
+        "CHARACTER_SET_NAME": null,
+        "COLLATION_NAME": null,
+        "GENERATION_EXPRESSION": "",
+        "COLUMN_COMMENT": ""
+      },
+      {
+        "COLUMN_NAME": "actor_label",
+        "ORDINAL_POSITION": 12,
+        "COLUMN_TYPE": "varchar(64)",
+        "IS_NULLABLE": "NO",
+        "COLUMN_DEFAULT": null,
+        "EXTRA": "",
+        "CHARACTER_SET_NAME": "utf8mb4",
+        "COLLATION_NAME": "utf8mb4_0900_ai_ci",
+        "GENERATION_EXPRESSION": "",
+        "COLUMN_COMMENT": ""
+      },
+      {
+        "COLUMN_NAME": "actor_agency",
+        "ORDINAL_POSITION": 13,
+        "COLUMN_TYPE": "varchar(16)",
+        "IS_NULLABLE": "NO",
+        "COLUMN_DEFAULT": null,
+        "EXTRA": "",
+        "CHARACTER_SET_NAME": "utf8mb4",
+        "COLLATION_NAME": "utf8mb4_0900_ai_ci",
+        "GENERATION_EXPRESSION": "",
+        "COLUMN_COMMENT": ""
+      },
+      {
+        "COLUMN_NAME": "request_id",
+        "ORDINAL_POSITION": 14,
+        "COLUMN_TYPE": "varchar(64)",
+        "IS_NULLABLE": "NO",
+        "COLUMN_DEFAULT": null,
+        "EXTRA": "",
+        "CHARACTER_SET_NAME": "utf8mb4",
+        "COLLATION_NAME": "utf8mb4_0900_ai_ci",
+        "GENERATION_EXPRESSION": "",
+        "COLUMN_COMMENT": ""
+      },
+      {
+        "COLUMN_NAME": "idempotency_key",
+        "ORDINAL_POSITION": 15,
+        "COLUMN_TYPE": "char(36)",
+        "IS_NULLABLE": "NO",
+        "COLUMN_DEFAULT": null,
+        "EXTRA": "",
+        "CHARACTER_SET_NAME": "ascii",
+        "COLLATION_NAME": "ascii_bin",
+        "GENERATION_EXPRESSION": "",
+        "COLUMN_COMMENT": ""
+      },
+      {
+        "COLUMN_NAME": "request_hash",
+        "ORDINAL_POSITION": 16,
+        "COLUMN_TYPE": "char(64)",
+        "IS_NULLABLE": "NO",
+        "COLUMN_DEFAULT": null,
+        "EXTRA": "",
+        "CHARACTER_SET_NAME": "ascii",
+        "COLLATION_NAME": "ascii_bin",
+        "GENERATION_EXPRESSION": "",
+        "COLUMN_COMMENT": ""
+      },
+      {
+        "COLUMN_NAME": "created_at",
+        "ORDINAL_POSITION": 17,
+        "COLUMN_TYPE": "datetime(6)",
+        "IS_NULLABLE": "NO",
+        "COLUMN_DEFAULT": "CURRENT_TIMESTAMP(6)",
+        "EXTRA": "DEFAULT_GENERATED",
+        "CHARACTER_SET_NAME": null,
+        "COLLATION_NAME": null,
+        "GENERATION_EXPRESSION": "",
+        "COLUMN_COMMENT": ""
+      }
+    ],
+    "indexes": [
+      {
+        "INDEX_NAME": "ix_bcmd_resolution_retained",
+        "NON_UNIQUE": 1,
+        "SEQ_IN_INDEX": 1,
+        "COLUMN_NAME": "retained_batch_id",
+        "SUB_PART": null,
+        "COLLATION": "A",
+        "INDEX_TYPE": "BTREE",
+        "IS_VISIBLE": "YES",
+        "EXPRESSION": null
+      },
+      {
+        "INDEX_NAME": "ix_bcmd_resolution_retained",
+        "NON_UNIQUE": 1,
+        "SEQ_IN_INDEX": 2,
+        "COLUMN_NAME": "retained_member_id",
+        "SUB_PART": null,
+        "COLLATION": "A",
+        "INDEX_TYPE": "BTREE",
+        "IS_VISIBLE": "YES",
+        "EXPRESSION": null
+      },
+      {
+        "INDEX_NAME": "PRIMARY",
+        "NON_UNIQUE": 0,
+        "SEQ_IN_INDEX": 1,
+        "COLUMN_NAME": "id",
+        "SUB_PART": null,
+        "COLLATION": "A",
+        "INDEX_TYPE": "BTREE",
+        "IS_VISIBLE": "YES",
+        "EXPRESSION": null
+      },
+      {
+        "INDEX_NAME": "uq_bcmd_resolution_api_idem",
+        "NON_UNIQUE": 0,
+        "SEQ_IN_INDEX": 1,
+        "COLUMN_NAME": "actor_api_user_id",
+        "SUB_PART": null,
+        "COLLATION": "A",
+        "INDEX_TYPE": "BTREE",
+        "IS_VISIBLE": "YES",
+        "EXPRESSION": null
+      },
+      {
+        "INDEX_NAME": "uq_bcmd_resolution_api_idem",
+        "NON_UNIQUE": 0,
+        "SEQ_IN_INDEX": 2,
+        "COLUMN_NAME": "idempotency_key",
+        "SUB_PART": null,
+        "COLLATION": "A",
+        "INDEX_TYPE": "BTREE",
+        "IS_VISIBLE": "YES",
+        "EXPRESSION": null
+      },
+      {
+        "INDEX_NAME": "uq_bcmd_resolution_conflict",
+        "NON_UNIQUE": 0,
+        "SEQ_IN_INDEX": 1,
+        "COLUMN_NAME": "conflict_id",
+        "SUB_PART": null,
+        "COLLATION": "A",
+        "INDEX_TYPE": "BTREE",
+        "IS_VISIBLE": "YES",
+        "EXPRESSION": null
+      },
+      {
+        "INDEX_NAME": "uq_bcmd_resolution_conflict",
+        "NON_UNIQUE": 0,
+        "SEQ_IN_INDEX": 2,
+        "COLUMN_NAME": "id",
+        "SUB_PART": null,
+        "COLLATION": "A",
+        "INDEX_TYPE": "BTREE",
+        "IS_VISIBLE": "YES",
+        "EXPRESSION": null
+      },
+      {
+        "INDEX_NAME": "uq_bcmd_resolution_public",
+        "NON_UNIQUE": 0,
+        "SEQ_IN_INDEX": 1,
+        "COLUMN_NAME": "public_id",
+        "SUB_PART": null,
+        "COLLATION": "A",
+        "INDEX_TYPE": "BTREE",
+        "IS_VISIBLE": "YES",
+        "EXPRESSION": null
+      },
+      {
+        "INDEX_NAME": "uq_bcmd_resolution_reversal",
+        "NON_UNIQUE": 0,
+        "SEQ_IN_INDEX": 1,
+        "COLUMN_NAME": "conflict_id",
+        "SUB_PART": null,
+        "COLLATION": "A",
+        "INDEX_TYPE": "BTREE",
+        "IS_VISIBLE": "YES",
+        "EXPRESSION": null
+      },
+      {
+        "INDEX_NAME": "uq_bcmd_resolution_reversal",
+        "NON_UNIQUE": 0,
+        "SEQ_IN_INDEX": 2,
+        "COLUMN_NAME": "reverses_resolution_id",
+        "SUB_PART": null,
+        "COLLATION": "A",
+        "INDEX_TYPE": "BTREE",
+        "IS_VISIBLE": "YES",
+        "EXPRESSION": null
+      },
+      {
+        "INDEX_NAME": "uq_bcmd_resolution_staff_idem",
+        "NON_UNIQUE": 0,
+        "SEQ_IN_INDEX": 1,
+        "COLUMN_NAME": "actor_staff_user_id",
+        "SUB_PART": null,
+        "COLLATION": "A",
+        "INDEX_TYPE": "BTREE",
+        "IS_VISIBLE": "YES",
+        "EXPRESSION": null
+      },
+      {
+        "INDEX_NAME": "uq_bcmd_resolution_staff_idem",
+        "NON_UNIQUE": 0,
+        "SEQ_IN_INDEX": 2,
+        "COLUMN_NAME": "idempotency_key",
+        "SUB_PART": null,
+        "COLLATION": "A",
+        "INDEX_TYPE": "BTREE",
+        "IS_VISIBLE": "YES",
+        "EXPRESSION": null
+      },
+      {
+        "INDEX_NAME": "uq_bcmd_resolution_version",
+        "NON_UNIQUE": 0,
+        "SEQ_IN_INDEX": 1,
+        "COLUMN_NAME": "conflict_id",
+        "SUB_PART": null,
+        "COLLATION": "A",
+        "INDEX_TYPE": "BTREE",
+        "IS_VISIBLE": "YES",
+        "EXPRESSION": null
+      },
+      {
+        "INDEX_NAME": "uq_bcmd_resolution_version",
+        "NON_UNIQUE": 0,
+        "SEQ_IN_INDEX": 2,
+        "COLUMN_NAME": "version",
+        "SUB_PART": null,
+        "COLLATION": "A",
+        "INDEX_TYPE": "BTREE",
+        "IS_VISIBLE": "YES",
+        "EXPRESSION": null
+      }
+    ],
+    "fks": [
+      {
+        "CONSTRAINT_NAME": "fk_bcmd_resolution_api_actor",
+        "COLUMN_NAME": "actor_api_user_id",
+        "ORDINAL_POSITION": 1,
+        "POSITION_IN_UNIQUE_CONSTRAINT": 1,
+        "REFERENCED_TABLE_NAME": "api_users",
+        "REFERENCED_COLUMN_NAME": "id"
+      },
+      {
+        "CONSTRAINT_NAME": "fk_bcmd_resolution_conflict",
+        "COLUMN_NAME": "conflict_id",
+        "ORDINAL_POSITION": 1,
+        "POSITION_IN_UNIQUE_CONSTRAINT": 1,
+        "REFERENCED_TABLE_NAME": "bcmd_claim_conflict",
+        "REFERENCED_COLUMN_NAME": "id"
+      },
+      {
+        "CONSTRAINT_NAME": "fk_bcmd_resolution_retained",
+        "COLUMN_NAME": "retained_batch_id",
+        "ORDINAL_POSITION": 1,
+        "POSITION_IN_UNIQUE_CONSTRAINT": 1,
+        "REFERENCED_TABLE_NAME": "bcmd_batch_member",
+        "REFERENCED_COLUMN_NAME": "batch_id"
+      },
+      {
+        "CONSTRAINT_NAME": "fk_bcmd_resolution_retained",
+        "COLUMN_NAME": "retained_member_id",
+        "ORDINAL_POSITION": 2,
+        "POSITION_IN_UNIQUE_CONSTRAINT": 2,
+        "REFERENCED_TABLE_NAME": "bcmd_batch_member",
+        "REFERENCED_COLUMN_NAME": "id"
+      },
+      {
+        "CONSTRAINT_NAME": "fk_bcmd_resolution_reverses",
+        "COLUMN_NAME": "conflict_id",
+        "ORDINAL_POSITION": 1,
+        "POSITION_IN_UNIQUE_CONSTRAINT": 1,
+        "REFERENCED_TABLE_NAME": "bcmd_claim_resolution",
+        "REFERENCED_COLUMN_NAME": "conflict_id"
+      },
+      {
+        "CONSTRAINT_NAME": "fk_bcmd_resolution_reverses",
+        "COLUMN_NAME": "reverses_resolution_id",
+        "ORDINAL_POSITION": 2,
+        "POSITION_IN_UNIQUE_CONSTRAINT": 2,
+        "REFERENCED_TABLE_NAME": "bcmd_claim_resolution",
+        "REFERENCED_COLUMN_NAME": "id"
+      },
+      {
+        "CONSTRAINT_NAME": "fk_bcmd_resolution_staff_actor",
+        "COLUMN_NAME": "actor_staff_user_id",
+        "ORDINAL_POSITION": 1,
+        "POSITION_IN_UNIQUE_CONSTRAINT": 1,
+        "REFERENCED_TABLE_NAME": "staff_users",
+        "REFERENCED_COLUMN_NAME": "id"
+      }
+    ],
+    "fk_rules": [
+      {
+        "CONSTRAINT_NAME": "fk_bcmd_resolution_api_actor",
+        "UNIQUE_CONSTRAINT_NAME": "PRIMARY",
+        "MATCH_OPTION": "NONE",
+        "UPDATE_RULE": "NO ACTION",
+        "DELETE_RULE": "RESTRICT"
+      },
+      {
+        "CONSTRAINT_NAME": "fk_bcmd_resolution_conflict",
+        "UNIQUE_CONSTRAINT_NAME": "PRIMARY",
+        "MATCH_OPTION": "NONE",
+        "UPDATE_RULE": "NO ACTION",
+        "DELETE_RULE": "RESTRICT"
+      },
+      {
+        "CONSTRAINT_NAME": "fk_bcmd_resolution_retained",
+        "UNIQUE_CONSTRAINT_NAME": "uq_bcmd_member_batch_id",
+        "MATCH_OPTION": "NONE",
+        "UPDATE_RULE": "NO ACTION",
+        "DELETE_RULE": "RESTRICT"
+      },
+      {
+        "CONSTRAINT_NAME": "fk_bcmd_resolution_reverses",
+        "UNIQUE_CONSTRAINT_NAME": "uq_bcmd_resolution_conflict",
+        "MATCH_OPTION": "NONE",
+        "UPDATE_RULE": "NO ACTION",
+        "DELETE_RULE": "RESTRICT"
+      },
+      {
+        "CONSTRAINT_NAME": "fk_bcmd_resolution_staff_actor",
+        "UNIQUE_CONSTRAINT_NAME": "PRIMARY",
+        "MATCH_OPTION": "NONE",
+        "UPDATE_RULE": "NO ACTION",
+        "DELETE_RULE": "RESTRICT"
+      }
+    ],
+    "checks": [
+      {
+        "CONSTRAINT_NAME": "ck_bcmd_resolution_action",
+        "CHECK_CLAUSE": "(((`action` = _utf8mb4\\'RESOLVE\\') and (`retained_batch_id` is not null) and (`retained_member_id` is not null) and (`reverses_resolution_id` is null)) or ((`action` = _utf8mb4\\'REVERSE\\') and (`retained_batch_id` is null) and (`retained_member_id` is null) and (`reverses_resolution_id` is not null)))",
+        "ENFORCED": "YES"
+      },
+      {
+        "CONSTRAINT_NAME": "ck_bcmd_resolution_actor",
+        "CHECK_CLAUSE": "(((`actor_api_user_id` is not null) + (`actor_staff_user_id` is not null)) = 1)",
+        "ENFORCED": "YES"
+      },
+      {
+        "CONSTRAINT_NAME": "ck_bcmd_resolution_fields",
+        "CHECK_CLAUSE": "((`version` > 0) and (char_length(`reason`) >= 10) and (`request_id` <> _utf8mb4\\'\\') and (`actor_label` <> _utf8mb4\\'\\'))",
+        "ENFORCED": "YES"
+      }
+    ]
+  },
+  "bcmd_claim_resolution_member": {
+    "table": [
+      {
+        "ENGINE": "InnoDB",
+        "TABLE_COLLATION": "utf8mb4_0900_ai_ci"
+      }
+    ],
+    "columns": [
+      {
+        "COLUMN_NAME": "resolution_id",
+        "ORDINAL_POSITION": 1,
+        "COLUMN_TYPE": "bigint unsigned",
+        "IS_NULLABLE": "NO",
+        "COLUMN_DEFAULT": null,
+        "EXTRA": "",
+        "CHARACTER_SET_NAME": null,
+        "COLLATION_NAME": null,
+        "GENERATION_EXPRESSION": "",
+        "COLUMN_COMMENT": ""
+      },
+      {
+        "COLUMN_NAME": "batch_id",
+        "ORDINAL_POSITION": 2,
+        "COLUMN_TYPE": "bigint unsigned",
+        "IS_NULLABLE": "NO",
+        "COLUMN_DEFAULT": null,
+        "EXTRA": "",
+        "CHARACTER_SET_NAME": null,
+        "COLLATION_NAME": null,
+        "GENERATION_EXPRESSION": "",
+        "COLUMN_COMMENT": ""
+      },
+      {
+        "COLUMN_NAME": "member_id",
+        "ORDINAL_POSITION": 3,
+        "COLUMN_TYPE": "bigint unsigned",
+        "IS_NULLABLE": "NO",
+        "COLUMN_DEFAULT": null,
+        "EXTRA": "",
+        "CHARACTER_SET_NAME": null,
+        "COLLATION_NAME": null,
+        "GENERATION_EXPRESSION": "",
+        "COLUMN_COMMENT": ""
+      },
+      {
+        "COLUMN_NAME": "decision",
+        "ORDINAL_POSITION": 4,
+        "COLUMN_TYPE": "varchar(8)",
+        "IS_NULLABLE": "NO",
+        "COLUMN_DEFAULT": null,
+        "EXTRA": "",
+        "CHARACTER_SET_NAME": "utf8mb4",
+        "COLLATION_NAME": "utf8mb4_0900_ai_ci",
+        "GENERATION_EXPRESSION": "",
+        "COLUMN_COMMENT": ""
+      },
+      {
+        "COLUMN_NAME": "retained_flag",
+        "ORDINAL_POSITION": 5,
+        "COLUMN_TYPE": "tinyint",
+        "IS_NULLABLE": "YES",
+        "COLUMN_DEFAULT": null,
+        "EXTRA": "STORED GENERATED",
+        "CHARACTER_SET_NAME": null,
+        "COLLATION_NAME": null,
+        "GENERATION_EXPRESSION": "if((`decision` = _utf8mb4\\'RETAINED\\'),1,NULL)",
+        "COLUMN_COMMENT": ""
+      }
+    ],
+    "indexes": [
+      {
+        "INDEX_NAME": "ix_bcmd_resolution_member_lookup",
+        "NON_UNIQUE": 1,
+        "SEQ_IN_INDEX": 1,
+        "COLUMN_NAME": "batch_id",
+        "SUB_PART": null,
+        "COLLATION": "A",
+        "INDEX_TYPE": "BTREE",
+        "IS_VISIBLE": "YES",
+        "EXPRESSION": null
+      },
+      {
+        "INDEX_NAME": "ix_bcmd_resolution_member_lookup",
+        "NON_UNIQUE": 1,
+        "SEQ_IN_INDEX": 2,
+        "COLUMN_NAME": "member_id",
+        "SUB_PART": null,
+        "COLLATION": "A",
+        "INDEX_TYPE": "BTREE",
+        "IS_VISIBLE": "YES",
+        "EXPRESSION": null
+      },
+      {
+        "INDEX_NAME": "PRIMARY",
+        "NON_UNIQUE": 0,
+        "SEQ_IN_INDEX": 1,
+        "COLUMN_NAME": "resolution_id",
+        "SUB_PART": null,
+        "COLLATION": "A",
+        "INDEX_TYPE": "BTREE",
+        "IS_VISIBLE": "YES",
+        "EXPRESSION": null
+      },
+      {
+        "INDEX_NAME": "PRIMARY",
+        "NON_UNIQUE": 0,
+        "SEQ_IN_INDEX": 2,
+        "COLUMN_NAME": "member_id",
+        "SUB_PART": null,
+        "COLLATION": "A",
+        "INDEX_TYPE": "BTREE",
+        "IS_VISIBLE": "YES",
+        "EXPRESSION": null
+      },
+      {
+        "INDEX_NAME": "uq_bcmd_resolution_member_retained",
+        "NON_UNIQUE": 0,
+        "SEQ_IN_INDEX": 1,
+        "COLUMN_NAME": "resolution_id",
+        "SUB_PART": null,
+        "COLLATION": "A",
+        "INDEX_TYPE": "BTREE",
+        "IS_VISIBLE": "YES",
+        "EXPRESSION": null
+      },
+      {
+        "INDEX_NAME": "uq_bcmd_resolution_member_retained",
+        "NON_UNIQUE": 0,
+        "SEQ_IN_INDEX": 2,
+        "COLUMN_NAME": "retained_flag",
+        "SUB_PART": null,
+        "COLLATION": "A",
+        "INDEX_TYPE": "BTREE",
+        "IS_VISIBLE": "YES",
+        "EXPRESSION": null
+      }
+    ],
+    "fks": [
+      {
+        "CONSTRAINT_NAME": "fk_bcmd_resolution_member_member",
+        "COLUMN_NAME": "batch_id",
+        "ORDINAL_POSITION": 1,
+        "POSITION_IN_UNIQUE_CONSTRAINT": 1,
+        "REFERENCED_TABLE_NAME": "bcmd_batch_member",
+        "REFERENCED_COLUMN_NAME": "batch_id"
+      },
+      {
+        "CONSTRAINT_NAME": "fk_bcmd_resolution_member_member",
+        "COLUMN_NAME": "member_id",
+        "ORDINAL_POSITION": 2,
+        "POSITION_IN_UNIQUE_CONSTRAINT": 2,
+        "REFERENCED_TABLE_NAME": "bcmd_batch_member",
+        "REFERENCED_COLUMN_NAME": "id"
+      },
+      {
+        "CONSTRAINT_NAME": "fk_bcmd_resolution_member_resolution",
+        "COLUMN_NAME": "resolution_id",
+        "ORDINAL_POSITION": 1,
+        "POSITION_IN_UNIQUE_CONSTRAINT": 1,
+        "REFERENCED_TABLE_NAME": "bcmd_claim_resolution",
+        "REFERENCED_COLUMN_NAME": "id"
+      }
+    ],
+    "fk_rules": [
+      {
+        "CONSTRAINT_NAME": "fk_bcmd_resolution_member_member",
+        "UNIQUE_CONSTRAINT_NAME": "uq_bcmd_member_batch_id",
+        "MATCH_OPTION": "NONE",
+        "UPDATE_RULE": "NO ACTION",
+        "DELETE_RULE": "RESTRICT"
+      },
+      {
+        "CONSTRAINT_NAME": "fk_bcmd_resolution_member_resolution",
+        "UNIQUE_CONSTRAINT_NAME": "PRIMARY",
+        "MATCH_OPTION": "NONE",
+        "UPDATE_RULE": "NO ACTION",
+        "DELETE_RULE": "RESTRICT"
+      }
+    ],
+    "checks": [
+      {
+        "CONSTRAINT_NAME": "ck_bcmd_resolution_member_decision",
+        "CHECK_CLAUSE": "(`decision` in (_utf8mb4\\'RETAINED\\',_utf8mb4\\'EXCLUDED\\'))",
+        "ENFORCED": "YES"
+      }
+    ]
+  },
+  "bcmd_payment_member_lock": {
+    "table": [
+      {
+        "ENGINE": "InnoDB",
+        "TABLE_COLLATION": "utf8mb4_0900_ai_ci"
+      }
+    ],
+    "columns": [
+      {
+        "COLUMN_NAME": "member_key",
+        "ORDINAL_POSITION": 1,
+        "COLUMN_TYPE": "char(64)",
+        "IS_NULLABLE": "NO",
+        "COLUMN_DEFAULT": null,
+        "EXTRA": "",
+        "CHARACTER_SET_NAME": "ascii",
+        "COLLATION_NAME": "ascii_bin",
+        "GENERATION_EXPRESSION": "",
+        "COLUMN_COMMENT": ""
+      },
+      {
+        "COLUMN_NAME": "created_at",
+        "ORDINAL_POSITION": 2,
+        "COLUMN_TYPE": "datetime(6)",
+        "IS_NULLABLE": "NO",
+        "COLUMN_DEFAULT": "CURRENT_TIMESTAMP(6)",
+        "EXTRA": "DEFAULT_GENERATED",
+        "CHARACTER_SET_NAME": null,
+        "COLLATION_NAME": null,
+        "GENERATION_EXPRESSION": "",
+        "COLUMN_COMMENT": ""
+      }
+    ],
+    "indexes": [
+      {
+        "INDEX_NAME": "PRIMARY",
+        "NON_UNIQUE": 0,
+        "SEQ_IN_INDEX": 1,
+        "COLUMN_NAME": "member_key",
+        "SUB_PART": null,
+        "COLLATION": "A",
+        "INDEX_TYPE": "BTREE",
+        "IS_VISIBLE": "YES",
+        "EXPRESSION": null
+      }
+    ],
+    "fks": [],
+    "fk_rules": [],
+    "checks": [
+      {
+        "CONSTRAINT_NAME": "ck_bcmd_payment_member_lock_key",
+        "CHECK_CLAUSE": "(char_length(`member_key`) = 64)",
+        "ENFORCED": "YES"
+      }
+    ]
+  },
+  "bcmd_payment_exclusion": {
+    "table": [
+      {
+        "ENGINE": "InnoDB",
+        "TABLE_COLLATION": "utf8mb4_0900_ai_ci"
+      }
+    ],
+    "columns": [
+      {
+        "COLUMN_NAME": "id",
+        "ORDINAL_POSITION": 1,
+        "COLUMN_TYPE": "bigint unsigned",
+        "IS_NULLABLE": "NO",
+        "COLUMN_DEFAULT": null,
+        "EXTRA": "auto_increment",
+        "CHARACTER_SET_NAME": null,
+        "COLLATION_NAME": null,
+        "GENERATION_EXPRESSION": "",
+        "COLUMN_COMMENT": ""
+      },
+      {
+        "COLUMN_NAME": "batch_id",
+        "ORDINAL_POSITION": 2,
+        "COLUMN_TYPE": "bigint unsigned",
+        "IS_NULLABLE": "NO",
+        "COLUMN_DEFAULT": null,
+        "EXTRA": "",
+        "CHARACTER_SET_NAME": null,
+        "COLLATION_NAME": null,
+        "GENERATION_EXPRESSION": "",
+        "COLUMN_COMMENT": ""
+      },
+      {
+        "COLUMN_NAME": "stage",
+        "ORDINAL_POSITION": 3,
+        "COLUMN_TYPE": "varchar(16)",
+        "IS_NULLABLE": "NO",
+        "COLUMN_DEFAULT": null,
+        "EXTRA": "",
+        "CHARACTER_SET_NAME": "utf8mb4",
+        "COLLATION_NAME": "utf8mb4_0900_ai_ci",
+        "GENERATION_EXPRESSION": "",
+        "COLUMN_COMMENT": ""
+      },
+      {
+        "COLUMN_NAME": "request_id",
+        "ORDINAL_POSITION": 4,
+        "COLUMN_TYPE": "varchar(64)",
+        "IS_NULLABLE": "NO",
+        "COLUMN_DEFAULT": null,
+        "EXTRA": "",
+        "CHARACTER_SET_NAME": "utf8mb4",
+        "COLLATION_NAME": "utf8mb4_0900_ai_ci",
+        "GENERATION_EXPRESSION": "",
+        "COLUMN_COMMENT": ""
+      },
+      {
+        "COLUMN_NAME": "line_no",
+        "ORDINAL_POSITION": 5,
+        "COLUMN_TYPE": "int unsigned",
+        "IS_NULLABLE": "NO",
+        "COLUMN_DEFAULT": null,
+        "EXTRA": "",
+        "CHARACTER_SET_NAME": null,
+        "COLLATION_NAME": null,
+        "GENERATION_EXPRESSION": "",
+        "COLUMN_COMMENT": ""
+      },
+      {
+        "COLUMN_NAME": "finding_code",
+        "ORDINAL_POSITION": 6,
+        "COLUMN_TYPE": "varchar(32)",
+        "IS_NULLABLE": "NO",
+        "COLUMN_DEFAULT": null,
+        "EXTRA": "",
+        "CHARACTER_SET_NAME": "utf8mb4",
+        "COLLATION_NAME": "utf8mb4_0900_ai_ci",
+        "GENERATION_EXPRESSION": "",
+        "COLUMN_COMMENT": ""
+      },
+      {
+        "COLUMN_NAME": "payment_ref",
+        "ORDINAL_POSITION": 7,
+        "COLUMN_TYPE": "varchar(64)",
+        "IS_NULLABLE": "NO",
+        "COLUMN_DEFAULT": null,
+        "EXTRA": "",
+        "CHARACTER_SET_NAME": "utf8mb4",
+        "COLLATION_NAME": "utf8mb4_0900_ai_ci",
+        "GENERATION_EXPRESSION": "",
+        "COLUMN_COMMENT": ""
+      },
+      {
+        "COLUMN_NAME": "created_at",
+        "ORDINAL_POSITION": 8,
+        "COLUMN_TYPE": "datetime(6)",
+        "IS_NULLABLE": "NO",
+        "COLUMN_DEFAULT": "CURRENT_TIMESTAMP(6)",
+        "EXTRA": "DEFAULT_GENERATED",
+        "CHARACTER_SET_NAME": null,
+        "COLLATION_NAME": null,
+        "GENERATION_EXPRESSION": "",
+        "COLUMN_COMMENT": ""
+      }
+    ],
+    "indexes": [
+      {
+        "INDEX_NAME": "ix_bcmd_payment_exclusion_batch",
+        "NON_UNIQUE": 1,
+        "SEQ_IN_INDEX": 1,
+        "COLUMN_NAME": "batch_id",
+        "SUB_PART": null,
+        "COLLATION": "A",
+        "INDEX_TYPE": "BTREE",
+        "IS_VISIBLE": "YES",
+        "EXPRESSION": null
+      },
+      {
+        "INDEX_NAME": "ix_bcmd_payment_exclusion_batch",
+        "NON_UNIQUE": 1,
+        "SEQ_IN_INDEX": 2,
+        "COLUMN_NAME": "id",
+        "SUB_PART": null,
+        "COLLATION": "A",
+        "INDEX_TYPE": "BTREE",
+        "IS_VISIBLE": "YES",
+        "EXPRESSION": null
+      },
+      {
+        "INDEX_NAME": "PRIMARY",
+        "NON_UNIQUE": 0,
+        "SEQ_IN_INDEX": 1,
+        "COLUMN_NAME": "id",
+        "SUB_PART": null,
+        "COLLATION": "A",
+        "INDEX_TYPE": "BTREE",
+        "IS_VISIBLE": "YES",
+        "EXPRESSION": null
+      }
+    ],
+    "fks": [
+      {
+        "CONSTRAINT_NAME": "fk_bcmd_payment_exclusion_batch",
+        "COLUMN_NAME": "batch_id",
+        "ORDINAL_POSITION": 1,
+        "POSITION_IN_UNIQUE_CONSTRAINT": 1,
+        "REFERENCED_TABLE_NAME": "bcmd_batch",
+        "REFERENCED_COLUMN_NAME": "id"
+      }
+    ],
+    "fk_rules": [
+      {
+        "CONSTRAINT_NAME": "fk_bcmd_payment_exclusion_batch",
+        "UNIQUE_CONSTRAINT_NAME": "PRIMARY",
+        "MATCH_OPTION": "NONE",
+        "UPDATE_RULE": "NO ACTION",
+        "DELETE_RULE": "RESTRICT"
+      }
+    ],
+    "checks": [
+      {
+        "CONSTRAINT_NAME": "ck_bcmd_payment_exclusion_fields",
+        "CHECK_CLAUSE": "((`finding_code` <> _utf8mb4\\'\\') and (`payment_ref` <> _utf8mb4\\'\\') and (`request_id` <> _utf8mb4\\'\\'))",
+        "ENFORCED": "YES"
+      },
+      {
+        "CONSTRAINT_NAME": "ck_bcmd_payment_exclusion_stage",
+        "CHECK_CLAUSE": "(`stage` = _utf8mb4\\'GENERATION\\')",
+        "ENFORCED": "YES"
+      }
+    ]
+  },
+  "bcmd_napa_handoff": {
+    "table": [
+      {
+        "ENGINE": "InnoDB",
+        "TABLE_COLLATION": "utf8mb4_0900_ai_ci"
+      }
+    ],
+    "columns": [
+      {
+        "COLUMN_NAME": "id",
+        "ORDINAL_POSITION": 1,
+        "COLUMN_TYPE": "bigint unsigned",
+        "IS_NULLABLE": "NO",
+        "COLUMN_DEFAULT": null,
+        "EXTRA": "auto_increment",
+        "CHARACTER_SET_NAME": null,
+        "COLLATION_NAME": null,
+        "GENERATION_EXPRESSION": "",
+        "COLUMN_COMMENT": ""
+      },
+      {
+        "COLUMN_NAME": "public_id",
+        "ORDINAL_POSITION": 2,
+        "COLUMN_TYPE": "char(36)",
+        "IS_NULLABLE": "NO",
+        "COLUMN_DEFAULT": null,
+        "EXTRA": "",
+        "CHARACTER_SET_NAME": "ascii",
+        "COLLATION_NAME": "ascii_bin",
+        "GENERATION_EXPRESSION": "",
+        "COLUMN_COMMENT": ""
+      },
+      {
+        "COLUMN_NAME": "batch_id",
+        "ORDINAL_POSITION": 3,
+        "COLUMN_TYPE": "bigint unsigned",
+        "IS_NULLABLE": "NO",
+        "COLUMN_DEFAULT": null,
+        "EXTRA": "",
+        "CHARACTER_SET_NAME": null,
+        "COLLATION_NAME": null,
+        "GENERATION_EXPRESSION": "",
+        "COLUMN_COMMENT": ""
+      },
+      {
+        "COLUMN_NAME": "dqa_run_id",
+        "ORDINAL_POSITION": 4,
+        "COLUMN_TYPE": "bigint unsigned",
+        "IS_NULLABLE": "NO",
+        "COLUMN_DEFAULT": null,
+        "EXTRA": "",
+        "CHARACTER_SET_NAME": null,
+        "COLLATION_NAME": null,
+        "GENERATION_EXPRESSION": "",
+        "COLUMN_COMMENT": ""
+      },
+      {
+        "COLUMN_NAME": "claim_epoch",
+        "ORDINAL_POSITION": 5,
+        "COLUMN_TYPE": "int unsigned",
+        "IS_NULLABLE": "NO",
+        "COLUMN_DEFAULT": null,
+        "EXTRA": "",
+        "CHARACTER_SET_NAME": null,
+        "COLLATION_NAME": null,
+        "GENERATION_EXPRESSION": "",
+        "COLUMN_COMMENT": ""
+      },
+      {
+        "COLUMN_NAME": "passed_count",
+        "ORDINAL_POSITION": 6,
+        "COLUMN_TYPE": "int unsigned",
+        "IS_NULLABLE": "NO",
+        "COLUMN_DEFAULT": null,
+        "EXTRA": "",
+        "CHARACTER_SET_NAME": null,
+        "COLLATION_NAME": null,
+        "GENERATION_EXPRESSION": "",
+        "COLUMN_COMMENT": ""
+      },
+      {
+        "COLUMN_NAME": "actor_ref",
+        "ORDINAL_POSITION": 7,
+        "COLUMN_TYPE": "varchar(64)",
+        "IS_NULLABLE": "NO",
+        "COLUMN_DEFAULT": null,
+        "EXTRA": "",
+        "CHARACTER_SET_NAME": "utf8mb4",
+        "COLLATION_NAME": "utf8mb4_0900_ai_ci",
+        "GENERATION_EXPRESSION": "",
+        "COLUMN_COMMENT": ""
+      },
+      {
+        "COLUMN_NAME": "actor_agency",
+        "ORDINAL_POSITION": 8,
+        "COLUMN_TYPE": "varchar(16)",
+        "IS_NULLABLE": "YES",
+        "COLUMN_DEFAULT": null,
+        "EXTRA": "",
+        "CHARACTER_SET_NAME": "utf8mb4",
+        "COLLATION_NAME": "utf8mb4_0900_ai_ci",
+        "GENERATION_EXPRESSION": "",
+        "COLUMN_COMMENT": ""
+      },
+      {
+        "COLUMN_NAME": "request_id",
+        "ORDINAL_POSITION": 9,
+        "COLUMN_TYPE": "varchar(64)",
+        "IS_NULLABLE": "NO",
+        "COLUMN_DEFAULT": null,
+        "EXTRA": "",
+        "CHARACTER_SET_NAME": "utf8mb4",
+        "COLLATION_NAME": "utf8mb4_0900_ai_ci",
+        "GENERATION_EXPRESSION": "",
+        "COLUMN_COMMENT": ""
+      },
+      {
+        "COLUMN_NAME": "idempotency_key",
+        "ORDINAL_POSITION": 10,
+        "COLUMN_TYPE": "char(36)",
+        "IS_NULLABLE": "NO",
+        "COLUMN_DEFAULT": null,
+        "EXTRA": "",
+        "CHARACTER_SET_NAME": "ascii",
+        "COLLATION_NAME": "ascii_bin",
+        "GENERATION_EXPRESSION": "",
+        "COLUMN_COMMENT": ""
+      },
+      {
+        "COLUMN_NAME": "request_hash",
+        "ORDINAL_POSITION": 11,
+        "COLUMN_TYPE": "char(64)",
+        "IS_NULLABLE": "NO",
+        "COLUMN_DEFAULT": null,
+        "EXTRA": "",
+        "CHARACTER_SET_NAME": "ascii",
+        "COLLATION_NAME": "ascii_bin",
+        "GENERATION_EXPRESSION": "",
+        "COLUMN_COMMENT": ""
+      },
+      {
+        "COLUMN_NAME": "created_at",
+        "ORDINAL_POSITION": 12,
+        "COLUMN_TYPE": "timestamp(3)",
+        "IS_NULLABLE": "NO",
+        "COLUMN_DEFAULT": "CURRENT_TIMESTAMP(3)",
+        "EXTRA": "DEFAULT_GENERATED",
+        "CHARACTER_SET_NAME": null,
+        "COLLATION_NAME": null,
+        "GENERATION_EXPRESSION": "",
+        "COLUMN_COMMENT": ""
+      }
+    ],
+    "indexes": [
+      {
+        "INDEX_NAME": "ix_bcmd_handoff_batch",
+        "NON_UNIQUE": 1,
+        "SEQ_IN_INDEX": 1,
+        "COLUMN_NAME": "batch_id",
+        "SUB_PART": null,
+        "COLLATION": "A",
+        "INDEX_TYPE": "BTREE",
+        "IS_VISIBLE": "YES",
+        "EXPRESSION": null
+      },
+      {
+        "INDEX_NAME": "ix_bcmd_handoff_batch",
+        "NON_UNIQUE": 1,
+        "SEQ_IN_INDEX": 2,
+        "COLUMN_NAME": "id",
+        "SUB_PART": null,
+        "COLLATION": "A",
+        "INDEX_TYPE": "BTREE",
+        "IS_VISIBLE": "YES",
+        "EXPRESSION": null
+      },
+      {
+        "INDEX_NAME": "PRIMARY",
+        "NON_UNIQUE": 0,
+        "SEQ_IN_INDEX": 1,
+        "COLUMN_NAME": "id",
+        "SUB_PART": null,
+        "COLLATION": "A",
+        "INDEX_TYPE": "BTREE",
+        "IS_VISIBLE": "YES",
+        "EXPRESSION": null
+      },
+      {
+        "INDEX_NAME": "uq_bcmd_handoff_public",
+        "NON_UNIQUE": 0,
+        "SEQ_IN_INDEX": 1,
+        "COLUMN_NAME": "public_id",
+        "SUB_PART": null,
+        "COLLATION": "A",
+        "INDEX_TYPE": "BTREE",
+        "IS_VISIBLE": "YES",
+        "EXPRESSION": null
+      },
+      {
+        "INDEX_NAME": "uq_bcmd_handoff_request",
+        "NON_UNIQUE": 0,
+        "SEQ_IN_INDEX": 1,
+        "COLUMN_NAME": "batch_id",
+        "SUB_PART": null,
+        "COLLATION": "A",
+        "INDEX_TYPE": "BTREE",
+        "IS_VISIBLE": "YES",
+        "EXPRESSION": null
+      },
+      {
+        "INDEX_NAME": "uq_bcmd_handoff_request",
+        "NON_UNIQUE": 0,
+        "SEQ_IN_INDEX": 2,
+        "COLUMN_NAME": "actor_ref",
+        "SUB_PART": null,
+        "COLLATION": "A",
+        "INDEX_TYPE": "BTREE",
+        "IS_VISIBLE": "YES",
+        "EXPRESSION": null
+      },
+      {
+        "INDEX_NAME": "uq_bcmd_handoff_request",
+        "NON_UNIQUE": 0,
+        "SEQ_IN_INDEX": 3,
+        "COLUMN_NAME": "idempotency_key",
+        "SUB_PART": null,
+        "COLLATION": "A",
+        "INDEX_TYPE": "BTREE",
+        "IS_VISIBLE": "YES",
+        "EXPRESSION": null
+      },
+      {
+        "INDEX_NAME": "uq_bcmd_handoff_run",
+        "NON_UNIQUE": 0,
+        "SEQ_IN_INDEX": 1,
+        "COLUMN_NAME": "dqa_run_id",
+        "SUB_PART": null,
+        "COLLATION": "A",
+        "INDEX_TYPE": "BTREE",
+        "IS_VISIBLE": "YES",
+        "EXPRESSION": null
+      }
+    ],
+    "fks": [
+      {
+        "CONSTRAINT_NAME": "fk_bcmd_handoff_batch",
+        "COLUMN_NAME": "batch_id",
+        "ORDINAL_POSITION": 1,
+        "POSITION_IN_UNIQUE_CONSTRAINT": 1,
+        "REFERENCED_TABLE_NAME": "bcmd_batch",
+        "REFERENCED_COLUMN_NAME": "id"
+      },
+      {
+        "CONSTRAINT_NAME": "fk_bcmd_handoff_run",
+        "COLUMN_NAME": "dqa_run_id",
+        "ORDINAL_POSITION": 1,
+        "POSITION_IN_UNIQUE_CONSTRAINT": 1,
+        "REFERENCED_TABLE_NAME": "bcmd_dqa_run",
+        "REFERENCED_COLUMN_NAME": "id"
+      }
+    ],
+    "fk_rules": [
+      {
+        "CONSTRAINT_NAME": "fk_bcmd_handoff_batch",
+        "UNIQUE_CONSTRAINT_NAME": "PRIMARY",
+        "MATCH_OPTION": "NONE",
+        "UPDATE_RULE": "NO ACTION",
+        "DELETE_RULE": "RESTRICT"
+      },
+      {
+        "CONSTRAINT_NAME": "fk_bcmd_handoff_run",
+        "UNIQUE_CONSTRAINT_NAME": "PRIMARY",
+        "MATCH_OPTION": "NONE",
+        "UPDATE_RULE": "NO ACTION",
+        "DELETE_RULE": "RESTRICT"
+      }
+    ],
+    "checks": [
+      {
+        "CONSTRAINT_NAME": "ck_bcmd_handoff_passed",
+        "CHECK_CLAUSE": "(`passed_count` > 0)",
+        "ENFORCED": "YES"
+      }
+    ]
+  },
+  "lib_sex": {
+    "table": [
+      {
+        "ENGINE": "InnoDB",
+        "TABLE_COLLATION": "utf8mb4_0900_ai_ci"
+      }
+    ],
+    "columns": [
+      {
+        "COLUMN_NAME": "sex_id",
+        "ORDINAL_POSITION": 1,
+        "COLUMN_TYPE": "int unsigned",
+        "IS_NULLABLE": "NO",
+        "COLUMN_DEFAULT": null,
+        "EXTRA": "",
+        "CHARACTER_SET_NAME": null,
+        "COLLATION_NAME": null,
+        "GENERATION_EXPRESSION": "",
+        "COLUMN_COMMENT": ""
+      },
+      {
+        "COLUMN_NAME": "name",
+        "ORDINAL_POSITION": 2,
+        "COLUMN_TYPE": "varchar(50)",
+        "IS_NULLABLE": "YES",
+        "COLUMN_DEFAULT": null,
+        "EXTRA": "",
+        "CHARACTER_SET_NAME": "utf8mb4",
+        "COLLATION_NAME": "utf8mb4_0900_ai_ci",
+        "GENERATION_EXPRESSION": "",
+        "COLUMN_COMMENT": ""
+      },
+      {
+        "COLUMN_NAME": "code",
+        "ORDINAL_POSITION": 3,
+        "COLUMN_TYPE": "varchar(15)",
+        "IS_NULLABLE": "YES",
+        "COLUMN_DEFAULT": null,
+        "EXTRA": "",
+        "CHARACTER_SET_NAME": "utf8mb4",
+        "COLLATION_NAME": "utf8mb4_0900_ai_ci",
+        "GENERATION_EXPRESSION": "",
+        "COLUMN_COMMENT": ""
+      },
+      {
+        "COLUMN_NAME": "archived",
+        "ORDINAL_POSITION": 4,
+        "COLUMN_TYPE": "tinyint unsigned",
+        "IS_NULLABLE": "YES",
+        "COLUMN_DEFAULT": null,
+        "EXTRA": "",
+        "CHARACTER_SET_NAME": null,
+        "COLLATION_NAME": null,
+        "GENERATION_EXPRESSION": "",
+        "COLUMN_COMMENT": ""
+      }
+    ],
+    "indexes": [
+      {
+        "INDEX_NAME": "PRIMARY",
+        "NON_UNIQUE": 0,
+        "SEQ_IN_INDEX": 1,
+        "COLUMN_NAME": "sex_id",
+        "SUB_PART": null,
+        "COLLATION": "A",
+        "INDEX_TYPE": "BTREE",
+        "IS_VISIBLE": "YES",
+        "EXPRESSION": null
+      }
+    ],
+    "fks": [],
+    "fk_rules": [],
+    "checks": []
+  },
+  "lib_ext_name": {
+    "table": [
+      {
+        "ENGINE": "InnoDB",
+        "TABLE_COLLATION": "utf8mb4_0900_ai_ci"
+      }
+    ],
+    "columns": [
+      {
+        "COLUMN_NAME": "ext_name_id",
+        "ORDINAL_POSITION": 1,
+        "COLUMN_TYPE": "int",
+        "IS_NULLABLE": "NO",
+        "COLUMN_DEFAULT": null,
+        "EXTRA": "",
+        "CHARACTER_SET_NAME": null,
+        "COLLATION_NAME": null,
+        "GENERATION_EXPRESSION": "",
+        "COLUMN_COMMENT": ""
+      },
+      {
+        "COLUMN_NAME": "name",
+        "ORDINAL_POSITION": 2,
+        "COLUMN_TYPE": "varchar(50)",
+        "IS_NULLABLE": "YES",
+        "COLUMN_DEFAULT": null,
+        "EXTRA": "",
+        "CHARACTER_SET_NAME": "utf8mb4",
+        "COLLATION_NAME": "utf8mb4_0900_ai_ci",
+        "GENERATION_EXPRESSION": "",
+        "COLUMN_COMMENT": ""
+      },
+      {
+        "COLUMN_NAME": "archived",
+        "ORDINAL_POSITION": 3,
+        "COLUMN_TYPE": "tinyint unsigned",
+        "IS_NULLABLE": "YES",
+        "COLUMN_DEFAULT": null,
+        "EXTRA": "",
+        "CHARACTER_SET_NAME": null,
+        "COLLATION_NAME": null,
+        "GENERATION_EXPRESSION": "",
+        "COLUMN_COMMENT": ""
+      }
+    ],
+    "indexes": [
+      {
+        "INDEX_NAME": "PRIMARY",
+        "NON_UNIQUE": 0,
+        "SEQ_IN_INDEX": 1,
+        "COLUMN_NAME": "ext_name_id",
+        "SUB_PART": null,
+        "COLLATION": "A",
+        "INDEX_TYPE": "BTREE",
+        "IS_VISIBLE": "YES",
+        "EXPRESSION": null
+      }
+    ],
+    "fks": [],
+    "fk_rules": [],
+    "checks": []
+  },
+  "lib_ip_group": {
+    "table": [
+      {
+        "ENGINE": "InnoDB",
+        "TABLE_COLLATION": "utf8mb4_0900_ai_ci"
+      }
+    ],
+    "columns": [
+      {
+        "COLUMN_NAME": "ip_group_id",
+        "ORDINAL_POSITION": 1,
+        "COLUMN_TYPE": "int unsigned",
+        "IS_NULLABLE": "NO",
+        "COLUMN_DEFAULT": null,
+        "EXTRA": "",
+        "CHARACTER_SET_NAME": null,
+        "COLLATION_NAME": null,
+        "GENERATION_EXPRESSION": "",
+        "COLUMN_COMMENT": ""
+      },
+      {
+        "COLUMN_NAME": "name",
+        "ORDINAL_POSITION": 2,
+        "COLUMN_TYPE": "varchar(50)",
+        "IS_NULLABLE": "YES",
+        "COLUMN_DEFAULT": null,
+        "EXTRA": "",
+        "CHARACTER_SET_NAME": "utf8mb4",
+        "COLLATION_NAME": "utf8mb4_0900_ai_ci",
+        "GENERATION_EXPRESSION": "",
+        "COLUMN_COMMENT": ""
+      },
+      {
+        "COLUMN_NAME": "code",
+        "ORDINAL_POSITION": 3,
+        "COLUMN_TYPE": "varchar(15)",
+        "IS_NULLABLE": "YES",
+        "COLUMN_DEFAULT": null,
+        "EXTRA": "",
+        "CHARACTER_SET_NAME": "utf8mb4",
+        "COLLATION_NAME": "utf8mb4_0900_ai_ci",
+        "GENERATION_EXPRESSION": "",
+        "COLUMN_COMMENT": ""
+      },
+      {
+        "COLUMN_NAME": "status",
+        "ORDINAL_POSITION": 4,
+        "COLUMN_TYPE": "int unsigned",
+        "IS_NULLABLE": "YES",
+        "COLUMN_DEFAULT": null,
+        "EXTRA": "",
+        "CHARACTER_SET_NAME": null,
+        "COLLATION_NAME": null,
+        "GENERATION_EXPRESSION": "",
+        "COLUMN_COMMENT": ""
+      },
+      {
+        "COLUMN_NAME": "archived",
+        "ORDINAL_POSITION": 5,
+        "COLUMN_TYPE": "tinyint unsigned",
+        "IS_NULLABLE": "YES",
+        "COLUMN_DEFAULT": null,
+        "EXTRA": "",
+        "CHARACTER_SET_NAME": null,
+        "COLLATION_NAME": null,
+        "GENERATION_EXPRESSION": "",
+        "COLUMN_COMMENT": ""
+      }
+    ],
+    "indexes": [
+      {
+        "INDEX_NAME": "PRIMARY",
+        "NON_UNIQUE": 0,
+        "SEQ_IN_INDEX": 1,
+        "COLUMN_NAME": "ip_group_id",
+        "SUB_PART": null,
+        "COLLATION": "A",
+        "INDEX_TYPE": "BTREE",
+        "IS_VISIBLE": "YES",
+        "EXPRESSION": null
+      }
+    ],
+    "fks": [],
+    "fk_rules": [],
+    "checks": []
+  }
+}

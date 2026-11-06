@@ -1,0 +1,717 @@
+{
+  "mode": "schema metadata only; no member rows",
+  "target": {
+    "database": "dswd_4ps_tuloy_dev",
+    "host": "10.10.10.133",
+    "port": 3306
+  },
+  "columns": [
+    {
+      "TABLE_NAME": "beneficiary_journey",
+      "COLUMN_NAME": "listahanan_id",
+      "COLUMN_TYPE": "varchar(100)",
+      "IS_NULLABLE": "YES",
+      "COLUMN_KEY": "MUL",
+      "COLUMN_COMMENT": ""
+    },
+    {
+      "TABLE_NAME": "beneficiary_journey",
+      "COLUMN_NAME": "household_id",
+      "COLUMN_TYPE": "varchar(100)",
+      "IS_NULLABLE": "YES",
+      "COLUMN_KEY": "MUL",
+      "COLUMN_COMMENT": ""
+    },
+    {
+      "TABLE_NAME": "enroll_matched_CHED_tbl",
+      "COLUMN_NAME": "id",
+      "COLUMN_TYPE": "int unsigned",
+      "IS_NULLABLE": "NO",
+      "COLUMN_KEY": "PRI",
+      "COLUMN_COMMENT": ""
+    },
+    {
+      "TABLE_NAME": "enroll_matched_CHED_tbl",
+      "COLUMN_NAME": "match_id",
+      "COLUMN_TYPE": "int unsigned",
+      "IS_NULLABLE": "YES",
+      "COLUMN_KEY": "MUL",
+      "COLUMN_COMMENT": ""
+    },
+    {
+      "TABLE_NAME": "enroll_matched_CHED_tbl",
+      "COLUMN_NAME": "enrollment_id",
+      "COLUMN_TYPE": "int unsigned",
+      "IS_NULLABLE": "NO",
+      "COLUMN_KEY": "MUL",
+      "COLUMN_COMMENT": ""
+    },
+    {
+      "TABLE_NAME": "enroll_matched_CHED_tbl",
+      "COLUMN_NAME": "tuloy_id",
+      "COLUMN_TYPE": "varchar(50)",
+      "IS_NULLABLE": "YES",
+      "COLUMN_KEY": "MUL",
+      "COLUMN_COMMENT": "Unique id across agency pre-generated from TULOY"
+    },
+    {
+      "TABLE_NAME": "enroll_matched_CHED_tbl",
+      "COLUMN_NAME": "member_id",
+      "COLUMN_TYPE": "int unsigned",
+      "IS_NULLABLE": "NO",
+      "COLUMN_KEY": "MUL",
+      "COLUMN_COMMENT": "Entry_id"
+    },
+    {
+      "TABLE_NAME": "enroll_matched_CHED_tbl",
+      "COLUMN_NAME": "student_id",
+      "COLUMN_TYPE": "varchar(50)",
+      "IS_NULLABLE": "YES",
+      "COLUMN_KEY": "",
+      "COLUMN_COMMENT": "CHED/Agency student id"
+    },
+    {
+      "TABLE_NAME": "enroll_matched_CHED_tbl",
+      "COLUMN_NAME": "mm_first_name",
+      "COLUMN_TYPE": "varchar(100)",
+      "IS_NULLABLE": "YES",
+      "COLUMN_KEY": "",
+      "COLUMN_COMMENT": ""
+    },
+    {
+      "TABLE_NAME": "enroll_matched_CHED_tbl",
+      "COLUMN_NAME": "mm_middle_name",
+      "COLUMN_TYPE": "varchar(100)",
+      "IS_NULLABLE": "YES",
+      "COLUMN_KEY": "",
+      "COLUMN_COMMENT": ""
+    },
+    {
+      "TABLE_NAME": "enroll_matched_CHED_tbl",
+      "COLUMN_NAME": "mm_last_name",
+      "COLUMN_TYPE": "varchar(100)",
+      "IS_NULLABLE": "YES",
+      "COLUMN_KEY": "",
+      "COLUMN_COMMENT": ""
+    },
+    {
+      "TABLE_NAME": "enroll_matched_CHED_tbl",
+      "COLUMN_NAME": "degree_program_name",
+      "COLUMN_TYPE": "varchar(150)",
+      "IS_NULLABLE": "YES",
+      "COLUMN_KEY": "",
+      "COLUMN_COMMENT": ""
+    },
+    {
+      "TABLE_NAME": "enroll_matched_CHED_tbl",
+      "COLUMN_NAME": "degree_date_enrolled",
+      "COLUMN_TYPE": "date",
+      "IS_NULLABLE": "YES",
+      "COLUMN_KEY": "",
+      "COLUMN_COMMENT": ""
+    },
+    {
+      "TABLE_NAME": "enroll_matched_CHED_tbl",
+      "COLUMN_NAME": "degree_program_duration",
+      "COLUMN_TYPE": "int",
+      "IS_NULLABLE": "YES",
+      "COLUMN_KEY": "",
+      "COLUMN_COMMENT": "E.g. IT - 4, Accounting - 5"
+    },
+    {
+      "TABLE_NAME": "enroll_matched_CHED_tbl",
+      "COLUMN_NAME": "degree_academic_year",
+      "COLUMN_TYPE": "varchar(20)",
+      "IS_NULLABLE": "YES",
+      "COLUMN_KEY": "",
+      "COLUMN_COMMENT": ""
+    },
+    {
+      "TABLE_NAME": "enroll_matched_CHED_tbl",
+      "COLUMN_NAME": "degree_year_level",
+      "COLUMN_TYPE": "int",
+      "IS_NULLABLE": "YES",
+      "COLUMN_KEY": "",
+      "COLUMN_COMMENT": ""
+    },
+    {
+      "TABLE_NAME": "enroll_matched_CHED_tbl",
+      "COLUMN_NAME": "degree_semester",
+      "COLUMN_TYPE": "int",
+      "IS_NULLABLE": "YES",
+      "COLUMN_KEY": "",
+      "COLUMN_COMMENT": ""
+    },
+    {
+      "TABLE_NAME": "enroll_matched_CHED_tbl",
+      "COLUMN_NAME": "enrollment_status",
+      "COLUMN_TYPE": "varchar(50)",
+      "IS_NULLABLE": "YES",
+      "COLUMN_KEY": "",
+      "COLUMN_COMMENT": ""
+    },
+    {
+      "TABLE_NAME": "enroll_matched_CHED_tbl",
+      "COLUMN_NAME": "date_encoded",
+      "COLUMN_TYPE": "datetime",
+      "IS_NULLABLE": "YES",
+      "COLUMN_KEY": "",
+      "COLUMN_COMMENT": "When the record encoded to their system"
+    },
+    {
+      "TABLE_NAME": "enroll_matched_CHED_tbl",
+      "COLUMN_NAME": "date_updated",
+      "COLUMN_TYPE": "datetime",
+      "IS_NULLABLE": "YES",
+      "COLUMN_KEY": "",
+      "COLUMN_COMMENT": "When the record updated to their system"
+    },
+    {
+      "TABLE_NAME": "enroll_matched_CHED_tbl",
+      "COLUMN_NAME": "created_at",
+      "COLUMN_TYPE": "timestamp",
+      "IS_NULLABLE": "NO",
+      "COLUMN_KEY": "",
+      "COLUMN_COMMENT": ""
+    },
+    {
+      "TABLE_NAME": "enroll_matched_CHED_tbl",
+      "COLUMN_NAME": "updated_at",
+      "COLUMN_TYPE": "timestamp",
+      "IS_NULLABLE": "YES",
+      "COLUMN_KEY": "",
+      "COLUMN_COMMENT": ""
+    },
+    {
+      "TABLE_NAME": "enroll_matched_CHED_tbl",
+      "COLUMN_NAME": "agency_id",
+      "COLUMN_TYPE": "int unsigned",
+      "IS_NULLABLE": "YES",
+      "COLUMN_KEY": "",
+      "COLUMN_COMMENT": ""
+    },
+    {
+      "TABLE_NAME": "partner_bene_profile",
+      "COLUMN_NAME": "ext_name",
+      "COLUMN_TYPE": "varchar(15)",
+      "IS_NULLABLE": "YES",
+      "COLUMN_KEY": "",
+      "COLUMN_COMMENT": "Student Name Suffix (e.g. Jr, Sr)"
+    },
+    {
+      "TABLE_NAME": "sex_tbl",
+      "COLUMN_NAME": "id",
+      "COLUMN_TYPE": "int",
+      "IS_NULLABLE": "NO",
+      "COLUMN_KEY": "PRI",
+      "COLUMN_COMMENT": ""
+    },
+    {
+      "TABLE_NAME": "sex_tbl",
+      "COLUMN_NAME": "code",
+      "COLUMN_TYPE": "varchar(20)",
+      "IS_NULLABLE": "NO",
+      "COLUMN_KEY": "",
+      "COLUMN_COMMENT": ""
+    },
+    {
+      "TABLE_NAME": "sex_tbl",
+      "COLUMN_NAME": "description",
+      "COLUMN_TYPE": "varchar(50)",
+      "IS_NULLABLE": "NO",
+      "COLUMN_KEY": "",
+      "COLUMN_COMMENT": ""
+    },
+    {
+      "TABLE_NAME": "tbl_beneficiary",
+      "COLUMN_NAME": "household_id",
+      "COLUMN_TYPE": "int unsigned",
+      "IS_NULLABLE": "NO",
+      "COLUMN_KEY": "MUL",
+      "COLUMN_COMMENT": "Foreign key from Household Table. Household ID generated from Household Table"
+    },
+    {
+      "TABLE_NAME": "tbl_family_assoc_ops",
+      "COLUMN_NAME": "family_id",
+      "COLUMN_TYPE": "varchar(30)",
+      "IS_NULLABLE": "NO",
+      "COLUMN_KEY": "MUL",
+      "COLUMN_COMMENT": "Family ID from CBMS"
+    },
+    {
+      "TABLE_NAME": "tbl_family_selected",
+      "COLUMN_NAME": "household_id",
+      "COLUMN_TYPE": "int",
+      "IS_NULLABLE": "YES",
+      "COLUMN_KEY": "MUL",
+      "COLUMN_COMMENT": "FK tbl_household"
+    },
+    {
+      "TABLE_NAME": "tbl_family_selected",
+      "COLUMN_NAME": "family_id",
+      "COLUMN_TYPE": "varchar(30)",
+      "IS_NULLABLE": "YES",
+      "COLUMN_KEY": "MUL",
+      "COLUMN_COMMENT": ""
+    },
+    {
+      "TABLE_NAME": "tbl_hh_roster",
+      "COLUMN_NAME": "household_id",
+      "COLUMN_TYPE": "int unsigned",
+      "IS_NULLABLE": "NO",
+      "COLUMN_KEY": "",
+      "COLUMN_COMMENT": "Foreign Key of Household."
+    },
+    {
+      "TABLE_NAME": "tbl_household",
+      "COLUMN_NAME": "household_id",
+      "COLUMN_TYPE": "int",
+      "IS_NULLABLE": "NO",
+      "COLUMN_KEY": "PRI",
+      "COLUMN_COMMENT": "Primary Key of Household Table"
+    },
+    {
+      "TABLE_NAME": "tbl_household",
+      "COLUMN_NAME": "listahanan_id",
+      "COLUMN_TYPE": "varchar(25)",
+      "IS_NULLABLE": "NO",
+      "COLUMN_KEY": "MUL",
+      "COLUMN_COMMENT": "Listahanan ID or hh_id from Listahanan Project."
+    },
+    {
+      "TABLE_NAME": "tbl_person",
+      "COLUMN_NAME": "ext_name_id",
+      "COLUMN_TYPE": "int unsigned",
+      "IS_NULLABLE": "YES",
+      "COLUMN_KEY": "MUL",
+      "COLUMN_COMMENT": "Extended Name"
+    },
+    {
+      "TABLE_NAME": "tuloy_beneficiary_tbl",
+      "COLUMN_NAME": "city_municipality_psgc",
+      "COLUMN_TYPE": "varchar(50)",
+      "IS_NULLABLE": "YES",
+      "COLUMN_KEY": "",
+      "COLUMN_COMMENT": ""
+    },
+    {
+      "TABLE_NAME": "tuloy_beneficiary_tbl",
+      "COLUMN_NAME": "province_psgc",
+      "COLUMN_TYPE": "varchar(50)",
+      "IS_NULLABLE": "YES",
+      "COLUMN_KEY": "",
+      "COLUMN_COMMENT": ""
+    },
+    {
+      "TABLE_NAME": "tuloy_beneficiary_tbl",
+      "COLUMN_NAME": "region_psgc",
+      "COLUMN_TYPE": "varchar(50)",
+      "IS_NULLABLE": "YES",
+      "COLUMN_KEY": "",
+      "COLUMN_COMMENT": ""
+    },
+    {
+      "TABLE_NAME": "tuloy_beneficiary_tbl",
+      "COLUMN_NAME": "indigenous_people_group",
+      "COLUMN_TYPE": "varchar(100)",
+      "IS_NULLABLE": "NO",
+      "COLUMN_KEY": "",
+      "COLUMN_COMMENT": ""
+    },
+    {
+      "TABLE_NAME": "vw_get_matched_CHED",
+      "COLUMN_NAME": "id",
+      "COLUMN_TYPE": "int unsigned",
+      "IS_NULLABLE": "NO",
+      "COLUMN_KEY": "",
+      "COLUMN_COMMENT": ""
+    },
+    {
+      "TABLE_NAME": "vw_get_matched_CHED",
+      "COLUMN_NAME": "match_id",
+      "COLUMN_TYPE": "int unsigned",
+      "IS_NULLABLE": "YES",
+      "COLUMN_KEY": "",
+      "COLUMN_COMMENT": ""
+    },
+    {
+      "TABLE_NAME": "vw_get_matched_CHED",
+      "COLUMN_NAME": "enrollment_id",
+      "COLUMN_TYPE": "int unsigned",
+      "IS_NULLABLE": "NO",
+      "COLUMN_KEY": "",
+      "COLUMN_COMMENT": ""
+    },
+    {
+      "TABLE_NAME": "vw_get_matched_CHED",
+      "COLUMN_NAME": "tuloy_id",
+      "COLUMN_TYPE": "varchar(50)",
+      "IS_NULLABLE": "YES",
+      "COLUMN_KEY": "",
+      "COLUMN_COMMENT": "Unique id across agency pre-generated from TULOY"
+    },
+    {
+      "TABLE_NAME": "vw_get_matched_CHED",
+      "COLUMN_NAME": "member_id",
+      "COLUMN_TYPE": "int unsigned",
+      "IS_NULLABLE": "NO",
+      "COLUMN_KEY": "",
+      "COLUMN_COMMENT": "Entry_id"
+    },
+    {
+      "TABLE_NAME": "vw_get_matched_CHED",
+      "COLUMN_NAME": "student_id",
+      "COLUMN_TYPE": "varchar(50)",
+      "IS_NULLABLE": "YES",
+      "COLUMN_KEY": "",
+      "COLUMN_COMMENT": "CHED/Agency student id"
+    },
+    {
+      "TABLE_NAME": "vw_get_matched_CHED",
+      "COLUMN_NAME": "first_name",
+      "COLUMN_TYPE": "varchar(50)",
+      "IS_NULLABLE": "YES",
+      "COLUMN_KEY": "",
+      "COLUMN_COMMENT": "First Name"
+    },
+    {
+      "TABLE_NAME": "vw_get_matched_CHED",
+      "COLUMN_NAME": "middle_name",
+      "COLUMN_TYPE": "varchar(30)",
+      "IS_NULLABLE": "YES",
+      "COLUMN_KEY": "",
+      "COLUMN_COMMENT": "Middle Name"
+    },
+    {
+      "TABLE_NAME": "vw_get_matched_CHED",
+      "COLUMN_NAME": "last_name",
+      "COLUMN_TYPE": "varchar(50)",
+      "IS_NULLABLE": "YES",
+      "COLUMN_KEY": "",
+      "COLUMN_COMMENT": "Last Name"
+    },
+    {
+      "TABLE_NAME": "vw_get_matched_CHED",
+      "COLUMN_NAME": "mm_first_name",
+      "COLUMN_TYPE": "varchar(100)",
+      "IS_NULLABLE": "YES",
+      "COLUMN_KEY": "",
+      "COLUMN_COMMENT": ""
+    },
+    {
+      "TABLE_NAME": "vw_get_matched_CHED",
+      "COLUMN_NAME": "mm_middle_name",
+      "COLUMN_TYPE": "varchar(100)",
+      "IS_NULLABLE": "YES",
+      "COLUMN_KEY": "",
+      "COLUMN_COMMENT": ""
+    },
+    {
+      "TABLE_NAME": "vw_get_matched_CHED",
+      "COLUMN_NAME": "mm_last_name",
+      "COLUMN_TYPE": "varchar(100)",
+      "IS_NULLABLE": "YES",
+      "COLUMN_KEY": "",
+      "COLUMN_COMMENT": ""
+    },
+    {
+      "TABLE_NAME": "vw_get_matched_CHED",
+      "COLUMN_NAME": "region_name",
+      "COLUMN_TYPE": "varchar(125)",
+      "IS_NULLABLE": "YES",
+      "COLUMN_KEY": "",
+      "COLUMN_COMMENT": "Name: Name of Region. {\"label\":\"Name\",\"visible\":\"true\",\"searchable\":\"true\",\"formtag\":\"text\",\"rules\":\"required|regex_match[/^[a-zA-Z0-9 \u00f1\u00d1().'-_]+$/]\",\"list\":\"1\",\"view\":\"1\",\"add_edit\":\"1\",\"alias\":\"name\"}"
+    },
+    {
+      "TABLE_NAME": "vw_get_matched_CHED",
+      "COLUMN_NAME": "province_name",
+      "COLUMN_TYPE": "varchar(125)",
+      "IS_NULLABLE": "YES",
+      "COLUMN_KEY": "",
+      "COLUMN_COMMENT": "Name: Name of Province. {\"label\":\"Name\",\"visible\":\"true\",\"searchable\":\"true\",\"formtag\":\"text\",\"rules\":\"required|regex_match[/^[a-zA-Z0-9 \u00f1\u00d1().'-_]+$/]\",\"list\":\"1\",\"view\":\"1\",\"add_edit\":\"1\",\"alias\":\"name\"}"
+    },
+    {
+      "TABLE_NAME": "vw_get_matched_CHED",
+      "COLUMN_NAME": "city_name",
+      "COLUMN_TYPE": "varchar(125)",
+      "IS_NULLABLE": "YES",
+      "COLUMN_KEY": "",
+      "COLUMN_COMMENT": "Name: Name of City Municipality. {\"label\":\"Name\",\"visible\":\"true\",\"searchable\":\"true\",\"formtag\":\"text\",\"rules\":\"required|regex_match[/^[a-zA-Z0-9 \u00f1\u00d1().'-_]+$/]\",\"list\":\"1\",\"view\":\"1\",\"add_edit\":\"1\",\"alias\":\"name\"}"
+    },
+    {
+      "TABLE_NAME": "vw_get_matched_CHED",
+      "COLUMN_NAME": "barangay_name",
+      "COLUMN_TYPE": "varchar(125)",
+      "IS_NULLABLE": "YES",
+      "COLUMN_KEY": "",
+      "COLUMN_COMMENT": "Name: Name of Barangay. {\"label\":\"Name\",\"visible\":\"true\",\"searchable\":\"true\",\"formtag\":\"text\",\"rules\":\"required|regex_match[/^[a-zA-Z0-9 \u00f1\u00d1().'-_]+$/]\",\"list\":\"1\",\"view\":\"1\",\"add_edit\":\"1\",\"alias\":\"name\"}"
+    },
+    {
+      "TABLE_NAME": "vw_get_matched_CHED",
+      "COLUMN_NAME": "degree_program_name",
+      "COLUMN_TYPE": "varchar(150)",
+      "IS_NULLABLE": "YES",
+      "COLUMN_KEY": "",
+      "COLUMN_COMMENT": ""
+    },
+    {
+      "TABLE_NAME": "vw_get_matched_CHED",
+      "COLUMN_NAME": "degree_date_enrolled",
+      "COLUMN_TYPE": "date",
+      "IS_NULLABLE": "YES",
+      "COLUMN_KEY": "",
+      "COLUMN_COMMENT": ""
+    },
+    {
+      "TABLE_NAME": "vw_get_matched_CHED",
+      "COLUMN_NAME": "degree_program_duration",
+      "COLUMN_TYPE": "int",
+      "IS_NULLABLE": "YES",
+      "COLUMN_KEY": "",
+      "COLUMN_COMMENT": "E.g. IT - 4, Accounting - 5"
+    },
+    {
+      "TABLE_NAME": "vw_get_matched_CHED",
+      "COLUMN_NAME": "degree_academic_year",
+      "COLUMN_TYPE": "varchar(20)",
+      "IS_NULLABLE": "YES",
+      "COLUMN_KEY": "",
+      "COLUMN_COMMENT": ""
+    },
+    {
+      "TABLE_NAME": "vw_get_matched_CHED",
+      "COLUMN_NAME": "degree_year_level",
+      "COLUMN_TYPE": "int",
+      "IS_NULLABLE": "YES",
+      "COLUMN_KEY": "",
+      "COLUMN_COMMENT": ""
+    },
+    {
+      "TABLE_NAME": "vw_get_matched_CHED",
+      "COLUMN_NAME": "degree_semester",
+      "COLUMN_TYPE": "int",
+      "IS_NULLABLE": "YES",
+      "COLUMN_KEY": "",
+      "COLUMN_COMMENT": ""
+    },
+    {
+      "TABLE_NAME": "vw_get_matched_CHED",
+      "COLUMN_NAME": "enrollment_status",
+      "COLUMN_TYPE": "varchar(50)",
+      "IS_NULLABLE": "YES",
+      "COLUMN_KEY": "",
+      "COLUMN_COMMENT": ""
+    },
+    {
+      "TABLE_NAME": "vw_get_matched_CHED",
+      "COLUMN_NAME": "date_encoded",
+      "COLUMN_TYPE": "datetime",
+      "IS_NULLABLE": "YES",
+      "COLUMN_KEY": "",
+      "COLUMN_COMMENT": "When the record encoded to their system"
+    },
+    {
+      "TABLE_NAME": "vw_get_matched_CHED",
+      "COLUMN_NAME": "date_updated",
+      "COLUMN_TYPE": "datetime",
+      "IS_NULLABLE": "YES",
+      "COLUMN_KEY": "",
+      "COLUMN_COMMENT": "When the record updated to their system"
+    },
+    {
+      "TABLE_NAME": "vw_get_matched_CHED",
+      "COLUMN_NAME": "created_at",
+      "COLUMN_TYPE": "timestamp",
+      "IS_NULLABLE": "NO",
+      "COLUMN_KEY": "",
+      "COLUMN_COMMENT": ""
+    },
+    {
+      "TABLE_NAME": "vw_get_matched_CHED",
+      "COLUMN_NAME": "updated_at",
+      "COLUMN_TYPE": "timestamp",
+      "IS_NULLABLE": "YES",
+      "COLUMN_KEY": "",
+      "COLUMN_COMMENT": ""
+    },
+    {
+      "TABLE_NAME": "vw_unmatched_member_bene",
+      "COLUMN_NAME": "listahanan_id",
+      "COLUMN_TYPE": "varchar(25)",
+      "IS_NULLABLE": "YES",
+      "COLUMN_KEY": "",
+      "COLUMN_COMMENT": "Listahanan ID or hh_id from Listahanan Project."
+    },
+    {
+      "TABLE_NAME": "vw_unmatched_member_bene",
+      "COLUMN_NAME": "bgy_psgc_code",
+      "COLUMN_TYPE": "char(10)",
+      "IS_NULLABLE": "YES",
+      "COLUMN_KEY": "",
+      "COLUMN_COMMENT": "PSA Code: Philippine Standard Authority Code. {\"label\":\"PSA Code\",\"visible\":\"true\",\"searchable\":\"true\",\"formtag\":\"text\",\"rules\":\"required|exact_length[10]|numeric\",\"list\":\"1\",\"view\":\"1\",\"add_edit\":\"1\"}"
+    },
+    {
+      "TABLE_NAME": "vw_verify_member_bene",
+      "COLUMN_NAME": "first_name",
+      "COLUMN_TYPE": "varchar(50)",
+      "IS_NULLABLE": "NO",
+      "COLUMN_KEY": "",
+      "COLUMN_COMMENT": "First Name"
+    },
+    {
+      "TABLE_NAME": "vw_verify_member_bene",
+      "COLUMN_NAME": "middle_name",
+      "COLUMN_TYPE": "varchar(30)",
+      "IS_NULLABLE": "YES",
+      "COLUMN_KEY": "",
+      "COLUMN_COMMENT": "Middle Name"
+    },
+    {
+      "TABLE_NAME": "vw_verify_member_bene",
+      "COLUMN_NAME": "last_name",
+      "COLUMN_TYPE": "varchar(50)",
+      "IS_NULLABLE": "YES",
+      "COLUMN_KEY": "",
+      "COLUMN_COMMENT": "Last Name"
+    },
+    {
+      "TABLE_NAME": "vw_verify_member_bene",
+      "COLUMN_NAME": "date_of_birth",
+      "COLUMN_TYPE": "date",
+      "IS_NULLABLE": "NO",
+      "COLUMN_KEY": "",
+      "COLUMN_COMMENT": "Date of Birth"
+    },
+    {
+      "TABLE_NAME": "vw_verify_member_bene",
+      "COLUMN_NAME": "sex_id",
+      "COLUMN_TYPE": "int unsigned",
+      "IS_NULLABLE": "NO",
+      "COLUMN_KEY": "",
+      "COLUMN_COMMENT": "Foreign Key of Sex Library"
+    },
+    {
+      "TABLE_NAME": "vw_verify_member_bene",
+      "COLUMN_NAME": "member_id",
+      "COLUMN_TYPE": "int unsigned",
+      "IS_NULLABLE": "NO",
+      "COLUMN_KEY": "",
+      "COLUMN_COMMENT": "Primary Key of Person Table"
+    },
+    {
+      "TABLE_NAME": "vw_verify_member_bene",
+      "COLUMN_NAME": "listahanan_id",
+      "COLUMN_TYPE": "varchar(25)",
+      "IS_NULLABLE": "YES",
+      "COLUMN_KEY": "",
+      "COLUMN_COMMENT": "Listahanan ID or hh_id from Listahanan Project."
+    },
+    {
+      "TABLE_NAME": "vw_verify_member_bene",
+      "COLUMN_NAME": "lrn",
+      "COLUMN_TYPE": "varchar(20)",
+      "IS_NULLABLE": "YES",
+      "COLUMN_KEY": "",
+      "COLUMN_COMMENT": "Learner reference number assigned to each student by DepEd"
+    },
+    {
+      "TABLE_NAME": "vw_verify_member_bene",
+      "COLUMN_NAME": "philsys",
+      "COLUMN_TYPE": "varchar(20)",
+      "IS_NULLABLE": "YES",
+      "COLUMN_KEY": "",
+      "COLUMN_COMMENT": "PhilSys Card Number. The PCN which is the public version of PSN shall be used for physical or online transactions."
+    },
+    {
+      "TABLE_NAME": "vw_verify_member_bene",
+      "COLUMN_NAME": "grade_level",
+      "COLUMN_TYPE": "varchar(50)",
+      "IS_NULLABLE": "YES",
+      "COLUMN_KEY": "",
+      "COLUMN_COMMENT": "Name: Name of Grade Level. \r\n{\"label\":\"Name\",\"visible\":\"true\",\"searchable\":\"true\",\"formtag\":\"text\",\"rules\":\"required|min_length[2]\",\"list\":\"1\",\"view\":\"1\",\"add_edit\":\"1\",\"alias\":\"name\"}"
+    },
+    {
+      "TABLE_NAME": "vw_verify_member_bene",
+      "COLUMN_NAME": "bgy_psgc_code",
+      "COLUMN_TYPE": "char(10)",
+      "IS_NULLABLE": "YES",
+      "COLUMN_KEY": "",
+      "COLUMN_COMMENT": "PSA Code: Philippine Standard Authority Code. {\"label\":\"PSA Code\",\"visible\":\"true\",\"searchable\":\"true\",\"formtag\":\"text\",\"rules\":\"required|exact_length[10]|numeric\",\"list\":\"1\",\"view\":\"1\",\"add_edit\":\"1\"}"
+    },
+    {
+      "TABLE_NAME": "vw_verify_member_bene",
+      "COLUMN_NAME": "region_name",
+      "COLUMN_TYPE": "varchar(125)",
+      "IS_NULLABLE": "YES",
+      "COLUMN_KEY": "",
+      "COLUMN_COMMENT": "Name: Name of Region. {\"label\":\"Name\",\"visible\":\"true\",\"searchable\":\"true\",\"formtag\":\"text\",\"rules\":\"required|regex_match[/^[a-zA-Z0-9 \u00f1\u00d1().'-_]+$/]\",\"list\":\"1\",\"view\":\"1\",\"add_edit\":\"1\",\"alias\":\"name\"}"
+    },
+    {
+      "TABLE_NAME": "vw_verify_member_bene",
+      "COLUMN_NAME": "province_name",
+      "COLUMN_TYPE": "varchar(125)",
+      "IS_NULLABLE": "YES",
+      "COLUMN_KEY": "",
+      "COLUMN_COMMENT": "Name: Name of Province. {\"label\":\"Name\",\"visible\":\"true\",\"searchable\":\"true\",\"formtag\":\"text\",\"rules\":\"required|regex_match[/^[a-zA-Z0-9 \u00f1\u00d1().'-_]+$/]\",\"list\":\"1\",\"view\":\"1\",\"add_edit\":\"1\",\"alias\":\"name\"}"
+    },
+    {
+      "TABLE_NAME": "vw_verify_member_bene",
+      "COLUMN_NAME": "city_name",
+      "COLUMN_TYPE": "varchar(125)",
+      "IS_NULLABLE": "YES",
+      "COLUMN_KEY": "",
+      "COLUMN_COMMENT": "Name: Name of City Municipality. {\"label\":\"Name\",\"visible\":\"true\",\"searchable\":\"true\",\"formtag\":\"text\",\"rules\":\"required|regex_match[/^[a-zA-Z0-9 \u00f1\u00d1().'-_]+$/]\",\"list\":\"1\",\"view\":\"1\",\"add_edit\":\"1\",\"alias\":\"name\"}"
+    },
+    {
+      "TABLE_NAME": "vw_verify_member_bene",
+      "COLUMN_NAME": "barangay_name",
+      "COLUMN_TYPE": "varchar(125)",
+      "IS_NULLABLE": "YES",
+      "COLUMN_KEY": "",
+      "COLUMN_COMMENT": "Name: Name of Barangay. {\"label\":\"Name\",\"visible\":\"true\",\"searchable\":\"true\",\"formtag\":\"text\",\"rules\":\"required|regex_match[/^[a-zA-Z0-9 \u00f1\u00d1().'-_]+$/]\",\"list\":\"1\",\"view\":\"1\",\"add_edit\":\"1\",\"alias\":\"name\"}"
+    },
+    {
+      "TABLE_NAME": "vw_verify_member_bene",
+      "COLUMN_NAME": "client_status",
+      "COLUMN_TYPE": "varchar(120)",
+      "IS_NULLABLE": "YES",
+      "COLUMN_KEY": "",
+      "COLUMN_COMMENT": "Name: Name of Client Status. {\"label\":\"Name\",\"visible\":\"true\",\"searchable\":\"true\",\"formtag\":\"text\",\"rules\":\"required\",\"list\":\"1\",\"view\":\"1\",\"add_edit\":\"1\",\"alias\":\"name\"}"
+    },
+    {
+      "TABLE_NAME": "vw_verify_member_bene",
+      "COLUMN_NAME": "roster_status",
+      "COLUMN_TYPE": "varchar(50)",
+      "IS_NULLABLE": "YES",
+      "COLUMN_KEY": "",
+      "COLUMN_COMMENT": "Name: Name of Roster Status. {\"label\":\"Roster Status Name\",\"visible\":\"true\",\"searchable\":\"true\",\"formtag\":\"text\",\"rules\":\"required|min_length[2]\",\"list\":\"1\",\"view\":\"1\",\"add_edit\":\"1\",\"alias\":\"name\"}"
+    },
+    {
+      "TABLE_NAME": "vw_verify_member_bene",
+      "COLUMN_NAME": "tuloy_id",
+      "COLUMN_TYPE": "varchar(14)",
+      "IS_NULLABLE": "NO",
+      "COLUMN_KEY": "",
+      "COLUMN_COMMENT": ""
+    },
+    {
+      "TABLE_NAME": "vw_verify_member_bene",
+      "COLUMN_NAME": "match_keys",
+      "COLUMN_TYPE": "binary(16)",
+      "IS_NULLABLE": "YES",
+      "COLUMN_KEY": "",
+      "COLUMN_COMMENT": "Deterministic MD5 hash used for matching of TULOY beneficiaries in 4Ps"
+    }
+  ],
+  "views": [
+    {
+      "TABLE_NAME": "vw_get_matched_CHED",
+      "VIEW_DEFINITION": "select `m`.`id` AS `id`,`m`.`match_id` AS `match_id`,`m`.`enrollment_id` AS `enrollment_id`,`m`.`tuloy_id` AS `tuloy_id`,`m`.`member_id` AS `member_id`,`m`.`student_id` AS `student_id`,`dswd_4ps_tuloy_dev`.`vmb`.`first_name` AS `first_name`,`dswd_4ps_tuloy_dev`.`vmb`.`middle_name` AS `middle_name`,`dswd_4ps_tuloy_dev`.`vmb`.`last_name` AS `last_name`,`m`.`mm_first_name` AS `mm_first_name`,`m`.`mm_middle_name` AS `mm_middle_name`,`m`.`mm_last_name` AS `mm_last_name`,`dswd_4ps_tuloy_dev`.`vmb`.`region_name` AS `region_name`,`dswd_4ps_tuloy_dev`.`vmb`.`province_name` AS `province_name`,`dswd_4ps_tuloy_dev`.`vmb`.`city_name` AS `city_name`,`dswd_4ps_tuloy_dev`.`vmb`.`barangay_name` AS `barangay_name`,`m`.`degree_program_name` AS `degree_program_name`,`m`.`degree_date_enrolled` AS `degree_date_enrolled`,`m`.`degree_program_duration` AS `degree_program_duration`,`m`.`degree_academic_year` AS `degree_academic_year`,`m`.`degree_year_level` AS `degree_year_level`,`m`.`degree_semester` AS `degree_semester`,`m`.`enrollment_status` AS `enrollment_status`,`m`.`date_encoded` AS `date_encoded`,`m`.`date_updated` AS `date_updated`,`m`.`created_at` AS `created_at`,`m`.`updated_at` AS `updated_at` from (`dswd_4ps_tuloy_dev`.`enroll_matched_CHED_tbl` `m` left join `dswd_4ps_tuloy_dev`.`vw_verify_member_bene` `vmb` on((`dswd_4ps_tuloy_dev`.`vmb`.`member_id` = `m`.`member_id`)))"
+    },
+    {
+      "TABLE_NAME": "vw_verify_member_bene",
+      "VIEW_DEFINITION": "select `p`.`first_name` AS `first_name`,`p`.`middle_name` AS `middle_name`,`p`.`last_name` AS `last_name`,`p`.`date_of_birth` AS `date_of_birth`,`p`.`sex_id` AS `sex_id`,`p`.`person_id` AS `member_id`,`h`.`listahanan_id` AS `listahanan_id`,`p`.`lrn` AS `lrn`,`p`.`phil_id` AS `philsys`,`gl`.`name` AS `grade_level`,`bgy`.`psa_code` AS `bgy_psgc_code`,`psgc`.`region_name` AS `region_name`,`psgc`.`province_name` AS `province_name`,`psgc`.`city_name` AS `city_name`,`bgy`.`name` AS `barangay_name`,`cs`.`name` AS `client_status`,`rs`.`name` AS `roster_status`,concat('4Ps-',`p`.`person_id`) AS `tuloy_id`,`p`.`match_key` AS `match_keys` from ((((((((`dswd_4ps_tuloy_dev`.`tbl_person` `p` left join `dswd_4ps_tuloy_dev`.`tbl_hh_roster` `r` on((`r`.`person_id` = `p`.`person_id`))) left join `dswd_4ps_tuloy_dev`.`tbl_household` `h` on((`h`.`household_id` = `r`.`household_id`))) left join `dswd_4ps_tuloy_dev`.`tbl_beneficiary` `b` on((`b`.`household_id` = `r`.`household_id`))) left join `dswd_4ps_tuloy_dev`.`lib_grade_level` `gl` on((`gl`.`grade_level_id` = `p`.`grade_level_id`))) left join `dswd_4ps_tuloy_dev`.`lib_psgc_barangay` `bgy` on((`bgy`.`barangay_id` = `h`.`barangay_id`))) left join `dswd_4ps_tuloy_dev`.`lib_psgc_denorm` `psgc` on((`bgy`.`barangay_id` = `psgc`.`barangay_id`))) left join `dswd_4ps_tuloy_dev`.`lib_client_status` `cs` on((`cs`.`client_status_id` = `b`.`client_status_id`))) left join `dswd_4ps_tuloy_dev`.`lib_roster_status` `rs` on((`rs`.`roster_status_id` = `r`.`roster_status_id`))) where ((`b`.`client_status_id` in (1,3,14,15,19,28)) and (`gl`.`grade_level_id` in (13,14,15,16,22,23,24,28,29)) and (`p`.`date_of_birth` > (curdate() - interval 31 year)) and (`p`.`date_of_birth` <= (curdate() - interval 18 year)))"
+    }
+  ],
+  "status": "connected; metadata captured"
+}

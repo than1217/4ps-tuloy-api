@@ -1,0 +1,97 @@
+{
+  "status": "Martin reports staging 0001-0013 recorded; all 13 checksums match current migration files; API/frontend release not deployed",
+  "checksum_method": "scripts.migrate.discover UTF-8 text checksum",
+  "reported_applied": [
+    "0001",
+    "0002",
+    "0003",
+    "0004",
+    "0005",
+    "0006",
+    "0007",
+    "0008",
+    "0009",
+    "0010",
+    "0011",
+    "0012",
+    "0013"
+  ],
+  "apply_order": [
+    "backfill 0003",
+    "0006",
+    "0007",
+    "0008",
+    "0009",
+    "0010",
+    "0011",
+    "0012",
+    "0013"
+  ],
+  "files": [
+    {
+      "version": "0001",
+      "name": "0001_baseline.sql",
+      "checksum": "2f66d78675dc741081d3995121fd1d302e03212da0fc7cf77528c7f3e963d72e"
+    },
+    {
+      "version": "0002",
+      "name": "0002_api_user_scopes.sql",
+      "checksum": "9867704136d773881803ad725e1707d30415ff0848267c38dad443b948c4540f"
+    },
+    {
+      "version": "0003",
+      "name": "0003_enroll_matched_tuloy_id_index.sql",
+      "checksum": "2d4a394479c46a4d7bc6dbfdefb3e3b37b2d692f2973539fb0e249bf2beac275"
+    },
+    {
+      "version": "0004",
+      "name": "0004_api_user_identities.sql",
+      "checksum": "e2959efc709c173fbee5e8b15ad53ecd58ed0e31534f8e8dfd17ae3cd1f53947"
+    },
+    {
+      "version": "0005",
+      "name": "0005_staff_users.sql",
+      "checksum": "91bad111c68d501bb6413545da1f9be2a3ee6ebeda2c4a7d34b05fdefed1707c"
+    },
+    {
+      "version": "0006",
+      "name": "0006_api_user_scopes_nullable_expiry.sql",
+      "checksum": "452ca85fcd55d673c3a3e48e06f8324afda4f612b828702e76f8883bbf9deede"
+    },
+    {
+      "version": "0007",
+      "name": "0007_app_settings_baseline.sql",
+      "checksum": "68105093b7837db57e84d2033ff55707462e0477045ec695fc5298764cf81674"
+    },
+    {
+      "version": "0008",
+      "name": "0008_bcmd_batch.sql",
+      "checksum": "4d80f0147118451c31fc9eef3a2e77ad759046e32eccd2cb6e9574f8cb480461"
+    },
+    {
+      "version": "0009",
+      "name": "0009_bcmd_batch_member.sql",
+      "checksum": "9c1809ae384cf16cba4eb71c958238286199c8409fdcf4aa5cca0eb1ff09b653"
+    },
+    {
+      "version": "0010",
+      "name": "0010_bcmd_dqa_issue.sql",
+      "checksum": "8ca581bf1efb8651d97cc2212d7d07e6f06c16fa901f86157447cfd1354bdef9"
+    },
+    {
+      "version": "0011",
+      "name": "0011_bcmd_batch_export.sql",
+      "checksum": "7fe71e6bc3cc28600f9639441100ffccab08a74bc9fa45b905f017a478ea45d3"
+    },
+    {
+      "version": "0012",
+      "name": "0012_bcmd_audit_event.sql",
+      "checksum": "a15a61913a8227d822978ecf1597e77473a62e7ab343279991455990d844bb73"
+    },
+    {
+      "version": "0013",
+      "name": "0013_bcmd_approval.sql",
+      "checksum": "1415a9d15cd14de32d839a5fcfa10d34b1379833ccd9642d1380c49753b3845a"
+    }
+  ]
+}

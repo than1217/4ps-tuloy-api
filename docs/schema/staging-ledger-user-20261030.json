@@ -1,0 +1,42 @@
+{
+  "source": "Martin supplied DBGate identity, migration ledger and full app_settings DDL",
+  "rows": [
+    {
+      "version": "0001",
+      "name": "0001_baseline.sql",
+      "checksum": "2f66d78675dc741081d3995121fd1d302e03212da0fc7cf77528c7f3e963d72e",
+      "applied_at": "2026-10-26 08:34:31",
+      "local_checksum": "2f66d78675dc741081d3995121fd1d302e03212da0fc7cf77528c7f3e963d72e",
+      "matches": true
+    },
+    {
+      "version": "0002",
+      "name": "0002_api_user_scopes.sql",
+      "checksum": "9867704136d773881803ad725e1707d30415ff0848267c38dad443b948c4540f",
+      "applied_at": "2026-10-26 08:34:31",
+      "local_checksum": "9867704136d773881803ad725e1707d30415ff0848267c38dad443b948c4540f",
+      "matches": true
+    },
+    {
+      "version": "0004",
+      "name": "0004_api_user_identities.sql",
+      "checksum": "e2959efc709c173fbee5e8b15ad53ecd58ed0e31534f8e8dfd17ae3cd1f53947",
+      "applied_at": "2026-10-27 18:11:51",
+      "local_checksum": "e2959efc709c173fbee5e8b15ad53ecd58ed0e31534f8e8dfd17ae3cd1f53947",
+      "matches": true
+    },
+    {
+      "version": "0005",
+      "name": "0005_staff_users.sql",
+      "checksum": "91bad111c68d501bb6413545da1f9be2a3ee6ebeda2c4a7d34b05fdefed1707c",
+      "applied_at": "2026-10-27 19:06:33",
+      "local_checksum": "91bad111c68d501bb6413545da1f9be2a3ee6ebeda2c4a7d34b05fdefed1707c",
+      "matches": true
+    }
+  ],
+  "identity": {
+    "database": "dswd_4ps_tuloy_dev",
+    "hostname": "ppisv2-v3Master",
+    "source": "Martin supplied SELECT DATABASE(), @@hostname result on 2026-10-30"
+  }
+}

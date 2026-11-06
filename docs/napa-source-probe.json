@@ -1,0 +1,3822 @@
+{
+  "captured_utc": "2026-10-29T23:09:08.266131+00:00",
+  "target": {
+    "host": "10.10.10.133",
+    "database": "dswd_4ps_tuloy_dev"
+  },
+  "scope": "metadata, non-personal reference values, aggregate counts only",
+  "sample": "first 200 matched IDs; not a population-wide quality assessment",
+  "checks": {
+    "server": {
+      "sql": "SELECT DATABASE() AS db, @@hostname AS hostname, @@version AS version",
+      "rows": [
+        {
+          "db": "dswd_4ps_tuloy_dev",
+          "hostname": "ppisv2-v3Master",
+          "version": "8.0.43"
+        }
+      ],
+      "status": "ok"
+    },
+    "lookup_candidates": {
+      "sql": "SELECT TABLE_SCHEMA,TABLE_NAME,COLUMN_NAME,COLUMN_TYPE,COLUMN_COMMENT\n            FROM information_schema.COLUMNS WHERE TABLE_SCHEMA=DATABASE()\n            AND (TABLE_NAME LIKE 'lib%'\n              OR TABLE_NAME REGEXP 'extension|suffix|ethnic|indigen'\n              OR COLUMN_NAME REGEXP 'ext.*name|name.*ext|ip_group|ip_label')\n            ORDER BY TABLE_NAME,ORDINAL_POSITION",
+      "rows": [
+        {
+          "TABLE_SCHEMA": "dswd_4ps_tuloy_dev",
+          "TABLE_NAME": "lib_academic_year_term",
+          "COLUMN_NAME": "academic_year_id",
+          "COLUMN_TYPE": "int unsigned",
+          "COLUMN_COMMENT": "Client Status ID: Primary Key of Client Status. {\"label\":\"Client Status ID\",\"visible\":\"false\",\"searchable\":\"false\",\"formtag\":\"hidden\",\"list\":\"1\",\"view\":\"0\",\"add_edit\":\"1\",\"alias\":\"id\"}"
+        },
+        {
+          "TABLE_SCHEMA": "dswd_4ps_tuloy_dev",
+          "TABLE_NAME": "lib_academic_year_term",
+          "COLUMN_NAME": "name",
+          "COLUMN_TYPE": "varchar(120)",
+          "COLUMN_COMMENT": "Name: Name of Client Status. {\"label\":\"Name\",\"visible\":\"true\",\"searchable\":\"true\",\"formtag\":\"text\",\"rules\":\"required\",\"list\":\"1\",\"view\":\"1\",\"add_edit\":\"1\",\"alias\":\"name\"}"
+        },
+        {
+          "TABLE_SCHEMA": "dswd_4ps_tuloy_dev",
+          "TABLE_NAME": "lib_academic_year_term",
+          "COLUMN_NAME": "code",
+          "COLUMN_TYPE": "varchar(15)",
+          "COLUMN_COMMENT": "Code: Code of Client Status. {\"label\":\"Code\",\"visible\":\"true\",\"searchable\":\"true\",\"formtag\":\"text\",\"rules\":\"min_length[2]\",\"list\":\"1\",\"view\":\"1\",\"add_edit\":\"1\",\"alias\":\"code\"}"
+        },
+        {
+          "TABLE_SCHEMA": "dswd_4ps_tuloy_dev",
+          "TABLE_NAME": "lib_academic_year_term",
+          "COLUMN_NAME": "dt_inserted",
+          "COLUMN_TYPE": "datetime",
+          "COLUMN_COMMENT": "Date/Time Inserted: Date and Time the record was inserted. {\"label\":\"Date/Time Inserted\",\"visible\":\"false\",\"searchable\":\"false\",\"formtag\":\"text\",\"list\":\"0\",\"view\":\"1\",\"add_edit\":\"0\""
+        },
+        {
+          "TABLE_SCHEMA": "dswd_4ps_tuloy_dev",
+          "TABLE_NAME": "lib_academic_year_term",
+          "COLUMN_NAME": "inserted_by",
+          "COLUMN_TYPE": "int unsigned",
+          "COLUMN_COMMENT": "Inserted By: User ID who inserted the record. {\"label\":\"Inserted By\",\"visible\":\"false\",\"searchable\":\"false\",\"formtag\":\"text\",\"list\":\"0\",\"view\":\"1\",\"add_edit\":\"0\", \"joinfldval\":\"username\"}"
+        },
+        {
+          "TABLE_SCHEMA": "dswd_4ps_tuloy_dev",
+          "TABLE_NAME": "lib_academic_year_term",
+          "COLUMN_NAME": "dt_updated",
+          "COLUMN_TYPE": "datetime",
+          "COLUMN_COMMENT": "Date/Time Last Updated: Date and Time the records was last updated through application. {\"label\":\"Date/Time Last Updated\",\"visible\":\"false\",\"searchable\":\"false\",\"formtag\":\"text\",\"list\":\"0\",\"view\":\"1\",\"add_edit\":\"0\"}"
+        },
+        {
+          "TABLE_SCHEMA": "dswd_4ps_tuloy_dev",
+          "TABLE_NAME": "lib_academic_year_term",
+          "COLUMN_NAME": "last_updated_by",
+          "COLUMN_TYPE": "int unsigned",
+          "COLUMN_COMMENT": "Last Updated By: User ID who last updated the record. {\"label\":\"Last Updated By\",\"visible\":\"false\",\"searchable\":\"false\",\"formtag\":\"text\",\"list\":\"0\",\"view\":\"1\",\"add_edit\":\"0\", \"joinfldval\":\"username\"}"
+        },
+        {
+          "TABLE_SCHEMA": "dswd_4ps_tuloy_dev",
+          "TABLE_NAME": "lib_academic_year_term",
+          "COLUMN_NAME": "archived",
+          "COLUMN_TYPE": "tinyint unsigned",
+          "COLUMN_COMMENT": "Archived: State if record was archived or deleted. (0-False; 1-True). {\"label\":\"Archived\",\"visible\":\"false\",\"searchable\":\"false\",\"formtag\":\"text\",\"list\":\"0\",\"view\":\"0\",\"add_edit\":\"0\",\"archive\":\"1\",\"defaultzero\":\"1\",\"alias\":\"archived\"}"
+        },
+        {
+          "TABLE_SCHEMA": "dswd_4ps_tuloy_dev",
+          "TABLE_NAME": "lib_academic_year_term",
+          "COLUMN_NAME": "dt_archived",
+          "COLUMN_TYPE": "datetime",
+          "COLUMN_COMMENT": "Date/Time Last Archived: Date and Time the record was last archived. Reference date for physical archiving of records. Set to NULL on default or after record was archived. {\"label\":\"Date/Time Last Archived\",\"visible\":\"false\",\"searchable\":\"false\",\"formtag\":\"text\",\"list\":\"0\",\"view\":\"1\",\"add_edit\":\"0\"}"
+        },
+        {
+          "TABLE_SCHEMA": "dswd_4ps_tuloy_dev",
+          "TABLE_NAME": "lib_academic_year_term",
+          "COLUMN_NAME": "last_archived_by",
+          "COLUMN_TYPE": "int unsigned",
+          "COLUMN_COMMENT": "Last Archived By: User ID who last archived the record. {\"label\":\"Last Archived By\",\"visible\":\"false\",\"searchable\":\"false\",\"formtag\":\"text\",\"list\":\"0\",\"view\":\"1\",\"add_edit\":\"0\", \"joinfldval\":\"username\"}"
+        },
+        {
+          "TABLE_SCHEMA": "dswd_4ps_tuloy_dev",
+          "TABLE_NAME": "lib_academic_year_term",
+          "COLUMN_NAME": "dt_restored",
+          "COLUMN_TYPE": "datetime",
+          "COLUMN_COMMENT": "Date/Time Last Restored: Date and Time the record was last restored. Set to NULL on default or after record was restored. {\"label\":\"Date/Time Last Restored\",\"visible\":\"false\",\"searchable\":\"false\",\"formtag\":\"text\",\"list\":\"0\",\"view\":\"1\",\"add_edit\":\"0\"}"
+        },
+        {
+          "TABLE_SCHEMA": "dswd_4ps_tuloy_dev",
+          "TABLE_NAME": "lib_academic_year_term",
+          "COLUMN_NAME": "last_restored_by",
+          "COLUMN_TYPE": "int unsigned",
+          "COLUMN_COMMENT": "Last Restored By: User ID who last restored the record. {\"label\":\"Last Restored By\",\"visible\":\"false\",\"searchable\":\"false\",\"formtag\":\"text\",\"list\":\"0\",\"view\":\"1\",\"add_edit\":\"0\", \"joinfldval\":\"username\"}"
+        },
+        {
+          "TABLE_SCHEMA": "dswd_4ps_tuloy_dev",
+          "TABLE_NAME": "lib_academic_year_term",
+          "COLUMN_NAME": "dt_last_modified",
+          "COLUMN_TYPE": "datetime",
+          "COLUMN_COMMENT": "Date/Time Last Modified: Date and Time the records was last modified either through front or back end. {\"label\":\"Date/Time Last Modified\",\"visible\":\"false\",\"searchable\":\"false\",\"formtag\":\"text\",\"list\":\"0\",\"view\":\"1\",\"add_edit\":\"0\"}"
+        },
+        {
+          "TABLE_SCHEMA": "dswd_4ps_tuloy_dev",
+          "TABLE_NAME": "lib_assitance_type",
+          "COLUMN_NAME": "assistance_type_id",
+          "COLUMN_TYPE": "int unsigned",
+          "COLUMN_COMMENT": "Client Status ID: Primary Key of Client Status. {\"label\":\"Client Status ID\",\"visible\":\"false\",\"searchable\":\"false\",\"formtag\":\"hidden\",\"list\":\"1\",\"view\":\"0\",\"add_edit\":\"1\",\"alias\":\"id\"}"
+        },
+        {
+          "TABLE_SCHEMA": "dswd_4ps_tuloy_dev",
+          "TABLE_NAME": "lib_assitance_type",
+          "COLUMN_NAME": "name",
+          "COLUMN_TYPE": "varchar(120)",
+          "COLUMN_COMMENT": "Name: Name of Client Status. {\"label\":\"Name\",\"visible\":\"true\",\"searchable\":\"true\",\"formtag\":\"text\",\"rules\":\"required\",\"list\":\"1\",\"view\":\"1\",\"add_edit\":\"1\",\"alias\":\"name\"}"
+        },
+        {
+          "TABLE_SCHEMA": "dswd_4ps_tuloy_dev",
+          "TABLE_NAME": "lib_assitance_type",
+          "COLUMN_NAME": "code",
+          "COLUMN_TYPE": "varchar(15)",
+          "COLUMN_COMMENT": "Code: Code of Client Status. {\"label\":\"Code\",\"visible\":\"true\",\"searchable\":\"true\",\"formtag\":\"text\",\"rules\":\"min_length[2]\",\"list\":\"1\",\"view\":\"1\",\"add_edit\":\"1\",\"alias\":\"code\"}"
+        },
+        {
+          "TABLE_SCHEMA": "dswd_4ps_tuloy_dev",
+          "TABLE_NAME": "lib_assitance_type",
+          "COLUMN_NAME": "amount",
+          "COLUMN_TYPE": "float(12,2)",
+          "COLUMN_COMMENT": ""
+        },
+        {
+          "TABLE_SCHEMA": "dswd_4ps_tuloy_dev",
+          "TABLE_NAME": "lib_assitance_type",
+          "COLUMN_NAME": "dt_inserted",
+          "COLUMN_TYPE": "datetime",
+          "COLUMN_COMMENT": "Date/Time Inserted: Date and Time the record was inserted. {\"label\":\"Date/Time Inserted\",\"visible\":\"false\",\"searchable\":\"false\",\"formtag\":\"text\",\"list\":\"0\",\"view\":\"1\",\"add_edit\":\"0\""
+        },
+        {
+          "TABLE_SCHEMA": "dswd_4ps_tuloy_dev",
+          "TABLE_NAME": "lib_assitance_type",
+          "COLUMN_NAME": "inserted_by",
+          "COLUMN_TYPE": "int unsigned",
+          "COLUMN_COMMENT": "Inserted By: User ID who inserted the record. {\"label\":\"Inserted By\",\"visible\":\"false\",\"searchable\":\"false\",\"formtag\":\"text\",\"list\":\"0\",\"view\":\"1\",\"add_edit\":\"0\", \"joinfldval\":\"username\"}"
+        },
+        {
+          "TABLE_SCHEMA": "dswd_4ps_tuloy_dev",
+          "TABLE_NAME": "lib_assitance_type",
+          "COLUMN_NAME": "dt_updated",
+          "COLUMN_TYPE": "datetime",
+          "COLUMN_COMMENT": "Date/Time Last Updated: Date and Time the records was last updated through application. {\"label\":\"Date/Time Last Updated\",\"visible\":\"false\",\"searchable\":\"false\",\"formtag\":\"text\",\"list\":\"0\",\"view\":\"1\",\"add_edit\":\"0\"}"
+        },
+        {
+          "TABLE_SCHEMA": "dswd_4ps_tuloy_dev",
+          "TABLE_NAME": "lib_assitance_type",
+          "COLUMN_NAME": "last_updated_by",
+          "COLUMN_TYPE": "int unsigned",
+          "COLUMN_COMMENT": "Last Updated By: User ID who last updated the record. {\"label\":\"Last Updated By\",\"visible\":\"false\",\"searchable\":\"false\",\"formtag\":\"text\",\"list\":\"0\",\"view\":\"1\",\"add_edit\":\"0\", \"joinfldval\":\"username\"}"
+        },
+        {
+          "TABLE_SCHEMA": "dswd_4ps_tuloy_dev",
+          "TABLE_NAME": "lib_assitance_type",
+          "COLUMN_NAME": "archived",
+          "COLUMN_TYPE": "tinyint unsigned",
+          "COLUMN_COMMENT": "Archived: State if record was archived or deleted. (0-False; 1-True). {\"label\":\"Archived\",\"visible\":\"false\",\"searchable\":\"false\",\"formtag\":\"text\",\"list\":\"0\",\"view\":\"0\",\"add_edit\":\"0\",\"archive\":\"1\",\"defaultzero\":\"1\",\"alias\":\"archived\"}"
+        },
+        {
+          "TABLE_SCHEMA": "dswd_4ps_tuloy_dev",
+          "TABLE_NAME": "lib_assitance_type",
+          "COLUMN_NAME": "dt_archived",
+          "COLUMN_TYPE": "datetime",
+          "COLUMN_COMMENT": "Date/Time Last Archived: Date and Time the record was last archived. Reference date for physical archiving of records. Set to NULL on default or after record was archived. {\"label\":\"Date/Time Last Archived\",\"visible\":\"false\",\"searchable\":\"false\",\"formtag\":\"text\",\"list\":\"0\",\"view\":\"1\",\"add_edit\":\"0\"}"
+        },
+        {
+          "TABLE_SCHEMA": "dswd_4ps_tuloy_dev",
+          "TABLE_NAME": "lib_assitance_type",
+          "COLUMN_NAME": "last_archived_by",
+          "COLUMN_TYPE": "int unsigned",
+          "COLUMN_COMMENT": "Last Archived By: User ID who last archived the record. {\"label\":\"Last Archived By\",\"visible\":\"false\",\"searchable\":\"false\",\"formtag\":\"text\",\"list\":\"0\",\"view\":\"1\",\"add_edit\":\"0\", \"joinfldval\":\"username\"}"
+        },
+        {
+          "TABLE_SCHEMA": "dswd_4ps_tuloy_dev",
+          "TABLE_NAME": "lib_assitance_type",
+          "COLUMN_NAME": "dt_restored",
+          "COLUMN_TYPE": "datetime",
+          "COLUMN_COMMENT": "Date/Time Last Restored: Date and Time the record was last restored. Set to NULL on default or after record was restored. {\"label\":\"Date/Time Last Restored\",\"visible\":\"false\",\"searchable\":\"false\",\"formtag\":\"text\",\"list\":\"0\",\"view\":\"1\",\"add_edit\":\"0\"}"
+        },
+        {
+          "TABLE_SCHEMA": "dswd_4ps_tuloy_dev",
+          "TABLE_NAME": "lib_assitance_type",
+          "COLUMN_NAME": "last_restored_by",
+          "COLUMN_TYPE": "int unsigned",
+          "COLUMN_COMMENT": "Last Restored By: User ID who last restored the record. {\"label\":\"Last Restored By\",\"visible\":\"false\",\"searchable\":\"false\",\"formtag\":\"text\",\"list\":\"0\",\"view\":\"1\",\"add_edit\":\"0\", \"joinfldval\":\"username\"}"
+        },
+        {
+          "TABLE_SCHEMA": "dswd_4ps_tuloy_dev",
+          "TABLE_NAME": "lib_assitance_type",
+          "COLUMN_NAME": "dt_last_modified",
+          "COLUMN_TYPE": "datetime",
+          "COLUMN_COMMENT": "Date/Time Last Modified: Date and Time the records was last modified either through front or back end. {\"label\":\"Date/Time Last Modified\",\"visible\":\"false\",\"searchable\":\"false\",\"formtag\":\"text\",\"list\":\"0\",\"view\":\"1\",\"add_edit\":\"0\"}"
+        },
+        {
+          "TABLE_SCHEMA": "dswd_4ps_tuloy_dev",
+          "TABLE_NAME": "lib_client_status",
+          "COLUMN_NAME": "client_status_id",
+          "COLUMN_TYPE": "int unsigned",
+          "COLUMN_COMMENT": "Client Status ID: Primary Key of Client Status. {\"label\":\"Client Status ID\",\"visible\":\"false\",\"searchable\":\"false\",\"formtag\":\"hidden\",\"list\":\"1\",\"view\":\"0\",\"add_edit\":\"1\",\"alias\":\"id\"}"
+        },
+        {
+          "TABLE_SCHEMA": "dswd_4ps_tuloy_dev",
+          "TABLE_NAME": "lib_client_status",
+          "COLUMN_NAME": "name",
+          "COLUMN_TYPE": "varchar(120)",
+          "COLUMN_COMMENT": "Name: Name of Client Status. {\"label\":\"Name\",\"visible\":\"true\",\"searchable\":\"true\",\"formtag\":\"text\",\"rules\":\"required\",\"list\":\"1\",\"view\":\"1\",\"add_edit\":\"1\",\"alias\":\"name\"}"
+        },
+        {
+          "TABLE_SCHEMA": "dswd_4ps_tuloy_dev",
+          "TABLE_NAME": "lib_client_status",
+          "COLUMN_NAME": "code",
+          "COLUMN_TYPE": "varchar(15)",
+          "COLUMN_COMMENT": "Code: Code of Client Status. {\"label\":\"Code\",\"visible\":\"true\",\"searchable\":\"true\",\"formtag\":\"text\",\"rules\":\"min_length[2]\",\"list\":\"1\",\"view\":\"1\",\"add_edit\":\"1\",\"alias\":\"code\"}"
+        },
+        {
+          "TABLE_SCHEMA": "dswd_4ps_tuloy_dev",
+          "TABLE_NAME": "lib_client_status",
+          "COLUMN_NAME": "category_id",
+          "COLUMN_TYPE": "int unsigned",
+          "COLUMN_COMMENT": "Foreign Key of Client Status Category. {\"label\":\"CS Category\",\"visible\":\"false\",\"searchable\":\"true\",\"formtag\":\"select\",\"rules\":\"required\",\"list\":\"1\",\"view\":\"0\",\"add_edit\":\"1\",\"joinfldval\":\"name\"}"
+        },
+        {
+          "TABLE_SCHEMA": "dswd_4ps_tuloy_dev",
+          "TABLE_NAME": "lib_client_status",
+          "COLUMN_NAME": "dt_inserted",
+          "COLUMN_TYPE": "datetime",
+          "COLUMN_COMMENT": "Date/Time Inserted: Date and Time the record was inserted. {\"label\":\"Date/Time Inserted\",\"visible\":\"false\",\"searchable\":\"false\",\"formtag\":\"text\",\"list\":\"0\",\"view\":\"1\",\"add_edit\":\"0\""
+        },
+        {
+          "TABLE_SCHEMA": "dswd_4ps_tuloy_dev",
+          "TABLE_NAME": "lib_client_status",
+          "COLUMN_NAME": "inserted_by",
+          "COLUMN_TYPE": "int unsigned",
+          "COLUMN_COMMENT": "Inserted By: User ID who inserted the record. {\"label\":\"Inserted By\",\"visible\":\"false\",\"searchable\":\"false\",\"formtag\":\"text\",\"list\":\"0\",\"view\":\"1\",\"add_edit\":\"0\", \"joinfldval\":\"username\"}"
+        },
+        {
+          "TABLE_SCHEMA": "dswd_4ps_tuloy_dev",
+          "TABLE_NAME": "lib_client_status",
+          "COLUMN_NAME": "dt_updated",
+          "COLUMN_TYPE": "datetime",
+          "COLUMN_COMMENT": "Date/Time Last Updated: Date and Time the records was last updated through application. {\"label\":\"Date/Time Last Updated\",\"visible\":\"false\",\"searchable\":\"false\",\"formtag\":\"text\",\"list\":\"0\",\"view\":\"1\",\"add_edit\":\"0\"}"
+        },
+        {
+          "TABLE_SCHEMA": "dswd_4ps_tuloy_dev",
+          "TABLE_NAME": "lib_client_status",
+          "COLUMN_NAME": "last_updated_by",
+          "COLUMN_TYPE": "int unsigned",
+          "COLUMN_COMMENT": "Last Updated By: User ID who last updated the record. {\"label\":\"Last Updated By\",\"visible\":\"false\",\"searchable\":\"false\",\"formtag\":\"text\",\"list\":\"0\",\"view\":\"1\",\"add_edit\":\"0\", \"joinfldval\":\"username\"}"
+        },
+        {
+          "TABLE_SCHEMA": "dswd_4ps_tuloy_dev",
+          "TABLE_NAME": "lib_client_status",
+          "COLUMN_NAME": "archived",
+          "COLUMN_TYPE": "tinyint unsigned",
+          "COLUMN_COMMENT": "Archived: State if record was archived or deleted. (0-False; 1-True). {\"label\":\"Archived\",\"visible\":\"false\",\"searchable\":\"false\",\"formtag\":\"text\",\"list\":\"0\",\"view\":\"0\",\"add_edit\":\"0\",\"archive\":\"1\",\"defaultzero\":\"1\",\"alias\":\"archived\"}"
+        },
+        {
+          "TABLE_SCHEMA": "dswd_4ps_tuloy_dev",
+          "TABLE_NAME": "lib_client_status",
+          "COLUMN_NAME": "dt_archived",
+          "COLUMN_TYPE": "datetime",
+          "COLUMN_COMMENT": "Date/Time Last Archived: Date and Time the record was last archived. Reference date for physical archiving of records. Set to NULL on default or after record was archived. {\"label\":\"Date/Time Last Archived\",\"visible\":\"false\",\"searchable\":\"false\",\"formtag\":\"text\",\"list\":\"0\",\"view\":\"1\",\"add_edit\":\"0\"}"
+        },
+        {
+          "TABLE_SCHEMA": "dswd_4ps_tuloy_dev",
+          "TABLE_NAME": "lib_client_status",
+          "COLUMN_NAME": "last_archived_by",
+          "COLUMN_TYPE": "int unsigned",
+          "COLUMN_COMMENT": "Last Archived By: User ID who last archived the record. {\"label\":\"Last Archived By\",\"visible\":\"false\",\"searchable\":\"false\",\"formtag\":\"text\",\"list\":\"0\",\"view\":\"1\",\"add_edit\":\"0\", \"joinfldval\":\"username\"}"
+        },
+        {
+          "TABLE_SCHEMA": "dswd_4ps_tuloy_dev",
+          "TABLE_NAME": "lib_client_status",
+          "COLUMN_NAME": "dt_restored",
+          "COLUMN_TYPE": "datetime",
+          "COLUMN_COMMENT": "Date/Time Last Restored: Date and Time the record was last restored. Set to NULL on default or after record was restored. {\"label\":\"Date/Time Last Restored\",\"visible\":\"false\",\"searchable\":\"false\",\"formtag\":\"text\",\"list\":\"0\",\"view\":\"1\",\"add_edit\":\"0\"}"
+        },
+        {
+          "TABLE_SCHEMA": "dswd_4ps_tuloy_dev",
+          "TABLE_NAME": "lib_client_status",
+          "COLUMN_NAME": "last_restored_by",
+          "COLUMN_TYPE": "int unsigned",
+          "COLUMN_COMMENT": "Last Restored By: User ID who last restored the record. {\"label\":\"Last Restored By\",\"visible\":\"false\",\"searchable\":\"false\",\"formtag\":\"text\",\"list\":\"0\",\"view\":\"1\",\"add_edit\":\"0\", \"joinfldval\":\"username\"}"
+        },
+        {
+          "TABLE_SCHEMA": "dswd_4ps_tuloy_dev",
+          "TABLE_NAME": "lib_client_status",
+          "COLUMN_NAME": "dt_last_modified",
+          "COLUMN_TYPE": "datetime",
+          "COLUMN_COMMENT": "Date/Time Last Modified: Date and Time the records was last modified either through front or back end. {\"label\":\"Date/Time Last Modified\",\"visible\":\"false\",\"searchable\":\"false\",\"formtag\":\"text\",\"list\":\"0\",\"view\":\"1\",\"add_edit\":\"0\"}"
+        },
+        {
+          "TABLE_SCHEMA": "dswd_4ps_tuloy_dev",
+          "TABLE_NAME": "lib_grade_level",
+          "COLUMN_NAME": "grade_level_id",
+          "COLUMN_TYPE": "int unsigned",
+          "COLUMN_COMMENT": "Grade Level ID: Primary Key of Grade Level. {\"label\":\"Grade Level ID\",\"visible\":\"false\",\"searchable\":\"false\",\"formtag\":\"hidden\",\"list\":\"1\",\"view\":\"0\",\"add_edit\":\"1\",\"alias\":\"id\"}"
+        },
+        {
+          "TABLE_SCHEMA": "dswd_4ps_tuloy_dev",
+          "TABLE_NAME": "lib_grade_level",
+          "COLUMN_NAME": "name",
+          "COLUMN_TYPE": "varchar(50)",
+          "COLUMN_COMMENT": "Name: Name of Grade Level. \r\n{\"label\":\"Name\",\"visible\":\"true\",\"searchable\":\"true\",\"formtag\":\"text\",\"rules\":\"required|min_length[2]\",\"list\":\"1\",\"view\":\"1\",\"add_edit\":\"1\",\"alias\":\"name\"}"
+        },
+        {
+          "TABLE_SCHEMA": "dswd_4ps_tuloy_dev",
+          "TABLE_NAME": "lib_grade_level",
+          "COLUMN_NAME": "code",
+          "COLUMN_TYPE": "varchar(15)",
+          "COLUMN_COMMENT": "Code: Code of Grade Level. {\"label\":\"Code\",\"visible\":\"true\",\"searchable\":\"true\",\"formtag\":\"text\",\"rules\":\"alpha_dash|min_length[2]\",\"list\":\"1\",\"view\":\"1\",\"add_edit\":\"1\"}"
+        },
+        {
+          "TABLE_SCHEMA": "dswd_4ps_tuloy_dev",
+          "TABLE_NAME": "lib_grade_level",
+          "COLUMN_NAME": "h_order",
+          "COLUMN_TYPE": "int unsigned",
+          "COLUMN_COMMENT": "Heirarchical Order: Order in which grade levels are attained. {\"label\":\"Heirarchical Order\",\"visible\":\"true\",\"searchable\":\"false\",\"formtag\":\"text\",\"rules\":\"integer\",\"instruction\":\"Please enter the order in which grade levels were attained.\",\"list\":\"1\",\"view\":\"1\",\"add_edit\":\"1\"}"
+        },
+        {
+          "TABLE_SCHEMA": "dswd_4ps_tuloy_dev",
+          "TABLE_NAME": "lib_grade_level",
+          "COLUMN_NAME": "dt_inserted",
+          "COLUMN_TYPE": "datetime",
+          "COLUMN_COMMENT": "Date/Time Inserted: Date and Time the record was inserted. {\"label\":\"Date Inserted\",\"visible\":\"false\",\"searchable\":\"false\",\"formtag\":\"text\",\"list\":\"0\",\"view\":\"1\",\"add_edit\":\"0\"}"
+        },
+        {
+          "TABLE_SCHEMA": "dswd_4ps_tuloy_dev",
+          "TABLE_NAME": "lib_grade_level",
+          "COLUMN_NAME": "inserted_by",
+          "COLUMN_TYPE": "int unsigned",
+          "COLUMN_COMMENT": "Inserted By: User ID who inserted the record. {\"label\":\"Inserted By\",\"visible\":\"false\",\"searchable\":\"false\",\"formtag\":\"text\",\"list\":\"0\",\"view\":\"1\",\"add_edit\":\"0\", \"joinfldval\":\"username\"}"
+        },
+        {
+          "TABLE_SCHEMA": "dswd_4ps_tuloy_dev",
+          "TABLE_NAME": "lib_grade_level",
+          "COLUMN_NAME": "dt_updated",
+          "COLUMN_TYPE": "datetime",
+          "COLUMN_COMMENT": "Date/Time Last Updated: Date and Time the records was last updated through application. {\"label\":\"Date/Time Last Updated\",\"visible\":\"false\",\"searchable\":\"false\",\"formtag\":\"text\",\"list\":\"0\",\"view\":\"1\",\"add_edit\":\"0\"}"
+        },
+        {
+          "TABLE_SCHEMA": "dswd_4ps_tuloy_dev",
+          "TABLE_NAME": "lib_grade_level",
+          "COLUMN_NAME": "last_updated_by",
+          "COLUMN_TYPE": "int unsigned",
+          "COLUMN_COMMENT": "Last Updated By: User ID who last updated the record. {\"label\":\"Last Updated By\",\"visible\":\"false\",\"searchable\":\"false\",\"formtag\":\"text\",\"list\":\"0\",\"view\":\"1\",\"add_edit\":\"0\", \"joinfldval\":\"username\"}"
+        },
+        {
+          "TABLE_SCHEMA": "dswd_4ps_tuloy_dev",
+          "TABLE_NAME": "lib_grade_level",
+          "COLUMN_NAME": "archived",
+          "COLUMN_TYPE": "tinyint unsigned",
+          "COLUMN_COMMENT": "Archived: State if record was archived or deleted. (0-False; 1-True). {\"label\":\"Archived\",\"visible\":\"false\",\"searchable\":\"false\",\"formtag\":\"text\",\"list\":\"0\",\"view\":\"0\",\"add_edit\":\"0\",\"archive\":\"1\",\"defaultzero\":\"1\",\"alias\":\"archived\"}"
+        },
+        {
+          "TABLE_SCHEMA": "dswd_4ps_tuloy_dev",
+          "TABLE_NAME": "lib_grade_level",
+          "COLUMN_NAME": "dt_archived",
+          "COLUMN_TYPE": "datetime",
+          "COLUMN_COMMENT": "Date/Time Last Archived: Date and Time the record was last archived. Reference date for physical archiving of records. Set to NULL on default or after record was archived. {\"label\":\"Date/Time Last Archived\",\"visible\":\"false\",\"searchable\":\"false\",\"formtag\":\"text\",\"list\":\"0\",\"view\":\"1\",\"add_edit\":\"0\"}"
+        },
+        {
+          "TABLE_SCHEMA": "dswd_4ps_tuloy_dev",
+          "TABLE_NAME": "lib_grade_level",
+          "COLUMN_NAME": "last_archived_by",
+          "COLUMN_TYPE": "int unsigned",
+          "COLUMN_COMMENT": "Last Archived By: User ID who last archived the record. {\"label\":\"Last Archived By\",\"visible\":\"false\",\"searchable\":\"false\",\"formtag\":\"text\",\"list\":\"0\",\"view\":\"1\",\"add_edit\":\"0\", \"joinfldval\":\"username\"}"
+        },
+        {
+          "TABLE_SCHEMA": "dswd_4ps_tuloy_dev",
+          "TABLE_NAME": "lib_grade_level",
+          "COLUMN_NAME": "dt_restored",
+          "COLUMN_TYPE": "datetime",
+          "COLUMN_COMMENT": "Date/Time Last Restored: Date and Time the record was last restored. Set to NULL on default or after record was restored. {\"label\":\"Date/Time Last Restored\",\"visible\":\"false\",\"searchable\":\"false\",\"formtag\":\"text\",\"list\":\"0\",\"view\":\"1\",\"add_edit\":\"0\"}"
+        },
+        {
+          "TABLE_SCHEMA": "dswd_4ps_tuloy_dev",
+          "TABLE_NAME": "lib_grade_level",
+          "COLUMN_NAME": "last_restored_by",
+          "COLUMN_TYPE": "int unsigned",
+          "COLUMN_COMMENT": "Last Restored By: User ID who last restored the record. {\"label\":\"Last Restored By\",\"visible\":\"false\",\"searchable\":\"false\",\"formtag\":\"text\",\"list\":\"0\",\"view\":\"1\",\"add_edit\":\"0\", \"joinfldval\":\"username\"}"
+        },
+        {
+          "TABLE_SCHEMA": "dswd_4ps_tuloy_dev",
+          "TABLE_NAME": "lib_grade_level",
+          "COLUMN_NAME": "dt_last_modified",
+          "COLUMN_TYPE": "datetime",
+          "COLUMN_COMMENT": "Date/Time Last Modified: Date and Time the records was last modified either through front or back end. {\"label\":\"Date/Time Last Modified\",\"visible\":\"false\",\"searchable\":\"false\",\"formtag\":\"text\",\"list\":\"0\",\"view\":\"1\",\"add_edit\":\"0\"}"
+        },
+        {
+          "TABLE_SCHEMA": "dswd_4ps_tuloy_dev",
+          "TABLE_NAME": "lib_partner_agency",
+          "COLUMN_NAME": "agency_id",
+          "COLUMN_TYPE": "int unsigned",
+          "COLUMN_COMMENT": ""
+        },
+        {
+          "TABLE_SCHEMA": "dswd_4ps_tuloy_dev",
+          "TABLE_NAME": "lib_partner_agency",
+          "COLUMN_NAME": "agency_name",
+          "COLUMN_TYPE": "varchar(100)",
+          "COLUMN_COMMENT": ""
+        },
+        {
+          "TABLE_SCHEMA": "dswd_4ps_tuloy_dev",
+          "TABLE_NAME": "lib_partner_agency",
+          "COLUMN_NAME": "agency_alias",
+          "COLUMN_TYPE": "varchar(20)",
+          "COLUMN_COMMENT": ""
+        },
+        {
+          "TABLE_SCHEMA": "dswd_4ps_tuloy_dev",
+          "TABLE_NAME": "lib_psgc_barangay",
+          "COLUMN_NAME": "barangay_id",
+          "COLUMN_TYPE": "int unsigned",
+          "COLUMN_COMMENT": "Barangay ID: Primary Key of Barangay Library. {\"label\":\"Barangay ID\",\"visible\":\"false\",\"searchable\":\"false\",\"formtag\":\"hidden\",\"list\":\"1\",\"view\":\"0\",\"add_edit\":\"1\",\"alias\":\"id\"}"
+        },
+        {
+          "TABLE_SCHEMA": "dswd_4ps_tuloy_dev",
+          "TABLE_NAME": "lib_psgc_barangay",
+          "COLUMN_NAME": "name",
+          "COLUMN_TYPE": "varchar(125)",
+          "COLUMN_COMMENT": "Name: Name of Barangay. {\"label\":\"Name\",\"visible\":\"true\",\"searchable\":\"true\",\"formtag\":\"text\",\"rules\":\"required|regex_match[/^[a-zA-Z0-9 \u00f1\u00d1().'-_]+$/]\",\"list\":\"1\",\"view\":\"1\",\"add_edit\":\"1\",\"alias\":\"name\"}"
+        },
+        {
+          "TABLE_SCHEMA": "dswd_4ps_tuloy_dev",
+          "TABLE_NAME": "lib_psgc_barangay",
+          "COLUMN_NAME": "code",
+          "COLUMN_TYPE": "varchar(30)",
+          "COLUMN_COMMENT": "Code: Code of Barangay. {\"label\":\"Code\",\"visible\":\"true\",\"searchable\":\"true\",\"formtag\":\"text\",\"rules\":\"min_length[2]|regex_match[/^[a-zA-Z0-9 ()'-_]+$/]\",\"list\":\"1\",\"view\":\"1\",\"add_edit\":\"1\",\"alias\":\"code\"}"
+        },
+        {
+          "TABLE_SCHEMA": "dswd_4ps_tuloy_dev",
+          "TABLE_NAME": "lib_psgc_barangay",
+          "COLUMN_NAME": "geocode",
+          "COLUMN_TYPE": "char(9)",
+          "COLUMN_COMMENT": "Geocode: Philippine Standard Geographic Code. {\"label\":\"GeoCode\",\"visible\":\"true\",\"searchable\":\"true\",\"formtag\":\"text\",\"rules\":\"exact_length[9]|numeric\",\"list\":\"1\",\"view\":\"1\",\"add_edit\":\"1\"}"
+        },
+        {
+          "TABLE_SCHEMA": "dswd_4ps_tuloy_dev",
+          "TABLE_NAME": "lib_psgc_barangay",
+          "COLUMN_NAME": "psa_code",
+          "COLUMN_TYPE": "char(10)",
+          "COLUMN_COMMENT": "PSA Code: Philippine Standard Authority Code. {\"label\":\"PSA Code\",\"visible\":\"true\",\"searchable\":\"true\",\"formtag\":\"text\",\"rules\":\"required|exact_length[10]|numeric\",\"list\":\"1\",\"view\":\"1\",\"add_edit\":\"1\"}"
+        },
+        {
+          "TABLE_SCHEMA": "dswd_4ps_tuloy_dev",
+          "TABLE_NAME": "lib_psgc_barangay",
+          "COLUMN_NAME": "is_gida",
+          "COLUMN_TYPE": "enum('No','Yes')",
+          "COLUMN_COMMENT": "Is GIDA: States if barangay is under GIDA. {\"label\":\"Is GIDA\",\"visible\":\"true\",\"searchable\":\"false\",\"formtag\":\"checkbox\",\"rules\":\"required\",\"list\":\"1\",\"view\":\"1\",\"add_edit\":\"1\"}"
+        },
+        {
+          "TABLE_SCHEMA": "dswd_4ps_tuloy_dev",
+          "TABLE_NAME": "lib_psgc_barangay",
+          "COLUMN_NAME": "city_id",
+          "COLUMN_TYPE": "int unsigned",
+          "COLUMN_COMMENT": "Foreign Key of City/Municipality. City/Municipality associated to the Barangay. {\"label\":\"City/Municipality\",\"visible\":\"false\",\"searchable\":\"true\",\"formtag\":\"select\",\"rules\":\"required\",\"list\":\"1\",\"view\":\"0\",\"add_edit\":\"1\",\"joinfldval\":\"name\",\"parent\":\"province_id\",\"class\":\"rpmb child city\"}"
+        },
+        {
+          "TABLE_SCHEMA": "dswd_4ps_tuloy_dev",
+          "TABLE_NAME": "lib_psgc_barangay",
+          "COLUMN_NAME": "dt_inserted",
+          "COLUMN_TYPE": "datetime",
+          "COLUMN_COMMENT": "Date/Time Inserted: Date and Time the record was inserted. {\"label\":\"Date/Time Inserted\",\"visible\":\"false\",\"searchable\":\"false\",\"formtag\":\"text\",\"list\":\"0\",\"view\":\"1\",\"add_edit\":\"0\"}"
+        },
+        {
+          "TABLE_SCHEMA": "dswd_4ps_tuloy_dev",
+          "TABLE_NAME": "lib_psgc_barangay",
+          "COLUMN_NAME": "inserted_by",
+          "COLUMN_TYPE": "int unsigned",
+          "COLUMN_COMMENT": "Inserted By: User ID who inserted the record. {\"label\":\"Inserted By\",\"visible\":\"false\",\"searchable\":\"false\",\"formtag\":\"text\",\"list\":\"0\",\"view\":\"1\",\"add_edit\":\"0\", \"joinfldval\":\"username\"}"
+        },
+        {
+          "TABLE_SCHEMA": "dswd_4ps_tuloy_dev",
+          "TABLE_NAME": "lib_psgc_barangay",
+          "COLUMN_NAME": "dt_updated",
+          "COLUMN_TYPE": "datetime",
+          "COLUMN_COMMENT": "Date/Time Updated: Date and Time the records was last updated through application. {\"label\":\"Date/Time Last Updated\",\"visible\":\"false\",\"searchable\":\"false\",\"formtag\":\"text\",\"list\":\"0\",\"view\":\"1\",\"add_edit\":\"0\"}"
+        },
+        {
+          "TABLE_SCHEMA": "dswd_4ps_tuloy_dev",
+          "TABLE_NAME": "lib_psgc_barangay",
+          "COLUMN_NAME": "last_updated_by",
+          "COLUMN_TYPE": "int unsigned",
+          "COLUMN_COMMENT": "Last Updated By: User ID who last updated the record. {\"label\":\"Last Updated By\",\"visible\":\"false\",\"searchable\":\"false\",\"formtag\":\"text\",\"list\":\"0\",\"view\":\"1\",\"add_edit\":\"0\", \"joinfldval\":\"username\"}"
+        },
+        {
+          "TABLE_SCHEMA": "dswd_4ps_tuloy_dev",
+          "TABLE_NAME": "lib_psgc_barangay",
+          "COLUMN_NAME": "archived",
+          "COLUMN_TYPE": "tinyint unsigned",
+          "COLUMN_COMMENT": "Archived: State if record was archived or deleted. (0-False; 1-True). {\"label\":\"Archived\",\"visible\":\"false\",\"searchable\":\"false\",\"formtag\":\"text\",\"list\":\"0\",\"view\":\"0\",\"add_edit\":\"0\",\"archive\":\"1\",\"defaultzero\":\"1\",\"archive\":\"1\",\"defaultzero\":\"1\",\"alias\":\"archived\"}"
+        },
+        {
+          "TABLE_SCHEMA": "dswd_4ps_tuloy_dev",
+          "TABLE_NAME": "lib_psgc_barangay",
+          "COLUMN_NAME": "dt_archived",
+          "COLUMN_TYPE": "datetime",
+          "COLUMN_COMMENT": "Date/Time Last Archived: Date and Time the record was last archived. Reference date for physical archiving of records. Set to NULL on default or after record was archived. {\"label\":\"Date/Time Last Archived\",\"visible\":\"false\",\"searchable\":\"false\",\"formtag\":\"text\",\"list\":\"0\",\"view\":\"1\",\"add_edit\":\"0\"}"
+        },
+        {
+          "TABLE_SCHEMA": "dswd_4ps_tuloy_dev",
+          "TABLE_NAME": "lib_psgc_barangay",
+          "COLUMN_NAME": "last_archived_by",
+          "COLUMN_TYPE": "int unsigned",
+          "COLUMN_COMMENT": "Last Archived By: User ID who last archived the record. {\"label\":\"Last Archived By\",\"visible\":\"false\",\"searchable\":\"false\",\"formtag\":\"text\",\"list\":\"0\",\"view\":\"1\",\"add_edit\":\"0\", \"joinfldval\":\"username\"}"
+        },
+        {
+          "TABLE_SCHEMA": "dswd_4ps_tuloy_dev",
+          "TABLE_NAME": "lib_psgc_barangay",
+          "COLUMN_NAME": "dt_restored",
+          "COLUMN_TYPE": "datetime",
+          "COLUMN_COMMENT": "Date/Time Last Restored: Date and Time the record was last restored. Set to NULL on default or after record was restored. {\"label\":\"Date/Time Last Restored\",\"visible\":\"false\",\"searchable\":\"false\",\"formtag\":\"text\",\"list\":\"0\",\"view\":\"1\",\"add_edit\":\"0\"}"
+        },
+        {
+          "TABLE_SCHEMA": "dswd_4ps_tuloy_dev",
+          "TABLE_NAME": "lib_psgc_barangay",
+          "COLUMN_NAME": "last_restored_by",
+          "COLUMN_TYPE": "int unsigned",
+          "COLUMN_COMMENT": "Last Restored By: User ID who last restored the record. {\"label\":\"Last Restored By\",\"visible\":\"false\",\"searchable\":\"false\",\"formtag\":\"text\",\"list\":\"0\",\"view\":\"1\",\"add_edit\":\"0\", \"joinfldval\":\"username\"}"
+        },
+        {
+          "TABLE_SCHEMA": "dswd_4ps_tuloy_dev",
+          "TABLE_NAME": "lib_psgc_barangay",
+          "COLUMN_NAME": "dt_last_modified",
+          "COLUMN_TYPE": "datetime",
+          "COLUMN_COMMENT": "Date/Time Last Modified: Date and Time the records was last modified either through front or back end. {\"label\":\"Date/Time Last Modified\",\"visible\":\"false\",\"searchable\":\"false\",\"formtag\":\"text\",\"list\":\"0\",\"view\":\"1\",\"add_edit\":\"0\"}"
+        },
+        {
+          "TABLE_SCHEMA": "dswd_4ps_tuloy_dev",
+          "TABLE_NAME": "lib_psgc_barangay",
+          "COLUMN_NAME": "urban_rural",
+          "COLUMN_TYPE": "char(5)",
+          "COLUMN_COMMENT": ""
+        },
+        {
+          "TABLE_SCHEMA": "dswd_4ps_tuloy_dev",
+          "TABLE_NAME": "lib_psgc_denorm",
+          "COLUMN_NAME": "region_id",
+          "COLUMN_TYPE": "int unsigned",
+          "COLUMN_COMMENT": "Region ID: Primary Key of Region Library. {\"label\":\"Region ID\",\"visible\":\"false\",\"searchable\":\"false\",\"formtag\":\"hidden\",\"list\":\"1\",\"view\":\"0\",\"add_edit\":\"1\",\"alias\":\"id\"}"
+        },
+        {
+          "TABLE_SCHEMA": "dswd_4ps_tuloy_dev",
+          "TABLE_NAME": "lib_psgc_denorm",
+          "COLUMN_NAME": "region_name",
+          "COLUMN_TYPE": "varchar(125)",
+          "COLUMN_COMMENT": "Name: Name of Region. {\"label\":\"Name\",\"visible\":\"true\",\"searchable\":\"true\",\"formtag\":\"text\",\"rules\":\"required|regex_match[/^[a-zA-Z0-9 \u00f1\u00d1().'-_]+$/]\",\"list\":\"1\",\"view\":\"1\",\"add_edit\":\"1\",\"alias\":\"name\"}"
+        },
+        {
+          "TABLE_SCHEMA": "dswd_4ps_tuloy_dev",
+          "TABLE_NAME": "lib_psgc_denorm",
+          "COLUMN_NAME": "short_code",
+          "COLUMN_TYPE": "varchar(30)",
+          "COLUMN_COMMENT": "Code: Code of Region. {\"label\":\"Code\",\"visible\":\"true\",\"searchable\":\"true\",\"formtag\":\"text\",\"rules\":\"min_length[2]|regex_match[/^[a-zA-Z0-9 ()'-_]+$/]\",\"list\":\"1\",\"view\":\"1\",\"add_edit\":\"1\",\"alias\":\"code\"}"
+        },
+        {
+          "TABLE_SCHEMA": "dswd_4ps_tuloy_dev",
+          "TABLE_NAME": "lib_psgc_denorm",
+          "COLUMN_NAME": "region_psa_code",
+          "COLUMN_TYPE": "char(10)",
+          "COLUMN_COMMENT": "PSA Code: Philippine Standard Authority Code. {\"label\":\"PSA Code\",\"visible\":\"true\",\"searchable\":\"true\",\"formtag\":\"text\",\"rules\":\"required|exact_length[10]|numeric\",\"list\":\"1\",\"view\":\"1\",\"add_edit\":\"1\"}"
+        },
+        {
+          "TABLE_SCHEMA": "dswd_4ps_tuloy_dev",
+          "TABLE_NAME": "lib_psgc_denorm",
+          "COLUMN_NAME": "province_id",
+          "COLUMN_TYPE": "int unsigned",
+          "COLUMN_COMMENT": "Province ID: Primary Key of Province Library. {\"label\":\"Province ID\",\"visible\":\"false\",\"searchable\":\"false\",\"formtag\":\"hidden\",\"list\":\"1\",\"view\":\"0\",\"add_edit\":\"1\",\"alias\":\"id\"}"
+        },
+        {
+          "TABLE_SCHEMA": "dswd_4ps_tuloy_dev",
+          "TABLE_NAME": "lib_psgc_denorm",
+          "COLUMN_NAME": "province_name",
+          "COLUMN_TYPE": "varchar(125)",
+          "COLUMN_COMMENT": "Name: Name of Province. {\"label\":\"Name\",\"visible\":\"true\",\"searchable\":\"true\",\"formtag\":\"text\",\"rules\":\"required|regex_match[/^[a-zA-Z0-9 \u00f1\u00d1().'-_]+$/]\",\"list\":\"1\",\"view\":\"1\",\"add_edit\":\"1\",\"alias\":\"name\"}"
+        },
+        {
+          "TABLE_SCHEMA": "dswd_4ps_tuloy_dev",
+          "TABLE_NAME": "lib_psgc_denorm",
+          "COLUMN_NAME": "province_psa_code",
+          "COLUMN_TYPE": "char(10)",
+          "COLUMN_COMMENT": "PSA Code: Philippine Standard Authority Code. {\"label\":\"PSA Code\",\"visible\":\"true\",\"searchable\":\"true\",\"formtag\":\"text\",\"rules\":\"required|exact_length[10]|numeric\",\"list\":\"1\",\"view\":\"1\",\"add_edit\":\"1\"}"
+        },
+        {
+          "TABLE_SCHEMA": "dswd_4ps_tuloy_dev",
+          "TABLE_NAME": "lib_psgc_denorm",
+          "COLUMN_NAME": "city_id",
+          "COLUMN_TYPE": "int unsigned",
+          "COLUMN_COMMENT": "City Municipality ID: Primary Key of City Municipality Library. {\"label\":\"City Municipality ID\",\"visible\":\"false\",\"searchable\":\"false\",\"formtag\":\"hidden\",\"list\":\"1\",\"view\":\"0\",\"add_edit\":\"1\",\"alias\":\"id\"}"
+        },
+        {
+          "TABLE_SCHEMA": "dswd_4ps_tuloy_dev",
+          "TABLE_NAME": "lib_psgc_denorm",
+          "COLUMN_NAME": "city_name",
+          "COLUMN_TYPE": "varchar(125)",
+          "COLUMN_COMMENT": "Name: Name of City Municipality. {\"label\":\"Name\",\"visible\":\"true\",\"searchable\":\"true\",\"formtag\":\"text\",\"rules\":\"required|regex_match[/^[a-zA-Z0-9 \u00f1\u00d1().'-_]+$/]\",\"list\":\"1\",\"view\":\"1\",\"add_edit\":\"1\",\"alias\":\"name\"}"
+        },
+        {
+          "TABLE_SCHEMA": "dswd_4ps_tuloy_dev",
+          "TABLE_NAME": "lib_psgc_denorm",
+          "COLUMN_NAME": "city_psa_name",
+          "COLUMN_TYPE": "char(10)",
+          "COLUMN_COMMENT": "PSA Code: Philippine Standard Authority Code. {\"label\":\"PSA Code\",\"visible\":\"true\",\"searchable\":\"true\",\"formtag\":\"text\",\"rules\":\"required|exact_length[10]|numeric\",\"list\":\"1\",\"view\":\"1\",\"add_edit\":\"1\"}"
+        },
+        {
+          "TABLE_SCHEMA": "dswd_4ps_tuloy_dev",
+          "TABLE_NAME": "lib_psgc_denorm",
+          "COLUMN_NAME": "barangay_id",
+          "COLUMN_TYPE": "int unsigned",
+          "COLUMN_COMMENT": "Barangay ID: Primary Key of Barangay Library. {\"label\":\"Barangay ID\",\"visible\":\"false\",\"searchable\":\"false\",\"formtag\":\"hidden\",\"list\":\"1\",\"view\":\"0\",\"add_edit\":\"1\",\"alias\":\"id\"}"
+        },
+        {
+          "TABLE_SCHEMA": "dswd_4ps_tuloy_dev",
+          "TABLE_NAME": "lib_psgc_denorm",
+          "COLUMN_NAME": "brgy_name",
+          "COLUMN_TYPE": "varchar(125)",
+          "COLUMN_COMMENT": "Name: Name of Barangay. {\"label\":\"Name\",\"visible\":\"true\",\"searchable\":\"true\",\"formtag\":\"text\",\"rules\":\"required|regex_match[/^[a-zA-Z0-9 \u00f1\u00d1().'-_]+$/]\",\"list\":\"1\",\"view\":\"1\",\"add_edit\":\"1\",\"alias\":\"name\"}"
+        },
+        {
+          "TABLE_SCHEMA": "dswd_4ps_tuloy_dev",
+          "TABLE_NAME": "lib_psgc_denorm",
+          "COLUMN_NAME": "code",
+          "COLUMN_TYPE": "varchar(30)",
+          "COLUMN_COMMENT": "Code: Code of Barangay. {\"label\":\"Code\",\"visible\":\"true\",\"searchable\":\"true\",\"formtag\":\"text\",\"rules\":\"min_length[2]|regex_match[/^[a-zA-Z0-9 ()'-_]+$/]\",\"list\":\"1\",\"view\":\"1\",\"add_edit\":\"1\",\"alias\":\"code\"}"
+        },
+        {
+          "TABLE_SCHEMA": "dswd_4ps_tuloy_dev",
+          "TABLE_NAME": "lib_psgc_denorm",
+          "COLUMN_NAME": "geocode",
+          "COLUMN_TYPE": "char(9)",
+          "COLUMN_COMMENT": "Geocode: Philippine Standard Geographic Code. {\"label\":\"GeoCode\",\"visible\":\"true\",\"searchable\":\"true\",\"formtag\":\"text\",\"rules\":\"exact_length[9]|numeric\",\"list\":\"1\",\"view\":\"1\",\"add_edit\":\"1\"}"
+        },
+        {
+          "TABLE_SCHEMA": "dswd_4ps_tuloy_dev",
+          "TABLE_NAME": "lib_psgc_denorm",
+          "COLUMN_NAME": "brgy_psa_code",
+          "COLUMN_TYPE": "char(10)",
+          "COLUMN_COMMENT": "PSA Code: Philippine Standard Authority Code. {\"label\":\"PSA Code\",\"visible\":\"true\",\"searchable\":\"true\",\"formtag\":\"text\",\"rules\":\"required|exact_length[10]|numeric\",\"list\":\"1\",\"view\":\"1\",\"add_edit\":\"1\"}"
+        },
+        {
+          "TABLE_SCHEMA": "dswd_4ps_tuloy_dev",
+          "TABLE_NAME": "lib_psgc_denorm",
+          "COLUMN_NAME": "join_key",
+          "COLUMN_TYPE": "varchar(503)",
+          "COLUMN_COMMENT": ""
+        },
+        {
+          "TABLE_SCHEMA": "dswd_4ps_tuloy_dev",
+          "TABLE_NAME": "lib_roster_status",
+          "COLUMN_NAME": "roster_status_id",
+          "COLUMN_TYPE": "int unsigned",
+          "COLUMN_COMMENT": "Roster Status ID: Primary Key of Roster Status\r\n{\"label\":\"Roster Status ID\",\"visible\":\"false\",\"searchable\":\"false\",\"formtag\":\"hidden\",\"list\":\"1\",\"view\":\"0\",\"add_edit\":\"1\",\"alias\":\"id\"}"
+        },
+        {
+          "TABLE_SCHEMA": "dswd_4ps_tuloy_dev",
+          "TABLE_NAME": "lib_roster_status",
+          "COLUMN_NAME": "name",
+          "COLUMN_TYPE": "varchar(50)",
+          "COLUMN_COMMENT": "Name: Name of Roster Status. {\"label\":\"Roster Status Name\",\"visible\":\"true\",\"searchable\":\"true\",\"formtag\":\"text\",\"rules\":\"required|min_length[2]\",\"list\":\"1\",\"view\":\"1\",\"add_edit\":\"1\",\"alias\":\"name\"}"
+        },
+        {
+          "TABLE_SCHEMA": "dswd_4ps_tuloy_dev",
+          "TABLE_NAME": "lib_roster_status",
+          "COLUMN_NAME": "code",
+          "COLUMN_TYPE": "varchar(15)",
+          "COLUMN_COMMENT": "Code: Code of Roster Status.  {\"label\":\"Code\",\"visible\":\"true\",\"searchable\":\"true\",\"formtag\":\"text\",\"rules\":\"min_length[2]\",\"list\":\"1\",\"view\":\"1\",\"add_edit\":\"1\"}"
+        },
+        {
+          "TABLE_SCHEMA": "dswd_4ps_tuloy_dev",
+          "TABLE_NAME": "lib_roster_status",
+          "COLUMN_NAME": "dt_inserted",
+          "COLUMN_TYPE": "datetime",
+          "COLUMN_COMMENT": "Date/Time Inserted: Date and Time the record was inserted. {\"label\":\"Date/Time Inserted\",\"visible\":\"false\",\"searchable\":\"false\",\"formtag\":\"text\",\"list\":\"0\",\"view\":\"1\",\"add_edit\":\"0\"}"
+        },
+        {
+          "TABLE_SCHEMA": "dswd_4ps_tuloy_dev",
+          "TABLE_NAME": "lib_roster_status",
+          "COLUMN_NAME": "inserted_by",
+          "COLUMN_TYPE": "int unsigned",
+          "COLUMN_COMMENT": "Inserted By: User ID who inserted the record. {\"label\":\"Inserted By\",\"visible\":\"false\",\"searchable\":\"false\",\"formtag\":\"text\",\"list\":\"0\",\"view\":\"1\",\"add_edit\":\"0\", \"joinfldval\":\"username\"}"
+        },
+        {
+          "TABLE_SCHEMA": "dswd_4ps_tuloy_dev",
+          "TABLE_NAME": "lib_roster_status",
+          "COLUMN_NAME": "dt_updated",
+          "COLUMN_TYPE": "datetime",
+          "COLUMN_COMMENT": "Date/Time Last Updated: Date and Time the records was last updated through application. {\"label\":\"Date/Time Last Updated\",\"visible\":\"false\",\"searchable\":\"false\",\"formtag\":\"text\",\"list\":\"0\",\"view\":\"1\",\"add_edit\":\"0\"}"
+        },
+        {
+          "TABLE_SCHEMA": "dswd_4ps_tuloy_dev",
+          "TABLE_NAME": "lib_roster_status",
+          "COLUMN_NAME": "last_updated_by",
+          "COLUMN_TYPE": "int unsigned",
+          "COLUMN_COMMENT": "Last Updated By: User ID who last updated the record. {\"label\":\"Last Updated By\",\"visible\":\"false\",\"searchable\":\"false\",\"formtag\":\"text\",\"list\":\"0\",\"view\":\"1\",\"add_edit\":\"0\", \"joinfldval\":\"username\"}"
+        },
+        {
+          "TABLE_SCHEMA": "dswd_4ps_tuloy_dev",
+          "TABLE_NAME": "lib_roster_status",
+          "COLUMN_NAME": "archived",
+          "COLUMN_TYPE": "tinyint unsigned",
+          "COLUMN_COMMENT": "Archived: State if record was archived or deleted. (0-False; 1-True). {\"label\":\"Archived\",\"visible\":\"false\",\"searchable\":\"false\",\"formtag\":\"text\",\"list\":\"0\",\"view\":\"0\",\"add_edit\":\"0\",\"archive\":\"1\",\"defaultzero\":\"1\",\"alias\":\"archived\"}"
+        },
+        {
+          "TABLE_SCHEMA": "dswd_4ps_tuloy_dev",
+          "TABLE_NAME": "lib_roster_status",
+          "COLUMN_NAME": "dt_archived",
+          "COLUMN_TYPE": "datetime",
+          "COLUMN_COMMENT": "Date/Time Last Archived: Date and Time the record was last archived. Reference date for physical archiving of records. Set to NULL on default or after record was archived. {\"label\":\"Date/Time Last Archived\",\"visible\":\"false\",\"searchable\":\"false\",\"formtag\":\"text\",\"list\":\"0\",\"view\":\"1\",\"add_edit\":\"0\"}"
+        },
+        {
+          "TABLE_SCHEMA": "dswd_4ps_tuloy_dev",
+          "TABLE_NAME": "lib_roster_status",
+          "COLUMN_NAME": "last_archived_by",
+          "COLUMN_TYPE": "int unsigned",
+          "COLUMN_COMMENT": "Last Archived By: User ID who last archived the record. {\"label\":\"Last Archived By\",\"visible\":\"false\",\"searchable\":\"false\",\"formtag\":\"text\",\"list\":\"0\",\"view\":\"1\",\"add_edit\":\"0\", \"joinfldval\":\"username\"}"
+        },
+        {
+          "TABLE_SCHEMA": "dswd_4ps_tuloy_dev",
+          "TABLE_NAME": "lib_roster_status",
+          "COLUMN_NAME": "dt_restored",
+          "COLUMN_TYPE": "datetime",
+          "COLUMN_COMMENT": "Date/Time Last Restored: Date and Time the record was last restored. Set to NULL on default or after record was restored. {\"label\":\"Date/Time Last Restored\",\"visible\":\"false\",\"searchable\":\"false\",\"formtag\":\"text\",\"list\":\"0\",\"view\":\"1\",\"add_edit\":\"0\"}"
+        },
+        {
+          "TABLE_SCHEMA": "dswd_4ps_tuloy_dev",
+          "TABLE_NAME": "lib_roster_status",
+          "COLUMN_NAME": "last_restored_by",
+          "COLUMN_TYPE": "int unsigned",
+          "COLUMN_COMMENT": "Last Restored By: User ID who last restored the record. {\"label\":\"Last Restored By\",\"visible\":\"false\",\"searchable\":\"false\",\"formtag\":\"text\",\"list\":\"0\",\"view\":\"1\",\"add_edit\":\"0\", \"joinfldval\":\"username\"}"
+        },
+        {
+          "TABLE_SCHEMA": "dswd_4ps_tuloy_dev",
+          "TABLE_NAME": "lib_roster_status",
+          "COLUMN_NAME": "dt_last_modified",
+          "COLUMN_TYPE": "datetime",
+          "COLUMN_COMMENT": "Date/Time Last Modified: Date and Time the records was last modified either through front or back end. {\"label\":\"Date/Time Last Modified\",\"visible\":\"false\",\"searchable\":\"false\",\"formtag\":\"text\",\"list\":\"0\",\"view\":\"1\",\"add_edit\":\"0\"}"
+        },
+        {
+          "TABLE_SCHEMA": "dswd_4ps_tuloy_dev",
+          "TABLE_NAME": "partner_bene_profile",
+          "COLUMN_NAME": "ext_name",
+          "COLUMN_TYPE": "varchar(15)",
+          "COLUMN_COMMENT": "Student Name Suffix (e.g. Jr, Sr)"
+        },
+        {
+          "TABLE_SCHEMA": "dswd_4ps_tuloy_dev",
+          "TABLE_NAME": "tbl_household",
+          "COLUMN_NAME": "ip_label",
+          "COLUMN_TYPE": "int",
+          "COLUMN_COMMENT": ""
+        },
+        {
+          "TABLE_SCHEMA": "dswd_4ps_tuloy_dev",
+          "TABLE_NAME": "tbl_person",
+          "COLUMN_NAME": "ext_name_id",
+          "COLUMN_TYPE": "int unsigned",
+          "COLUMN_COMMENT": "Extended Name"
+        },
+        {
+          "TABLE_SCHEMA": "dswd_4ps_tuloy_dev",
+          "TABLE_NAME": "tbl_person",
+          "COLUMN_NAME": "ip_group_id",
+          "COLUMN_TYPE": "int unsigned",
+          "COLUMN_COMMENT": ""
+        },
+        {
+          "TABLE_SCHEMA": "dswd_4ps_tuloy_dev",
+          "TABLE_NAME": "tuloy_beneficiary_tbl",
+          "COLUMN_NAME": "extension_name",
+          "COLUMN_TYPE": "varchar(20)",
+          "COLUMN_COMMENT": ""
+        }
+      ],
+      "status": "ok"
+    },
+    "psgc_candidates": {
+      "sql": "SELECT TABLE_NAME,COLUMN_NAME,COLUMN_TYPE,COLUMN_COMMENT\n            FROM information_schema.COLUMNS WHERE TABLE_SCHEMA=DATABASE()\n              AND (TABLE_NAME IN ('tbl_psgc_brgy','lib_psgc_barangay','lib_psgc_denorm')\n                OR TABLE_NAME REGEXP '^tbl_psgc_')\n            ORDER BY TABLE_NAME,ORDINAL_POSITION",
+      "rows": [
+        {
+          "TABLE_NAME": "lib_psgc_barangay",
+          "COLUMN_NAME": "barangay_id",
+          "COLUMN_TYPE": "int unsigned",
+          "COLUMN_COMMENT": "Barangay ID: Primary Key of Barangay Library. {\"label\":\"Barangay ID\",\"visible\":\"false\",\"searchable\":\"false\",\"formtag\":\"hidden\",\"list\":\"1\",\"view\":\"0\",\"add_edit\":\"1\",\"alias\":\"id\"}"
+        },
+        {
+          "TABLE_NAME": "lib_psgc_barangay",
+          "COLUMN_NAME": "name",
+          "COLUMN_TYPE": "varchar(125)",
+          "COLUMN_COMMENT": "Name: Name of Barangay. {\"label\":\"Name\",\"visible\":\"true\",\"searchable\":\"true\",\"formtag\":\"text\",\"rules\":\"required|regex_match[/^[a-zA-Z0-9 \u00f1\u00d1().'-_]+$/]\",\"list\":\"1\",\"view\":\"1\",\"add_edit\":\"1\",\"alias\":\"name\"}"
+        },
+        {
+          "TABLE_NAME": "lib_psgc_barangay",
+          "COLUMN_NAME": "code",
+          "COLUMN_TYPE": "varchar(30)",
+          "COLUMN_COMMENT": "Code: Code of Barangay. {\"label\":\"Code\",\"visible\":\"true\",\"searchable\":\"true\",\"formtag\":\"text\",\"rules\":\"min_length[2]|regex_match[/^[a-zA-Z0-9 ()'-_]+$/]\",\"list\":\"1\",\"view\":\"1\",\"add_edit\":\"1\",\"alias\":\"code\"}"
+        },
+        {
+          "TABLE_NAME": "lib_psgc_barangay",
+          "COLUMN_NAME": "geocode",
+          "COLUMN_TYPE": "char(9)",
+          "COLUMN_COMMENT": "Geocode: Philippine Standard Geographic Code. {\"label\":\"GeoCode\",\"visible\":\"true\",\"searchable\":\"true\",\"formtag\":\"text\",\"rules\":\"exact_length[9]|numeric\",\"list\":\"1\",\"view\":\"1\",\"add_edit\":\"1\"}"
+        },
+        {
+          "TABLE_NAME": "lib_psgc_barangay",
+          "COLUMN_NAME": "psa_code",
+          "COLUMN_TYPE": "char(10)",
+          "COLUMN_COMMENT": "PSA Code: Philippine Standard Authority Code. {\"label\":\"PSA Code\",\"visible\":\"true\",\"searchable\":\"true\",\"formtag\":\"text\",\"rules\":\"required|exact_length[10]|numeric\",\"list\":\"1\",\"view\":\"1\",\"add_edit\":\"1\"}"
+        },
+        {
+          "TABLE_NAME": "lib_psgc_barangay",
+          "COLUMN_NAME": "is_gida",
+          "COLUMN_TYPE": "enum('No','Yes')",
+          "COLUMN_COMMENT": "Is GIDA: States if barangay is under GIDA. {\"label\":\"Is GIDA\",\"visible\":\"true\",\"searchable\":\"false\",\"formtag\":\"checkbox\",\"rules\":\"required\",\"list\":\"1\",\"view\":\"1\",\"add_edit\":\"1\"}"
+        },
+        {
+          "TABLE_NAME": "lib_psgc_barangay",
+          "COLUMN_NAME": "city_id",
+          "COLUMN_TYPE": "int unsigned",
+          "COLUMN_COMMENT": "Foreign Key of City/Municipality. City/Municipality associated to the Barangay. {\"label\":\"City/Municipality\",\"visible\":\"false\",\"searchable\":\"true\",\"formtag\":\"select\",\"rules\":\"required\",\"list\":\"1\",\"view\":\"0\",\"add_edit\":\"1\",\"joinfldval\":\"name\",\"parent\":\"province_id\",\"class\":\"rpmb child city\"}"
+        },
+        {
+          "TABLE_NAME": "lib_psgc_barangay",
+          "COLUMN_NAME": "dt_inserted",
+          "COLUMN_TYPE": "datetime",
+          "COLUMN_COMMENT": "Date/Time Inserted: Date and Time the record was inserted. {\"label\":\"Date/Time Inserted\",\"visible\":\"false\",\"searchable\":\"false\",\"formtag\":\"text\",\"list\":\"0\",\"view\":\"1\",\"add_edit\":\"0\"}"
+        },
+        {
+          "TABLE_NAME": "lib_psgc_barangay",
+          "COLUMN_NAME": "inserted_by",
+          "COLUMN_TYPE": "int unsigned",
+          "COLUMN_COMMENT": "Inserted By: User ID who inserted the record. {\"label\":\"Inserted By\",\"visible\":\"false\",\"searchable\":\"false\",\"formtag\":\"text\",\"list\":\"0\",\"view\":\"1\",\"add_edit\":\"0\", \"joinfldval\":\"username\"}"
+        },
+        {
+          "TABLE_NAME": "lib_psgc_barangay",
+          "COLUMN_NAME": "dt_updated",
+          "COLUMN_TYPE": "datetime",
+          "COLUMN_COMMENT": "Date/Time Updated: Date and Time the records was last updated through application. {\"label\":\"Date/Time Last Updated\",\"visible\":\"false\",\"searchable\":\"false\",\"formtag\":\"text\",\"list\":\"0\",\"view\":\"1\",\"add_edit\":\"0\"}"
+        },
+        {
+          "TABLE_NAME": "lib_psgc_barangay",
+          "COLUMN_NAME": "last_updated_by",
+          "COLUMN_TYPE": "int unsigned",
+          "COLUMN_COMMENT": "Last Updated By: User ID who last updated the record. {\"label\":\"Last Updated By\",\"visible\":\"false\",\"searchable\":\"false\",\"formtag\":\"text\",\"list\":\"0\",\"view\":\"1\",\"add_edit\":\"0\", \"joinfldval\":\"username\"}"
+        },
+        {
+          "TABLE_NAME": "lib_psgc_barangay",
+          "COLUMN_NAME": "archived",
+          "COLUMN_TYPE": "tinyint unsigned",
+          "COLUMN_COMMENT": "Archived: State if record was archived or deleted. (0-False; 1-True). {\"label\":\"Archived\",\"visible\":\"false\",\"searchable\":\"false\",\"formtag\":\"text\",\"list\":\"0\",\"view\":\"0\",\"add_edit\":\"0\",\"archive\":\"1\",\"defaultzero\":\"1\",\"archive\":\"1\",\"defaultzero\":\"1\",\"alias\":\"archived\"}"
+        },
+        {
+          "TABLE_NAME": "lib_psgc_barangay",
+          "COLUMN_NAME": "dt_archived",
+          "COLUMN_TYPE": "datetime",
+          "COLUMN_COMMENT": "Date/Time Last Archived: Date and Time the record was last archived. Reference date for physical archiving of records. Set to NULL on default or after record was archived. {\"label\":\"Date/Time Last Archived\",\"visible\":\"false\",\"searchable\":\"false\",\"formtag\":\"text\",\"list\":\"0\",\"view\":\"1\",\"add_edit\":\"0\"}"
+        },
+        {
+          "TABLE_NAME": "lib_psgc_barangay",
+          "COLUMN_NAME": "last_archived_by",
+          "COLUMN_TYPE": "int unsigned",
+          "COLUMN_COMMENT": "Last Archived By: User ID who last archived the record. {\"label\":\"Last Archived By\",\"visible\":\"false\",\"searchable\":\"false\",\"formtag\":\"text\",\"list\":\"0\",\"view\":\"1\",\"add_edit\":\"0\", \"joinfldval\":\"username\"}"
+        },
+        {
+          "TABLE_NAME": "lib_psgc_barangay",
+          "COLUMN_NAME": "dt_restored",
+          "COLUMN_TYPE": "datetime",
+          "COLUMN_COMMENT": "Date/Time Last Restored: Date and Time the record was last restored. Set to NULL on default or after record was restored. {\"label\":\"Date/Time Last Restored\",\"visible\":\"false\",\"searchable\":\"false\",\"formtag\":\"text\",\"list\":\"0\",\"view\":\"1\",\"add_edit\":\"0\"}"
+        },
+        {
+          "TABLE_NAME": "lib_psgc_barangay",
+          "COLUMN_NAME": "last_restored_by",
+          "COLUMN_TYPE": "int unsigned",
+          "COLUMN_COMMENT": "Last Restored By: User ID who last restored the record. {\"label\":\"Last Restored By\",\"visible\":\"false\",\"searchable\":\"false\",\"formtag\":\"text\",\"list\":\"0\",\"view\":\"1\",\"add_edit\":\"0\", \"joinfldval\":\"username\"}"
+        },
+        {
+          "TABLE_NAME": "lib_psgc_barangay",
+          "COLUMN_NAME": "dt_last_modified",
+          "COLUMN_TYPE": "datetime",
+          "COLUMN_COMMENT": "Date/Time Last Modified: Date and Time the records was last modified either through front or back end. {\"label\":\"Date/Time Last Modified\",\"visible\":\"false\",\"searchable\":\"false\",\"formtag\":\"text\",\"list\":\"0\",\"view\":\"1\",\"add_edit\":\"0\"}"
+        },
+        {
+          "TABLE_NAME": "lib_psgc_barangay",
+          "COLUMN_NAME": "urban_rural",
+          "COLUMN_TYPE": "char(5)",
+          "COLUMN_COMMENT": ""
+        },
+        {
+          "TABLE_NAME": "lib_psgc_denorm",
+          "COLUMN_NAME": "region_id",
+          "COLUMN_TYPE": "int unsigned",
+          "COLUMN_COMMENT": "Region ID: Primary Key of Region Library. {\"label\":\"Region ID\",\"visible\":\"false\",\"searchable\":\"false\",\"formtag\":\"hidden\",\"list\":\"1\",\"view\":\"0\",\"add_edit\":\"1\",\"alias\":\"id\"}"
+        },
+        {
+          "TABLE_NAME": "lib_psgc_denorm",
+          "COLUMN_NAME": "region_name",
+          "COLUMN_TYPE": "varchar(125)",
+          "COLUMN_COMMENT": "Name: Name of Region. {\"label\":\"Name\",\"visible\":\"true\",\"searchable\":\"true\",\"formtag\":\"text\",\"rules\":\"required|regex_match[/^[a-zA-Z0-9 \u00f1\u00d1().'-_]+$/]\",\"list\":\"1\",\"view\":\"1\",\"add_edit\":\"1\",\"alias\":\"name\"}"
+        },
+        {
+          "TABLE_NAME": "lib_psgc_denorm",
+          "COLUMN_NAME": "short_code",
+          "COLUMN_TYPE": "varchar(30)",
+          "COLUMN_COMMENT": "Code: Code of Region. {\"label\":\"Code\",\"visible\":\"true\",\"searchable\":\"true\",\"formtag\":\"text\",\"rules\":\"min_length[2]|regex_match[/^[a-zA-Z0-9 ()'-_]+$/]\",\"list\":\"1\",\"view\":\"1\",\"add_edit\":\"1\",\"alias\":\"code\"}"
+        },
+        {
+          "TABLE_NAME": "lib_psgc_denorm",
+          "COLUMN_NAME": "region_psa_code",
+          "COLUMN_TYPE": "char(10)",
+          "COLUMN_COMMENT": "PSA Code: Philippine Standard Authority Code. {\"label\":\"PSA Code\",\"visible\":\"true\",\"searchable\":\"true\",\"formtag\":\"text\",\"rules\":\"required|exact_length[10]|numeric\",\"list\":\"1\",\"view\":\"1\",\"add_edit\":\"1\"}"
+        },
+        {
+          "TABLE_NAME": "lib_psgc_denorm",
+          "COLUMN_NAME": "province_id",
+          "COLUMN_TYPE": "int unsigned",
+          "COLUMN_COMMENT": "Province ID: Primary Key of Province Library. {\"label\":\"Province ID\",\"visible\":\"false\",\"searchable\":\"false\",\"formtag\":\"hidden\",\"list\":\"1\",\"view\":\"0\",\"add_edit\":\"1\",\"alias\":\"id\"}"
+        },
+        {
+          "TABLE_NAME": "lib_psgc_denorm",
+          "COLUMN_NAME": "province_name",
+          "COLUMN_TYPE": "varchar(125)",
+          "COLUMN_COMMENT": "Name: Name of Province. {\"label\":\"Name\",\"visible\":\"true\",\"searchable\":\"true\",\"formtag\":\"text\",\"rules\":\"required|regex_match[/^[a-zA-Z0-9 \u00f1\u00d1().'-_]+$/]\",\"list\":\"1\",\"view\":\"1\",\"add_edit\":\"1\",\"alias\":\"name\"}"
+        },
+        {
+          "TABLE_NAME": "lib_psgc_denorm",
+          "COLUMN_NAME": "province_psa_code",
+          "COLUMN_TYPE": "char(10)",
+          "COLUMN_COMMENT": "PSA Code: Philippine Standard Authority Code. {\"label\":\"PSA Code\",\"visible\":\"true\",\"searchable\":\"true\",\"formtag\":\"text\",\"rules\":\"required|exact_length[10]|numeric\",\"list\":\"1\",\"view\":\"1\",\"add_edit\":\"1\"}"
+        },
+        {
+          "TABLE_NAME": "lib_psgc_denorm",
+          "COLUMN_NAME": "city_id",
+          "COLUMN_TYPE": "int unsigned",
+          "COLUMN_COMMENT": "City Municipality ID: Primary Key of City Municipality Library. {\"label\":\"City Municipality ID\",\"visible\":\"false\",\"searchable\":\"false\",\"formtag\":\"hidden\",\"list\":\"1\",\"view\":\"0\",\"add_edit\":\"1\",\"alias\":\"id\"}"
+        },
+        {
+          "TABLE_NAME": "lib_psgc_denorm",
+          "COLUMN_NAME": "city_name",
+          "COLUMN_TYPE": "varchar(125)",
+          "COLUMN_COMMENT": "Name: Name of City Municipality. {\"label\":\"Name\",\"visible\":\"true\",\"searchable\":\"true\",\"formtag\":\"text\",\"rules\":\"required|regex_match[/^[a-zA-Z0-9 \u00f1\u00d1().'-_]+$/]\",\"list\":\"1\",\"view\":\"1\",\"add_edit\":\"1\",\"alias\":\"name\"}"
+        },
+        {
+          "TABLE_NAME": "lib_psgc_denorm",
+          "COLUMN_NAME": "city_psa_name",
+          "COLUMN_TYPE": "char(10)",
+          "COLUMN_COMMENT": "PSA Code: Philippine Standard Authority Code. {\"label\":\"PSA Code\",\"visible\":\"true\",\"searchable\":\"true\",\"formtag\":\"text\",\"rules\":\"required|exact_length[10]|numeric\",\"list\":\"1\",\"view\":\"1\",\"add_edit\":\"1\"}"
+        },
+        {
+          "TABLE_NAME": "lib_psgc_denorm",
+          "COLUMN_NAME": "barangay_id",
+          "COLUMN_TYPE": "int unsigned",
+          "COLUMN_COMMENT": "Barangay ID: Primary Key of Barangay Library. {\"label\":\"Barangay ID\",\"visible\":\"false\",\"searchable\":\"false\",\"formtag\":\"hidden\",\"list\":\"1\",\"view\":\"0\",\"add_edit\":\"1\",\"alias\":\"id\"}"
+        },
+        {
+          "TABLE_NAME": "lib_psgc_denorm",
+          "COLUMN_NAME": "brgy_name",
+          "COLUMN_TYPE": "varchar(125)",
+          "COLUMN_COMMENT": "Name: Name of Barangay. {\"label\":\"Name\",\"visible\":\"true\",\"searchable\":\"true\",\"formtag\":\"text\",\"rules\":\"required|regex_match[/^[a-zA-Z0-9 \u00f1\u00d1().'-_]+$/]\",\"list\":\"1\",\"view\":\"1\",\"add_edit\":\"1\",\"alias\":\"name\"}"
+        },
+        {
+          "TABLE_NAME": "lib_psgc_denorm",
+          "COLUMN_NAME": "code",
+          "COLUMN_TYPE": "varchar(30)",
+          "COLUMN_COMMENT": "Code: Code of Barangay. {\"label\":\"Code\",\"visible\":\"true\",\"searchable\":\"true\",\"formtag\":\"text\",\"rules\":\"min_length[2]|regex_match[/^[a-zA-Z0-9 ()'-_]+$/]\",\"list\":\"1\",\"view\":\"1\",\"add_edit\":\"1\",\"alias\":\"code\"}"
+        },
+        {
+          "TABLE_NAME": "lib_psgc_denorm",
+          "COLUMN_NAME": "geocode",
+          "COLUMN_TYPE": "char(9)",
+          "COLUMN_COMMENT": "Geocode: Philippine Standard Geographic Code. {\"label\":\"GeoCode\",\"visible\":\"true\",\"searchable\":\"true\",\"formtag\":\"text\",\"rules\":\"exact_length[9]|numeric\",\"list\":\"1\",\"view\":\"1\",\"add_edit\":\"1\"}"
+        },
+        {
+          "TABLE_NAME": "lib_psgc_denorm",
+          "COLUMN_NAME": "brgy_psa_code",
+          "COLUMN_TYPE": "char(10)",
+          "COLUMN_COMMENT": "PSA Code: Philippine Standard Authority Code. {\"label\":\"PSA Code\",\"visible\":\"true\",\"searchable\":\"true\",\"formtag\":\"text\",\"rules\":\"required|exact_length[10]|numeric\",\"list\":\"1\",\"view\":\"1\",\"add_edit\":\"1\"}"
+        },
+        {
+          "TABLE_NAME": "lib_psgc_denorm",
+          "COLUMN_NAME": "join_key",
+          "COLUMN_TYPE": "varchar(503)",
+          "COLUMN_COMMENT": ""
+        }
+      ],
+      "status": "ok"
+    },
+    "library_views": {
+      "sql": "SELECT TABLE_NAME,VIEW_DEFINITION FROM information_schema.VIEWS\n            WHERE TABLE_SCHEMA=DATABASE() AND TABLE_NAME LIKE 'lib%'",
+      "rows": [],
+      "status": "ok"
+    },
+    "engines": {
+      "sql": "SELECT TABLE_NAME,ENGINE FROM information_schema.TABLES\n            WHERE TABLE_SCHEMA=DATABASE() AND TABLE_NAME IN\n            ('enroll_matched_CHED_tbl','tbl_person','tbl_hh_roster','tbl_household',\n             'tbl_family_assoc_ops','tbl_family_selected','sex_tbl','lib_psgc_denorm')",
+      "rows": [
+        {
+          "TABLE_NAME": "enroll_matched_CHED_tbl",
+          "ENGINE": "InnoDB"
+        },
+        {
+          "TABLE_NAME": "lib_psgc_denorm",
+          "ENGINE": "InnoDB"
+        },
+        {
+          "TABLE_NAME": "sex_tbl",
+          "ENGINE": "InnoDB"
+        },
+        {
+          "TABLE_NAME": "tbl_family_assoc_ops",
+          "ENGINE": "InnoDB"
+        },
+        {
+          "TABLE_NAME": "tbl_family_selected",
+          "ENGINE": "InnoDB"
+        },
+        {
+          "TABLE_NAME": "tbl_hh_roster",
+          "ENGINE": "InnoDB"
+        },
+        {
+          "TABLE_NAME": "tbl_household",
+          "ENGINE": "InnoDB"
+        },
+        {
+          "TABLE_NAME": "tbl_person",
+          "ENGINE": "InnoDB"
+        }
+      ],
+      "status": "ok"
+    },
+    "sex_reference": {
+      "sql": "SELECT id,code,description FROM sex_tbl ORDER BY id LIMIT 20",
+      "rows": [
+        {
+          "id": 0,
+          "code": "MALE",
+          "description": "Male"
+        },
+        {
+          "id": 1,
+          "code": "FEMALE",
+          "description": "Female"
+        }
+      ],
+      "status": "ok"
+    },
+    "ods_sex_reference_candidate": {
+      "sql": "SELECT sex_id,name,code,archived\n            FROM consultant_ods.lib_sex_v3 ORDER BY sex_id LIMIT 20",
+      "rows": [
+        {
+          "sex_id": 1,
+          "name": "MALE",
+          "code": "M",
+          "archived": 0
+        },
+        {
+          "sex_id": 2,
+          "name": "FEMALE",
+          "code": "F",
+          "archived": 0
+        },
+        {
+          "sex_id": 3,
+          "name": "NONE",
+          "code": "NA",
+          "archived": 0
+        }
+      ],
+      "status": "ok"
+    },
+    "ods_extension_reference_candidate": {
+      "sql": "SELECT ext_name_id,name,archived\n            FROM consultant_ods.lib_ext_name_v3 ORDER BY ext_name_id LIMIT 200",
+      "rows": [
+        {
+          "ext_name_id": 1,
+          "name": "Sr.",
+          "archived": 0
+        },
+        {
+          "ext_name_id": 2,
+          "name": "Jr.",
+          "archived": 0
+        },
+        {
+          "ext_name_id": 3,
+          "name": "I",
+          "archived": 0
+        },
+        {
+          "ext_name_id": 4,
+          "name": "II",
+          "archived": 0
+        },
+        {
+          "ext_name_id": 5,
+          "name": "III",
+          "archived": 0
+        },
+        {
+          "ext_name_id": 6,
+          "name": "IV",
+          "archived": 0
+        },
+        {
+          "ext_name_id": 7,
+          "name": "V",
+          "archived": 0
+        },
+        {
+          "ext_name_id": 8,
+          "name": "VI",
+          "archived": 0
+        },
+        {
+          "ext_name_id": 9,
+          "name": "VII",
+          "archived": 0
+        },
+        {
+          "ext_name_id": 10,
+          "name": "VIII",
+          "archived": 0
+        },
+        {
+          "ext_name_id": 11,
+          "name": "IX",
+          "archived": 0
+        },
+        {
+          "ext_name_id": 12,
+          "name": "X",
+          "archived": 0
+        },
+        {
+          "ext_name_id": 13,
+          "name": "XI",
+          "archived": 0
+        },
+        {
+          "ext_name_id": 14,
+          "name": "XII",
+          "archived": 0
+        },
+        {
+          "ext_name_id": 15,
+          "name": "XIII",
+          "archived": 0
+        },
+        {
+          "ext_name_id": 16,
+          "name": "XIV",
+          "archived": 0
+        },
+        {
+          "ext_name_id": 17,
+          "name": "XV",
+          "archived": 0
+        },
+        {
+          "ext_name_id": 18,
+          "name": "JRA",
+          "archived": 0
+        }
+      ],
+      "status": "ok"
+    },
+    "ods_ip_reference_candidate": {
+      "sql": "SELECT ip_group_id,name,code,status,archived\n            FROM consultant_ods.lib_ip_group_v3 ORDER BY ip_group_id LIMIT 200",
+      "rows": [
+        {
+          "ip_group_id": 1,
+          "name": "AETA/AYTA-ABELLING/ABELLEN (SUB-GROUP)",
+          "code": null,
+          "status": 1,
+          "archived": 0
+        },
+        {
+          "ip_group_id": 2,
+          "name": "Abiyan",
+          "code": null,
+          "status": 1,
+          "archived": 0
+        },
+        {
+          "ip_group_id": 3,
+          "name": "ITNEG/TINGUIAN - ADASEN (SUB-GROUP)",
+          "code": null,
+          "status": 1,
+          "archived": 0
+        },
+        {
+          "ip_group_id": 4,
+          "name": "AETA/AYTA",
+          "code": null,
+          "status": 1,
+          "archived": 0
+        },
+        {
+          "ip_group_id": 5,
+          "name": "Agta",
+          "code": null,
+          "status": 1,
+          "archived": 0
+        },
+        {
+          "ip_group_id": 6,
+          "name": "AGTA-CIMARON (SUB-GROUP)",
+          "code": null,
+          "status": 1,
+          "archived": 0
+        },
+        {
+          "ip_group_id": 7,
+          "name": "AGTA-TABANGNON (SUB-GROUP)",
+          "code": null,
+          "status": 1,
+          "archived": 0
+        },
+        {
+          "ip_group_id": 8,
+          "name": "AGUTAYNEN",
+          "code": null,
+          "status": 1,
+          "archived": 0
+        },
+        {
+          "ip_group_id": 9,
+          "name": "ALANGAN MANGYAN",
+          "code": null,
+          "status": 1,
+          "archived": 0
+        },
+        {
+          "ip_group_id": 10,
+          "name": "Applai",
+          "code": null,
+          "status": 1,
+          "archived": 0
+        },
+        {
+          "ip_group_id": 11,
+          "name": "Ata-Matigsalog",
+          "code": null,
+          "status": 1,
+          "archived": 0
+        },
+        {
+          "ip_group_id": 12,
+          "name": "Ati",
+          "code": null,
+          "status": 1,
+          "archived": 0
+        },
+        {
+          "ip_group_id": 13,
+          "name": "Arumanen",
+          "code": null,
+          "status": 1,
+          "archived": 0
+        },
+        {
+          "ip_group_id": 14,
+          "name": "Ayangan",
+          "code": null,
+          "status": 1,
+          "archived": 0
+        },
+        {
+          "ip_group_id": 15,
+          "name": "ITNEG/TINGUIAN - BINONGAN (SUB-GROUP)",
+          "code": null,
+          "status": 1,
+          "archived": 0
+        },
+        {
+          "ip_group_id": 16,
+          "name": "Bago",
+          "code": null,
+          "status": 1,
+          "archived": 0
+        },
+        {
+          "ip_group_id": 17,
+          "name": "BANGON MANGYAN",
+          "code": null,
+          "status": 1,
+          "archived": 0
+        },
+        {
+          "ip_group_id": 18,
+          "name": "Bontok",
+          "code": null,
+          "status": 1,
+          "archived": 0
+        },
+        {
+          "ip_group_id": 19,
+          "name": "KALINGA BALATOC (SUB-GROUP)",
+          "code": null,
+          "status": 1,
+          "archived": 0
+        },
+        {
+          "ip_group_id": 20,
+          "name": "BALIWON",
+          "code": null,
+          "status": 1,
+          "archived": 0
+        },
+        {
+          "ip_group_id": 21,
+          "name": "Baluga",
+          "code": null,
+          "status": 1,
+          "archived": 0
+        },
+        {
+          "ip_group_id": 22,
+          "name": "Batak",
+          "code": null,
+          "status": 1,
+          "archived": 0
+        },
+        {
+          "ip_group_id": 23,
+          "name": "TAU-BUID MANGYAN",
+          "code": null,
+          "status": 1,
+          "archived": 0
+        },
+        {
+          "ip_group_id": 24,
+          "name": "BUHID MANGYAN",
+          "code": null,
+          "status": 1,
+          "archived": 0
+        },
+        {
+          "ip_group_id": 25,
+          "name": "Balangao",
+          "code": null,
+          "status": 1,
+          "archived": 0
+        },
+        {
+          "ip_group_id": 26,
+          "name": "Bantoanon",
+          "code": null,
+          "status": 1,
+          "archived": 0
+        },
+        {
+          "ip_group_id": 27,
+          "name": "Bukidnon",
+          "code": null,
+          "status": 1,
+          "archived": 0
+        },
+        {
+          "ip_group_id": 28,
+          "name": "SAMA BAJAU",
+          "code": null,
+          "status": 1,
+          "archived": 0
+        },
+        {
+          "ip_group_id": 29,
+          "name": "Banac",
+          "code": null,
+          "status": 2,
+          "archived": 0
+        },
+        {
+          "ip_group_id": 30,
+          "name": "BLAAN",
+          "code": null,
+          "status": 1,
+          "archived": 0
+        },
+        {
+          "ip_group_id": 31,
+          "name": "Bagobo",
+          "code": null,
+          "status": 1,
+          "archived": 0
+        },
+        {
+          "ip_group_id": 32,
+          "name": "Banwaon",
+          "code": null,
+          "status": 1,
+          "archived": 0
+        },
+        {
+          "ip_group_id": 33,
+          "name": "Kalinga",
+          "code": null,
+          "status": 1,
+          "archived": 0
+        },
+        {
+          "ip_group_id": 34,
+          "name": "KAMIGUIN",
+          "code": null,
+          "status": 1,
+          "archived": 0
+        },
+        {
+          "ip_group_id": 35,
+          "name": "CUYONEN/CUYUNON",
+          "code": null,
+          "status": 1,
+          "archived": 0
+        },
+        {
+          "ip_group_id": 36,
+          "name": "Danao",
+          "code": null,
+          "status": 1,
+          "archived": 0
+        },
+        {
+          "ip_group_id": 37,
+          "name": "Dibabawon",
+          "code": null,
+          "status": 1,
+          "archived": 0
+        },
+        {
+          "ip_group_id": 38,
+          "name": "Dumagat",
+          "code": null,
+          "status": 1,
+          "archived": 0
+        },
+        {
+          "ip_group_id": 39,
+          "name": "Eskaya",
+          "code": null,
+          "status": 1,
+          "archived": 0
+        },
+        {
+          "ip_group_id": 40,
+          "name": "Gaddang",
+          "code": null,
+          "status": 1,
+          "archived": 0
+        },
+        {
+          "ip_group_id": 41,
+          "name": "Giangan",
+          "code": null,
+          "status": 1,
+          "archived": 0
+        },
+        {
+          "ip_group_id": 42,
+          "name": "KALINGA GUBANG (SUB-GROUP)",
+          "code": null,
+          "status": 1,
+          "archived": 0
+        },
+        {
+          "ip_group_id": 43,
+          "name": "Gubatnon (Mangyan)",
+          "code": null,
+          "status": 1,
+          "archived": 0
+        },
+        {
+          "ip_group_id": 44,
+          "name": "Guiangan-Klata",
+          "code": null,
+          "status": 1,
+          "archived": 0
+        },
+        {
+          "ip_group_id": 45,
+          "name": "HANUNUO MANGYAN",
+          "code": null,
+          "status": 1,
+          "archived": 0
+        },
+        {
+          "ip_group_id": 46,
+          "name": "Hanglulo",
+          "code": null,
+          "status": 1,
+          "archived": 0
+        },
+        {
+          "ip_group_id": 47,
+          "name": "HIGAONON/HIGA-ONON",
+          "code": null,
+          "status": 1,
+          "archived": 0
+        },
+        {
+          "ip_group_id": 48,
+          "name": "ITNEG/TINGUIAN",
+          "code": null,
+          "status": 1,
+          "archived": 0
+        },
+        {
+          "ip_group_id": 49,
+          "name": "ITNEG/TINGUIAN - INLAUD (SUB-GROUP)",
+          "code": null,
+          "status": 1,
+          "archived": 0
+        },
+        {
+          "ip_group_id": 50,
+          "name": "Ibaloy",
+          "code": null,
+          "status": 1,
+          "archived": 0
+        },
+        {
+          "ip_group_id": 51,
+          "name": "Ibanag",
+          "code": null,
+          "status": 1,
+          "archived": 0
+        },
+        {
+          "ip_group_id": 52,
+          "name": "Itawes",
+          "code": null,
+          "status": 1,
+          "archived": 0
+        },
+        {
+          "ip_group_id": 53,
+          "name": "KALANGUYA-IKALAHAN",
+          "code": null,
+          "status": 1,
+          "archived": 0
+        },
+        {
+          "ip_group_id": 54,
+          "name": "AROMANEN-MANOBO/EROMANEN-MANOBO ILIANEN (SUB-GROUP",
+          "code": null,
+          "status": 1,
+          "archived": 0
+        },
+        {
+          "ip_group_id": 55,
+          "name": "Isinai",
+          "code": null,
+          "status": 1,
+          "archived": 0
+        },
+        {
+          "ip_group_id": 56,
+          "name": "ISNEG/ISNAG",
+          "code": null,
+          "status": 1,
+          "archived": 0
+        },
+        {
+          "ip_group_id": 57,
+          "name": "Iwak",
+          "code": null,
+          "status": 1,
+          "archived": 0
+        },
+        {
+          "ip_group_id": 58,
+          "name": "IRAYA MANGYAN",
+          "code": null,
+          "status": 1,
+          "archived": 0
+        },
+        {
+          "ip_group_id": 59,
+          "name": "Itom",
+          "code": null,
+          "status": 1,
+          "archived": 0
+        },
+        {
+          "ip_group_id": 60,
+          "name": "BUGKALOT/LLONGOT",
+          "code": null,
+          "status": 1,
+          "archived": 0
+        },
+        {
+          "ip_group_id": 61,
+          "name": "Ivatan",
+          "code": null,
+          "status": 1,
+          "archived": 0
+        },
+        {
+          "ip_group_id": 62,
+          "name": "AROMANEN-MANOBO/EROMANEN-MANOBO KIRENTEKEN (SUB-GR",
+          "code": null,
+          "status": 1,
+          "archived": 0
+        },
+        {
+          "ip_group_id": 63,
+          "name": "Kalinga",
+          "code": null,
+          "status": 1,
+          "archived": 0
+        },
+        {
+          "ip_group_id": 64,
+          "name": "KANKANAEY",
+          "code": null,
+          "status": 1,
+          "archived": 0
+        },
+        {
+          "ip_group_id": 65,
+          "name": "Kalanguya",
+          "code": null,
+          "status": 1,
+          "archived": 0
+        },
+        {
+          "ip_group_id": 66,
+          "name": "KOLIBUGAN",
+          "code": null,
+          "status": 1,
+          "archived": 0
+        },
+        {
+          "ip_group_id": 67,
+          "name": "Kabihug",
+          "code": null,
+          "status": 1,
+          "archived": 0
+        },
+        {
+          "ip_group_id": 68,
+          "name": "KAGAN/KALAGAN",
+          "code": null,
+          "status": 1,
+          "archived": 0
+        },
+        {
+          "ip_group_id": 69,
+          "name": "Karao",
+          "code": null,
+          "status": 1,
+          "archived": 0
+        },
+        {
+          "ip_group_id": 70,
+          "name": "Kaylawan",
+          "code": null,
+          "status": 1,
+          "archived": 0
+        },
+        {
+          "ip_group_id": 71,
+          "name": "Kongking",
+          "code": null,
+          "status": 1,
+          "archived": 0
+        },
+        {
+          "ip_group_id": 72,
+          "name": "Langilan",
+          "code": null,
+          "status": 1,
+          "archived": 0
+        },
+        {
+          "ip_group_id": 73,
+          "name": "ITNEG/TINGUIAN - MASADIIT (SUB-GROUP)",
+          "code": null,
+          "status": 1,
+          "archived": 0
+        },
+        {
+          "ip_group_id": 74,
+          "name": "ITNEG/TINGUIAN - MAENG (SUB-GROUP)",
+          "code": null,
+          "status": 1,
+          "archived": 0
+        },
+        {
+          "ip_group_id": 75,
+          "name": "ITNEG/TINGUIAN - MABAKA (SUB-GROUP)",
+          "code": null,
+          "status": 1,
+          "archived": 0
+        },
+        {
+          "ip_group_id": 76,
+          "name": "Malaueg",
+          "code": null,
+          "status": 1,
+          "archived": 0
+        },
+        {
+          "ip_group_id": 77,
+          "name": "BUKIDNON - MAGAHAT (SUB-GROUP)",
+          "code": null,
+          "status": 1,
+          "archived": 0
+        },
+        {
+          "ip_group_id": 78,
+          "name": "AROMANEN-MANOBO/EROMANEN-MANOBO",
+          "code": null,
+          "status": 1,
+          "archived": 0
+        },
+        {
+          "ip_group_id": 79,
+          "name": "Manobo-Blit",
+          "code": null,
+          "status": 1,
+          "archived": 0
+        },
+        {
+          "ip_group_id": 80,
+          "name": "Mangguangan",
+          "code": null,
+          "status": 1,
+          "archived": 0
+        },
+        {
+          "ip_group_id": 81,
+          "name": "Mamanwa",
+          "code": null,
+          "status": 1,
+          "archived": 0
+        },
+        {
+          "ip_group_id": 82,
+          "name": "Mansaka",
+          "code": null,
+          "status": 1,
+          "archived": 0
+        },
+        {
+          "ip_group_id": 83,
+          "name": "Matigsalog",
+          "code": null,
+          "status": 1,
+          "archived": 0
+        },
+        {
+          "ip_group_id": 84,
+          "name": "Mandaya",
+          "code": null,
+          "status": 1,
+          "archived": 0
+        },
+        {
+          "ip_group_id": 85,
+          "name": "Molbog",
+          "code": null,
+          "status": 1,
+          "archived": 0
+        },
+        {
+          "ip_group_id": 86,
+          "name": "Pullon",
+          "code": null,
+          "status": 2,
+          "archived": 0
+        },
+        {
+          "ip_group_id": 87,
+          "name": "PALAWAN-O",
+          "code": null,
+          "status": 1,
+          "archived": 0
+        },
+        {
+          "ip_group_id": 88,
+          "name": "DUMAGAT - REMONTADO (SUB-GROUP)",
+          "code": null,
+          "status": 1,
+          "archived": 0
+        },
+        {
+          "ip_group_id": 89,
+          "name": "GUBATNON-RATAGNON MANGYAN",
+          "code": null,
+          "status": 1,
+          "archived": 0
+        },
+        {
+          "ip_group_id": 90,
+          "name": "Sulod",
+          "code": null,
+          "status": 1,
+          "archived": 0
+        },
+        {
+          "ip_group_id": 91,
+          "name": "Bajau",
+          "code": null,
+          "status": 1,
+          "archived": 0
+        },
+        {
+          "ip_group_id": 92,
+          "name": "Sama/Samal",
+          "code": null,
+          "status": 2,
+          "archived": 0
+        },
+        {
+          "ip_group_id": 93,
+          "name": "Sama/Kalibugan",
+          "code": null,
+          "status": 2,
+          "archived": 0
+        },
+        {
+          "ip_group_id": 94,
+          "name": "SUBANEN/SUBANON",
+          "code": null,
+          "status": 1,
+          "archived": 0
+        },
+        {
+          "ip_group_id": 95,
+          "name": "Sangil",
+          "code": null,
+          "status": 1,
+          "archived": 0
+        },
+        {
+          "ip_group_id": 96,
+          "name": "TADYAWAN MANGYAN",
+          "code": null,
+          "status": 1,
+          "archived": 0
+        },
+        {
+          "ip_group_id": 97,
+          "name": "BAGOBO TAGABAWA",
+          "code": null,
+          "status": 1,
+          "archived": 0
+        },
+        {
+          "ip_group_id": 98,
+          "name": "TAGBANUA",
+          "code": null,
+          "status": 1,
+          "archived": 0
+        },
+        {
+          "ip_group_id": 99,
+          "name": "TAGAKAULO",
+          "code": null,
+          "status": 1,
+          "archived": 0
+        },
+        {
+          "ip_group_id": 100,
+          "name": "Talaandig",
+          "code": null,
+          "status": 1,
+          "archived": 0
+        },
+        {
+          "ip_group_id": 101,
+          "name": "Talaingod",
+          "code": null,
+          "status": 1,
+          "archived": 0
+        },
+        {
+          "ip_group_id": 102,
+          "name": "T'BOLI/TBOLI",
+          "code": null,
+          "status": 1,
+          "archived": 0
+        },
+        {
+          "ip_group_id": 103,
+          "name": "PALAWAN-O TAO'T-BATO (SUB-GROUP)",
+          "code": null,
+          "status": 1,
+          "archived": 0
+        },
+        {
+          "ip_group_id": 104,
+          "name": "MANOBO-BLIT - TASADAY (SUB-GROUP)",
+          "code": null,
+          "status": 1,
+          "archived": 0
+        },
+        {
+          "ip_group_id": 105,
+          "name": "Tasaday",
+          "code": null,
+          "status": 2,
+          "archived": 0
+        },
+        {
+          "ip_group_id": 106,
+          "name": "Tingguian",
+          "code": null,
+          "status": 1,
+          "archived": 0
+        },
+        {
+          "ip_group_id": 107,
+          "name": "T'DURAY/TEDURAY",
+          "code": null,
+          "status": 1,
+          "archived": 0
+        },
+        {
+          "ip_group_id": 108,
+          "name": "Tuwali",
+          "code": null,
+          "status": 1,
+          "archived": 0
+        },
+        {
+          "ip_group_id": 109,
+          "name": "UBO MONUVU/MANOBO-UBO/UBO MANOBO/UBO MANUVU/UBO ME",
+          "code": null,
+          "status": 1,
+          "archived": 0
+        },
+        {
+          "ip_group_id": 110,
+          "name": "Umayamnon",
+          "code": null,
+          "status": 1,
+          "archived": 0
+        },
+        {
+          "ip_group_id": 111,
+          "name": "KALINGA AB-ABAAN (SUB-GROUP)",
+          "code": null,
+          "status": 1,
+          "archived": 0
+        },
+        {
+          "ip_group_id": 112,
+          "name": "KALINGA - ABLEG/DALUPA (SUB-GROUP)",
+          "code": null,
+          "status": 1,
+          "archived": 0
+        },
+        {
+          "ip_group_id": 113,
+          "name": "KALINGA - ACIGA (SUB-GROUP)",
+          "code": null,
+          "status": 1,
+          "archived": 0
+        },
+        {
+          "ip_group_id": 114,
+          "name": "AGTA-TABOY (SUB-GROUP)",
+          "code": null,
+          "status": 1,
+          "archived": 0
+        },
+        {
+          "ip_group_id": 115,
+          "name": "BUKIDNON - AKEANON (SUB-GROUP)",
+          "code": null,
+          "status": 1,
+          "archived": 0
+        },
+        {
+          "ip_group_id": 116,
+          "name": "Alimaong",
+          "code": null,
+          "status": 1,
+          "archived": 0
+        },
+        {
+          "ip_group_id": 117,
+          "name": "KALINGA - AMMACIAN (SUB-GROUP)",
+          "code": null,
+          "status": 1,
+          "archived": 0
+        },
+        {
+          "ip_group_id": 118,
+          "name": "AROMANEN-MANOBO/EROMANEN-MANOBO",
+          "code": null,
+          "status": 1,
+          "archived": 0
+        },
+        {
+          "ip_group_id": 119,
+          "name": "ATA/NEGRITO",
+          "code": null,
+          "status": 1,
+          "archived": 0
+        },
+        {
+          "ip_group_id": 120,
+          "name": "Ata-Manobo",
+          "code": null,
+          "status": 1,
+          "archived": 0
+        },
+        {
+          "ip_group_id": 121,
+          "name": "BAGOBO KLATA",
+          "code": null,
+          "status": 1,
+          "archived": 0
+        },
+        {
+          "ip_group_id": 122,
+          "name": "Bagobo-Tagabawa",
+          "code": null,
+          "status": 1,
+          "archived": 0
+        },
+        {
+          "ip_group_id": 123,
+          "name": "Balbalan/I-balbalan (Kalinga)",
+          "code": null,
+          "status": 1,
+          "archived": 0
+        },
+        {
+          "ip_group_id": 124,
+          "name": "Baleg (Teduray)",
+          "code": null,
+          "status": 1,
+          "archived": 0
+        },
+        {
+          "ip_group_id": 125,
+          "name": "KALINGA BALINCIAGAO (SUB-GROUP)",
+          "code": null,
+          "status": 1,
+          "archived": 0
+        },
+        {
+          "ip_group_id": 126,
+          "name": "KALINGA - BALLAYANGAN (SUB-GROUP)",
+          "code": null,
+          "status": 1,
+          "archived": 0
+        },
+        {
+          "ip_group_id": 127,
+          "name": "Balutinaw",
+          "code": null,
+          "status": 1,
+          "archived": 0
+        },
+        {
+          "ip_group_id": 128,
+          "name": "KALINGA - BANAO (SUB-GROUP)",
+          "code": null,
+          "status": 1,
+          "archived": 0
+        },
+        {
+          "ip_group_id": 129,
+          "name": "KALINGA - BANGAD (SUB-GROUP)",
+          "code": null,
+          "status": 1,
+          "archived": 0
+        },
+        {
+          "ip_group_id": 130,
+          "name": "BALIWON FIALLIG/FIALIKA (SUB-GROUP)",
+          "code": null,
+          "status": 1,
+          "archived": 0
+        },
+        {
+          "ip_group_id": 131,
+          "name": "KALINGA - BASAO (SUB-GROUP)",
+          "code": null,
+          "status": 1,
+          "archived": 0
+        },
+        {
+          "ip_group_id": 132,
+          "name": "Belong/I-belong (Kalinga)",
+          "code": null,
+          "status": 1,
+          "archived": 0
+        },
+        {
+          "ip_group_id": 133,
+          "name": "ITNEG/TINGUIAN - BELWANG (SUB-GROUP)",
+          "code": null,
+          "status": 1,
+          "archived": 0
+        },
+        {
+          "ip_group_id": 134,
+          "name": "KALINGA BIGA (SUB-GROUP)",
+          "code": null,
+          "status": 1,
+          "archived": 0
+        },
+        {
+          "ip_group_id": 135,
+          "name": "KALINGA - BUAYA (SUB-GROUP)",
+          "code": null,
+          "status": 1,
+          "archived": 0
+        },
+        {
+          "ip_group_id": 136,
+          "name": "Bucog (Tingguian/Itneg)",
+          "code": null,
+          "status": 1,
+          "archived": 0
+        },
+        {
+          "ip_group_id": 137,
+          "name": "Bulanao/I-bulanao (Kalinga)",
+          "code": null,
+          "status": 1,
+          "archived": 0
+        },
+        {
+          "ip_group_id": 138,
+          "name": "Bulo/I-bulo (Kalinga)",
+          "code": null,
+          "status": 1,
+          "archived": 0
+        },
+        {
+          "ip_group_id": 139,
+          "name": "KALINGA - BUTBUT (SUB-GROUP)",
+          "code": null,
+          "status": 1,
+          "archived": 0
+        },
+        {
+          "ip_group_id": 140,
+          "name": "KALINGA CAGALUAN (SUB-GROUP)",
+          "code": null,
+          "status": 1,
+          "archived": 0
+        },
+        {
+          "ip_group_id": 141,
+          "name": "Cagayan",
+          "code": null,
+          "status": 2,
+          "archived": 0
+        },
+        {
+          "ip_group_id": 142,
+          "name": "Cagayanen",
+          "code": null,
+          "status": 1,
+          "archived": 0
+        },
+        {
+          "ip_group_id": 143,
+          "name": "Calagan",
+          "code": null,
+          "status": 2,
+          "archived": 0
+        },
+        {
+          "ip_group_id": 144,
+          "name": "Camalog/I-camalog (Kalinga)",
+          "code": null,
+          "status": 1,
+          "archived": 0
+        },
+        {
+          "ip_group_id": 145,
+          "name": "Caray-a",
+          "code": null,
+          "status": 2,
+          "archived": 0
+        },
+        {
+          "ip_group_id": 146,
+          "name": "Cimmaron",
+          "code": null,
+          "status": 1,
+          "archived": 0
+        },
+        {
+          "ip_group_id": 147,
+          "name": "Colayo/I-colayo (Kalinga)",
+          "code": null,
+          "status": 1,
+          "archived": 0
+        },
+        {
+          "ip_group_id": 148,
+          "name": "KALINGA - CULMINGA (SUB-GROUP)",
+          "code": null,
+          "status": 1,
+          "archived": 0
+        },
+        {
+          "ip_group_id": 149,
+          "name": "Cudal/I-cudal (Kalinga)",
+          "code": null,
+          "status": 1,
+          "archived": 0
+        },
+        {
+          "ip_group_id": 150,
+          "name": "KALINGA - DACALAN (SUB-GROUP)",
+          "code": null,
+          "status": 1,
+          "archived": 0
+        },
+        {
+          "ip_group_id": 151,
+          "name": "KALINGA - DALLAC",
+          "code": null,
+          "status": 1,
+          "archived": 0
+        },
+        {
+          "ip_group_id": 152,
+          "name": "Dalnacan/I-dalnacan (Kalinga)",
+          "code": null,
+          "status": 1,
+          "archived": 0
+        },
+        {
+          "ip_group_id": 153,
+          "name": "KALINGA - DANANAO (SUB-GROUP)",
+          "code": null,
+          "status": 1,
+          "archived": 0
+        },
+        {
+          "ip_group_id": 154,
+          "name": "KALINGA - DANGTALAN (SUB-GROUP)",
+          "code": null,
+          "status": 1,
+          "archived": 0
+        },
+        {
+          "ip_group_id": 155,
+          "name": "KALINGA - DAO-ANGAN (SUB-GROUP)",
+          "code": null,
+          "status": 1,
+          "archived": 0
+        },
+        {
+          "ip_group_id": 156,
+          "name": "Dongo-anon",
+          "code": null,
+          "status": 1,
+          "archived": 0
+        },
+        {
+          "ip_group_id": 157,
+          "name": "KALINGA - DUGPA (SUB-GROUP)",
+          "code": null,
+          "status": 1,
+          "archived": 0
+        },
+        {
+          "ip_group_id": 158,
+          "name": "MANOBO-DULANGAN",
+          "code": null,
+          "status": 1,
+          "archived": 0
+        },
+        {
+          "ip_group_id": 159,
+          "name": "Dupligan/I-dupligan (Kalinga)",
+          "code": null,
+          "status": 1,
+          "archived": 0
+        },
+        {
+          "ip_group_id": 160,
+          "name": "KALINGA GAANG (SUB-GROUP)",
+          "code": null,
+          "status": 1,
+          "archived": 0
+        },
+        {
+          "ip_group_id": 161,
+          "name": "Gamunang/I-gamunang (Kalinga)",
+          "code": null,
+          "status": 1,
+          "archived": 0
+        },
+        {
+          "ip_group_id": 162,
+          "name": "Gobgob/I-gobgob (Kalinga)",
+          "code": null,
+          "status": 1,
+          "archived": 0
+        },
+        {
+          "ip_group_id": 163,
+          "name": "ITNEG/TINGUIAN - GUBANG (SUB-GROUP)",
+          "code": null,
+          "status": 1,
+          "archived": 0
+        },
+        {
+          "ip_group_id": 164,
+          "name": "Gubang/I-gubang (Kalinga)",
+          "code": null,
+          "status": 1,
+          "archived": 0
+        },
+        {
+          "ip_group_id": 165,
+          "name": "KALINGA - GUILAYON (SUB-GROUP)",
+          "code": null,
+          "status": 1,
+          "archived": 0
+        },
+        {
+          "ip_group_id": 166,
+          "name": "KALINGA - GUINA-ANG (SUB-GROUP)",
+          "code": null,
+          "status": 1,
+          "archived": 0
+        },
+        {
+          "ip_group_id": 167,
+          "name": "Hakki (Balangao)",
+          "code": null,
+          "status": 1,
+          "archived": 0
+        },
+        {
+          "ip_group_id": 168,
+          "name": "BUKIDNON - HALOWODNON (SUB-GROUP)",
+          "code": null,
+          "status": 1,
+          "archived": 0
+        },
+        {
+          "ip_group_id": 169,
+          "name": "Ibilao/Bugkalot",
+          "code": null,
+          "status": 1,
+          "archived": 0
+        },
+        {
+          "ip_group_id": 170,
+          "name": "Ifugao",
+          "code": null,
+          "status": 1,
+          "archived": 0
+        },
+        {
+          "ip_group_id": 171,
+          "name": "Imalawa",
+          "code": null,
+          "status": 1,
+          "archived": 0
+        },
+        {
+          "ip_group_id": 172,
+          "name": "Iranon",
+          "code": null,
+          "status": 2,
+          "archived": 0
+        },
+        {
+          "ip_group_id": 173,
+          "name": "BUKIDNON - IRAYNON (SUB-GROUP)",
+          "code": null,
+          "status": 1,
+          "archived": 0
+        },
+        {
+          "ip_group_id": 174,
+          "name": "Jama Mapun",
+          "code": null,
+          "status": 1,
+          "archived": 0
+        },
+        {
+          "ip_group_id": 175,
+          "name": "Kabakan",
+          "code": null,
+          "status": 1,
+          "archived": 0
+        },
+        {
+          "ip_group_id": 176,
+          "name": "Kabinga-an",
+          "code": null,
+          "status": 1,
+          "archived": 0
+        },
+        {
+          "ip_group_id": 177,
+          "name": "TUWALI - KELE-I (SUB-GROUP)",
+          "code": null,
+          "status": 1,
+          "archived": 0
+        },
+        {
+          "ip_group_id": 178,
+          "name": "Kiangan (Ifugao)",
+          "code": null,
+          "status": 1,
+          "archived": 0
+        },
+        {
+          "ip_group_id": 179,
+          "name": "Klata/Diangan/Guiangan",
+          "code": null,
+          "status": 1,
+          "archived": 0
+        },
+        {
+          "ip_group_id": 180,
+          "name": "PALAWAN-O - KEN-EY (SUB-GROUP)",
+          "code": null,
+          "status": 1,
+          "archived": 0
+        },
+        {
+          "ip_group_id": 181,
+          "name": "MANOBO-DULANGAN - LAMBANGIAN (SUB-GROUP)",
+          "code": null,
+          "status": 1,
+          "archived": 0
+        },
+        {
+          "ip_group_id": 182,
+          "name": "KALINGA LIMOS (SUB-GROUP)",
+          "code": null,
+          "status": 1,
+          "archived": 0
+        },
+        {
+          "ip_group_id": 183,
+          "name": "KALINGA - LUBO (SUB-GROUP)",
+          "code": null,
+          "status": 1,
+          "archived": 0
+        },
+        {
+          "ip_group_id": 184,
+          "name": "KALINGA - LUBUAGAN (SUB-GROUP)",
+          "code": null,
+          "status": 1,
+          "archived": 0
+        },
+        {
+          "ip_group_id": 185,
+          "name": "KALINGA - MABONGTOT (SUB-GROUP)",
+          "code": null,
+          "status": 1,
+          "archived": 0
+        },
+        {
+          "ip_group_id": 186,
+          "name": "KALINGA - MAGAOGAO (SUB-GROUP)",
+          "code": null,
+          "status": 1,
+          "archived": 0
+        },
+        {
+          "ip_group_id": 187,
+          "name": "Magnao/I-magnao (Kalinga)",
+          "code": null,
+          "status": 1,
+          "archived": 0
+        },
+        {
+          "ip_group_id": 188,
+          "name": "Magsilay/I-magsilay (Kalinga)",
+          "code": null,
+          "status": 1,
+          "archived": 0
+        },
+        {
+          "ip_group_id": 189,
+          "name": "BONTOK-MAJUKAYONG (SUB-GROUP)",
+          "code": null,
+          "status": 1,
+          "archived": 0
+        },
+        {
+          "ip_group_id": 190,
+          "name": "Maguindanao",
+          "code": null,
+          "status": 2,
+          "archived": 0
+        },
+        {
+          "ip_group_id": 191,
+          "name": "Malagnat/I-malagnat (Kalinga)",
+          "code": null,
+          "status": 1,
+          "archived": 0
+        },
+        {
+          "ip_group_id": 192,
+          "name": "KALINGA MALBONG (SUB-GROUP)",
+          "code": null,
+          "status": 1,
+          "archived": 0
+        },
+        {
+          "ip_group_id": 193,
+          "name": "Maling/I-maling (Kalinga)",
+          "code": null,
+          "status": 1,
+          "archived": 0
+        },
+        {
+          "ip_group_id": 194,
+          "name": "Mallango/I-mallango (Kalinga)",
+          "code": null,
+          "status": 1,
+          "archived": 0
+        },
+        {
+          "ip_group_id": 195,
+          "name": "KALINGA - MANGALI (SUB-GROUP)",
+          "code": null,
+          "status": 1,
+          "archived": 0
+        },
+        {
+          "ip_group_id": 196,
+          "name": "Mangyan",
+          "code": null,
+          "status": 1,
+          "archived": 0
+        },
+        {
+          "ip_group_id": 197,
+          "name": "Manubal/I-manubal (Kalinga)",
+          "code": null,
+          "status": 1,
+          "archived": 0
+        },
+        {
+          "ip_group_id": 198,
+          "name": "Maranao",
+          "code": null,
+          "status": 2,
+          "archived": 0
+        },
+        {
+          "ip_group_id": 199,
+          "name": "Matucnang/I-matucnang (Kalinga)",
+          "code": null,
+          "status": 1,
+          "archived": 0
+        },
+        {
+          "ip_group_id": 200,
+          "name": "ITNEG/TINGUIAN - MUYADAN (SUB-GROUP)",
+          "code": null,
+          "status": 1,
+          "archived": 0
+        }
+      ],
+      "status": "ok"
+    },
+    "ods_lookup_sample": {
+      "sql": "SELECT COUNT(*) AS sampled_rows,\n            SUM(s.sex_id IS NULL) AS sex_unmapped,\n            SUM(p.ext_name_id IS NOT NULL AND e.ext_name_id IS NULL) AS extension_unmapped,\n            SUM(p.ip_group_id IS NOT NULL AND i.ip_group_id IS NULL) AS ip_group_unmapped\n            FROM (SELECT member_id FROM enroll_matched_CHED_tbl ORDER BY id LIMIT 200) m\n            JOIN tbl_person p ON p.person_id=m.member_id\n            LEFT JOIN consultant_ods.lib_sex_v3 s ON s.sex_id=p.sex_id\n            LEFT JOIN consultant_ods.lib_ext_name_v3 e ON e.ext_name_id=p.ext_name_id\n            LEFT JOIN consultant_ods.lib_ip_group_v3 i ON i.ip_group_id=p.ip_group_id",
+      "rows": [
+        {
+          "sampled_rows": 200,
+          "sex_unmapped": "0",
+          "extension_unmapped": "0",
+          "ip_group_unmapped": "19"
+        }
+      ],
+      "status": "ok"
+    },
+    "agency_reference": {
+      "sql": "SELECT agency_id,agency_alias FROM lib_partner_agency ORDER BY agency_id LIMIT 50",
+      "rows": [
+        {
+          "agency_id": 1,
+          "agency_alias": "CHED"
+        },
+        {
+          "agency_id": 2,
+          "agency_alias": "TESDA"
+        }
+      ],
+      "status": "ok"
+    },
+    "matched_sample": {
+      "sql": "SELECT COUNT(*) AS sampled_rows,\n            SUM(p.person_id IS NULL) AS missing_person,\n            SUM(p.sex_id IS NULL OR sx.id IS NULL) AS unmapped_sex,\n            SUM(p.ext_name_id IS NOT NULL) AS extension_id_present,\n            SUM(p.ip_group_id IS NOT NULL) AS ip_group_present,\n            SUM(m.agency_id IS NULL) AS agency_missing,\n            SUM(m.agency_id IS NOT NULL AND a.agency_id IS NULL) AS agency_unmapped,\n            SUM(p.first_name IS NULL OR TRIM(p.first_name)='') AS first_name_missing,\n            SUM(p.last_name IS NULL OR TRIM(p.last_name)='') AS last_name_missing,\n            SUM(p.date_of_birth IS NULL) AS birthdate_missing\n            FROM (SELECT id,member_id,agency_id FROM enroll_matched_CHED_tbl ORDER BY id LIMIT 200) m\n            LEFT JOIN tbl_person p ON p.person_id=m.member_id\n            LEFT JOIN sex_tbl sx ON sx.id=p.sex_id\n            LEFT JOIN lib_partner_agency a ON a.agency_id=m.agency_id",
+      "rows": [
+        {
+          "sampled_rows": 200,
+          "missing_person": "0",
+          "unmapped_sex": "124",
+          "extension_id_present": "1",
+          "ip_group_present": "31",
+          "agency_missing": "0",
+          "agency_unmapped": "0",
+          "first_name_missing": "0",
+          "last_name_missing": "0",
+          "birthdate_missing": "0"
+        }
+      ],
+      "status": "ok"
+    },
+    "roster_sample": {
+      "sql": "SELECT COUNT(*) AS sampled_rows,\n            SUM(rosters=0) AS no_roster,SUM(rosters=1) AS one_roster,SUM(rosters>1) AS multiple_rosters\n            FROM (SELECT (SELECT COUNT(*) FROM tbl_hh_roster r WHERE r.person_id=m.member_id) AS rosters\n              FROM (SELECT member_id FROM enroll_matched_CHED_tbl ORDER BY id LIMIT 200) m) x",
+      "rows": [
+        {
+          "sampled_rows": 200,
+          "no_roster": "0",
+          "one_roster": "200",
+          "multiple_rosters": "0"
+        }
+      ],
+      "status": "ok"
+    },
+    "external_lookup_metadata": {
+      "sql": "SELECT TABLE_SCHEMA,TABLE_NAME,COLUMN_NAME,COLUMN_TYPE,COLUMN_COMMENT\n            FROM information_schema.COLUMNS\n            WHERE TABLE_SCHEMA NOT IN ('mysql','information_schema','performance_schema','sys')\n            AND TABLE_NAME IN ('lib_sex','lib_sex_v2','lib_sex_v3','lib_ext_name','lib_ext_name_v3',\n                               'lib_ip_group','lib_ip_group_v3')\n            ORDER BY TABLE_SCHEMA,TABLE_NAME,ORDINAL_POSITION LIMIT 500",
+      "rows": [
+        {
+          "TABLE_SCHEMA": "_ppis_legacy_v2",
+          "TABLE_NAME": "lib_ext_name",
+          "COLUMN_NAME": "id",
+          "COLUMN_TYPE": "int",
+          "COLUMN_COMMENT": ""
+        },
+        {
+          "TABLE_SCHEMA": "_ppis_legacy_v2",
+          "TABLE_NAME": "lib_ext_name",
+          "COLUMN_NAME": "ext_name",
+          "COLUMN_TYPE": "varchar(255)",
+          "COLUMN_COMMENT": ""
+        },
+        {
+          "TABLE_SCHEMA": "_ppis_legacy_v2",
+          "TABLE_NAME": "lib_sex",
+          "COLUMN_NAME": "sex_id",
+          "COLUMN_TYPE": "int unsigned",
+          "COLUMN_COMMENT": ""
+        },
+        {
+          "TABLE_SCHEMA": "_ppis_legacy_v2",
+          "TABLE_NAME": "lib_sex",
+          "COLUMN_NAME": "sex",
+          "COLUMN_TYPE": "varchar(6)",
+          "COLUMN_COMMENT": ""
+        },
+        {
+          "TABLE_SCHEMA": "_ppis_legacy_v2",
+          "TABLE_NAME": "lib_sex",
+          "COLUMN_NAME": "sex_code",
+          "COLUMN_TYPE": "char(1)",
+          "COLUMN_COMMENT": ""
+        },
+        {
+          "TABLE_SCHEMA": "_ppis_legacy_v2",
+          "TABLE_NAME": "lib_sex",
+          "COLUMN_NAME": "date_inserted",
+          "COLUMN_TYPE": "datetime",
+          "COLUMN_COMMENT": ""
+        },
+        {
+          "TABLE_SCHEMA": "_ppis_legacy_v2",
+          "TABLE_NAME": "lib_sex",
+          "COLUMN_NAME": "inserted_by",
+          "COLUMN_TYPE": "int",
+          "COLUMN_COMMENT": ""
+        },
+        {
+          "TABLE_SCHEMA": "_ppis_legacy_v2",
+          "TABLE_NAME": "lib_sex",
+          "COLUMN_NAME": "date_modified",
+          "COLUMN_TYPE": "timestamp",
+          "COLUMN_COMMENT": ""
+        },
+        {
+          "TABLE_SCHEMA": "_ppis_legacy_v2",
+          "TABLE_NAME": "lib_sex",
+          "COLUMN_NAME": "modified_by",
+          "COLUMN_TYPE": "int",
+          "COLUMN_COMMENT": ""
+        },
+        {
+          "TABLE_SCHEMA": "_ppis_legacy_v2",
+          "TABLE_NAME": "lib_sex",
+          "COLUMN_NAME": "status",
+          "COLUMN_TYPE": "tinyint unsigned",
+          "COLUMN_COMMENT": "0=active;1=inactive"
+        },
+        {
+          "TABLE_SCHEMA": "consultant_ods",
+          "TABLE_NAME": "lib_ext_name_v3",
+          "COLUMN_NAME": "ext_name_id",
+          "COLUMN_TYPE": "int",
+          "COLUMN_COMMENT": "Extension Name ID: Primary Key of Extension Name. {\"label\":\"Extension Name ID\",\"visible\":\"false\",\"searchable\":\"false\",\"formtag\":\"hidden\",\"list\":\"1\",\"view\":\"0\",\"add_edit\":\"1\",\"alias\":\"id\"}"
+        },
+        {
+          "TABLE_SCHEMA": "consultant_ods",
+          "TABLE_NAME": "lib_ext_name_v3",
+          "COLUMN_NAME": "name",
+          "COLUMN_TYPE": "varchar(50)",
+          "COLUMN_COMMENT": "Name: Name of Name Extension. {\"label\":\"Name\",\"visible\":\"true\",\"searchable\":\"true\",\"formtag\":\"text\",\"rules\":\"required\",\"list\":\"1\",\"view\":\"1\",\"add_edit\":\"1\",\"alias\":\"name\"}"
+        },
+        {
+          "TABLE_SCHEMA": "consultant_ods",
+          "TABLE_NAME": "lib_ext_name_v3",
+          "COLUMN_NAME": "dt_inserted",
+          "COLUMN_TYPE": "datetime",
+          "COLUMN_COMMENT": "Date/Time Inserted: Date and Time the record was inserted. {\"label\":\"Date/Time Inserted\",\"visible\":\"false\",\"searchable\":\"false\",\"formtag\":\"text\",\"list\":\"0\",\"view\":\"1\",\"add_edit\":\"0\"}"
+        },
+        {
+          "TABLE_SCHEMA": "consultant_ods",
+          "TABLE_NAME": "lib_ext_name_v3",
+          "COLUMN_NAME": "inserted_by",
+          "COLUMN_TYPE": "int unsigned",
+          "COLUMN_COMMENT": "Inserted By: User ID who inserted the record. {\"label\":\"Inserted By\",\"visible\":\"false\",\"searchable\":\"false\",\"formtag\":\"text\",\"list\":\"0\",\"view\":\"1\",\"add_edit\":\"0\", \"joinfldval\":\"username\"}"
+        },
+        {
+          "TABLE_SCHEMA": "consultant_ods",
+          "TABLE_NAME": "lib_ext_name_v3",
+          "COLUMN_NAME": "dt_updated",
+          "COLUMN_TYPE": "datetime",
+          "COLUMN_COMMENT": "Date/Time Last Updated: Date and Time the records was last updated through application. {\"label\":\"Date/Time Last Updated\",\"visible\":\"false\",\"searchable\":\"false\",\"formtag\":\"text\",\"list\":\"0\",\"view\":\"1\",\"add_edit\":\"0\"}"
+        },
+        {
+          "TABLE_SCHEMA": "consultant_ods",
+          "TABLE_NAME": "lib_ext_name_v3",
+          "COLUMN_NAME": "last_updated_by",
+          "COLUMN_TYPE": "int unsigned",
+          "COLUMN_COMMENT": "Last Updated By: User ID who last updated the record. {\"label\":\"Last Updated By\",\"visible\":\"false\",\"searchable\":\"false\",\"formtag\":\"text\",\"list\":\"0\",\"view\":\"1\",\"add_edit\":\"0\", \"joinfldval\":\"username\"}"
+        },
+        {
+          "TABLE_SCHEMA": "consultant_ods",
+          "TABLE_NAME": "lib_ext_name_v3",
+          "COLUMN_NAME": "archived",
+          "COLUMN_TYPE": "tinyint unsigned",
+          "COLUMN_COMMENT": "Archived: State if record was archived or deleted. (0-False; 1-True). {\"label\":\"Archived\",\"visible\":\"false\",\"searchable\":\"false\",\"formtag\":\"text\",\"list\":\"0\",\"view\":\"0\",\"add_edit\":\"0\",\"archive\":\"1\",\"defaultzero\":\"1\",\"alias\":\"archived\"}"
+        },
+        {
+          "TABLE_SCHEMA": "consultant_ods",
+          "TABLE_NAME": "lib_ext_name_v3",
+          "COLUMN_NAME": "dt_archived",
+          "COLUMN_TYPE": "datetime",
+          "COLUMN_COMMENT": "Date/Time Last Archived: Date and Time the record was last archived. Reference date for physical archiving of records. Set to NULL on default or after record was archived. {\"label\":\"Date/Time Last Archived\",\"visible\":\"false\",\"searchable\":\"false\",\"formtag\":\"text\",\"list\":\"0\",\"view\":\"1\",\"add_edit\":\"0\"}"
+        },
+        {
+          "TABLE_SCHEMA": "consultant_ods",
+          "TABLE_NAME": "lib_ext_name_v3",
+          "COLUMN_NAME": "last_archived_by",
+          "COLUMN_TYPE": "int unsigned",
+          "COLUMN_COMMENT": "Last Archived By: User ID who last archived the record. {\"label\":\"Last Archived By\",\"visible\":\"false\",\"searchable\":\"false\",\"formtag\":\"text\",\"list\":\"0\",\"view\":\"1\",\"add_edit\":\"0\", \"joinfldval\":\"username\"}"
+        },
+        {
+          "TABLE_SCHEMA": "consultant_ods",
+          "TABLE_NAME": "lib_ext_name_v3",
+          "COLUMN_NAME": "dt_restored",
+          "COLUMN_TYPE": "datetime",
+          "COLUMN_COMMENT": "Date/Time Last Restored: Date and Time the record was last restored. Set to NULL on default or after record was restored. {\"label\":\"Date/Time Last Restored\",\"visible\":\"false\",\"searchable\":\"false\",\"formtag\":\"text\",\"list\":\"0\",\"view\":\"1\",\"add_edit\":\"0\"}"
+        },
+        {
+          "TABLE_SCHEMA": "consultant_ods",
+          "TABLE_NAME": "lib_ext_name_v3",
+          "COLUMN_NAME": "last_restored_by",
+          "COLUMN_TYPE": "int unsigned",
+          "COLUMN_COMMENT": "Last Restored By: User ID who last restored the record. {\"label\":\"Last Restored By\",\"visible\":\"false\",\"searchable\":\"false\",\"formtag\":\"text\",\"list\":\"0\",\"view\":\"1\",\"add_edit\":\"0\", \"joinfldval\":\"username\"}"
+        },
+        {
+          "TABLE_SCHEMA": "consultant_ods",
+          "TABLE_NAME": "lib_ext_name_v3",
+          "COLUMN_NAME": "dt_last_modified",
+          "COLUMN_TYPE": "datetime",
+          "COLUMN_COMMENT": "Date/Time Last Modified: Date and Time the records was last modified either through front or back end. {\"label\":\"Date/Time Last Modified\",\"visible\":\"false\",\"searchable\":\"false\",\"formtag\":\"text\",\"list\":\"0\",\"view\":\"1\",\"add_edit\":\"0\"}"
+        },
+        {
+          "TABLE_SCHEMA": "consultant_ods",
+          "TABLE_NAME": "lib_ip_group_v3",
+          "COLUMN_NAME": "ip_group_id",
+          "COLUMN_TYPE": "int unsigned",
+          "COLUMN_COMMENT": "IP Group ID: Primary Key of IP Group Library\r\n{\"label\":\"IP Group ID\",\"visible\":\"false\",\"searchable\":\"false\",\"formtag\":\"hidden\",\"list\":\"1\",\"view\":\"0\",\"add_edit\":\"1\",\"alias\":\"id\"}"
+        },
+        {
+          "TABLE_SCHEMA": "consultant_ods",
+          "TABLE_NAME": "lib_ip_group_v3",
+          "COLUMN_NAME": "name",
+          "COLUMN_TYPE": "varchar(50)",
+          "COLUMN_COMMENT": "Name: Name of IP Group. {\"label\":\"IP Group Name\",\"visible\":\"true\",\"searchable\":\"true\",\"formtag\":\"text\",\"rules\":\"required|min_length[2]\",\"list\":\"1\",\"view\":\"1\",\"add_edit\":\"1\",\"alias\":\"name\"}"
+        },
+        {
+          "TABLE_SCHEMA": "consultant_ods",
+          "TABLE_NAME": "lib_ip_group_v3",
+          "COLUMN_NAME": "code",
+          "COLUMN_TYPE": "varchar(15)",
+          "COLUMN_COMMENT": "Code: Code of IP Group.  {\"label\":\"Code\",\"visible\":\"true\",\"searchable\":\"true\",\"formtag\":\"text\",\"rules\":\"min_length[2]\",\"list\":\"1\",\"view\":\"1\",\"add_edit\":\"1\"}"
+        },
+        {
+          "TABLE_SCHEMA": "consultant_ods",
+          "TABLE_NAME": "lib_ip_group_v3",
+          "COLUMN_NAME": "status",
+          "COLUMN_TYPE": "int unsigned",
+          "COLUMN_COMMENT": "IP Status: IP Status ID of the IP Group. {\"label\":\"IP Status\",\"visible\":\"false\",\"searchable\":\"true\",\"formtag\":\"select\",\"rules\":\"required\",\"list\":\"1\",\"view\":\"1\",\"add_edit\":\"1\",\"joinfldval\":\"name\"}"
+        },
+        {
+          "TABLE_SCHEMA": "consultant_ods",
+          "TABLE_NAME": "lib_ip_group_v3",
+          "COLUMN_NAME": "dt_inserted",
+          "COLUMN_TYPE": "datetime",
+          "COLUMN_COMMENT": "Date/Time Inserted: Date and Time the record was inserted. {\"label\":\"Date Inserted\",\"visible\":\"false\",\"searchable\":\"false\",\"formtag\":\"text\",\"list\":\"0\",\"view\":\"1\",\"add_edit\":\"0\"}"
+        },
+        {
+          "TABLE_SCHEMA": "consultant_ods",
+          "TABLE_NAME": "lib_ip_group_v3",
+          "COLUMN_NAME": "inserted_by",
+          "COLUMN_TYPE": "int unsigned",
+          "COLUMN_COMMENT": "Inserted By: User ID who inserted the record. {\"label\":\"Inserted By\",\"visible\":\"false\",\"searchable\":\"false\",\"formtag\":\"text\",\"list\":\"0\",\"view\":\"1\",\"add_edit\":\"0\", \"joinfldval\":\"username\"}"
+        },
+        {
+          "TABLE_SCHEMA": "consultant_ods",
+          "TABLE_NAME": "lib_ip_group_v3",
+          "COLUMN_NAME": "dt_updated",
+          "COLUMN_TYPE": "datetime",
+          "COLUMN_COMMENT": "Date/Time Updated: Date and Time the records was last updated through application. {\"label\":\"Date/Time Last Updated\",\"visible\":\"false\",\"searchable\":\"false\",\"formtag\":\"text\",\"list\":\"0\",\"view\":\"1\",\"add_edit\":\"0\"}"
+        },
+        {
+          "TABLE_SCHEMA": "consultant_ods",
+          "TABLE_NAME": "lib_ip_group_v3",
+          "COLUMN_NAME": "last_updated_by",
+          "COLUMN_TYPE": "int unsigned",
+          "COLUMN_COMMENT": "Last Updated By: User ID who last updated the record. {\"label\":\"Last Updated By\",\"visible\":\"false\",\"searchable\":\"false\",\"formtag\":\"text\",\"list\":\"0\",\"view\":\"1\",\"add_edit\":\"0\", \"joinfldval\":\"username\"}"
+        },
+        {
+          "TABLE_SCHEMA": "consultant_ods",
+          "TABLE_NAME": "lib_ip_group_v3",
+          "COLUMN_NAME": "archived",
+          "COLUMN_TYPE": "tinyint unsigned",
+          "COLUMN_COMMENT": "Archived: State if record was archived or deleted. (0-False; 1-True). {\"label\":\"Archived\",\"visible\":\"false\",\"searchable\":\"false\",\"formtag\":\"text\",\"list\":\"0\",\"view\":\"0\",\"add_edit\":\"0\",\"archive\":\"1\",\"defaultzero\":\"1\",\"alias\":\"archived\"}"
+        },
+        {
+          "TABLE_SCHEMA": "consultant_ods",
+          "TABLE_NAME": "lib_ip_group_v3",
+          "COLUMN_NAME": "dt_archived",
+          "COLUMN_TYPE": "datetime",
+          "COLUMN_COMMENT": "Date and Time the record was archived. Reference date for physical archiving of records. Set to NULL on default or after record was restored."
+        },
+        {
+          "TABLE_SCHEMA": "consultant_ods",
+          "TABLE_NAME": "lib_ip_group_v3",
+          "COLUMN_NAME": "last_archived_by",
+          "COLUMN_TYPE": "int unsigned",
+          "COLUMN_COMMENT": "Last Archived By: User ID who last archived the record. {\"label\":\"Last Archived By\",\"visible\":\"false\",\"searchable\":\"false\",\"formtag\":\"text\",\"list\":\"0\",\"view\":\"1\",\"add_edit\":\"0\", \"joinfldval\":\"username\"}"
+        },
+        {
+          "TABLE_SCHEMA": "consultant_ods",
+          "TABLE_NAME": "lib_ip_group_v3",
+          "COLUMN_NAME": "dt_restored",
+          "COLUMN_TYPE": "datetime",
+          "COLUMN_COMMENT": "Date/Time Last Restored: Date and Time the record was last restored. Set to NULL on default or after record was restored. {\"label\":\"Date/Time Last Restored\",\"visible\":\"false\",\"searchable\":\"false\",\"formtag\":\"text\",\"list\":\"0\",\"view\":\"1\",\"add_edit\":\"0\"}"
+        },
+        {
+          "TABLE_SCHEMA": "consultant_ods",
+          "TABLE_NAME": "lib_ip_group_v3",
+          "COLUMN_NAME": "last_restored_by",
+          "COLUMN_TYPE": "int unsigned",
+          "COLUMN_COMMENT": "Last Restored By: User ID who last restored the record. {\"label\":\"Last Restored By\",\"visible\":\"false\",\"searchable\":\"false\",\"formtag\":\"text\",\"list\":\"0\",\"view\":\"1\",\"add_edit\":\"0\", \"joinfldval\":\"username\"}"
+        },
+        {
+          "TABLE_SCHEMA": "consultant_ods",
+          "TABLE_NAME": "lib_ip_group_v3",
+          "COLUMN_NAME": "dt_last_modified",
+          "COLUMN_TYPE": "datetime",
+          "COLUMN_COMMENT": "Date/Time Updated: Date and Time the records was last updated. {\"label\":\"Date Last Modified\",\"visible\":\"false\",\"searchable\":\"false\",\"formtag\":\"text\",\"list\":\"0\",\"view\":\"1\",\"add_edit\":\"0\"}"
+        },
+        {
+          "TABLE_SCHEMA": "consultant_ods",
+          "TABLE_NAME": "lib_sex_v2",
+          "COLUMN_NAME": "sex_id",
+          "COLUMN_TYPE": "tinyint",
+          "COLUMN_COMMENT": ""
+        },
+        {
+          "TABLE_SCHEMA": "consultant_ods",
+          "TABLE_NAME": "lib_sex_v2",
+          "COLUMN_NAME": "sex",
+          "COLUMN_TYPE": "varchar(6)",
+          "COLUMN_COMMENT": ""
+        },
+        {
+          "TABLE_SCHEMA": "consultant_ods",
+          "TABLE_NAME": "lib_sex_v2",
+          "COLUMN_NAME": "sex_code",
+          "COLUMN_TYPE": "char(1)",
+          "COLUMN_COMMENT": ""
+        },
+        {
+          "TABLE_SCHEMA": "consultant_ods",
+          "TABLE_NAME": "lib_sex_v2",
+          "COLUMN_NAME": "date_inserted",
+          "COLUMN_TYPE": "datetime",
+          "COLUMN_COMMENT": ""
+        },
+        {
+          "TABLE_SCHEMA": "consultant_ods",
+          "TABLE_NAME": "lib_sex_v2",
+          "COLUMN_NAME": "inserted_by",
+          "COLUMN_TYPE": "int",
+          "COLUMN_COMMENT": ""
+        },
+        {
+          "TABLE_SCHEMA": "consultant_ods",
+          "TABLE_NAME": "lib_sex_v2",
+          "COLUMN_NAME": "date_modified",
+          "COLUMN_TYPE": "timestamp",
+          "COLUMN_COMMENT": ""
+        },
+        {
+          "TABLE_SCHEMA": "consultant_ods",
+          "TABLE_NAME": "lib_sex_v2",
+          "COLUMN_NAME": "modified_by",
+          "COLUMN_TYPE": "int",
+          "COLUMN_COMMENT": ""
+        },
+        {
+          "TABLE_SCHEMA": "consultant_ods",
+          "TABLE_NAME": "lib_sex_v2",
+          "COLUMN_NAME": "status",
+          "COLUMN_TYPE": "tinyint unsigned",
+          "COLUMN_COMMENT": "0=active;1=inactive"
+        },
+        {
+          "TABLE_SCHEMA": "consultant_ods",
+          "TABLE_NAME": "lib_sex_v3",
+          "COLUMN_NAME": "sex_id",
+          "COLUMN_TYPE": "int unsigned",
+          "COLUMN_COMMENT": "Sex ID: Primary Key of Sex {\"label\":\"Sex ID\",\"visible\":\"false\",\"searchable\":\"false\",\"formtag\":\"hidden\",\"list\":\"1\",\"view\":\"0\",\"add_edit\":\"1\",\"alias\":\"id\"}"
+        },
+        {
+          "TABLE_SCHEMA": "consultant_ods",
+          "TABLE_NAME": "lib_sex_v3",
+          "COLUMN_NAME": "name",
+          "COLUMN_TYPE": "varchar(50)",
+          "COLUMN_COMMENT": "Name: Name of Sex. {\"label\":\"Name\",\"visible\":\"true\",\"searchable\":\"true\",\"formtag\":\"text\",\"rules\":\"required|min_length[3]\",\"list\":\"1\",\"view\":\"1\",\"add_edit\":\"1\",\"alias\":\"name\"}"
+        },
+        {
+          "TABLE_SCHEMA": "consultant_ods",
+          "TABLE_NAME": "lib_sex_v3",
+          "COLUMN_NAME": "code",
+          "COLUMN_TYPE": "varchar(15)",
+          "COLUMN_COMMENT": "Code: Code of Sex. {\"label\":\"Code\",\"visible\":\"true\",\"searchable\":\"true\",\"formtag\":\"text\",\"rules\":\"alpha_dash|min_length[2]\",\"list\":\"1\",\"view\":\"1\",\"add_edit\":\"1\"}"
+        },
+        {
+          "TABLE_SCHEMA": "consultant_ods",
+          "TABLE_NAME": "lib_sex_v3",
+          "COLUMN_NAME": "dt_inserted",
+          "COLUMN_TYPE": "datetime",
+          "COLUMN_COMMENT": "Date/Time Inserted: Date and Time the record was inserted. {\"label\":\"Date Inserted\",\"visible\":\"false\",\"searchable\":\"false\",\"formtag\":\"text\",\"list\":\"0\",\"view\":\"1\",\"add_edit\":\"0\"}"
+        },
+        {
+          "TABLE_SCHEMA": "consultant_ods",
+          "TABLE_NAME": "lib_sex_v3",
+          "COLUMN_NAME": "inserted_by",
+          "COLUMN_TYPE": "int unsigned",
+          "COLUMN_COMMENT": "Inserted By: User ID who inserted the record. {\"label\":\"Inserted By\",\"visible\":\"false\",\"searchable\":\"false\",\"formtag\":\"text\",\"list\":\"0\",\"view\":\"1\",\"add_edit\":\"0\", \"joinfldval\":\"username\"}"
+        },
+        {
+          "TABLE_SCHEMA": "consultant_ods",
+          "TABLE_NAME": "lib_sex_v3",
+          "COLUMN_NAME": "dt_updated",
+          "COLUMN_TYPE": "datetime",
+          "COLUMN_COMMENT": "Date/Time Last Updated: Date and Time the records was last updated through application. {\"label\":\"Date/Time Last Updated\",\"visible\":\"false\",\"searchable\":\"false\",\"formtag\":\"text\",\"list\":\"0\",\"view\":\"1\",\"add_edit\":\"0\"}"
+        },
+        {
+          "TABLE_SCHEMA": "consultant_ods",
+          "TABLE_NAME": "lib_sex_v3",
+          "COLUMN_NAME": "last_updated_by",
+          "COLUMN_TYPE": "int unsigned",
+          "COLUMN_COMMENT": "Last Updated By: User ID who last updated the record. {\"label\":\"Last Updated By\",\"visible\":\"false\",\"searchable\":\"false\",\"formtag\":\"text\",\"list\":\"0\",\"view\":\"1\",\"add_edit\":\"0\", \"joinfldval\":\"username\"}"
+        },
+        {
+          "TABLE_SCHEMA": "consultant_ods",
+          "TABLE_NAME": "lib_sex_v3",
+          "COLUMN_NAME": "archived",
+          "COLUMN_TYPE": "tinyint unsigned",
+          "COLUMN_COMMENT": "Archived: State if record was archived or deleted. (0-False; 1-True). {\"label\":\"Archived\",\"visible\":\"false\",\"searchable\":\"false\",\"formtag\":\"text\",\"list\":\"0\",\"view\":\"0\",\"add_edit\":\"0\",\"archive\":\"1\",\"defaultzero\":\"1\",\"alias\":\"archived\"}"
+        },
+        {
+          "TABLE_SCHEMA": "consultant_ods",
+          "TABLE_NAME": "lib_sex_v3",
+          "COLUMN_NAME": "dt_archived",
+          "COLUMN_TYPE": "datetime",
+          "COLUMN_COMMENT": "Date/Time Archived: Date and Time the record was archived. Reference date for physical archiving of records. Set to NULL on default or after record was restored. {\"label\":\"Date Archived\",\"visible\":\"false\",\"searchable\":\"false\",\"formtag\":\"text\",\"list\":\"0\",\"view\":\"0\",\"add_edit\":\"0\"}"
+        },
+        {
+          "TABLE_SCHEMA": "consultant_ods",
+          "TABLE_NAME": "lib_sex_v3",
+          "COLUMN_NAME": "last_archived_by",
+          "COLUMN_TYPE": "int unsigned",
+          "COLUMN_COMMENT": "Last Archived By: User ID who last archived the record. {\"label\":\"Last Archived By\",\"visible\":\"false\",\"searchable\":\"false\",\"formtag\":\"text\",\"list\":\"0\",\"view\":\"1\",\"add_edit\":\"0\", \"joinfldval\":\"username\"}"
+        },
+        {
+          "TABLE_SCHEMA": "consultant_ods",
+          "TABLE_NAME": "lib_sex_v3",
+          "COLUMN_NAME": "dt_restored",
+          "COLUMN_TYPE": "datetime",
+          "COLUMN_COMMENT": "Date/Time Last Restored: Date and Time the record was last restored. Set to NULL on default or after record was restored. {\"label\":\"Date/Time Last Restored\",\"visible\":\"false\",\"searchable\":\"false\",\"formtag\":\"text\",\"list\":\"0\",\"view\":\"1\",\"add_edit\":\"0\"}"
+        },
+        {
+          "TABLE_SCHEMA": "consultant_ods",
+          "TABLE_NAME": "lib_sex_v3",
+          "COLUMN_NAME": "last_restored_by",
+          "COLUMN_TYPE": "int unsigned",
+          "COLUMN_COMMENT": "Last Restored By: User ID who last restored the record. {\"label\":\"Last Restored By\",\"visible\":\"false\",\"searchable\":\"false\",\"formtag\":\"text\",\"list\":\"0\",\"view\":\"1\",\"add_edit\":\"0\", \"joinfldval\":\"username\"}"
+        },
+        {
+          "TABLE_SCHEMA": "consultant_ods",
+          "TABLE_NAME": "lib_sex_v3",
+          "COLUMN_NAME": "dt_last_modified",
+          "COLUMN_TYPE": "datetime",
+          "COLUMN_COMMENT": "Date/Time Last Modified: Date and Time the records was last modified either through front or back end. {\"label\":\"Date/Time Last Modified\",\"visible\":\"false\",\"searchable\":\"false\",\"formtag\":\"text\",\"list\":\"0\",\"view\":\"1\",\"add_edit\":\"0\"}"
+        },
+        {
+          "TABLE_SCHEMA": "dswd_4ps_datamart_raw",
+          "TABLE_NAME": "lib_ip_group_v3",
+          "COLUMN_NAME": "ip_group_id",
+          "COLUMN_TYPE": "int unsigned",
+          "COLUMN_COMMENT": "IP Group ID: Primary Key of IP Group Library\r\n{\"label\":\"IP Group ID\",\"visible\":\"false\",\"searchable\":\"false\",\"formtag\":\"hidden\",\"list\":\"1\",\"view\":\"0\",\"add_edit\":\"1\",\"alias\":\"id\"}"
+        },
+        {
+          "TABLE_SCHEMA": "dswd_4ps_datamart_raw",
+          "TABLE_NAME": "lib_ip_group_v3",
+          "COLUMN_NAME": "name",
+          "COLUMN_TYPE": "varchar(50)",
+          "COLUMN_COMMENT": "Name: Name of IP Group. {\"label\":\"IP Group Name\",\"visible\":\"true\",\"searchable\":\"true\",\"formtag\":\"text\",\"rules\":\"required|min_length[2]\",\"list\":\"1\",\"view\":\"1\",\"add_edit\":\"1\",\"alias\":\"name\"}"
+        },
+        {
+          "TABLE_SCHEMA": "dswd_4ps_datamart_raw",
+          "TABLE_NAME": "lib_ip_group_v3",
+          "COLUMN_NAME": "code",
+          "COLUMN_TYPE": "varchar(15)",
+          "COLUMN_COMMENT": "Code: Code of IP Group.  {\"label\":\"Code\",\"visible\":\"true\",\"searchable\":\"true\",\"formtag\":\"text\",\"rules\":\"min_length[2]\",\"list\":\"1\",\"view\":\"1\",\"add_edit\":\"1\"}"
+        },
+        {
+          "TABLE_SCHEMA": "dswd_4ps_datamart_raw",
+          "TABLE_NAME": "lib_ip_group_v3",
+          "COLUMN_NAME": "status",
+          "COLUMN_TYPE": "int unsigned",
+          "COLUMN_COMMENT": "IP Status: IP Status ID of the IP Group. {\"label\":\"IP Status\",\"visible\":\"false\",\"searchable\":\"true\",\"formtag\":\"select\",\"rules\":\"required\",\"list\":\"1\",\"view\":\"1\",\"add_edit\":\"1\",\"joinfldval\":\"name\"}"
+        },
+        {
+          "TABLE_SCHEMA": "dswd_4ps_datamart_raw",
+          "TABLE_NAME": "lib_ip_group_v3",
+          "COLUMN_NAME": "dt_inserted",
+          "COLUMN_TYPE": "datetime",
+          "COLUMN_COMMENT": "Date/Time Inserted: Date and Time the record was inserted. {\"label\":\"Date Inserted\",\"visible\":\"false\",\"searchable\":\"false\",\"formtag\":\"text\",\"list\":\"0\",\"view\":\"1\",\"add_edit\":\"0\"}"
+        },
+        {
+          "TABLE_SCHEMA": "dswd_4ps_datamart_raw",
+          "TABLE_NAME": "lib_ip_group_v3",
+          "COLUMN_NAME": "inserted_by",
+          "COLUMN_TYPE": "int unsigned",
+          "COLUMN_COMMENT": "Inserted By: User ID who inserted the record. {\"label\":\"Inserted By\",\"visible\":\"false\",\"searchable\":\"false\",\"formtag\":\"text\",\"list\":\"0\",\"view\":\"1\",\"add_edit\":\"0\", \"joinfldval\":\"username\"}"
+        },
+        {
+          "TABLE_SCHEMA": "dswd_4ps_datamart_raw",
+          "TABLE_NAME": "lib_ip_group_v3",
+          "COLUMN_NAME": "dt_updated",
+          "COLUMN_TYPE": "datetime",
+          "COLUMN_COMMENT": "Date/Time Updated: Date and Time the records was last updated through application. {\"label\":\"Date/Time Last Updated\",\"visible\":\"false\",\"searchable\":\"false\",\"formtag\":\"text\",\"list\":\"0\",\"view\":\"1\",\"add_edit\":\"0\"}"
+        },
+        {
+          "TABLE_SCHEMA": "dswd_4ps_datamart_raw",
+          "TABLE_NAME": "lib_ip_group_v3",
+          "COLUMN_NAME": "last_updated_by",
+          "COLUMN_TYPE": "int unsigned",
+          "COLUMN_COMMENT": "Last Updated By: User ID who last updated the record. {\"label\":\"Last Updated By\",\"visible\":\"false\",\"searchable\":\"false\",\"formtag\":\"text\",\"list\":\"0\",\"view\":\"1\",\"add_edit\":\"0\", \"joinfldval\":\"username\"}"
+        },
+        {
+          "TABLE_SCHEMA": "dswd_4ps_datamart_raw",
+          "TABLE_NAME": "lib_ip_group_v3",
+          "COLUMN_NAME": "archived",
+          "COLUMN_TYPE": "tinyint unsigned",
+          "COLUMN_COMMENT": "Archived: State if record was archived or deleted. (0-False; 1-True). {\"label\":\"Archived\",\"visible\":\"false\",\"searchable\":\"false\",\"formtag\":\"text\",\"list\":\"0\",\"view\":\"0\",\"add_edit\":\"0\",\"archive\":\"1\",\"defaultzero\":\"1\",\"alias\":\"archived\"}"
+        },
+        {
+          "TABLE_SCHEMA": "dswd_4ps_datamart_raw",
+          "TABLE_NAME": "lib_ip_group_v3",
+          "COLUMN_NAME": "dt_archived",
+          "COLUMN_TYPE": "datetime",
+          "COLUMN_COMMENT": "Date and Time the record was archived. Reference date for physical archiving of records. Set to NULL on default or after record was restored."
+        },
+        {
+          "TABLE_SCHEMA": "dswd_4ps_datamart_raw",
+          "TABLE_NAME": "lib_ip_group_v3",
+          "COLUMN_NAME": "last_archived_by",
+          "COLUMN_TYPE": "int unsigned",
+          "COLUMN_COMMENT": "Last Archived By: User ID who last archived the record. {\"label\":\"Last Archived By\",\"visible\":\"false\",\"searchable\":\"false\",\"formtag\":\"text\",\"list\":\"0\",\"view\":\"1\",\"add_edit\":\"0\", \"joinfldval\":\"username\"}"
+        },
+        {
+          "TABLE_SCHEMA": "dswd_4ps_datamart_raw",
+          "TABLE_NAME": "lib_ip_group_v3",
+          "COLUMN_NAME": "dt_restored",
+          "COLUMN_TYPE": "datetime",
+          "COLUMN_COMMENT": "Date/Time Last Restored: Date and Time the record was last restored. Set to NULL on default or after record was restored. {\"label\":\"Date/Time Last Restored\",\"visible\":\"false\",\"searchable\":\"false\",\"formtag\":\"text\",\"list\":\"0\",\"view\":\"1\",\"add_edit\":\"0\"}"
+        },
+        {
+          "TABLE_SCHEMA": "dswd_4ps_datamart_raw",
+          "TABLE_NAME": "lib_ip_group_v3",
+          "COLUMN_NAME": "last_restored_by",
+          "COLUMN_TYPE": "int unsigned",
+          "COLUMN_COMMENT": "Last Restored By: User ID who last restored the record. {\"label\":\"Last Restored By\",\"visible\":\"false\",\"searchable\":\"false\",\"formtag\":\"text\",\"list\":\"0\",\"view\":\"1\",\"add_edit\":\"0\", \"joinfldval\":\"username\"}"
+        },
+        {
+          "TABLE_SCHEMA": "dswd_4ps_datamart_raw",
+          "TABLE_NAME": "lib_ip_group_v3",
+          "COLUMN_NAME": "dt_last_modified",
+          "COLUMN_TYPE": "datetime",
+          "COLUMN_COMMENT": "Date/Time Updated: Date and Time the records was last updated. {\"label\":\"Date Last Modified\",\"visible\":\"false\",\"searchable\":\"false\",\"formtag\":\"text\",\"list\":\"0\",\"view\":\"1\",\"add_edit\":\"0\"}"
+        },
+        {
+          "TABLE_SCHEMA": "dswd_4ps_datamart_raw",
+          "TABLE_NAME": "lib_sex_v3",
+          "COLUMN_NAME": "sex_id",
+          "COLUMN_TYPE": "int unsigned",
+          "COLUMN_COMMENT": "Sex ID: Primary Key of Sex {\"label\":\"Sex ID\",\"visible\":\"false\",\"searchable\":\"false\",\"formtag\":\"hidden\",\"list\":\"1\",\"view\":\"0\",\"add_edit\":\"1\",\"alias\":\"id\"}"
+        },
+        {
+          "TABLE_SCHEMA": "dswd_4ps_datamart_raw",
+          "TABLE_NAME": "lib_sex_v3",
+          "COLUMN_NAME": "name",
+          "COLUMN_TYPE": "varchar(50)",
+          "COLUMN_COMMENT": "Name: Name of Sex. {\"label\":\"Name\",\"visible\":\"true\",\"searchable\":\"true\",\"formtag\":\"text\",\"rules\":\"required|min_length[3]\",\"list\":\"1\",\"view\":\"1\",\"add_edit\":\"1\",\"alias\":\"name\"}"
+        },
+        {
+          "TABLE_SCHEMA": "dswd_4ps_datamart_raw",
+          "TABLE_NAME": "lib_sex_v3",
+          "COLUMN_NAME": "code",
+          "COLUMN_TYPE": "varchar(15)",
+          "COLUMN_COMMENT": "Code: Code of Sex. {\"label\":\"Code\",\"visible\":\"true\",\"searchable\":\"true\",\"formtag\":\"text\",\"rules\":\"alpha_dash|min_length[2]\",\"list\":\"1\",\"view\":\"1\",\"add_edit\":\"1\"}"
+        },
+        {
+          "TABLE_SCHEMA": "dswd_4ps_datamart_raw",
+          "TABLE_NAME": "lib_sex_v3",
+          "COLUMN_NAME": "dt_inserted",
+          "COLUMN_TYPE": "datetime",
+          "COLUMN_COMMENT": "Date/Time Inserted: Date and Time the record was inserted. {\"label\":\"Date Inserted\",\"visible\":\"false\",\"searchable\":\"false\",\"formtag\":\"text\",\"list\":\"0\",\"view\":\"1\",\"add_edit\":\"0\"}"
+        },
+        {
+          "TABLE_SCHEMA": "dswd_4ps_datamart_raw",
+          "TABLE_NAME": "lib_sex_v3",
+          "COLUMN_NAME": "inserted_by",
+          "COLUMN_TYPE": "int unsigned",
+          "COLUMN_COMMENT": "Inserted By: User ID who inserted the record. {\"label\":\"Inserted By\",\"visible\":\"false\",\"searchable\":\"false\",\"formtag\":\"text\",\"list\":\"0\",\"view\":\"1\",\"add_edit\":\"0\", \"joinfldval\":\"username\"}"
+        },
+        {
+          "TABLE_SCHEMA": "dswd_4ps_datamart_raw",
+          "TABLE_NAME": "lib_sex_v3",
+          "COLUMN_NAME": "dt_updated",
+          "COLUMN_TYPE": "datetime",
+          "COLUMN_COMMENT": "Date/Time Last Updated: Date and Time the records was last updated through application. {\"label\":\"Date/Time Last Updated\",\"visible\":\"false\",\"searchable\":\"false\",\"formtag\":\"text\",\"list\":\"0\",\"view\":\"1\",\"add_edit\":\"0\"}"
+        },
+        {
+          "TABLE_SCHEMA": "dswd_4ps_datamart_raw",
+          "TABLE_NAME": "lib_sex_v3",
+          "COLUMN_NAME": "last_updated_by",
+          "COLUMN_TYPE": "int unsigned",
+          "COLUMN_COMMENT": "Last Updated By: User ID who last updated the record. {\"label\":\"Last Updated By\",\"visible\":\"false\",\"searchable\":\"false\",\"formtag\":\"text\",\"list\":\"0\",\"view\":\"1\",\"add_edit\":\"0\", \"joinfldval\":\"username\"}"
+        },
+        {
+          "TABLE_SCHEMA": "dswd_4ps_datamart_raw",
+          "TABLE_NAME": "lib_sex_v3",
+          "COLUMN_NAME": "archived",
+          "COLUMN_TYPE": "tinyint unsigned",
+          "COLUMN_COMMENT": "Archived: State if record was archived or deleted. (0-False; 1-True). {\"label\":\"Archived\",\"visible\":\"false\",\"searchable\":\"false\",\"formtag\":\"text\",\"list\":\"0\",\"view\":\"0\",\"add_edit\":\"0\",\"archive\":\"1\",\"defaultzero\":\"1\",\"alias\":\"archived\"}"
+        },
+        {
+          "TABLE_SCHEMA": "dswd_4ps_datamart_raw",
+          "TABLE_NAME": "lib_sex_v3",
+          "COLUMN_NAME": "dt_archived",
+          "COLUMN_TYPE": "datetime",
+          "COLUMN_COMMENT": "Date/Time Archived: Date and Time the record was archived. Reference date for physical archiving of records. Set to NULL on default or after record was restored. {\"label\":\"Date Archived\",\"visible\":\"false\",\"searchable\":\"false\",\"formtag\":\"text\",\"list\":\"0\",\"view\":\"0\",\"add_edit\":\"0\"}"
+        },
+        {
+          "TABLE_SCHEMA": "dswd_4ps_datamart_raw",
+          "TABLE_NAME": "lib_sex_v3",
+          "COLUMN_NAME": "last_archived_by",
+          "COLUMN_TYPE": "int unsigned",
+          "COLUMN_COMMENT": "Last Archived By: User ID who last archived the record. {\"label\":\"Last Archived By\",\"visible\":\"false\",\"searchable\":\"false\",\"formtag\":\"text\",\"list\":\"0\",\"view\":\"1\",\"add_edit\":\"0\", \"joinfldval\":\"username\"}"
+        },
+        {
+          "TABLE_SCHEMA": "dswd_4ps_datamart_raw",
+          "TABLE_NAME": "lib_sex_v3",
+          "COLUMN_NAME": "dt_restored",
+          "COLUMN_TYPE": "datetime",
+          "COLUMN_COMMENT": "Date/Time Last Restored: Date and Time the record was last restored. Set to NULL on default or after record was restored. {\"label\":\"Date/Time Last Restored\",\"visible\":\"false\",\"searchable\":\"false\",\"formtag\":\"text\",\"list\":\"0\",\"view\":\"1\",\"add_edit\":\"0\"}"
+        },
+        {
+          "TABLE_SCHEMA": "dswd_4ps_datamart_raw",
+          "TABLE_NAME": "lib_sex_v3",
+          "COLUMN_NAME": "last_restored_by",
+          "COLUMN_TYPE": "int unsigned",
+          "COLUMN_COMMENT": "Last Restored By: User ID who last restored the record. {\"label\":\"Last Restored By\",\"visible\":\"false\",\"searchable\":\"false\",\"formtag\":\"text\",\"list\":\"0\",\"view\":\"1\",\"add_edit\":\"0\", \"joinfldval\":\"username\"}"
+        },
+        {
+          "TABLE_SCHEMA": "dswd_4ps_datamart_raw",
+          "TABLE_NAME": "lib_sex_v3",
+          "COLUMN_NAME": "dt_last_modified",
+          "COLUMN_TYPE": "datetime",
+          "COLUMN_COMMENT": "Date/Time Last Modified: Date and Time the records was last modified either through front or back end. {\"label\":\"Date/Time Last Modified\",\"visible\":\"false\",\"searchable\":\"false\",\"formtag\":\"text\",\"list\":\"0\",\"view\":\"1\",\"add_edit\":\"0\"}"
+        }
+      ],
+      "status": "ok"
+    },
+    "source_sex_id_counts": {
+      "sql": "SELECT p.sex_id,COUNT(*) AS records\n            FROM (SELECT member_id FROM enroll_matched_CHED_tbl ORDER BY id LIMIT 200) m\n            JOIN tbl_person p ON p.person_id=m.member_id GROUP BY p.sex_id",
+      "rows": [
+        {
+          "sex_id": 1,
+          "records": 76
+        },
+        {
+          "sex_id": 2,
+          "records": 124
+        }
+      ],
+      "status": "ok"
+    },
+    "family_sample_plan": {
+      "sql": "EXPLAIN SELECT COUNT(*) AS sampled_rows,\n            SUM(families=0) AS no_family,SUM(families=1) AS one_family,\n            SUM(families>1) AS multiple_families\n            FROM (SELECT (SELECT COUNT(*) FROM tbl_family_assoc_ops f\n                WHERE f.person_id=m.member_id AND f.archived=0) AS families\n              FROM (SELECT member_id FROM enroll_matched_CHED_tbl ORDER BY id LIMIT 200) m) x",
+      "rows": [
+        {
+          "id": 1,
+          "select_type": "PRIMARY",
+          "table": "<derived2>",
+          "partitions": null,
+          "type": "ALL",
+          "possible_keys": null,
+          "key": null,
+          "key_len": null,
+          "ref": null,
+          "rows": 200,
+          "filtered": 100.0,
+          "Extra": null
+        },
+        {
+          "id": 2,
+          "select_type": "DERIVED",
+          "table": "<derived4>",
+          "partitions": null,
+          "type": "ALL",
+          "possible_keys": null,
+          "key": null,
+          "key_len": null,
+          "ref": null,
+          "rows": 200,
+          "filtered": 100.0,
+          "Extra": null
+        },
+        {
+          "id": 4,
+          "select_type": "DERIVED",
+          "table": "enroll_matched_CHED_tbl",
+          "partitions": null,
+          "type": "index",
+          "possible_keys": null,
+          "key": "PRIMARY",
+          "key_len": "4",
+          "ref": null,
+          "rows": 200,
+          "filtered": 100.0,
+          "Extra": null
+        },
+        {
+          "id": 3,
+          "select_type": "DEPENDENT SUBQUERY",
+          "table": "f",
+          "partitions": null,
+          "type": "ref",
+          "possible_keys": "idx_tbl_family_assoc_ops_archived",
+          "key": "idx_tbl_family_assoc_ops_archived",
+          "key_len": "1",
+          "ref": "const",
+          "rows": 24559543,
+          "filtered": 10.0,
+          "Extra": "Using where"
+        }
+      ],
+      "status": "ok"
+    },
+    "family_indexes": {
+      "sql": "SELECT INDEX_NAME,COLUMN_NAME,SEQ_IN_INDEX,NON_UNIQUE\n            FROM information_schema.STATISTICS WHERE TABLE_SCHEMA=DATABASE()\n            AND TABLE_NAME='tbl_family_assoc_ops' ORDER BY INDEX_NAME,SEQ_IN_INDEX",
+      "rows": [
+        {
+          "INDEX_NAME": "idx_tbl_family_assoc_ops_archived",
+          "COLUMN_NAME": "archived",
+          "SEQ_IN_INDEX": 1,
+          "NON_UNIQUE": 1
+        },
+        {
+          "INDEX_NAME": "idx_tbl_family_assoc_ops_family_id",
+          "COLUMN_NAME": "family_id",
+          "SEQ_IN_INDEX": 1,
+          "NON_UNIQUE": 1
+        },
+        {
+          "INDEX_NAME": "idx_tbl_family_assoc_ops_rel_fam_head",
+          "COLUMN_NAME": "rel_fam_head",
+          "SEQ_IN_INDEX": 1,
+          "NON_UNIQUE": 1
+        },
+        {
+          "INDEX_NAME": "PRIMARY",
+          "COLUMN_NAME": "fam_assoc_id",
+          "SEQ_IN_INDEX": 1,
+          "NON_UNIQUE": 0
+        }
+      ],
+      "status": "ok"
+    },
+    "selected_family_plan": {
+      "sql": "EXPLAIN SELECT m.id,fs.family_id,f.fam_assoc_id\n            FROM (SELECT id,member_id FROM enroll_matched_CHED_tbl ORDER BY id LIMIT 200) m\n            LEFT JOIN tbl_hh_roster r ON r.person_id=m.member_id\n            LEFT JOIN tbl_family_selected fs ON fs.household_id=r.household_id\n            LEFT JOIN tbl_family_assoc_ops f ON f.family_id=fs.family_id\n              AND f.person_id=m.member_id AND f.hh_roster_id=r.hh_roster_id AND f.archived=0",
+      "rows": [
+        {
+          "id": 1,
+          "select_type": "PRIMARY",
+          "table": "<derived2>",
+          "partitions": null,
+          "type": "ALL",
+          "possible_keys": null,
+          "key": null,
+          "key_len": null,
+          "ref": null,
+          "rows": 200,
+          "filtered": 100.0,
+          "Extra": null
+        },
+        {
+          "id": 1,
+          "select_type": "PRIMARY",
+          "table": "r",
+          "partitions": null,
+          "type": "ref",
+          "possible_keys": "idx_hh_roster_person_status_household",
+          "key": "idx_hh_roster_person_status_household",
+          "key_len": "4",
+          "ref": "m.member_id",
+          "rows": 1,
+          "filtered": 100.0,
+          "Extra": "Using index"
+        },
+        {
+          "id": 1,
+          "select_type": "PRIMARY",
+          "table": "fs",
+          "partitions": null,
+          "type": "ref",
+          "possible_keys": "idx_household_hhid",
+          "key": "idx_household_hhid",
+          "key_len": "5",
+          "ref": "dswd_4ps_tuloy_dev.r.household_id",
+          "rows": 1,
+          "filtered": 100.0,
+          "Extra": "Using index condition"
+        },
+        {
+          "id": 1,
+          "select_type": "PRIMARY",
+          "table": "f",
+          "partitions": null,
+          "type": "ref",
+          "possible_keys": "idx_tbl_family_assoc_ops_family_id,idx_tbl_family_assoc_ops_archived",
+          "key": "idx_tbl_family_assoc_ops_family_id",
+          "key_len": "122",
+          "ref": "dswd_4ps_tuloy_dev.fs.family_id",
+          "rows": 5,
+          "filtered": 100.0,
+          "Extra": "Using where"
+        },
+        {
+          "id": 2,
+          "select_type": "DERIVED",
+          "table": "enroll_matched_CHED_tbl",
+          "partitions": null,
+          "type": "index",
+          "possible_keys": null,
+          "key": "PRIMARY",
+          "key_len": "4",
+          "ref": null,
+          "rows": 200,
+          "filtered": 100.0,
+          "Extra": null
+        }
+      ],
+      "status": "ok"
+    },
+    "selected_family_sample": {
+      "sql": "SELECT COUNT(*) AS sampled_rows,\n            SUM(selected_families=0) AS no_selected_family,\n            SUM(selected_families>1) AS multiple_selected_families,\n            SUM(confirmed_families=0) AS no_matching_active_association,\n            SUM(confirmed_families=1) AS one_matching_active_family,\n            SUM(confirmed_families>1) AS multiple_matching_active_families\n            FROM (SELECT m.id,COUNT(DISTINCT fs.family_id) AS selected_families,\n                COUNT(DISTINCT CASE WHEN f.fam_assoc_id IS NOT NULL THEN fs.family_id END) AS confirmed_families\n              FROM (SELECT id,member_id FROM enroll_matched_CHED_tbl ORDER BY id LIMIT 200) m\n              LEFT JOIN tbl_hh_roster r ON r.person_id=m.member_id\n              LEFT JOIN tbl_family_selected fs ON fs.household_id=r.household_id\n              LEFT JOIN tbl_family_assoc_ops f ON f.family_id=fs.family_id\n                AND f.person_id=m.member_id AND f.hh_roster_id=r.hh_roster_id AND f.archived=0\n              GROUP BY m.id) x",
+      "rows": [
+        {
+          "sampled_rows": 200,
+          "no_selected_family": "0",
+          "multiple_selected_families": "0",
+          "no_matching_active_association": "5",
+          "one_matching_active_family": "195",
+          "multiple_matching_active_families": "0"
+        }
+      ],
+      "status": "ok"
+    },
+    "unmapped_ip_id_counts": {
+      "sql": "SELECT p.ip_group_id,COUNT(*) AS records\n            FROM (SELECT member_id FROM enroll_matched_CHED_tbl ORDER BY id LIMIT 200) m\n            JOIN tbl_person p ON p.person_id=m.member_id\n            LEFT JOIN consultant_ods.lib_ip_group_v3 i ON i.ip_group_id=p.ip_group_id\n            WHERE p.ip_group_id IS NOT NULL AND i.ip_group_id IS NULL\n            GROUP BY p.ip_group_id",
+      "rows": [
+        {
+          "ip_group_id": 0,
+          "records": 19
+        }
+      ],
+      "status": "ok"
+    },
+    "ip_source_definitions": {
+      "sql": "SELECT TABLE_SCHEMA,TABLE_NAME,COLUMN_NAME,COLUMN_TYPE,\n                COLUMN_DEFAULT,COLUMN_COMMENT FROM information_schema.COLUMNS\n            WHERE TABLE_SCHEMA IN (DATABASE(),'consultant_ods','dswd_4ps_datamart_raw')\n              AND COLUMN_NAME IN ('ip_label','ip_group_id')\n            ORDER BY TABLE_SCHEMA,TABLE_NAME,COLUMN_NAME",
+      "rows": [
+        {
+          "TABLE_SCHEMA": "consultant_ods",
+          "TABLE_NAME": "lib_ip_group_v3",
+          "COLUMN_NAME": "ip_group_id",
+          "COLUMN_TYPE": "int unsigned",
+          "COLUMN_DEFAULT": null,
+          "COLUMN_COMMENT": "IP Group ID: Primary Key of IP Group Library\r\n{\"label\":\"IP Group ID\",\"visible\":\"false\",\"searchable\":\"false\",\"formtag\":\"hidden\",\"list\":\"1\",\"view\":\"0\",\"add_edit\":\"1\",\"alias\":\"id\"}"
+        },
+        {
+          "TABLE_SCHEMA": "consultant_ods",
+          "TABLE_NAME": "tbl_bus_newmember_v3_ods",
+          "COLUMN_NAME": "ip_group_id",
+          "COLUMN_TYPE": "int unsigned",
+          "COLUMN_DEFAULT": null,
+          "COLUMN_COMMENT": ""
+        },
+        {
+          "TABLE_SCHEMA": "consultant_ods",
+          "TABLE_NAME": "tbl_grievance_v3",
+          "COLUMN_NAME": "ip_group_id",
+          "COLUMN_TYPE": "int",
+          "COLUMN_DEFAULT": null,
+          "COLUMN_COMMENT": "Foreign Key of IP Affiliation"
+        },
+        {
+          "TABLE_SCHEMA": "consultant_ods",
+          "TABLE_NAME": "tbl_household_Period_2_2026_CV_SS_lim_areas",
+          "COLUMN_NAME": "ip_label",
+          "COLUMN_TYPE": "int",
+          "COLUMN_DEFAULT": null,
+          "COLUMN_COMMENT": ""
+        },
+        {
+          "TABLE_SCHEMA": "consultant_ods",
+          "TABLE_NAME": "tbl_household_cs_9_21_archived_v3",
+          "COLUMN_NAME": "ip_label",
+          "COLUMN_TYPE": "int",
+          "COLUMN_DEFAULT": null,
+          "COLUMN_COMMENT": ""
+        },
+        {
+          "TABLE_SCHEMA": "consultant_ods",
+          "TABLE_NAME": "tbl_household_exclusion_v3",
+          "COLUMN_NAME": "ip_label",
+          "COLUMN_TYPE": "int",
+          "COLUMN_DEFAULT": null,
+          "COLUMN_COMMENT": ""
+        },
+        {
+          "TABLE_SCHEMA": "consultant_ods",
+          "TABLE_NAME": "tbl_household_uat",
+          "COLUMN_NAME": "ip_label",
+          "COLUMN_TYPE": "int",
+          "COLUMN_DEFAULT": null,
+          "COLUMN_COMMENT": ""
+        },
+        {
+          "TABLE_SCHEMA": "consultant_ods",
+          "TABLE_NAME": "tbl_household_v3",
+          "COLUMN_NAME": "ip_label",
+          "COLUMN_TYPE": "int",
+          "COLUMN_DEFAULT": null,
+          "COLUMN_COMMENT": ""
+        },
+        {
+          "TABLE_SCHEMA": "consultant_ods",
+          "TABLE_NAME": "tbl_household_v3_bak",
+          "COLUMN_NAME": "ip_label",
+          "COLUMN_TYPE": "int",
+          "COLUMN_DEFAULT": null,
+          "COLUMN_COMMENT": ""
+        },
+        {
+          "TABLE_SCHEMA": "consultant_ods",
+          "TABLE_NAME": "tbl_household_v3_dqa_1",
+          "COLUMN_NAME": "ip_label",
+          "COLUMN_TYPE": "int",
+          "COLUMN_DEFAULT": null,
+          "COLUMN_COMMENT": ""
+        },
+        {
+          "TABLE_SCHEMA": "consultant_ods",
+          "TABLE_NAME": "tbl_household_v3_dqa_4",
+          "COLUMN_NAME": "ip_label",
+          "COLUMN_TYPE": "int",
+          "COLUMN_DEFAULT": null,
+          "COLUMN_COMMENT": ""
+        },
+        {
+          "TABLE_SCHEMA": "consultant_ods",
+          "TABLE_NAME": "tbl_household_waitlisted_for_delete_v3",
+          "COLUMN_NAME": "ip_label",
+          "COLUMN_TYPE": "int",
+          "COLUMN_DEFAULT": null,
+          "COLUMN_COMMENT": ""
+        },
+        {
+          "TABLE_SCHEMA": "consultant_ods",
+          "TABLE_NAME": "tbl_newmember_ods_flat",
+          "COLUMN_NAME": "ip_group_id",
+          "COLUMN_TYPE": "int unsigned",
+          "COLUMN_DEFAULT": null,
+          "COLUMN_COMMENT": ""
+        },
+        {
+          "TABLE_SCHEMA": "consultant_ods",
+          "TABLE_NAME": "tbl_newmember_v3",
+          "COLUMN_NAME": "ip_group_id",
+          "COLUMN_TYPE": "int unsigned",
+          "COLUMN_DEFAULT": null,
+          "COLUMN_COMMENT": ""
+        },
+        {
+          "TABLE_SCHEMA": "consultant_ods",
+          "TABLE_NAME": "tbl_person_sample",
+          "COLUMN_NAME": "ip_group_id",
+          "COLUMN_TYPE": "int unsigned",
+          "COLUMN_DEFAULT": null,
+          "COLUMN_COMMENT": ""
+        },
+        {
+          "TABLE_SCHEMA": "consultant_ods",
+          "TABLE_NAME": "tbl_person_uat",
+          "COLUMN_NAME": "ip_group_id",
+          "COLUMN_TYPE": "int unsigned",
+          "COLUMN_DEFAULT": null,
+          "COLUMN_COMMENT": ""
+        },
+        {
+          "TABLE_SCHEMA": "consultant_ods",
+          "TABLE_NAME": "tbl_person_v3",
+          "COLUMN_NAME": "ip_group_id",
+          "COLUMN_TYPE": "int unsigned",
+          "COLUMN_DEFAULT": null,
+          "COLUMN_COMMENT": ""
+        },
+        {
+          "TABLE_SCHEMA": "consultant_ods",
+          "TABLE_NAME": "tbl_person_v3_bak",
+          "COLUMN_NAME": "ip_group_id",
+          "COLUMN_TYPE": "int unsigned",
+          "COLUMN_DEFAULT": null,
+          "COLUMN_COMMENT": ""
+        },
+        {
+          "TABLE_SCHEMA": "consultant_ods",
+          "TABLE_NAME": "tbl_person_v3_dqa_1",
+          "COLUMN_NAME": "ip_group_id",
+          "COLUMN_TYPE": "int unsigned",
+          "COLUMN_DEFAULT": null,
+          "COLUMN_COMMENT": ""
+        },
+        {
+          "TABLE_SCHEMA": "consultant_ods",
+          "TABLE_NAME": "tbl_person_v3_dqa_2",
+          "COLUMN_NAME": "ip_group_id",
+          "COLUMN_TYPE": "int unsigned",
+          "COLUMN_DEFAULT": null,
+          "COLUMN_COMMENT": ""
+        },
+        {
+          "TABLE_SCHEMA": "consultant_ods",
+          "TABLE_NAME": "tbl_person_v3_dqa_3",
+          "COLUMN_NAME": "ip_group_id",
+          "COLUMN_TYPE": "int unsigned",
+          "COLUMN_DEFAULT": null,
+          "COLUMN_COMMENT": ""
+        },
+        {
+          "TABLE_SCHEMA": "consultant_ods",
+          "TABLE_NAME": "tbl_person_v3_dqa_x",
+          "COLUMN_NAME": "ip_group_id",
+          "COLUMN_TYPE": "int unsigned",
+          "COLUMN_DEFAULT": null,
+          "COLUMN_COMMENT": ""
+        },
+        {
+          "TABLE_SCHEMA": "consultant_ods",
+          "TABLE_NAME": "vw_bus_newmember_v3",
+          "COLUMN_NAME": "ip_group_id",
+          "COLUMN_TYPE": "bigint unsigned",
+          "COLUMN_DEFAULT": null,
+          "COLUMN_COMMENT": ""
+        },
+        {
+          "TABLE_SCHEMA": "consultant_ods",
+          "TABLE_NAME": "vw_household_uat",
+          "COLUMN_NAME": "ip_label",
+          "COLUMN_TYPE": "int",
+          "COLUMN_DEFAULT": null,
+          "COLUMN_COMMENT": ""
+        },
+        {
+          "TABLE_SCHEMA": "consultant_ods",
+          "TABLE_NAME": "vw_person_uat",
+          "COLUMN_NAME": "ip_group_id",
+          "COLUMN_TYPE": "int unsigned",
+          "COLUMN_DEFAULT": null,
+          "COLUMN_COMMENT": ""
+        },
+        {
+          "TABLE_SCHEMA": "dswd_4ps_datamart_raw",
+          "TABLE_NAME": "lib_ip_group_v3",
+          "COLUMN_NAME": "ip_group_id",
+          "COLUMN_TYPE": "int unsigned",
+          "COLUMN_DEFAULT": null,
+          "COLUMN_COMMENT": "IP Group ID: Primary Key of IP Group Library\r\n{\"label\":\"IP Group ID\",\"visible\":\"false\",\"searchable\":\"false\",\"formtag\":\"hidden\",\"list\":\"1\",\"view\":\"0\",\"add_edit\":\"1\",\"alias\":\"id\"}"
+        },
+        {
+          "TABLE_SCHEMA": "dswd_4ps_datamart_raw",
+          "TABLE_NAME": "res_partner",
+          "COLUMN_NAME": "ip_group_id",
+          "COLUMN_TYPE": "int",
+          "COLUMN_DEFAULT": null,
+          "COLUMN_COMMENT": ""
+        },
+        {
+          "TABLE_SCHEMA": "dswd_4ps_datamart_raw",
+          "TABLE_NAME": "tbl_household_v3",
+          "COLUMN_NAME": "ip_label",
+          "COLUMN_TYPE": "int",
+          "COLUMN_DEFAULT": null,
+          "COLUMN_COMMENT": ""
+        },
+        {
+          "TABLE_SCHEMA": "dswd_4ps_datamart_raw",
+          "TABLE_NAME": "tbl_person_v3",
+          "COLUMN_NAME": "ip_group_id",
+          "COLUMN_TYPE": "int unsigned",
+          "COLUMN_DEFAULT": null,
+          "COLUMN_COMMENT": ""
+        },
+        {
+          "TABLE_SCHEMA": "dswd_4ps_tuloy_dev",
+          "TABLE_NAME": "tbl_household",
+          "COLUMN_NAME": "ip_label",
+          "COLUMN_TYPE": "int",
+          "COLUMN_DEFAULT": null,
+          "COLUMN_COMMENT": ""
+        },
+        {
+          "TABLE_SCHEMA": "dswd_4ps_tuloy_dev",
+          "TABLE_NAME": "tbl_person",
+          "COLUMN_NAME": "ip_group_id",
+          "COLUMN_TYPE": "int unsigned",
+          "COLUMN_DEFAULT": null,
+          "COLUMN_COMMENT": ""
+        }
+      ],
+      "status": "ok"
+    },
+    "ip_view_metadata": {
+      "sql": "SELECT TABLE_SCHEMA,TABLE_NAME,\n                VIEW_DEFINITION LIKE '%case %' AS has_case_expression\n            FROM information_schema.VIEWS\n            WHERE TABLE_SCHEMA IN (DATABASE(),'consultant_ods','dswd_4ps_datamart_raw')\n              AND (VIEW_DEFINITION LIKE '%ip_label%' OR VIEW_DEFINITION LIKE '%ip_group_id%')",
+      "rows": [
+        {
+          "TABLE_SCHEMA": "consultant_ods",
+          "TABLE_NAME": "vw_AllGrievance_v3",
+          "has_case_expression": 1
+        },
+        {
+          "TABLE_SCHEMA": "consultant_ods",
+          "TABLE_NAME": "vw_household_uat",
+          "has_case_expression": 0
+        },
+        {
+          "TABLE_SCHEMA": "consultant_ods",
+          "TABLE_NAME": "vw_person_uat",
+          "has_case_expression": 0
+        },
+        {
+          "TABLE_SCHEMA": "consultant_ods",
+          "TABLE_NAME": "vw_member_template_uat",
+          "has_case_expression": 1
+        },
+        {
+          "TABLE_SCHEMA": "consultant_ods",
+          "TABLE_NAME": "vw_bus_updates_v3test",
+          "has_case_expression": 1
+        },
+        {
+          "TABLE_SCHEMA": "consultant_ods",
+          "TABLE_NAME": "vw_bus_newmember_v3",
+          "has_case_expression": 1
+        },
+        {
+          "TABLE_SCHEMA": "consultant_ods",
+          "TABLE_NAME": "vw_bus_updates_v3_rte",
+          "has_case_expression": 1
+        }
+      ],
+      "status": "ok"
+    },
+    "ip_household_sample": {
+      "sql": "SELECT h.ip_label,\n            CASE WHEN p.ip_group_id IS NULL THEN 'NULL'\n                 WHEN p.ip_group_id=0 THEN 'ZERO' ELSE 'NONZERO' END AS person_ip_group_state,\n            COUNT(*) AS records\n            FROM (SELECT member_id FROM enroll_matched_CHED_tbl ORDER BY id LIMIT 200) m\n            JOIN tbl_person p ON p.person_id=m.member_id\n            LEFT JOIN tbl_hh_roster r ON r.person_id=m.member_id\n            LEFT JOIN tbl_household h ON h.household_id=r.household_id\n            GROUP BY h.ip_label,person_ip_group_state",
+      "rows": [
+        {
+          "ip_label": null,
+          "person_ip_group_state": "NULL",
+          "records": 168
+        },
+        {
+          "ip_label": 76,
+          "person_ip_group_state": "NONZERO",
+          "records": 3
+        },
+        {
+          "ip_label": null,
+          "person_ip_group_state": "ZERO",
+          "records": 19
+        },
+        {
+          "ip_label": 51,
+          "person_ip_group_state": "NONZERO",
+          "records": 2
+        },
+        {
+          "ip_label": 229,
+          "person_ip_group_state": "NONZERO",
+          "records": 1
+        },
+        {
+          "ip_label": 52,
+          "person_ip_group_state": "NONZERO",
+          "records": 1
+        },
+        {
+          "ip_label": 14,
+          "person_ip_group_state": "NONZERO",
+          "records": 1
+        },
+        {
+          "ip_label": 96,
+          "person_ip_group_state": "NONZERO",
+          "records": 1
+        },
+        {
+          "ip_label": 247,
+          "person_ip_group_state": "NONZERO",
+          "records": 2
+        },
+        {
+          "ip_label": 38,
+          "person_ip_group_state": "NONZERO",
+          "records": 1
+        },
+        {
+          "ip_label": 64,
+          "person_ip_group_state": "NULL",
+          "records": 1
+        }
+      ],
+      "status": "ok"
+    },
+    "geography_sample": {
+      "sql": "SELECT COUNT(*) AS joined_rows,\n            SUM(h.household_id IS NULL) AS missing_household,\n            SUM(h.listahanan_id IS NULL OR TRIM(h.listahanan_id)='') AS missing_listahanan_id,\n            SUM(g.barangay_id IS NULL) AS missing_geography,\n            SUM(g.region_psa_code IS NULL OR g.region_psa_code NOT REGEXP '^[0-9]{10}$') AS invalid_region_code,\n            SUM(g.province_psa_code IS NULL OR g.province_psa_code NOT REGEXP '^[0-9]{10}$') AS invalid_province_code,\n            SUM(g.city_psa_name IS NULL OR g.city_psa_name NOT REGEXP '^[0-9]{10}$') AS invalid_city_code,\n            SUM(b.psa_code IS NULL OR b.psa_code NOT REGEXP '^[0-9]{10}$') AS invalid_barangay_code,\n            SUM(NOT (b.psa_code <=> g.brgy_psa_code)) AS barangay_code_disagreement\n            FROM (SELECT member_id FROM enroll_matched_CHED_tbl ORDER BY id LIMIT 200) m\n            LEFT JOIN tbl_hh_roster r ON r.person_id=m.member_id\n            LEFT JOIN tbl_household h ON h.household_id=r.household_id\n            LEFT JOIN lib_psgc_barangay b ON b.barangay_id=h.barangay_id\n            LEFT JOIN lib_psgc_denorm g ON g.barangay_id=b.barangay_id",
+      "rows": [
+        {
+          "joined_rows": 200,
+          "missing_household": "0",
+          "missing_listahanan_id": "0",
+          "missing_geography": "0",
+          "invalid_region_code": "0",
+          "invalid_province_code": "0",
+          "invalid_city_code": "0",
+          "invalid_barangay_code": "0",
+          "barangay_code_disagreement": "0"
+        }
+      ],
+      "status": "ok"
+    }
+  }
+}

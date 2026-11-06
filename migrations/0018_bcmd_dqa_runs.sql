@@ -1,0 +1,51 @@
+-- Additive DQA workbench. Existing frozen members and legacy outcomes are unchanged.
+-- Apply via the migration runner; runtime must never execute DDL.
+CREATE TABLE bcmd_dqa_run (
+ id bigint unsigned NOT NULL AUTO_INCREMENT PRIMARY KEY,
+ public_id char(36) CHARACTER SET ascii COLLATE ascii_bin NOT NULL,
+ batch_id bigint unsigned NOT NULL,
+ run_no int unsigned NOT NULL,
+ actor_ref varchar(64) NOT NULL,
+ request_id varchar(64) NOT NULL,
+ idempotency_key char(36) CHARACTER SET ascii COLLATE ascii_bin NOT NULL,
+ ruleset_version varchar(64) NOT NULL,
+ ruleset_sha256 char(64) CHARACTER SET ascii COLLATE ascii_bin NOT NULL,
+ ruleset_json json NOT NULL,
+ evaluation_date date NOT NULL,
+ status varchar(16) NOT NULL DEFAULT 'QUEUED',
+ total int unsigned NOT NULL,
+ processed int unsigned NOT NULL DEFAULT 0,
+ passed int unsigned NOT NULL DEFAULT 0,
+ failed int unsigned NOT NULL DEFAULT 0,
+ review_count int unsigned NOT NULL DEFAULT 0,
+ checkpoint_member_id bigint unsigned NOT NULL DEFAULT 0,
+ attempts int unsigned NOT NULL DEFAULT 0,
+ next_attempt_at datetime(6) NOT NULL DEFAULT CURRENT_TIMESTAMP(6),
+ lease_token char(36) CHARACTER SET ascii COLLATE ascii_bin DEFAULT NULL,
+ lease_until datetime(6) DEFAULT NULL,
+ last_error_code varchar(64) DEFAULT NULL,
+ created_at datetime(6) NOT NULL DEFAULT CURRENT_TIMESTAMP(6),
+ completed_at datetime(6) DEFAULT NULL,
+ UNIQUE KEY uq_dqa_public (public_id),
+ UNIQUE KEY uq_dqa_number (batch_id, run_no),
+ UNIQUE KEY uq_dqa_idempotency (batch_id, actor_ref, idempotency_key),
+ KEY ix_dqa_queue (status, next_attempt_at, id),
+ CONSTRAINT fk_dqa_run_batch FOREIGN KEY (batch_id) REFERENCES bcmd_batch(id) ON DELETE RESTRICT,
+ CONSTRAINT ck_dqa_run_status CHECK (status IN ('QUEUED','RUNNING','RETRYING','FAILED','COMPLETED')),
+ CONSTRAINT ck_dqa_run_counts CHECK (processed = passed + failed + review_count AND processed <= total),
+ CONSTRAINT ck_dqa_run_complete CHECK (status <> 'COMPLETED' OR (processed = total AND completed_at IS NOT NULL))
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+CREATE TABLE bcmd_dqa_result (
+ id bigint unsigned NOT NULL AUTO_INCREMENT PRIMARY KEY,
+ run_id bigint unsigned NOT NULL,
+ member_id bigint unsigned NOT NULL,
+ line_no int unsigned NOT NULL,
+ outcome varchar(8) NOT NULL,
+ findings_json json NOT NULL,
+ UNIQUE KEY uq_dqa_result (run_id, member_id),
+ KEY ix_dqa_result_page (run_id, line_no),
+ CONSTRAINT fk_dqa_result_run FOREIGN KEY (run_id) REFERENCES bcmd_dqa_run(id) ON DELETE RESTRICT,
+ CONSTRAINT fk_dqa_result_member FOREIGN KEY (member_id) REFERENCES bcmd_batch_member(id) ON DELETE RESTRICT,
+ CONSTRAINT ck_dqa_result_outcome CHECK (outcome IN ('PASS','FAIL','REVIEW'))
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;

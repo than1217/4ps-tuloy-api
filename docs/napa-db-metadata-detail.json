@@ -1,0 +1,1452 @@
+{
+  "columns": [
+    {
+      "TABLE_NAME": "agency_integration_txn",
+      "COLUMN_NAME": "integration_transaction_id",
+      "COLUMN_TYPE": "int unsigned",
+      "IS_NULLABLE": "NO",
+      "COLUMN_KEY": "PRI",
+      "COLUMN_COMMENT": ""
+    },
+    {
+      "TABLE_NAME": "agency_integration_txn",
+      "COLUMN_NAME": "tuloy_journey_id",
+      "COLUMN_TYPE": "varchar(36)",
+      "IS_NULLABLE": "NO",
+      "COLUMN_KEY": "MUL",
+      "COLUMN_COMMENT": ""
+    },
+    {
+      "TABLE_NAME": "agency_integration_txn",
+      "COLUMN_NAME": "agency",
+      "COLUMN_TYPE": "varchar(20)",
+      "IS_NULLABLE": "NO",
+      "COLUMN_KEY": "",
+      "COLUMN_COMMENT": ""
+    },
+    {
+      "TABLE_NAME": "agency_integration_txn",
+      "COLUMN_NAME": "request_payload",
+      "COLUMN_TYPE": "json",
+      "IS_NULLABLE": "YES",
+      "COLUMN_KEY": "",
+      "COLUMN_COMMENT": ""
+    },
+    {
+      "TABLE_NAME": "agency_integration_txn",
+      "COLUMN_NAME": "response_payload",
+      "COLUMN_TYPE": "json",
+      "IS_NULLABLE": "YES",
+      "COLUMN_KEY": "",
+      "COLUMN_COMMENT": ""
+    },
+    {
+      "TABLE_NAME": "agency_integration_txn",
+      "COLUMN_NAME": "status",
+      "COLUMN_TYPE": "varchar(50)",
+      "IS_NULLABLE": "NO",
+      "COLUMN_KEY": "",
+      "COLUMN_COMMENT": ""
+    },
+    {
+      "TABLE_NAME": "agency_integration_txn",
+      "COLUMN_NAME": "created_at",
+      "COLUMN_TYPE": "timestamp",
+      "IS_NULLABLE": "NO",
+      "COLUMN_KEY": "",
+      "COLUMN_COMMENT": ""
+    },
+    {
+      "TABLE_NAME": "agency_integration_txn",
+      "COLUMN_NAME": "updated_at",
+      "COLUMN_TYPE": "timestamp",
+      "IS_NULLABLE": "YES",
+      "COLUMN_KEY": "",
+      "COLUMN_COMMENT": ""
+    },
+    {
+      "TABLE_NAME": "education_enrollment",
+      "COLUMN_NAME": "enrollment_id",
+      "COLUMN_TYPE": "int unsigned",
+      "IS_NULLABLE": "NO",
+      "COLUMN_KEY": "PRI",
+      "COLUMN_COMMENT": ""
+    },
+    {
+      "TABLE_NAME": "education_enrollment",
+      "COLUMN_NAME": "tuloy_journey_id",
+      "COLUMN_TYPE": "varchar(36)",
+      "IS_NULLABLE": "NO",
+      "COLUMN_KEY": "MUL",
+      "COLUMN_COMMENT": ""
+    },
+    {
+      "TABLE_NAME": "education_enrollment",
+      "COLUMN_NAME": "current_stage",
+      "COLUMN_TYPE": "varchar(50)",
+      "IS_NULLABLE": "NO",
+      "COLUMN_KEY": "",
+      "COLUMN_COMMENT": ""
+    },
+    {
+      "TABLE_NAME": "education_enrollment",
+      "COLUMN_NAME": "academic_year",
+      "COLUMN_TYPE": "varchar(20)",
+      "IS_NULLABLE": "NO",
+      "COLUMN_KEY": "",
+      "COLUMN_COMMENT": ""
+    },
+    {
+      "TABLE_NAME": "education_enrollment",
+      "COLUMN_NAME": "term",
+      "COLUMN_TYPE": "varchar(20)",
+      "IS_NULLABLE": "NO",
+      "COLUMN_KEY": "",
+      "COLUMN_COMMENT": ""
+    },
+    {
+      "TABLE_NAME": "education_enrollment",
+      "COLUMN_NAME": "institution_id",
+      "COLUMN_TYPE": "varchar(100)",
+      "IS_NULLABLE": "NO",
+      "COLUMN_KEY": "",
+      "COLUMN_COMMENT": ""
+    },
+    {
+      "TABLE_NAME": "education_enrollment",
+      "COLUMN_NAME": "program_course",
+      "COLUMN_TYPE": "varchar(150)",
+      "IS_NULLABLE": "NO",
+      "COLUMN_KEY": "",
+      "COLUMN_COMMENT": ""
+    },
+    {
+      "TABLE_NAME": "education_enrollment",
+      "COLUMN_NAME": "enrollment_status",
+      "COLUMN_TYPE": "varchar(50)",
+      "IS_NULLABLE": "NO",
+      "COLUMN_KEY": "",
+      "COLUMN_COMMENT": ""
+    },
+    {
+      "TABLE_NAME": "education_enrollment",
+      "COLUMN_NAME": "created_at",
+      "COLUMN_TYPE": "timestamp",
+      "IS_NULLABLE": "NO",
+      "COLUMN_KEY": "",
+      "COLUMN_COMMENT": ""
+    },
+    {
+      "TABLE_NAME": "education_enrollment",
+      "COLUMN_NAME": "updated_at",
+      "COLUMN_TYPE": "timestamp",
+      "IS_NULLABLE": "YES",
+      "COLUMN_KEY": "",
+      "COLUMN_COMMENT": ""
+    },
+    {
+      "TABLE_NAME": "lib_partner_agency",
+      "COLUMN_NAME": "agency_id",
+      "COLUMN_TYPE": "int unsigned",
+      "IS_NULLABLE": "NO",
+      "COLUMN_KEY": "PRI",
+      "COLUMN_COMMENT": ""
+    },
+    {
+      "TABLE_NAME": "lib_partner_agency",
+      "COLUMN_NAME": "agency_name",
+      "COLUMN_TYPE": "varchar(100)",
+      "IS_NULLABLE": "NO",
+      "COLUMN_KEY": "",
+      "COLUMN_COMMENT": ""
+    },
+    {
+      "TABLE_NAME": "lib_partner_agency",
+      "COLUMN_NAME": "agency_alias",
+      "COLUMN_TYPE": "varchar(20)",
+      "IS_NULLABLE": "NO",
+      "COLUMN_KEY": "MUL",
+      "COLUMN_COMMENT": ""
+    },
+    {
+      "TABLE_NAME": "lib_psgc_barangay",
+      "COLUMN_NAME": "barangay_id",
+      "COLUMN_TYPE": "int unsigned",
+      "IS_NULLABLE": "NO",
+      "COLUMN_KEY": "PRI",
+      "COLUMN_COMMENT": "Barangay ID: Primary Key of Barangay Library. {\"label\":\"Barangay ID\",\"visible\":\"false\",\"searchable\":\"false\",\"formtag\":\"hidden\",\"list\":\"1\",\"view\":\"0\",\"add_edit\":\"1\",\"alias\":\"id\"}"
+    },
+    {
+      "TABLE_NAME": "lib_psgc_barangay",
+      "COLUMN_NAME": "name",
+      "COLUMN_TYPE": "varchar(125)",
+      "IS_NULLABLE": "NO",
+      "COLUMN_KEY": "MUL",
+      "COLUMN_COMMENT": "Name: Name of Barangay. {\"label\":\"Name\",\"visible\":\"true\",\"searchable\":\"true\",\"formtag\":\"text\",\"rules\":\"required|regex_match[/^[a-zA-Z0-9 \u00f1\u00d1().'-_]+$/]\",\"list\":\"1\",\"view\":\"1\",\"add_edit\":\"1\",\"alias\":\"name\"}"
+    },
+    {
+      "TABLE_NAME": "lib_psgc_barangay",
+      "COLUMN_NAME": "code",
+      "COLUMN_TYPE": "varchar(30)",
+      "IS_NULLABLE": "YES",
+      "COLUMN_KEY": "",
+      "COLUMN_COMMENT": "Code: Code of Barangay. {\"label\":\"Code\",\"visible\":\"true\",\"searchable\":\"true\",\"formtag\":\"text\",\"rules\":\"min_length[2]|regex_match[/^[a-zA-Z0-9 ()'-_]+$/]\",\"list\":\"1\",\"view\":\"1\",\"add_edit\":\"1\",\"alias\":\"code\"}"
+    },
+    {
+      "TABLE_NAME": "lib_psgc_barangay",
+      "COLUMN_NAME": "geocode",
+      "COLUMN_TYPE": "char(9)",
+      "IS_NULLABLE": "YES",
+      "COLUMN_KEY": "",
+      "COLUMN_COMMENT": "Geocode: Philippine Standard Geographic Code. {\"label\":\"GeoCode\",\"visible\":\"true\",\"searchable\":\"true\",\"formtag\":\"text\",\"rules\":\"exact_length[9]|numeric\",\"list\":\"1\",\"view\":\"1\",\"add_edit\":\"1\"}"
+    },
+    {
+      "TABLE_NAME": "lib_psgc_barangay",
+      "COLUMN_NAME": "psa_code",
+      "COLUMN_TYPE": "char(10)",
+      "IS_NULLABLE": "NO",
+      "COLUMN_KEY": "",
+      "COLUMN_COMMENT": "PSA Code: Philippine Standard Authority Code. {\"label\":\"PSA Code\",\"visible\":\"true\",\"searchable\":\"true\",\"formtag\":\"text\",\"rules\":\"required|exact_length[10]|numeric\",\"list\":\"1\",\"view\":\"1\",\"add_edit\":\"1\"}"
+    },
+    {
+      "TABLE_NAME": "lib_psgc_barangay",
+      "COLUMN_NAME": "is_gida",
+      "COLUMN_TYPE": "enum('No','Yes')",
+      "IS_NULLABLE": "NO",
+      "COLUMN_KEY": "",
+      "COLUMN_COMMENT": "Is GIDA: States if barangay is under GIDA. {\"label\":\"Is GIDA\",\"visible\":\"true\",\"searchable\":\"false\",\"formtag\":\"checkbox\",\"rules\":\"required\",\"list\":\"1\",\"view\":\"1\",\"add_edit\":\"1\"}"
+    },
+    {
+      "TABLE_NAME": "lib_psgc_barangay",
+      "COLUMN_NAME": "city_id",
+      "COLUMN_TYPE": "int unsigned",
+      "IS_NULLABLE": "NO",
+      "COLUMN_KEY": "MUL",
+      "COLUMN_COMMENT": "Foreign Key of City/Municipality. City/Municipality associated to the Barangay. {\"label\":\"City/Municipality\",\"visible\":\"false\",\"searchable\":\"true\",\"formtag\":\"select\",\"rules\":\"required\",\"list\":\"1\",\"view\":\"0\",\"add_edit\":\"1\",\"joinfldval\":\"name\",\"parent\":\"province_id\",\"class\":\"rpmb child city\"}"
+    },
+    {
+      "TABLE_NAME": "lib_psgc_barangay",
+      "COLUMN_NAME": "dt_inserted",
+      "COLUMN_TYPE": "datetime",
+      "IS_NULLABLE": "NO",
+      "COLUMN_KEY": "",
+      "COLUMN_COMMENT": "Date/Time Inserted: Date and Time the record was inserted. {\"label\":\"Date/Time Inserted\",\"visible\":\"false\",\"searchable\":\"false\",\"formtag\":\"text\",\"list\":\"0\",\"view\":\"1\",\"add_edit\":\"0\"}"
+    },
+    {
+      "TABLE_NAME": "lib_psgc_barangay",
+      "COLUMN_NAME": "inserted_by",
+      "COLUMN_TYPE": "int unsigned",
+      "IS_NULLABLE": "YES",
+      "COLUMN_KEY": "MUL",
+      "COLUMN_COMMENT": "Inserted By: User ID who inserted the record. {\"label\":\"Inserted By\",\"visible\":\"false\",\"searchable\":\"false\",\"formtag\":\"text\",\"list\":\"0\",\"view\":\"1\",\"add_edit\":\"0\", \"joinfldval\":\"username\"}"
+    },
+    {
+      "TABLE_NAME": "lib_psgc_barangay",
+      "COLUMN_NAME": "dt_updated",
+      "COLUMN_TYPE": "datetime",
+      "IS_NULLABLE": "YES",
+      "COLUMN_KEY": "",
+      "COLUMN_COMMENT": "Date/Time Updated: Date and Time the records was last updated through application. {\"label\":\"Date/Time Last Updated\",\"visible\":\"false\",\"searchable\":\"false\",\"formtag\":\"text\",\"list\":\"0\",\"view\":\"1\",\"add_edit\":\"0\"}"
+    },
+    {
+      "TABLE_NAME": "lib_psgc_barangay",
+      "COLUMN_NAME": "last_updated_by",
+      "COLUMN_TYPE": "int unsigned",
+      "IS_NULLABLE": "YES",
+      "COLUMN_KEY": "MUL",
+      "COLUMN_COMMENT": "Last Updated By: User ID who last updated the record. {\"label\":\"Last Updated By\",\"visible\":\"false\",\"searchable\":\"false\",\"formtag\":\"text\",\"list\":\"0\",\"view\":\"1\",\"add_edit\":\"0\", \"joinfldval\":\"username\"}"
+    },
+    {
+      "TABLE_NAME": "lib_psgc_barangay",
+      "COLUMN_NAME": "archived",
+      "COLUMN_TYPE": "tinyint unsigned",
+      "IS_NULLABLE": "NO",
+      "COLUMN_KEY": "",
+      "COLUMN_COMMENT": "Archived: State if record was archived or deleted. (0-False; 1-True). {\"label\":\"Archived\",\"visible\":\"false\",\"searchable\":\"false\",\"formtag\":\"text\",\"list\":\"0\",\"view\":\"0\",\"add_edit\":\"0\",\"archive\":\"1\",\"defaultzero\":\"1\",\"archive\":\"1\",\"defaultzero\":\"1\",\"alias\":\"archived\"}"
+    },
+    {
+      "TABLE_NAME": "lib_psgc_barangay",
+      "COLUMN_NAME": "dt_archived",
+      "COLUMN_TYPE": "datetime",
+      "IS_NULLABLE": "YES",
+      "COLUMN_KEY": "",
+      "COLUMN_COMMENT": "Date/Time Last Archived: Date and Time the record was last archived. Reference date for physical archiving of records. Set to NULL on default or after record was archived. {\"label\":\"Date/Time Last Archived\",\"visible\":\"false\",\"searchable\":\"false\",\"formtag\":\"text\",\"list\":\"0\",\"view\":\"1\",\"add_edit\":\"0\"}"
+    },
+    {
+      "TABLE_NAME": "lib_psgc_barangay",
+      "COLUMN_NAME": "last_archived_by",
+      "COLUMN_TYPE": "int unsigned",
+      "IS_NULLABLE": "YES",
+      "COLUMN_KEY": "MUL",
+      "COLUMN_COMMENT": "Last Archived By: User ID who last archived the record. {\"label\":\"Last Archived By\",\"visible\":\"false\",\"searchable\":\"false\",\"formtag\":\"text\",\"list\":\"0\",\"view\":\"1\",\"add_edit\":\"0\", \"joinfldval\":\"username\"}"
+    },
+    {
+      "TABLE_NAME": "lib_psgc_barangay",
+      "COLUMN_NAME": "dt_restored",
+      "COLUMN_TYPE": "datetime",
+      "IS_NULLABLE": "YES",
+      "COLUMN_KEY": "",
+      "COLUMN_COMMENT": "Date/Time Last Restored: Date and Time the record was last restored. Set to NULL on default or after record was restored. {\"label\":\"Date/Time Last Restored\",\"visible\":\"false\",\"searchable\":\"false\",\"formtag\":\"text\",\"list\":\"0\",\"view\":\"1\",\"add_edit\":\"0\"}"
+    },
+    {
+      "TABLE_NAME": "lib_psgc_barangay",
+      "COLUMN_NAME": "last_restored_by",
+      "COLUMN_TYPE": "int unsigned",
+      "IS_NULLABLE": "YES",
+      "COLUMN_KEY": "MUL",
+      "COLUMN_COMMENT": "Last Restored By: User ID who last restored the record. {\"label\":\"Last Restored By\",\"visible\":\"false\",\"searchable\":\"false\",\"formtag\":\"text\",\"list\":\"0\",\"view\":\"1\",\"add_edit\":\"0\", \"joinfldval\":\"username\"}"
+    },
+    {
+      "TABLE_NAME": "lib_psgc_barangay",
+      "COLUMN_NAME": "dt_last_modified",
+      "COLUMN_TYPE": "datetime",
+      "IS_NULLABLE": "YES",
+      "COLUMN_KEY": "",
+      "COLUMN_COMMENT": "Date/Time Last Modified: Date and Time the records was last modified either through front or back end. {\"label\":\"Date/Time Last Modified\",\"visible\":\"false\",\"searchable\":\"false\",\"formtag\":\"text\",\"list\":\"0\",\"view\":\"1\",\"add_edit\":\"0\"}"
+    },
+    {
+      "TABLE_NAME": "lib_psgc_barangay",
+      "COLUMN_NAME": "urban_rural",
+      "COLUMN_TYPE": "char(5)",
+      "IS_NULLABLE": "YES",
+      "COLUMN_KEY": "",
+      "COLUMN_COMMENT": ""
+    },
+    {
+      "TABLE_NAME": "lib_psgc_denorm",
+      "COLUMN_NAME": "region_id",
+      "COLUMN_TYPE": "int unsigned",
+      "IS_NULLABLE": "YES",
+      "COLUMN_KEY": "MUL",
+      "COLUMN_COMMENT": "Region ID: Primary Key of Region Library. {\"label\":\"Region ID\",\"visible\":\"false\",\"searchable\":\"false\",\"formtag\":\"hidden\",\"list\":\"1\",\"view\":\"0\",\"add_edit\":\"1\",\"alias\":\"id\"}"
+    },
+    {
+      "TABLE_NAME": "lib_psgc_denorm",
+      "COLUMN_NAME": "region_name",
+      "COLUMN_TYPE": "varchar(125)",
+      "IS_NULLABLE": "YES",
+      "COLUMN_KEY": "",
+      "COLUMN_COMMENT": "Name: Name of Region. {\"label\":\"Name\",\"visible\":\"true\",\"searchable\":\"true\",\"formtag\":\"text\",\"rules\":\"required|regex_match[/^[a-zA-Z0-9 \u00f1\u00d1().'-_]+$/]\",\"list\":\"1\",\"view\":\"1\",\"add_edit\":\"1\",\"alias\":\"name\"}"
+    },
+    {
+      "TABLE_NAME": "lib_psgc_denorm",
+      "COLUMN_NAME": "short_code",
+      "COLUMN_TYPE": "varchar(30)",
+      "IS_NULLABLE": "YES",
+      "COLUMN_KEY": "",
+      "COLUMN_COMMENT": "Code: Code of Region. {\"label\":\"Code\",\"visible\":\"true\",\"searchable\":\"true\",\"formtag\":\"text\",\"rules\":\"min_length[2]|regex_match[/^[a-zA-Z0-9 ()'-_]+$/]\",\"list\":\"1\",\"view\":\"1\",\"add_edit\":\"1\",\"alias\":\"code\"}"
+    },
+    {
+      "TABLE_NAME": "lib_psgc_denorm",
+      "COLUMN_NAME": "region_psa_code",
+      "COLUMN_TYPE": "char(10)",
+      "IS_NULLABLE": "YES",
+      "COLUMN_KEY": "",
+      "COLUMN_COMMENT": "PSA Code: Philippine Standard Authority Code. {\"label\":\"PSA Code\",\"visible\":\"true\",\"searchable\":\"true\",\"formtag\":\"text\",\"rules\":\"required|exact_length[10]|numeric\",\"list\":\"1\",\"view\":\"1\",\"add_edit\":\"1\"}"
+    },
+    {
+      "TABLE_NAME": "lib_psgc_denorm",
+      "COLUMN_NAME": "province_id",
+      "COLUMN_TYPE": "int unsigned",
+      "IS_NULLABLE": "YES",
+      "COLUMN_KEY": "MUL",
+      "COLUMN_COMMENT": "Province ID: Primary Key of Province Library. {\"label\":\"Province ID\",\"visible\":\"false\",\"searchable\":\"false\",\"formtag\":\"hidden\",\"list\":\"1\",\"view\":\"0\",\"add_edit\":\"1\",\"alias\":\"id\"}"
+    },
+    {
+      "TABLE_NAME": "lib_psgc_denorm",
+      "COLUMN_NAME": "province_name",
+      "COLUMN_TYPE": "varchar(125)",
+      "IS_NULLABLE": "YES",
+      "COLUMN_KEY": "",
+      "COLUMN_COMMENT": "Name: Name of Province. {\"label\":\"Name\",\"visible\":\"true\",\"searchable\":\"true\",\"formtag\":\"text\",\"rules\":\"required|regex_match[/^[a-zA-Z0-9 \u00f1\u00d1().'-_]+$/]\",\"list\":\"1\",\"view\":\"1\",\"add_edit\":\"1\",\"alias\":\"name\"}"
+    },
+    {
+      "TABLE_NAME": "lib_psgc_denorm",
+      "COLUMN_NAME": "province_psa_code",
+      "COLUMN_TYPE": "char(10)",
+      "IS_NULLABLE": "YES",
+      "COLUMN_KEY": "",
+      "COLUMN_COMMENT": "PSA Code: Philippine Standard Authority Code. {\"label\":\"PSA Code\",\"visible\":\"true\",\"searchable\":\"true\",\"formtag\":\"text\",\"rules\":\"required|exact_length[10]|numeric\",\"list\":\"1\",\"view\":\"1\",\"add_edit\":\"1\"}"
+    },
+    {
+      "TABLE_NAME": "lib_psgc_denorm",
+      "COLUMN_NAME": "city_id",
+      "COLUMN_TYPE": "int unsigned",
+      "IS_NULLABLE": "YES",
+      "COLUMN_KEY": "MUL",
+      "COLUMN_COMMENT": "City Municipality ID: Primary Key of City Municipality Library. {\"label\":\"City Municipality ID\",\"visible\":\"false\",\"searchable\":\"false\",\"formtag\":\"hidden\",\"list\":\"1\",\"view\":\"0\",\"add_edit\":\"1\",\"alias\":\"id\"}"
+    },
+    {
+      "TABLE_NAME": "lib_psgc_denorm",
+      "COLUMN_NAME": "city_name",
+      "COLUMN_TYPE": "varchar(125)",
+      "IS_NULLABLE": "YES",
+      "COLUMN_KEY": "",
+      "COLUMN_COMMENT": "Name: Name of City Municipality. {\"label\":\"Name\",\"visible\":\"true\",\"searchable\":\"true\",\"formtag\":\"text\",\"rules\":\"required|regex_match[/^[a-zA-Z0-9 \u00f1\u00d1().'-_]+$/]\",\"list\":\"1\",\"view\":\"1\",\"add_edit\":\"1\",\"alias\":\"name\"}"
+    },
+    {
+      "TABLE_NAME": "lib_psgc_denorm",
+      "COLUMN_NAME": "city_psa_name",
+      "COLUMN_TYPE": "char(10)",
+      "IS_NULLABLE": "YES",
+      "COLUMN_KEY": "",
+      "COLUMN_COMMENT": "PSA Code: Philippine Standard Authority Code. {\"label\":\"PSA Code\",\"visible\":\"true\",\"searchable\":\"true\",\"formtag\":\"text\",\"rules\":\"required|exact_length[10]|numeric\",\"list\":\"1\",\"view\":\"1\",\"add_edit\":\"1\"}"
+    },
+    {
+      "TABLE_NAME": "lib_psgc_denorm",
+      "COLUMN_NAME": "barangay_id",
+      "COLUMN_TYPE": "int unsigned",
+      "IS_NULLABLE": "NO",
+      "COLUMN_KEY": "MUL",
+      "COLUMN_COMMENT": "Barangay ID: Primary Key of Barangay Library. {\"label\":\"Barangay ID\",\"visible\":\"false\",\"searchable\":\"false\",\"formtag\":\"hidden\",\"list\":\"1\",\"view\":\"0\",\"add_edit\":\"1\",\"alias\":\"id\"}"
+    },
+    {
+      "TABLE_NAME": "lib_psgc_denorm",
+      "COLUMN_NAME": "brgy_name",
+      "COLUMN_TYPE": "varchar(125)",
+      "IS_NULLABLE": "NO",
+      "COLUMN_KEY": "",
+      "COLUMN_COMMENT": "Name: Name of Barangay. {\"label\":\"Name\",\"visible\":\"true\",\"searchable\":\"true\",\"formtag\":\"text\",\"rules\":\"required|regex_match[/^[a-zA-Z0-9 \u00f1\u00d1().'-_]+$/]\",\"list\":\"1\",\"view\":\"1\",\"add_edit\":\"1\",\"alias\":\"name\"}"
+    },
+    {
+      "TABLE_NAME": "lib_psgc_denorm",
+      "COLUMN_NAME": "code",
+      "COLUMN_TYPE": "varchar(30)",
+      "IS_NULLABLE": "YES",
+      "COLUMN_KEY": "",
+      "COLUMN_COMMENT": "Code: Code of Barangay. {\"label\":\"Code\",\"visible\":\"true\",\"searchable\":\"true\",\"formtag\":\"text\",\"rules\":\"min_length[2]|regex_match[/^[a-zA-Z0-9 ()'-_]+$/]\",\"list\":\"1\",\"view\":\"1\",\"add_edit\":\"1\",\"alias\":\"code\"}"
+    },
+    {
+      "TABLE_NAME": "lib_psgc_denorm",
+      "COLUMN_NAME": "geocode",
+      "COLUMN_TYPE": "char(9)",
+      "IS_NULLABLE": "YES",
+      "COLUMN_KEY": "",
+      "COLUMN_COMMENT": "Geocode: Philippine Standard Geographic Code. {\"label\":\"GeoCode\",\"visible\":\"true\",\"searchable\":\"true\",\"formtag\":\"text\",\"rules\":\"exact_length[9]|numeric\",\"list\":\"1\",\"view\":\"1\",\"add_edit\":\"1\"}"
+    },
+    {
+      "TABLE_NAME": "lib_psgc_denorm",
+      "COLUMN_NAME": "brgy_psa_code",
+      "COLUMN_TYPE": "char(10)",
+      "IS_NULLABLE": "NO",
+      "COLUMN_KEY": "",
+      "COLUMN_COMMENT": "PSA Code: Philippine Standard Authority Code. {\"label\":\"PSA Code\",\"visible\":\"true\",\"searchable\":\"true\",\"formtag\":\"text\",\"rules\":\"required|exact_length[10]|numeric\",\"list\":\"1\",\"view\":\"1\",\"add_edit\":\"1\"}"
+    },
+    {
+      "TABLE_NAME": "lib_psgc_denorm",
+      "COLUMN_NAME": "join_key",
+      "COLUMN_TYPE": "varchar(503)",
+      "IS_NULLABLE": "YES",
+      "COLUMN_KEY": "MUL",
+      "COLUMN_COMMENT": ""
+    },
+    {
+      "TABLE_NAME": "partner_bene_profile",
+      "COLUMN_NAME": "profile_id",
+      "COLUMN_TYPE": "int unsigned",
+      "IS_NULLABLE": "NO",
+      "COLUMN_KEY": "PRI",
+      "COLUMN_COMMENT": "PK"
+    },
+    {
+      "TABLE_NAME": "partner_bene_profile",
+      "COLUMN_NAME": "student_id",
+      "COLUMN_TYPE": "varchar(100)",
+      "IS_NULLABLE": "NO",
+      "COLUMN_KEY": "",
+      "COLUMN_COMMENT": "Student ID from partners (CHED, TESDA)"
+    },
+    {
+      "TABLE_NAME": "partner_bene_profile",
+      "COLUMN_NAME": "lrn",
+      "COLUMN_TYPE": "varchar(20)",
+      "IS_NULLABLE": "NO",
+      "COLUMN_KEY": "",
+      "COLUMN_COMMENT": "Learner's ID"
+    },
+    {
+      "TABLE_NAME": "partner_bene_profile",
+      "COLUMN_NAME": "philsys_id",
+      "COLUMN_TYPE": "varchar(20)",
+      "IS_NULLABLE": "YES",
+      "COLUMN_KEY": "",
+      "COLUMN_COMMENT": "PhilSys Card Number (PCN)"
+    },
+    {
+      "TABLE_NAME": "partner_bene_profile",
+      "COLUMN_NAME": "4ps_id",
+      "COLUMN_TYPE": "varchar(25)",
+      "IS_NULLABLE": "YES",
+      "COLUMN_KEY": "",
+      "COLUMN_COMMENT": "Partner's Registered 4Ps ID (Listahanan ID)"
+    },
+    {
+      "TABLE_NAME": "partner_bene_profile",
+      "COLUMN_NAME": "last_name",
+      "COLUMN_TYPE": "varchar(255)",
+      "IS_NULLABLE": "NO",
+      "COLUMN_KEY": "",
+      "COLUMN_COMMENT": "Student Last Name"
+    },
+    {
+      "TABLE_NAME": "partner_bene_profile",
+      "COLUMN_NAME": "given_name",
+      "COLUMN_TYPE": "varchar(255)",
+      "IS_NULLABLE": "NO",
+      "COLUMN_KEY": "",
+      "COLUMN_COMMENT": "Student First Name"
+    },
+    {
+      "TABLE_NAME": "partner_bene_profile",
+      "COLUMN_NAME": "ext_name",
+      "COLUMN_TYPE": "varchar(15)",
+      "IS_NULLABLE": "YES",
+      "COLUMN_KEY": "",
+      "COLUMN_COMMENT": "Student Name Suffix (e.g. Jr, Sr)"
+    },
+    {
+      "TABLE_NAME": "partner_bene_profile",
+      "COLUMN_NAME": "middle_name",
+      "COLUMN_TYPE": "varchar(255)",
+      "IS_NULLABLE": "NO",
+      "COLUMN_KEY": "",
+      "COLUMN_COMMENT": "Student Middle Name"
+    },
+    {
+      "TABLE_NAME": "partner_bene_profile",
+      "COLUMN_NAME": "sex",
+      "COLUMN_TYPE": "tinyint",
+      "IS_NULLABLE": "NO",
+      "COLUMN_KEY": "",
+      "COLUMN_COMMENT": "Sex (0 - Male; 1 - Female)"
+    },
+    {
+      "TABLE_NAME": "partner_bene_profile",
+      "COLUMN_NAME": "dob",
+      "COLUMN_TYPE": "date",
+      "IS_NULLABLE": "NO",
+      "COLUMN_KEY": "",
+      "COLUMN_COMMENT": "Date of BIrth in yyyy-mm-dd format"
+    },
+    {
+      "TABLE_NAME": "partner_bene_profile",
+      "COLUMN_NAME": "ppm",
+      "COLUMN_TYPE": "varchar(255)",
+      "IS_NULLABLE": "NO",
+      "COLUMN_KEY": "",
+      "COLUMN_COMMENT": "Partner's Program Name"
+    },
+    {
+      "TABLE_NAME": "partner_bene_profile",
+      "COLUMN_NAME": "yr_lvl",
+      "COLUMN_TYPE": "tinyint",
+      "IS_NULLABLE": "NO",
+      "COLUMN_KEY": "",
+      "COLUMN_COMMENT": "Year Level (e.g. 1, 2, 3, 4, 5, 6)"
+    },
+    {
+      "TABLE_NAME": "partner_bene_profile",
+      "COLUMN_NAME": "father_lname",
+      "COLUMN_TYPE": "varchar(255)",
+      "IS_NULLABLE": "YES",
+      "COLUMN_KEY": "",
+      "COLUMN_COMMENT": "Father's Last Name"
+    },
+    {
+      "TABLE_NAME": "partner_bene_profile",
+      "COLUMN_NAME": "father_gname",
+      "COLUMN_TYPE": "varchar(255)",
+      "IS_NULLABLE": "YES",
+      "COLUMN_KEY": "",
+      "COLUMN_COMMENT": "Father's First Name"
+    },
+    {
+      "TABLE_NAME": "partner_bene_profile",
+      "COLUMN_NAME": "father_mname",
+      "COLUMN_TYPE": "varchar(255)",
+      "IS_NULLABLE": "YES",
+      "COLUMN_KEY": "",
+      "COLUMN_COMMENT": "Father's Middle Name"
+    },
+    {
+      "TABLE_NAME": "partner_bene_profile",
+      "COLUMN_NAME": "mmn_lname",
+      "COLUMN_TYPE": "varchar(255)",
+      "IS_NULLABLE": "YES",
+      "COLUMN_KEY": "",
+      "COLUMN_COMMENT": "Mother's Last Name (maiden)"
+    },
+    {
+      "TABLE_NAME": "partner_bene_profile",
+      "COLUMN_NAME": "mmn_gname",
+      "COLUMN_TYPE": "varchar(255)",
+      "IS_NULLABLE": "YES",
+      "COLUMN_KEY": "",
+      "COLUMN_COMMENT": "Mother's First Name"
+    },
+    {
+      "TABLE_NAME": "partner_bene_profile",
+      "COLUMN_NAME": "mmn_mname",
+      "COLUMN_TYPE": "varchar(255)",
+      "IS_NULLABLE": "YES",
+      "COLUMN_KEY": "",
+      "COLUMN_COMMENT": "Mother's Middle Name (maiden)"
+    },
+    {
+      "TABLE_NAME": "sex_tbl",
+      "COLUMN_NAME": "id",
+      "COLUMN_TYPE": "int",
+      "IS_NULLABLE": "NO",
+      "COLUMN_KEY": "PRI",
+      "COLUMN_COMMENT": ""
+    },
+    {
+      "TABLE_NAME": "sex_tbl",
+      "COLUMN_NAME": "code",
+      "COLUMN_TYPE": "varchar(20)",
+      "IS_NULLABLE": "NO",
+      "COLUMN_KEY": "",
+      "COLUMN_COMMENT": ""
+    },
+    {
+      "TABLE_NAME": "sex_tbl",
+      "COLUMN_NAME": "description",
+      "COLUMN_TYPE": "varchar(50)",
+      "IS_NULLABLE": "NO",
+      "COLUMN_KEY": "",
+      "COLUMN_COMMENT": ""
+    },
+    {
+      "TABLE_NAME": "tbl_family_assoc_ops",
+      "COLUMN_NAME": "fam_assoc_id",
+      "COLUMN_TYPE": "int unsigned",
+      "IS_NULLABLE": "NO",
+      "COLUMN_KEY": "PRI",
+      "COLUMN_COMMENT": "Primary key of tbl_family_assoc"
+    },
+    {
+      "TABLE_NAME": "tbl_family_assoc_ops",
+      "COLUMN_NAME": "family_id",
+      "COLUMN_TYPE": "varchar(30)",
+      "IS_NULLABLE": "NO",
+      "COLUMN_KEY": "MUL",
+      "COLUMN_COMMENT": "Family ID from CBMS"
+    },
+    {
+      "TABLE_NAME": "tbl_family_assoc_ops",
+      "COLUMN_NAME": "hh_roster_id",
+      "COLUMN_TYPE": "int unsigned",
+      "IS_NULLABLE": "YES",
+      "COLUMN_KEY": "",
+      "COLUMN_COMMENT": "Foreign key of tbl_hh_roster"
+    },
+    {
+      "TABLE_NAME": "tbl_family_assoc_ops",
+      "COLUMN_NAME": "person_id",
+      "COLUMN_TYPE": "int unsigned",
+      "IS_NULLABLE": "NO",
+      "COLUMN_KEY": "",
+      "COLUMN_COMMENT": "Foreign Key of Person."
+    },
+    {
+      "TABLE_NAME": "tbl_family_assoc_ops",
+      "COLUMN_NAME": "rel_fam_head",
+      "COLUMN_TYPE": "int unsigned",
+      "IS_NULLABLE": "YES",
+      "COLUMN_KEY": "MUL",
+      "COLUMN_COMMENT": "Foreign key of lib_relation_to_family_head"
+    },
+    {
+      "TABLE_NAME": "tbl_family_assoc_ops",
+      "COLUMN_NAME": "user_id",
+      "COLUMN_TYPE": "int",
+      "IS_NULLABLE": "YES",
+      "COLUMN_KEY": "",
+      "COLUMN_COMMENT": ""
+    },
+    {
+      "TABLE_NAME": "tbl_family_assoc_ops",
+      "COLUMN_NAME": "dt_inserted",
+      "COLUMN_TYPE": "datetime",
+      "IS_NULLABLE": "NO",
+      "COLUMN_KEY": "",
+      "COLUMN_COMMENT": ""
+    },
+    {
+      "TABLE_NAME": "tbl_family_assoc_ops",
+      "COLUMN_NAME": "dt_updated",
+      "COLUMN_TYPE": "datetime",
+      "IS_NULLABLE": "YES",
+      "COLUMN_KEY": "",
+      "COLUMN_COMMENT": ""
+    },
+    {
+      "TABLE_NAME": "tbl_family_assoc_ops",
+      "COLUMN_NAME": "archived",
+      "COLUMN_TYPE": "tinyint",
+      "IS_NULLABLE": "NO",
+      "COLUMN_KEY": "MUL",
+      "COLUMN_COMMENT": ""
+    },
+    {
+      "TABLE_NAME": "tbl_family_selected",
+      "COLUMN_NAME": "id",
+      "COLUMN_TYPE": "int",
+      "IS_NULLABLE": "NO",
+      "COLUMN_KEY": "PRI",
+      "COLUMN_COMMENT": ""
+    },
+    {
+      "TABLE_NAME": "tbl_family_selected",
+      "COLUMN_NAME": "household_id",
+      "COLUMN_TYPE": "int",
+      "IS_NULLABLE": "YES",
+      "COLUMN_KEY": "MUL",
+      "COLUMN_COMMENT": "FK tbl_household"
+    },
+    {
+      "TABLE_NAME": "tbl_family_selected",
+      "COLUMN_NAME": "hh_id",
+      "COLUMN_TYPE": "varchar(50)",
+      "IS_NULLABLE": "YES",
+      "COLUMN_KEY": "",
+      "COLUMN_COMMENT": ""
+    },
+    {
+      "TABLE_NAME": "tbl_family_selected",
+      "COLUMN_NAME": "hh_set",
+      "COLUMN_TYPE": "varchar(255)",
+      "IS_NULLABLE": "YES",
+      "COLUMN_KEY": "",
+      "COLUMN_COMMENT": ""
+    },
+    {
+      "TABLE_NAME": "tbl_family_selected",
+      "COLUMN_NAME": "family_id",
+      "COLUMN_TYPE": "varchar(30)",
+      "IS_NULLABLE": "YES",
+      "COLUMN_KEY": "MUL",
+      "COLUMN_COMMENT": ""
+    },
+    {
+      "TABLE_NAME": "tbl_hh_roster",
+      "COLUMN_NAME": "hh_roster_id",
+      "COLUMN_TYPE": "int unsigned",
+      "IS_NULLABLE": "NO",
+      "COLUMN_KEY": "PRI",
+      "COLUMN_COMMENT": ""
+    },
+    {
+      "TABLE_NAME": "tbl_hh_roster",
+      "COLUMN_NAME": "household_id",
+      "COLUMN_TYPE": "int unsigned",
+      "IS_NULLABLE": "NO",
+      "COLUMN_KEY": "",
+      "COLUMN_COMMENT": "Foreign Key of Household."
+    },
+    {
+      "TABLE_NAME": "tbl_hh_roster",
+      "COLUMN_NAME": "person_id",
+      "COLUMN_TYPE": "int unsigned",
+      "IS_NULLABLE": "NO",
+      "COLUMN_KEY": "MUL",
+      "COLUMN_COMMENT": "Foreign Key of Person."
+    },
+    {
+      "TABLE_NAME": "tbl_hh_roster",
+      "COLUMN_NAME": "rel_hh_id",
+      "COLUMN_TYPE": "int unsigned",
+      "IS_NULLABLE": "NO",
+      "COLUMN_KEY": "MUL",
+      "COLUMN_COMMENT": "Foreign Key of Relation to Head. Represents the relation between the household roster member in reference to the household head."
+    },
+    {
+      "TABLE_NAME": "tbl_hh_roster",
+      "COLUMN_NAME": "roster_status_id",
+      "COLUMN_TYPE": "int unsigned",
+      "IS_NULLABLE": "YES",
+      "COLUMN_KEY": "MUL",
+      "COLUMN_COMMENT": "Foreign Key of Roster Status. Represents the current status of the roster member."
+    },
+    {
+      "TABLE_NAME": "tbl_household",
+      "COLUMN_NAME": "household_id",
+      "COLUMN_TYPE": "int",
+      "IS_NULLABLE": "NO",
+      "COLUMN_KEY": "PRI",
+      "COLUMN_COMMENT": "Primary Key of Household Table"
+    },
+    {
+      "TABLE_NAME": "tbl_household",
+      "COLUMN_NAME": "listahanan_id",
+      "COLUMN_TYPE": "varchar(25)",
+      "IS_NULLABLE": "NO",
+      "COLUMN_KEY": "MUL",
+      "COLUMN_COMMENT": "Listahanan ID or hh_id from Listahanan Project."
+    },
+    {
+      "TABLE_NAME": "tbl_household",
+      "COLUMN_NAME": "address",
+      "COLUMN_TYPE": "varchar(175)",
+      "IS_NULLABLE": "YES",
+      "COLUMN_KEY": "",
+      "COLUMN_COMMENT": "Address of Household. Unit Number/Floor/Building/House Number/Block/Lot/Street/Sitio/Purok."
+    },
+    {
+      "TABLE_NAME": "tbl_household",
+      "COLUMN_NAME": "barangay_id",
+      "COLUMN_TYPE": "int",
+      "IS_NULLABLE": "NO",
+      "COLUMN_KEY": "MUL",
+      "COLUMN_COMMENT": "Foreign Key to Barangay Library."
+    },
+    {
+      "TABLE_NAME": "tbl_household",
+      "COLUMN_NAME": "telephone",
+      "COLUMN_TYPE": "varchar(50)",
+      "IS_NULLABLE": "YES",
+      "COLUMN_KEY": "",
+      "COLUMN_COMMENT": "Telephone Number of Household"
+    },
+    {
+      "TABLE_NAME": "tbl_household",
+      "COLUMN_NAME": "set_grp_id",
+      "COLUMN_TYPE": "int unsigned",
+      "IS_NULLABLE": "YES",
+      "COLUMN_KEY": "MUL",
+      "COLUMN_COMMENT": ""
+    },
+    {
+      "TABLE_NAME": "tbl_household",
+      "COLUMN_NAME": "ecr_act_id",
+      "COLUMN_TYPE": "int unsigned",
+      "IS_NULLABLE": "YES",
+      "COLUMN_KEY": "MUL",
+      "COLUMN_COMMENT": ""
+    },
+    {
+      "TABLE_NAME": "tbl_household",
+      "COLUMN_NAME": "dt_inserted",
+      "COLUMN_TYPE": "datetime",
+      "IS_NULLABLE": "NO",
+      "COLUMN_KEY": "",
+      "COLUMN_COMMENT": "Date and Time the record was inserted"
+    },
+    {
+      "TABLE_NAME": "tbl_household",
+      "COLUMN_NAME": "dt_updated",
+      "COLUMN_TYPE": "datetime",
+      "IS_NULLABLE": "YES",
+      "COLUMN_KEY": "MUL",
+      "COLUMN_COMMENT": "Date and Time the records was last updated"
+    },
+    {
+      "TABLE_NAME": "tbl_household",
+      "COLUMN_NAME": "archived",
+      "COLUMN_TYPE": "tinyint unsigned",
+      "IS_NULLABLE": "NO",
+      "COLUMN_KEY": "",
+      "COLUMN_COMMENT": "State if record was archived or deleted. (0-False; 1-True)"
+    },
+    {
+      "TABLE_NAME": "tbl_household",
+      "COLUMN_NAME": "dt_archived",
+      "COLUMN_TYPE": "datetime",
+      "IS_NULLABLE": "YES",
+      "COLUMN_KEY": "",
+      "COLUMN_COMMENT": "Date and Time the record was archived. Reference date for physical archiving of records. Set to NULL on default or after record was restored."
+    },
+    {
+      "TABLE_NAME": "tbl_household",
+      "COLUMN_NAME": "dt_enumerated",
+      "COLUMN_TYPE": "date",
+      "IS_NULLABLE": "YES",
+      "COLUMN_KEY": "",
+      "COLUMN_COMMENT": ""
+    },
+    {
+      "TABLE_NAME": "tbl_household",
+      "COLUMN_NAME": "ip_label",
+      "COLUMN_TYPE": "int",
+      "IS_NULLABLE": "YES",
+      "COLUMN_KEY": "",
+      "COLUMN_COMMENT": ""
+    },
+    {
+      "TABLE_NAME": "tbl_person",
+      "COLUMN_NAME": "person_id",
+      "COLUMN_TYPE": "int unsigned",
+      "IS_NULLABLE": "NO",
+      "COLUMN_KEY": "PRI",
+      "COLUMN_COMMENT": "Primary Key of Person Table"
+    },
+    {
+      "TABLE_NAME": "tbl_person",
+      "COLUMN_NAME": "first_name",
+      "COLUMN_TYPE": "varchar(50)",
+      "IS_NULLABLE": "NO",
+      "COLUMN_KEY": "MUL",
+      "COLUMN_COMMENT": "First Name"
+    },
+    {
+      "TABLE_NAME": "tbl_person",
+      "COLUMN_NAME": "middle_name",
+      "COLUMN_TYPE": "varchar(30)",
+      "IS_NULLABLE": "YES",
+      "COLUMN_KEY": "MUL",
+      "COLUMN_COMMENT": "Middle Name"
+    },
+    {
+      "TABLE_NAME": "tbl_person",
+      "COLUMN_NAME": "last_name",
+      "COLUMN_TYPE": "varchar(50)",
+      "IS_NULLABLE": "YES",
+      "COLUMN_KEY": "MUL",
+      "COLUMN_COMMENT": "Last Name"
+    },
+    {
+      "TABLE_NAME": "tbl_person",
+      "COLUMN_NAME": "ext_name_id",
+      "COLUMN_TYPE": "int unsigned",
+      "IS_NULLABLE": "YES",
+      "COLUMN_KEY": "MUL",
+      "COLUMN_COMMENT": "Extended Name"
+    },
+    {
+      "TABLE_NAME": "tbl_person",
+      "COLUMN_NAME": "date_of_birth",
+      "COLUMN_TYPE": "date",
+      "IS_NULLABLE": "NO",
+      "COLUMN_KEY": "MUL",
+      "COLUMN_COMMENT": "Date of Birth"
+    },
+    {
+      "TABLE_NAME": "tbl_person",
+      "COLUMN_NAME": "sex_id",
+      "COLUMN_TYPE": "int unsigned",
+      "IS_NULLABLE": "NO",
+      "COLUMN_KEY": "MUL",
+      "COLUMN_COMMENT": "Foreign Key of Sex Library"
+    },
+    {
+      "TABLE_NAME": "tbl_person",
+      "COLUMN_NAME": "civil_status_id",
+      "COLUMN_TYPE": "int unsigned",
+      "IS_NULLABLE": "NO",
+      "COLUMN_KEY": "MUL",
+      "COLUMN_COMMENT": "Foreign Key to Civil Status"
+    },
+    {
+      "TABLE_NAME": "tbl_person",
+      "COLUMN_NAME": "phil_id",
+      "COLUMN_TYPE": "varchar(20)",
+      "IS_NULLABLE": "YES",
+      "COLUMN_KEY": "MUL",
+      "COLUMN_COMMENT": "PhilSys Card Number. The PCN which is the public version of PSN shall be used for physical or online transactions."
+    },
+    {
+      "TABLE_NAME": "tbl_person",
+      "COLUMN_NAME": "attending_school",
+      "COLUMN_TYPE": "tinyint unsigned",
+      "IS_NULLABLE": "YES",
+      "COLUMN_KEY": "",
+      "COLUMN_COMMENT": "If beneficiary is attending school"
+    },
+    {
+      "TABLE_NAME": "tbl_person",
+      "COLUMN_NAME": "educ_facility_id",
+      "COLUMN_TYPE": "int unsigned",
+      "IS_NULLABLE": "YES",
+      "COLUMN_KEY": "MUL",
+      "COLUMN_COMMENT": "Foreign Key from Educational Facility Table. School currently attending."
+    },
+    {
+      "TABLE_NAME": "tbl_person",
+      "COLUMN_NAME": "grade_level_id",
+      "COLUMN_TYPE": "int unsigned",
+      "IS_NULLABLE": "YES",
+      "COLUMN_KEY": "MUL",
+      "COLUMN_COMMENT": "Foreign Key from Grade Level Library. Designates the present educational level."
+    },
+    {
+      "TABLE_NAME": "tbl_person",
+      "COLUMN_NAME": "is_pregnant",
+      "COLUMN_TYPE": "int unsigned",
+      "IS_NULLABLE": "YES",
+      "COLUMN_KEY": "MUL",
+      "COLUMN_COMMENT": "Foreign key from lib_pregnancy_status"
+    },
+    {
+      "TABLE_NAME": "tbl_person",
+      "COLUMN_NAME": "health_facility_id",
+      "COLUMN_TYPE": "int unsigned",
+      "IS_NULLABLE": "YES",
+      "COLUMN_KEY": "MUL",
+      "COLUMN_COMMENT": ""
+    },
+    {
+      "TABLE_NAME": "tbl_person",
+      "COLUMN_NAME": "occupation_id",
+      "COLUMN_TYPE": "int unsigned",
+      "IS_NULLABLE": "YES",
+      "COLUMN_KEY": "MUL",
+      "COLUMN_COMMENT": "Foreign Key of Occupation"
+    },
+    {
+      "TABLE_NAME": "tbl_person",
+      "COLUMN_NAME": "ip_group_id",
+      "COLUMN_TYPE": "int unsigned",
+      "IS_NULLABLE": "YES",
+      "COLUMN_KEY": "MUL",
+      "COLUMN_COMMENT": ""
+    },
+    {
+      "TABLE_NAME": "tbl_person",
+      "COLUMN_NAME": "lrn",
+      "COLUMN_TYPE": "varchar(20)",
+      "IS_NULLABLE": "YES",
+      "COLUMN_KEY": "MUL",
+      "COLUMN_COMMENT": "Learner reference number assigned to each student by DepEd"
+    },
+    {
+      "TABLE_NAME": "tbl_person",
+      "COLUMN_NAME": "photo_src",
+      "COLUMN_TYPE": "varchar(250)",
+      "IS_NULLABLE": "YES",
+      "COLUMN_KEY": "",
+      "COLUMN_COMMENT": "Location of the Avatar of Person"
+    },
+    {
+      "TABLE_NAME": "tbl_person",
+      "COLUMN_NAME": "roster_id",
+      "COLUMN_TYPE": "int unsigned",
+      "IS_NULLABLE": "YES",
+      "COLUMN_KEY": "MUL",
+      "COLUMN_COMMENT": ""
+    },
+    {
+      "TABLE_NAME": "tbl_person",
+      "COLUMN_NAME": "dt_inserted",
+      "COLUMN_TYPE": "datetime",
+      "IS_NULLABLE": "NO",
+      "COLUMN_KEY": "",
+      "COLUMN_COMMENT": "Date and Time the record was inserted"
+    },
+    {
+      "TABLE_NAME": "tbl_person",
+      "COLUMN_NAME": "dt_updated",
+      "COLUMN_TYPE": "datetime",
+      "IS_NULLABLE": "YES",
+      "COLUMN_KEY": "MUL",
+      "COLUMN_COMMENT": "Date and Time the records was last updated"
+    },
+    {
+      "TABLE_NAME": "tbl_person",
+      "COLUMN_NAME": "archived",
+      "COLUMN_TYPE": "tinyint unsigned",
+      "IS_NULLABLE": "NO",
+      "COLUMN_KEY": "MUL",
+      "COLUMN_COMMENT": "State if record was archived or deleted. (0-False; 1-True)"
+    },
+    {
+      "TABLE_NAME": "tbl_person",
+      "COLUMN_NAME": "dt_archived",
+      "COLUMN_TYPE": "datetime",
+      "IS_NULLABLE": "YES",
+      "COLUMN_KEY": "",
+      "COLUMN_COMMENT": "Date and Time the record was archived. Reference date for physical archiving of records. Set to NULL on default or after record was restored."
+    },
+    {
+      "TABLE_NAME": "tbl_person",
+      "COLUMN_NAME": "child_grantee",
+      "COLUMN_TYPE": "tinyint(1)",
+      "IS_NULLABLE": "NO",
+      "COLUMN_KEY": "MUL",
+      "COLUMN_COMMENT": ""
+    },
+    {
+      "TABLE_NAME": "tbl_person",
+      "COLUMN_NAME": "newmember_id",
+      "COLUMN_TYPE": "varchar(20)",
+      "IS_NULLABLE": "YES",
+      "COLUMN_KEY": "MUL",
+      "COLUMN_COMMENT": ""
+    },
+    {
+      "TABLE_NAME": "tbl_person",
+      "COLUMN_NAME": "mcct_person_id",
+      "COLUMN_TYPE": "int",
+      "IS_NULLABLE": "YES",
+      "COLUMN_KEY": "",
+      "COLUMN_COMMENT": ""
+    },
+    {
+      "TABLE_NAME": "tbl_person",
+      "COLUMN_NAME": "validation_num",
+      "COLUMN_TYPE": "varchar(200)",
+      "IS_NULLABLE": "YES",
+      "COLUMN_KEY": "MUL",
+      "COLUMN_COMMENT": "Proof of validation for false duplicates to enter the system"
+    },
+    {
+      "TABLE_NAME": "tbl_person",
+      "COLUMN_NAME": "match_key",
+      "COLUMN_TYPE": "binary(16)",
+      "IS_NULLABLE": "YES",
+      "COLUMN_KEY": "MUL",
+      "COLUMN_COMMENT": "Deterministic MD5 hash used for matching of TULOY beneficiaries in 4Ps"
+    },
+    {
+      "TABLE_NAME": "tuloy_beneficiary_tbl",
+      "COLUMN_NAME": "id",
+      "COLUMN_TYPE": "int",
+      "IS_NULLABLE": "NO",
+      "COLUMN_KEY": "PRI",
+      "COLUMN_COMMENT": ""
+    },
+    {
+      "TABLE_NAME": "tuloy_beneficiary_tbl",
+      "COLUMN_NAME": "student_id",
+      "COLUMN_TYPE": "varchar(100)",
+      "IS_NULLABLE": "YES",
+      "COLUMN_KEY": "MUL",
+      "COLUMN_COMMENT": ""
+    },
+    {
+      "TABLE_NAME": "tuloy_beneficiary_tbl",
+      "COLUMN_NAME": "lrn",
+      "COLUMN_TYPE": "varchar(50)",
+      "IS_NULLABLE": "YES",
+      "COLUMN_KEY": "MUL",
+      "COLUMN_COMMENT": ""
+    },
+    {
+      "TABLE_NAME": "tuloy_beneficiary_tbl",
+      "COLUMN_NAME": "philsys_id",
+      "COLUMN_TYPE": "varchar(100)",
+      "IS_NULLABLE": "YES",
+      "COLUMN_KEY": "MUL",
+      "COLUMN_COMMENT": ""
+    },
+    {
+      "TABLE_NAME": "tuloy_beneficiary_tbl",
+      "COLUMN_NAME": "fourps_id",
+      "COLUMN_TYPE": "varchar(100)",
+      "IS_NULLABLE": "YES",
+      "COLUMN_KEY": "MUL",
+      "COLUMN_COMMENT": ""
+    },
+    {
+      "TABLE_NAME": "tuloy_beneficiary_tbl",
+      "COLUMN_NAME": "fourps_member_id",
+      "COLUMN_TYPE": "varchar(100)",
+      "IS_NULLABLE": "YES",
+      "COLUMN_KEY": "MUL",
+      "COLUMN_COMMENT": ""
+    },
+    {
+      "TABLE_NAME": "tuloy_beneficiary_tbl",
+      "COLUMN_NAME": "last_name",
+      "COLUMN_TYPE": "varchar(100)",
+      "IS_NULLABLE": "NO",
+      "COLUMN_KEY": "MUL",
+      "COLUMN_COMMENT": ""
+    },
+    {
+      "TABLE_NAME": "tuloy_beneficiary_tbl",
+      "COLUMN_NAME": "given_name",
+      "COLUMN_TYPE": "varchar(100)",
+      "IS_NULLABLE": "NO",
+      "COLUMN_KEY": "",
+      "COLUMN_COMMENT": ""
+    },
+    {
+      "TABLE_NAME": "tuloy_beneficiary_tbl",
+      "COLUMN_NAME": "extension_name",
+      "COLUMN_TYPE": "varchar(20)",
+      "IS_NULLABLE": "YES",
+      "COLUMN_KEY": "",
+      "COLUMN_COMMENT": ""
+    },
+    {
+      "TABLE_NAME": "tuloy_beneficiary_tbl",
+      "COLUMN_NAME": "middle_name",
+      "COLUMN_TYPE": "varchar(100)",
+      "IS_NULLABLE": "YES",
+      "COLUMN_KEY": "",
+      "COLUMN_COMMENT": ""
+    },
+    {
+      "TABLE_NAME": "tuloy_beneficiary_tbl",
+      "COLUMN_NAME": "sex_id",
+      "COLUMN_TYPE": "int",
+      "IS_NULLABLE": "YES",
+      "COLUMN_KEY": "MUL",
+      "COLUMN_COMMENT": ""
+    },
+    {
+      "TABLE_NAME": "tuloy_beneficiary_tbl",
+      "COLUMN_NAME": "birthdate",
+      "COLUMN_TYPE": "date",
+      "IS_NULLABLE": "YES",
+      "COLUMN_KEY": "",
+      "COLUMN_COMMENT": ""
+    },
+    {
+      "TABLE_NAME": "tuloy_beneficiary_tbl",
+      "COLUMN_NAME": "enrolled_tertiary",
+      "COLUMN_TYPE": "varchar(255)",
+      "IS_NULLABLE": "YES",
+      "COLUMN_KEY": "",
+      "COLUMN_COMMENT": ""
+    },
+    {
+      "TABLE_NAME": "tuloy_beneficiary_tbl",
+      "COLUMN_NAME": "target_track_id",
+      "COLUMN_TYPE": "int",
+      "IS_NULLABLE": "YES",
+      "COLUMN_KEY": "MUL",
+      "COLUMN_COMMENT": ""
+    },
+    {
+      "TABLE_NAME": "tuloy_beneficiary_tbl",
+      "COLUMN_NAME": "enrolled_course_program",
+      "COLUMN_TYPE": "varchar(255)",
+      "IS_NULLABLE": "YES",
+      "COLUMN_KEY": "",
+      "COLUMN_COMMENT": ""
+    },
+    {
+      "TABLE_NAME": "tuloy_beneficiary_tbl",
+      "COLUMN_NAME": "complete_program_name",
+      "COLUMN_TYPE": "varchar(255)",
+      "IS_NULLABLE": "YES",
+      "COLUMN_KEY": "",
+      "COLUMN_COMMENT": ""
+    },
+    {
+      "TABLE_NAME": "tuloy_beneficiary_tbl",
+      "COLUMN_NAME": "year_level",
+      "COLUMN_TYPE": "varchar(50)",
+      "IS_NULLABLE": "YES",
+      "COLUMN_KEY": "",
+      "COLUMN_COMMENT": ""
+    },
+    {
+      "TABLE_NAME": "tuloy_beneficiary_tbl",
+      "COLUMN_NAME": "father_last_name",
+      "COLUMN_TYPE": "varchar(100)",
+      "IS_NULLABLE": "YES",
+      "COLUMN_KEY": "",
+      "COLUMN_COMMENT": ""
+    },
+    {
+      "TABLE_NAME": "tuloy_beneficiary_tbl",
+      "COLUMN_NAME": "father_given_name",
+      "COLUMN_TYPE": "varchar(100)",
+      "IS_NULLABLE": "YES",
+      "COLUMN_KEY": "",
+      "COLUMN_COMMENT": ""
+    },
+    {
+      "TABLE_NAME": "tuloy_beneficiary_tbl",
+      "COLUMN_NAME": "father_middle_name",
+      "COLUMN_TYPE": "varchar(100)",
+      "IS_NULLABLE": "YES",
+      "COLUMN_KEY": "",
+      "COLUMN_COMMENT": ""
+    },
+    {
+      "TABLE_NAME": "tuloy_beneficiary_tbl",
+      "COLUMN_NAME": "mother_last_name",
+      "COLUMN_TYPE": "varchar(100)",
+      "IS_NULLABLE": "YES",
+      "COLUMN_KEY": "",
+      "COLUMN_COMMENT": ""
+    },
+    {
+      "TABLE_NAME": "tuloy_beneficiary_tbl",
+      "COLUMN_NAME": "mother_given_name",
+      "COLUMN_TYPE": "varchar(100)",
+      "IS_NULLABLE": "YES",
+      "COLUMN_KEY": "",
+      "COLUMN_COMMENT": ""
+    },
+    {
+      "TABLE_NAME": "tuloy_beneficiary_tbl",
+      "COLUMN_NAME": "mother_middle_name",
+      "COLUMN_TYPE": "varchar(100)",
+      "IS_NULLABLE": "YES",
+      "COLUMN_KEY": "",
+      "COLUMN_COMMENT": ""
+    },
+    {
+      "TABLE_NAME": "tuloy_beneficiary_tbl",
+      "COLUMN_NAME": "street_and_barangay",
+      "COLUMN_TYPE": "text",
+      "IS_NULLABLE": "YES",
+      "COLUMN_KEY": "",
+      "COLUMN_COMMENT": ""
+    },
+    {
+      "TABLE_NAME": "tuloy_beneficiary_tbl",
+      "COLUMN_NAME": "zip_code",
+      "COLUMN_TYPE": "varchar(20)",
+      "IS_NULLABLE": "YES",
+      "COLUMN_KEY": "",
+      "COLUMN_COMMENT": ""
+    },
+    {
+      "TABLE_NAME": "tuloy_beneficiary_tbl",
+      "COLUMN_NAME": "city_municipality_psgc",
+      "COLUMN_TYPE": "varchar(50)",
+      "IS_NULLABLE": "YES",
+      "COLUMN_KEY": "",
+      "COLUMN_COMMENT": ""
+    },
+    {
+      "TABLE_NAME": "tuloy_beneficiary_tbl",
+      "COLUMN_NAME": "province_psgc",
+      "COLUMN_TYPE": "varchar(50)",
+      "IS_NULLABLE": "YES",
+      "COLUMN_KEY": "",
+      "COLUMN_COMMENT": ""
+    },
+    {
+      "TABLE_NAME": "tuloy_beneficiary_tbl",
+      "COLUMN_NAME": "region_psgc",
+      "COLUMN_TYPE": "varchar(50)",
+      "IS_NULLABLE": "YES",
+      "COLUMN_KEY": "",
+      "COLUMN_COMMENT": ""
+    },
+    {
+      "TABLE_NAME": "tuloy_beneficiary_tbl",
+      "COLUMN_NAME": "disability",
+      "COLUMN_TYPE": "varchar(255)",
+      "IS_NULLABLE": "YES",
+      "COLUMN_KEY": "",
+      "COLUMN_COMMENT": ""
+    },
+    {
+      "TABLE_NAME": "tuloy_beneficiary_tbl",
+      "COLUMN_NAME": "contact_number",
+      "COLUMN_TYPE": "varchar(50)",
+      "IS_NULLABLE": "YES",
+      "COLUMN_KEY": "",
+      "COLUMN_COMMENT": ""
+    },
+    {
+      "TABLE_NAME": "tuloy_beneficiary_tbl",
+      "COLUMN_NAME": "email_address",
+      "COLUMN_TYPE": "varchar(255)",
+      "IS_NULLABLE": "YES",
+      "COLUMN_KEY": "",
+      "COLUMN_COMMENT": ""
+    },
+    {
+      "TABLE_NAME": "tuloy_beneficiary_tbl",
+      "COLUMN_NAME": "dependent_solo_parent_id",
+      "COLUMN_TYPE": "int",
+      "IS_NULLABLE": "YES",
+      "COLUMN_KEY": "MUL",
+      "COLUMN_COMMENT": ""
+    },
+    {
+      "TABLE_NAME": "tuloy_beneficiary_tbl",
+      "COLUMN_NAME": "first_gen_college_id",
+      "COLUMN_TYPE": "int",
+      "IS_NULLABLE": "YES",
+      "COLUMN_KEY": "MUL",
+      "COLUMN_COMMENT": ""
+    },
+    {
+      "TABLE_NAME": "tuloy_beneficiary_tbl",
+      "COLUMN_NAME": "indigenous_people_group",
+      "COLUMN_TYPE": "varchar(100)",
+      "IS_NULLABLE": "NO",
+      "COLUMN_KEY": "",
+      "COLUMN_COMMENT": ""
+    },
+    {
+      "TABLE_NAME": "tuloy_beneficiary_tbl",
+      "COLUMN_NAME": "enrollment_status_id",
+      "COLUMN_TYPE": "int",
+      "IS_NULLABLE": "NO",
+      "COLUMN_KEY": "MUL",
+      "COLUMN_COMMENT": ""
+    },
+    {
+      "TABLE_NAME": "tuloy_beneficiary_tbl",
+      "COLUMN_NAME": "created_at",
+      "COLUMN_TYPE": "datetime",
+      "IS_NULLABLE": "YES",
+      "COLUMN_KEY": "",
+      "COLUMN_COMMENT": ""
+    },
+    {
+      "TABLE_NAME": "tuloy_beneficiary_tbl",
+      "COLUMN_NAME": "updated_at",
+      "COLUMN_TYPE": "datetime",
+      "IS_NULLABLE": "YES",
+      "COLUMN_KEY": "",
+      "COLUMN_COMMENT": ""
+    }
+  ],
+  "foreign_keys": [
+    {
+      "TABLE_NAME": "enroll_matched_CHED_tbl",
+      "COLUMN_NAME": "match_id",
+      "REFERENCED_TABLE_NAME": "matching_transaction_CHED_tbl",
+      "REFERENCED_COLUMN_NAME": "id"
+    },
+    {
+      "TABLE_NAME": "lib_psgc_barangay",
+      "COLUMN_NAME": "city_id",
+      "REFERENCED_TABLE_NAME": "lib_psgc_city",
+      "REFERENCED_COLUMN_NAME": "city_id"
+    },
+    {
+      "TABLE_NAME": "lib_psgc_barangay",
+      "COLUMN_NAME": "inserted_by",
+      "REFERENCED_TABLE_NAME": "_user",
+      "REFERENCED_COLUMN_NAME": "user_id"
+    },
+    {
+      "TABLE_NAME": "lib_psgc_barangay",
+      "COLUMN_NAME": "last_updated_by",
+      "REFERENCED_TABLE_NAME": "_user",
+      "REFERENCED_COLUMN_NAME": "user_id"
+    },
+    {
+      "TABLE_NAME": "lib_psgc_barangay",
+      "COLUMN_NAME": "last_archived_by",
+      "REFERENCED_TABLE_NAME": "_user",
+      "REFERENCED_COLUMN_NAME": "user_id"
+    },
+    {
+      "TABLE_NAME": "lib_psgc_barangay",
+      "COLUMN_NAME": "last_restored_by",
+      "REFERENCED_TABLE_NAME": "_user",
+      "REFERENCED_COLUMN_NAME": "user_id"
+    },
+    {
+      "TABLE_NAME": "tbl_person",
+      "COLUMN_NAME": "is_pregnant",
+      "REFERENCED_TABLE_NAME": "lib_pregnancy_status",
+      "REFERENCED_COLUMN_NAME": "preg_status_id"
+    }
+  ],
+  "sex_reference": [
+    {
+      "id": 0,
+      "code": "MALE",
+      "description": "Male"
+    },
+    {
+      "id": 1,
+      "code": "FEMALE",
+      "description": "Female"
+    }
+  ]
+}

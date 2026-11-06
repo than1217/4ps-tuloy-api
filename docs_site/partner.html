@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>Tuloy Partner API</title>
+<link rel="icon" href="data:,">
+<link rel="stylesheet" href="/docs-assets/vendor/elements-9.0.28/styles.min.css">
+<link rel="stylesheet" href="/docs-assets/docs.css">
+<script src="/docs-assets/docs-ui.js"></script>
+<script src="/docs-assets/vendor/elements-9.0.28/web-components.min.js"></script>
+<script src="/docs-assets/partner.js" defer></script>
+</head>
+<body class="partner">
+<a class="tl-skip" href="#main">Skip to content</a>
+<header class="tl-header">
+  <button id="menu" class="tl-btn-ghost tl-menu-btn" type="button" aria-expanded="false" aria-controls="docs">Menu</button>
+  <a class="tl-brand" href="/tuloy/docs" aria-label="Tuloy API, Partner API">
+    <svg class="tl-mark" viewBox="0 0 28 28" aria-hidden="true"><rect width="28" height="28" rx="8"/><path d="M9 8l6 6-6 6M15 8l6 6-6 6" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    <span class="tl-name">Tuloy API</span>
+  </a>
+  <span class="tl-sub">Partner API</span>
+  <span class="tl-spacer"></span>
+  <nav class="tl-nav" aria-label="Sections">
+    <a id="tab-start" href="/tuloy/docs">Getting started</a>
+    <a id="tab-ref" href="#/">API reference</a>
+  </nav>
+</header>
+<main id="main" class="tl-main" tabindex="-1">
+  <section id="start" class="tl-scroll" aria-labelledby="start-title">
+    <div class="tl-intro">
+      <p class="tl-eyebrow">Partner API</p>
+      <h1 id="start-title">Verify members and track enrollments</h1>
+      <p class="tl-lead">Use this API to check 4Ps members and record their enrollments. Sign in once, then send your token with every call.</p>
+      <div class="tl-actions">
+        <a class="tl-btn" href="#/">Open the API reference</a>
+        <a class="tl-btn secondary" href="#/operations/login_for_access_token_token_post">Try sign-in</a>
+      </div>
+
+      <ol class="tl-steps">
+        <li class="tl-step">
+          <h2>Sign in</h2>
+          <p>Send your username and password to <code>POST /token</code> as a form. The reply holds your access token.</p>
+          <div class="tl-code" data-label="Request">
+            <button class="tl-copy" type="button">Copy</button>
+<pre tabindex="0"><code>curl -X POST <span data-origin>https://your-host</span>/token \
+  -d "username=YOUR_USERNAME" \
+  -d "password=YOUR_PASSWORD"</code></pre>
+          </div>
+          <div class="tl-code" data-label="Response">
+<pre tabindex="0"><code>{
+  "access_token": "eyJhbGciOiJIUzI1NiJ9.example-payload.example-signature",
+  "token_type": "bearer",
+  "expires_in": 1800
+}</code></pre>
+          </div>
+        </li>
+        <li class="tl-step">
+          <h2>Copy the token</h2>
+          <p>Copy the value of <code>access_token</code>. <code>expires_in</code> is how many seconds it stays valid.</p>
+        </li>
+        <li class="tl-step">
+          <h2>Send it with each call</h2>
+          <p>In your code, add the header <code>Authorization: Bearer YOUR_TOKEN</code>.</p>
+          <p>In this reference, open an operation and paste the token into the <strong>Token</strong> box under <strong>Auth</strong> in the Try It panel.</p>
+        </li>
+        <li class="tl-step">
+          <h2>Make your first call</h2>
+          <p>Verify a member. The values below are made up; replace them with your own.</p>
+          <div class="tl-code" data-label="Request">
+            <button class="tl-copy" type="button">Copy</button>
+<pre tabindex="0"><code>curl -X POST <span data-origin>https://your-host</span>/v1/api/tuloy/members/verify \
+  -H "Authorization: Bearer YOUR_TOKEN" \
+  -H "Content-Type: application/json" \
+  -d '{"first_name": "Juan", "last_name": "Dela Cruz", "date_of_birth": "1990-01-31"}'</code></pre>
+          </div>
+        </li>
+      </ol>
+
+      <h2 class="tl-h2">Good to know</h2>
+      <ul class="tl-notes">
+        <li><strong>Access follows your grants</strong><span>You need an active grant for each operation's scope. You receive 403 if that grant is missing, expired or revoked.</span></li>
+        <li><strong>Tokens expire</strong><span>When a call returns 401, sign in again to get a new token.</span></li>
+        <li><strong>Operation contracts await approval</strong><span>You receive 501 while contracts await approval. Nothing is processed or stored. You can safely retry later. Do not build production flows on them yet.</span></li>
+        <li><strong>Errors share one shape</strong><span>Each holds <code>detail</code>, <code>error_code</code> and <code>request_id</code>. Quote the request ID when you ask for help.</span></li>
+      </ul>
+    </div>
+  </section>
+  <div id="docs" hidden>
+    <elements-api apiDescriptionUrl="/tuloy/openapi.json" router="hash" layout="sidebar" hideSchemas="true"></elements-api>
+  </div>
+</main>
+</body>
+</html>

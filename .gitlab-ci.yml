@@ -1,0 +1,46 @@
+# 4PS Tuloy API: test every push and merge request; deploy main through the existing host updater.
+# Requires a GitLab Shell runner tagged co-tuloyweb-01 on that host, with python3.12 (or python3 >= 3.12).
+
+workflow:
+  rules:
+    - if: '$CI_PIPELINE_SOURCE == "merge_request_event"'
+    - if: '$CI_PIPELINE_SOURCE == "push" && $CI_COMMIT_BRANCH'
+    - when: never
+
+stages:
+  - test
+  - deploy
+
+default:
+  tags:
+    - co-tuloyweb-01
+  interruptible: false
+
+# Unit tests run on synthetic settings only (tests/conftest.py); the MySQL integration tests
+# skip themselves because TEST_MYSQL_HOST is unset. No .env or secret is needed here.
+test_4ps_tuloy_api:
+  stage: test
+  interruptible: true
+  variables:
+    PIP_DISABLE_PIP_VERSION_CHECK: "1"
+  script:
+    - PY=$(command -v python3.12 || command -v python3)
+    - $PY -c 'import sys; assert sys.version_info >= (3, 12), sys.version'
+    - $PY -m venv .venv-ci
+    - .venv-ci/bin/pip install -q --require-hashes -r requirements-linux.lock
+    - .venv-ci/bin/pip install -q -r requirements-dev.txt
+    - .venv-ci/bin/python -m pytest -q -p no:cacheprovider
+
+deploy_4ps_tuloy_api:
+  stage: deploy
+  rules:
+    - if: '$CI_PIPELINE_SOURCE == "push" && $CI_COMMIT_BRANCH == "main"'
+  needs:
+    - test_4ps_tuloy_api
+  resource_group: 4ps-tuloy-api-staging
+  environment:
+    name: staging
+    url: https://tuloy-api-staging.dswd.gov.ph
+  script:
+    - test "$CI_COMMIT_BRANCH" = "main"
+    - sudo -n /usr/local/sbin/update-tuloy.sh api

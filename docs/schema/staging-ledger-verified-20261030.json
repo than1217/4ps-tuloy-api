@@ -1,0 +1,100 @@
+{
+  "date": "2026-10-30",
+  "source": "Martin supplied DBGate SELECT version,name,checksum result; not an independent server query",
+  "database": "dswd_4ps_tuloy_dev",
+  "hostname": "ppisv2-v3Master",
+  "result": "13/13 checksums match",
+  "rows": [
+    {
+      "version": "0001",
+      "name": "0001_baseline.sql",
+      "reported_checksum": "2f66d78675dc741081d3995121fd1d302e03212da0fc7cf77528c7f3e963d72e",
+      "local_checksum": "2f66d78675dc741081d3995121fd1d302e03212da0fc7cf77528c7f3e963d72e",
+      "matches": true
+    },
+    {
+      "version": "0002",
+      "name": "0002_api_user_scopes.sql",
+      "reported_checksum": "9867704136d773881803ad725e1707d30415ff0848267c38dad443b948c4540f",
+      "local_checksum": "9867704136d773881803ad725e1707d30415ff0848267c38dad443b948c4540f",
+      "matches": true
+    },
+    {
+      "version": "0003",
+      "name": "0003_enroll_matched_tuloy_id_index.sql",
+      "reported_checksum": "2d4a394479c46a4d7bc6dbfdefb3e3b37b2d692f2973539fb0e249bf2beac275",
+      "local_checksum": "2d4a394479c46a4d7bc6dbfdefb3e3b37b2d692f2973539fb0e249bf2beac275",
+      "matches": true
+    },
+    {
+      "version": "0004",
+      "name": "0004_api_user_identities.sql",
+      "reported_checksum": "e2959efc709c173fbee5e8b15ad53ecd58ed0e31534f8e8dfd17ae3cd1f53947",
+      "local_checksum": "e2959efc709c173fbee5e8b15ad53ecd58ed0e31534f8e8dfd17ae3cd1f53947",
+      "matches": true
+    },
+    {
+      "version": "0005",
+      "name": "0005_staff_users.sql",
+      "reported_checksum": "91bad111c68d501bb6413545da1f9be2a3ee6ebeda2c4a7d34b05fdefed1707c",
+      "local_checksum": "91bad111c68d501bb6413545da1f9be2a3ee6ebeda2c4a7d34b05fdefed1707c",
+      "matches": true
+    },
+    {
+      "version": "0006",
+      "name": "0006_api_user_scopes_nullable_expiry.sql",
+      "reported_checksum": "452ca85fcd55d673c3a3e48e06f8324afda4f612b828702e76f8883bbf9deede",
+      "local_checksum": "452ca85fcd55d673c3a3e48e06f8324afda4f612b828702e76f8883bbf9deede",
+      "matches": true
+    },
+    {
+      "version": "0007",
+      "name": "0007_app_settings_baseline.sql",
+      "reported_checksum": "68105093b7837db57e84d2033ff55707462e0477045ec695fc5298764cf81674",
+      "local_checksum": "68105093b7837db57e84d2033ff55707462e0477045ec695fc5298764cf81674",
+      "matches": true
+    },
+    {
+      "version": "0008",
+      "name": "0008_bcmd_batch.sql",
+      "reported_checksum": "4d80f0147118451c31fc9eef3a2e77ad759046e32eccd2cb6e9574f8cb480461",
+      "local_checksum": "4d80f0147118451c31fc9eef3a2e77ad759046e32eccd2cb6e9574f8cb480461",
+      "matches": true
+    },
+    {
+      "version": "0009",
+      "name": "0009_bcmd_batch_member.sql",
+      "reported_checksum": "9c1809ae384cf16cba4eb71c958238286199c8409fdcf4aa5cca0eb1ff09b653",
+      "local_checksum": "9c1809ae384cf16cba4eb71c958238286199c8409fdcf4aa5cca0eb1ff09b653",
+      "matches": true
+    },
+    {
+      "version": "0010",
+      "name": "0010_bcmd_dqa_issue.sql",
+      "reported_checksum": "8ca581bf1efb8651d97cc2212d7d07e6f06c16fa901f86157447cfd1354bdef9",
+      "local_checksum": "8ca581bf1efb8651d97cc2212d7d07e6f06c16fa901f86157447cfd1354bdef9",
+      "matches": true
+    },
+    {
+      "version": "0011",
+      "name": "0011_bcmd_batch_export.sql",
+      "reported_checksum": "7fe71e6bc3cc28600f9639441100ffccab08a74bc9fa45b905f017a478ea45d3",
+      "local_checksum": "7fe71e6bc3cc28600f9639441100ffccab08a74bc9fa45b905f017a478ea45d3",
+      "matches": true
+    },
+    {
+      "version": "0012",
+      "name": "0012_bcmd_audit_event.sql",
+      "reported_checksum": "a15a61913a8227d822978ecf1597e77473a62e7ab343279991455990d844bb73",
+      "local_checksum": "a15a61913a8227d822978ecf1597e77473a62e7ab343279991455990d844bb73",
+      "matches": true
+    },
+    {
+      "version": "0013",
+      "name": "0013_bcmd_approval.sql",
+      "reported_checksum": "1415a9d15cd14de32d839a5fcfa10d34b1379833ccd9642d1380c49753b3845a",
+      "local_checksum": "1415a9d15cd14de32d839a5fcfa10d34b1379833ccd9642d1380c49753b3845a",
+      "matches": true
+    }
+  ]
+}

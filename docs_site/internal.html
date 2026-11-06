@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<meta name="color-scheme" content="light dark">
+<title>Tuloy API - DSWD internal</title>
+<link rel="icon" href="data:,">
+<link rel="stylesheet" href="/docs-assets/vendor/elements-9.0.28/styles.min.css">
+<link rel="stylesheet" href="/docs-assets/docs.css">
+<script src="/docs-assets/docs-ui.js"></script>
+<script src="/docs-assets/vendor/elements-9.0.28/web-components.min.js"></script>
+<script src="/docs-assets/internal.js" defer></script>
+</head>
+<body class="internal">
+<a class="tl-skip" href="#main">Skip to content</a>
+<header class="tl-header">
+  <button id="menu" class="tl-btn-ghost tl-menu-btn" type="button" aria-expanded="false" aria-controls="docs">Menu</button>
+  <a class="tl-brand" href="/tuloydswd/docs" aria-label="Tuloy API, DSWD internal">
+    <svg class="tl-mark" viewBox="0 0 28 28" aria-hidden="true"><rect width="28" height="28" rx="8"/><path d="M9 8l6 6-6 6M15 8l6 6-6 6" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    <span class="tl-name">Tuloy API</span>
+  </a>
+  <span class="tl-sub">DSWD internal</span>
+  <span class="tl-badge">Internal &ndash; authorised staff only</span>
+  <span class="tl-spacer"></span>
+  <span id="session" class="tl-session" hidden><span id="session-text">Signed in</span></span>
+  <button id="signout" class="tl-btn-ghost" type="button" hidden>Sign out</button>
+</header>
+<div class="tl-strip" role="region" aria-label="Access notice">Internal &ndash; authorised staff only</div>
+<main id="main" class="tl-main" tabindex="-1">
+  <section id="signin-view" class="tl-scroll tl-center" aria-labelledby="signin-title">
+    <form id="signin" class="tl-card" autocomplete="on">
+      <svg class="tl-mark" viewBox="0 0 28 28" aria-hidden="true"><rect width="28" height="28" rx="8"/><path d="M9 8l6 6-6 6M15 8l6 6-6 6" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <h1 id="signin-title">Sign in</h1>
+      <p>Authorised DSWD staff only. Use your API account to open the internal reference.</p>
+      <label class="tl-field"><span>Username</span><input name="username" autocomplete="username" autocapitalize="none" spellcheck="false" required></label>
+      <label class="tl-field"><span>Password</span><input name="password" type="password" autocomplete="current-password" required></label>
+      <button id="submit" class="tl-btn" type="submit">Sign in</button>
+      <p id="message" class="tl-message" role="alert"></p>
+      <p class="tl-note">Your session lives in this tab only. Closing or reloading the page signs you out.</p>
+    </form>
+  </section>
+  <div id="docs" hidden></div>
+</main>
+</body>
+</html>

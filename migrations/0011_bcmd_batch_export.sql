@@ -1,0 +1,32 @@
+-- 0011: bcmd_batch_export, local BCMD candidate based on reviewed spec Revision 4.
+-- Proposed for release; do not apply remotely without exact-schema/target verification.
+CREATE TABLE IF NOT EXISTS `bcmd_batch_export` (
+  `id` bigint unsigned NOT NULL AUTO_INCREMENT,
+  `batch_id` bigint unsigned NOT NULL,
+  `export_no` int unsigned NOT NULL,
+  `file_type` varchar(8) NOT NULL DEFAULT 'DETAIL',
+  `status` varchar(9) NOT NULL,
+  `generator_version` varchar(24) NOT NULL,
+  `serialization_version` varchar(24) NOT NULL,
+  `header_set_sha256` char(64) CHARACTER SET ascii COLLATE ascii_bin NOT NULL,
+  `sha256` char(64) CHARACTER SET ascii COLLATE ascii_bin DEFAULT NULL,
+  `byte_count` bigint unsigned DEFAULT NULL,
+  `row_count` int unsigned DEFAULT NULL,
+  `idempotency_key` char(36) CHARACTER SET ascii COLLATE ascii_bin NOT NULL,
+  `request_hash` char(64) CHARACTER SET ascii COLLATE ascii_bin NOT NULL,
+  `created_by_api_user_id` int NOT NULL,
+  `created_by_agency` varchar(16) NOT NULL,
+  `request_id` varchar(64) NOT NULL,
+  `failure_code` varchar(32) DEFAULT NULL,
+  `started_at` timestamp(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3),
+  `completed_at` timestamp(3) NULL DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `uq_bcmd_export_no` (`batch_id`, `export_no`),
+  UNIQUE KEY `uq_bcmd_export_idem` (`batch_id`, `created_by_api_user_id`, `idempotency_key`),
+  KEY `ix_bcmd_export_reap` (`status`, `started_at`),
+  CONSTRAINT `fk_bcmd_export_batch` FOREIGN KEY (`batch_id`) REFERENCES `bcmd_batch` (`id`) ON DELETE RESTRICT,
+  CONSTRAINT `fk_bcmd_export_creator` FOREIGN KEY (`created_by_api_user_id`) REFERENCES `api_users` (`id`) ON DELETE RESTRICT,
+  CONSTRAINT `ck_bcmd_export_file` CHECK (`file_type` = 'DETAIL'),
+  CONSTRAINT `ck_bcmd_export_status` CHECK (`status` IN ('STARTED','COMPLETED','FAILED','ABORTED')),
+  CONSTRAINT `ck_bcmd_export_done` CHECK ((`status` = 'COMPLETED') = (`sha256` IS NOT NULL AND `byte_count` IS NOT NULL AND `row_count` IS NOT NULL AND `completed_at` IS NOT NULL))
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;

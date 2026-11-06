@@ -1,0 +1,4 @@
+# Preserve the exact reviewed SQL package bytes and header-only CSV contract.
+# Numbered migrations still use migrate.py's canonical UTF-8 text checksums.
+docs/schema/dbgate-apply/*.sql -text whitespace=cr-at-eol
+docs/templates/napa-detail-headers.csv -text

@@ -1,0 +1,12 @@
+{
+  "captured_utc": "2026-10-30T00:50:46.317304+00:00",
+  "mode": "EXISTING_ACCOUNT",
+  "writes": 0,
+  "new_accounts": 0,
+  "result": "PASS",
+  "identity": "MATCH",
+  "ledger": "MATCH",
+  "schema": "MATCH",
+  "runtime_privileges": "EXISTING_ACCOUNT_REQUIRED_RIGHTS",
+  "export_enabled": false
+}

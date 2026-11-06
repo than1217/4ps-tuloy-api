@@ -1,0 +1,25 @@
+# 4PS Tuloy API: deploy latest main through the existing host updater.
+# Requires a GitLab Shell runner tagged co-tuloyweb-01 on that host.
+
+workflow:
+  rules:
+    - if: '$CI_PIPELINE_SOURCE == "push" && $CI_COMMIT_BRANCH == "main"'
+    - when: never
+
+stages:
+  - deploy
+
+default:
+  tags:
+    - co-tuloyweb-01
+  interruptible: false
+
+deploy_4ps_tuloy_api:
+  stage: deploy
+  resource_group: 4ps-tuloy-api-staging
+  environment:
+    name: staging
+    url: https://tuloy-api-staging.dswd.gov.ph
+  script:
+    - test "$CI_COMMIT_BRANCH" = "main"
+    - sudo -n /usr/local/sbin/update-tuloy.sh api

@@ -1,0 +1,21 @@
+{
+  "captured_utc": "2026-10-30T00:44:26.266632+00:00",
+  "mode": "READ_ONLY",
+  "writes": 0,
+  "account_provisioning": "BLOCKED_MISSING_CREATE_USER_AND_GRANT_OPTION",
+  "identity": {
+    "db": "dswd_4ps_tuloy_dev",
+    "host": "ppisv2-v3Master"
+  },
+  "ledger": "MATCH",
+  "schema": {
+    "app_settings": "MATCH",
+    "bcmd_batch": "MATCH",
+    "bcmd_batch_member": "MATCH",
+    "bcmd_dqa_issue": "MATCH",
+    "bcmd_batch_export": "MATCH",
+    "bcmd_audit_event": "MATCH",
+    "bcmd_approval": "MATCH"
+  },
+  "nullable_grant_expiry": true
+}
