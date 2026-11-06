@@ -11,7 +11,7 @@ from config import get_settings
 from database import get_app_connection, get_ods_connection, query_failed
 from errors import ApiError
 from observability import audit
-from schemas import UserInput, ChedResponsePayload, MothersMaiden, Degree, VerifyResult
+from schemas import UserInput, ChedResponsePayload, MothersMaiden, Degree, VerifyResult, Verify4psResult, TesdaResponsePayload
 from scopes import LEGACY_BENEFICIARY_READ, LEGACY_CHED_READ, LEGACY_CHED_WRITE, LEGACY_MEMBER_VERIFY
 from security import Principal, recheck_grant, require_scope
 
@@ -157,6 +157,56 @@ def verify_member_match(user: UserInput, current_user: Principal, db,
     return outcome
 
 
+@router.post("/VerifyTuloyBene", response_model=VerifyResult, summary="Verify Tuloy Beneficiary")
+def verify_tuloy_bene(user: UserInput, current_user: Principal = Depends(require_scope(LEGACY_MEMBER_VERIFY, shared=True)),
+                      db=Depends(get_ods_connection)):
+    return verify_member_match(user, current_user, db, audit_action="legacy.verify_tuloy")
+
+
+@router.post("/Verify4psBene", response_model=Verify4psResult, summary="Verify 4Ps Beneficiary")
+def verify_4ps_bene(user: UserInput, current_user: Principal = Depends(require_scope(LEGACY_MEMBER_VERIFY, shared=True)),
+                    db=Depends(get_ods_connection)):
+    select_query = r"""
+        SELECT `tuloy_id`, `member_id`, `client_status`, `roster_status` FROM vw_verify_4ps_bene
+        WHERE match_keys = UNHEX(MD5(CONCAT_WS('/',
+            UPPER(TRIM(REGEXP_REPLACE(%s, '\\s+', ' '))),
+            UPPER(TRIM(REGEXP_REPLACE(%s, '\\s+', ' '))),
+            %s
+        )))
+    """
+    query_params = [user.first_name, user.last_name, user.date_of_birth]
+    for field, column in OPTIONAL_FILTER_COLUMNS.items():
+        value = getattr(user, field)
+        if value is not None:
+            select_query += f" AND `{column}` = %s"
+            query_params.append(value)
+    select_query += " LIMIT 2"
+
+    cursor = db.cursor(dictionary=True)
+    try:
+        cursor.execute(select_query, tuple(query_params))
+        results = cursor.fetchall()
+    except Error as exc:
+        raise query_failed(exc, "verify_4ps_query_failed")
+    finally:
+        cursor.close()
+
+    if not results:
+        outcome = {"status": "Not Found", "tuloy_id": None, "member_id": None, "client_status": None, "roster_status": None}
+    elif len(results) >= 2:
+        outcome = {"status": "Multiple Match Found", "tuloy_id": None, "member_id": None, "client_status": None, "roster_status": None}
+    else:
+        outcome = {
+            "status": "Matched",
+            "tuloy_id": results[0].get("tuloy_id"),
+            "member_id": results[0].get("member_id"),
+            "client_status": results[0].get("client_status"),
+            "roster_status": results[0].get("roster_status"),
+        }
+    audit("legacy.verify_4ps", outcome["status"], actor=current_user.actor)
+    return outcome
+
+
 @router.get("/GetEligibleBene")
 @cache(expire=CACHE_EXPIRE_SECONDS, namespace="eligible-bene")
 def get_eligible_bene(
@@ -270,6 +320,125 @@ def get_matched_ched_records(
     finally:
         cursor.close()
     audit("legacy.matched_ched.list", "success", actor=current_user.actor,
+          returned=min(len(rows), limit), offset=offset)
+    return _page(rows, limit, offset)
+
+
+@router.post("/PostEnrolleeMatchedTESDA", summary="Record TESDA Response")
+def record_tesda_response(
+    payload: TesdaResponsePayload,
+    current_user: Principal = Depends(require_scope(LEGACY_CHED_WRITE)),
+    db=Depends(get_app_connection),
+):
+    learner = payload.learner
+    transaction_tuloy_id = ""
+    if learner and learner.tuloy_id:
+        transaction_tuloy_id = str(learner.tuloy_id).strip()
+
+    if not transaction_tuloy_id:
+        raise ApiError(422, "A tuloy_id is required in the payload learner data", "MISSING_TULOY_ID")
+
+    enrollment_id = payload.enrollment_id or 0
+
+    if payload.matched and learner:
+        if learner.tuloy_id and len(learner.tuloy_id) > 50:
+            raise ApiError(422, "Matched TESDA data requires a TULOY ID of at most 50 characters", "INVALID_TULOY_ID")
+        if learner.member_id is None or not (1 <= learner.member_id <= 4294967295):
+            raise ApiError(422, "Matched TESDA data requires a MEMBER ID between 1 and 4294967295", "INVALID_MEMBER_ID")
+        if learner.user_uli and len(learner.user_uli) > 50:
+            raise ApiError(422, "ULI exceeds the database limit of 50 characters", "INVALID_ULI")
+        if not (0 <= enrollment_id <= 4294967295):
+            raise ApiError(422, "enrollment_id must be between 0 and 4294967295", "INVALID_ENROLLMENT_ID")
+
+    db_status = "FOUND" if payload.matched else "NOT FOUND"
+    grant = recheck_grant(db, current_user, LEGACY_CHED_WRITE)
+    cursor = db.cursor()
+    try:
+        cursor.execute(
+            "INSERT INTO matching_transaction_TESDA_tbl (`tuloy_id`, `status`) VALUES (%s, %s)",
+            (transaction_tuloy_id, db_status),
+        )
+        txn_id = cursor.lastrowid
+
+        if learner:
+            short_course_json = json.dumps([e.model_dump() for e in payload.enrollments]) if payload.enrollments else "[]"
+            cursor.execute(
+                """
+                INSERT INTO enroll_matched_TESDA_tbl (
+                    match_id, enrollment_id, `tuloy_id`, member_id, uli_id,
+                    first_name, middle_name, last_name, suffix, birthdate,
+                    sex, contact_no, email, region, province, city_municipality, psgc_code,
+                    enrollments
+                ) VALUES (
+                    %s, %s, %s, %s, %s,
+                    %s, %s, %s, %s, %s,
+                    %s, %s, %s, %s, %s, %s, %s,
+                    %s
+                )
+                """,
+                (
+                    txn_id, enrollment_id, learner.tuloy_id, learner.member_id, learner.user_uli,
+                    learner.first_name, learner.middle_name, learner.last_name, learner.suffix, learner.birthdate,
+                    learner.sex, learner.contact_no, learner.email, learner.region, learner.province,
+                    learner.city_municipality, learner.psgc_code, short_course_json
+                ),
+            )
+        db.commit()
+    except Error as exc:
+        db.rollback()
+        audit("legacy.tesda_response.record", "error", actor=current_user.actor)
+        raise query_failed(exc, "tesda_response_insert_failed")
+    finally:
+        cursor.close()
+
+    audit("legacy.tesda_response.record", "success", actor=current_user.actor,
+          grant=grant.id, action="insert", matched=payload.matched)
+    return {"message": "TESDA response recorded successfully."}
+
+
+@router.get("/GetMatchedTesdaBene", summary="Get Matched TESDA Beneficiaries")
+def get_matched_tesda_records(
+    current_user: Principal = Depends(require_scope(LEGACY_CHED_READ, shared=True)),
+    db=Depends(get_ods_connection),
+    limit: int = Query(100, ge=1, le=1000),
+    offset: int = Query(0, ge=0, le=10_000_000),
+):
+    cursor = db.cursor(dictionary=True)
+    try:
+        cursor.execute(
+            "SELECT * FROM vw_get_matched_TESDA ORDER BY `id` LIMIT %s OFFSET %s",
+            (limit + 1, offset),
+        )
+        rows = cursor.fetchall()
+    except Error as exc:
+        raise query_failed(exc, "matched_tesda_query_failed")
+    finally:
+        cursor.close()
+    audit("legacy.matched_tesda.list", "success", actor=current_user.actor,
+          returned=min(len(rows), limit), offset=offset)
+    return _page(rows, limit, offset)
+
+
+@router.get("/GetValidatedEnrollees", summary="Get Validated Enrollees (CHED and TESDA)",
+            description="Legacy alias for GetUnifiedMatchedBene without search support.")
+def get_validated_enrollees(
+    current_user: Principal = Depends(require_scope(LEGACY_CHED_READ, shared=True)),
+    db=Depends(get_ods_connection),
+    limit: int = Query(100, ge=1, le=1000),
+    offset: int = Query(0, ge=0, le=10_000_000),
+    agency: Literal['CHED', 'TESDA'] | None = Query(None, description="Filter by agency (CHED or TESDA)"),
+):
+    # This just defers to the modern implementation's underlying query logic.
+    cursor = db.cursor(dictionary=True)
+    try:
+        sql, params = unified_query(agency, None, '')
+        cursor.execute(sql, (*params, limit + 1, offset))
+        rows = cursor.fetchall()
+    except Error as exc:
+        raise query_failed(exc, "validated_enrollees_query_failed")
+    finally:
+        cursor.close()
+    audit("legacy.validated_enrollees.list", "success", actor=current_user.actor,
           returned=min(len(rows), limit), offset=offset)
     return _page(rows, limit, offset)
 

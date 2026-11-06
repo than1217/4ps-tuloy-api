@@ -90,6 +90,45 @@ class VerifyResult(BaseModel):
     member_id: Optional[int | str] = None
 
 
+class Verify4psResult(BaseModel):
+    model_config = ConfigDict(extra="forbid")
+    status: str
+    tuloy_id: Optional[Union[str, int]] = None
+    member_id: Optional[int | str] = None
+    client_status: Optional[int] = None
+    roster_status: Optional[int] = None
+
+
+class TesdaEnrollment(BaseModel):
+    model_config = ConfigDict(extra="allow")
+
+
+class TesdaLearner(BaseModel):
+    tuloy_id: OptCode = None
+    member_id: Optional[int] = Field(default=None, ge=0, le=4294967295)
+    user_uli: OptCode = None
+    first_name: OptName = None
+    middle_name: OptName = None
+    last_name: OptName = None
+    suffix: OptCode = None
+    birthdate: Optional[str] = None
+    sex: OptCode = None
+    contact_no: OptCode = None
+    email: OptCode = None
+    region: OptCode = None
+    province: OptCode = None
+    city_municipality: OptCode = None
+    psgc_code: OptCode = None
+
+
+class TesdaResponsePayload(BaseModel):
+    matched: bool
+    message: OptCode = None
+    learner: Optional[TesdaLearner] = None
+    enrollments: Optional[list[TesdaEnrollment]] = None
+    enrollment_id: Optional[int] = Field(default=0, ge=0, le=4294967295)
+
+
 class LogoItem(BaseModel):
     id: Annotated[str, StringConstraints(strip_whitespace=True, min_length=1, max_length=100)]
     name: Annotated[str, StringConstraints(strip_whitespace=True, min_length=1, max_length=255)]

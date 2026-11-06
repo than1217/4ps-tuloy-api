@@ -1,0 +1,42 @@
+{
+    "status": "success",
+    "matched": true,
+    "match_method": "name_dob",
+    "learner": {
+        "user_uli": "DJP-90-015-01028-001",
+        "tuloy_id": "4ps-1234",
+        "member_id": 1234,
+        "last_name": "DELA CRUZ",
+        "first_name": "JUAN",
+        "middle_name": "PROTACIO",
+        "suffix": "Jr",
+        "birthdate": "1990-JAN-15",
+        "sex": "Male",
+        "email": "juan.dela.cruz@dswd-test.local",
+        "contact_no": "09170000001",
+        "region": "National Capital Region (NCR)",
+        "province": "Metro Manila",
+        "city_municipality": "Taguig City",
+        "psgc_code": "1376030000"
+    },
+    "enrollments": [
+    {
+        "qualification_code": "AFFANP204",
+        "start_date": "2024-JAN-15",
+        "end_date": null,
+        "status":"1",
+        "enrolled_at": "2026-OCT-15",
+        "date_encoded": "",
+        "date_updated": ""
+    },
+    {
+        "qualification_code": "AFFANP204",
+        "start_date": "2026-OCT-15",
+        "end_date": null,
+        "status":"1",
+        "enrolled_at": "2026-OCT-15",
+        "date_encoded": "",
+        "date_updated": ""
+    }
+    ]
+}
