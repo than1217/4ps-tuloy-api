@@ -7,10 +7,12 @@ verified SSO principal path. A docs grant alone does not authorize this feed.
 Anonymous requests return 401; unauthorized agencies return 403 before reading
 the view. This does not change partner API authorization.
 
-The query selects six named columns from `vw_unified_matched_enrollment`:
-`agency_name`, `tuloy_id`, `member_id`, `enrollment_details`, `created_at`,
-and `updated_at`. The existing page envelope supplies `items`, `limit`, `offset`,
-`has_more` and `next_offset`. Limit is 1–1000, offset is 0–10,000,000, and one
+The query selects named beneficiary and enrollment fields from
+`vw_unified_matched_enrollment`: agency, TULOY/member IDs, first/middle/last
+names, region, province, municipality, barangay, enrollment details, and
+timestamps. The response envelope supplies `status`, `data`, `limit`, `offset`,
+`has_more` and `next_offset`. `data` is the page array and `status` is `true` for
+a successful query. Limit is 1–1000, offset is 0–10,000,000, and one
 extra row determines whether another page exists. No SELECT * or write occurs.
 
 The web app calls the equivalent staff alias:
@@ -34,15 +36,15 @@ the view:
 
 | Course type | Fields |
 |---|---|
-| All three | course_type, program_name, enrollment_status, date_encoded, date_updated |
+| degree and diploma | course_type, program_name, enrollment_status, date_encoded, date_updated |
 | degree | student_id, date_enrolled, program_duration, academic_year, year_level, semester |
 | diploma | uli_id, date_enrolled, program_duration, academic_year, year_level, semester |
-| short_course | uli_id, start_date, end_date |
+| short_course | status, start_date, end_date, enrolled_at, date_encoded, date_updated, qualification_code, qualification_name |
 
 Unknown top-level JSON objects and unknown course fields are removed. The API
 filters each short-course array item independently. Nested objects/arrays in a
-permitted scalar course field are rejected. Mother's maiden
-names, LRN and PhilSys are not returned. A malformed JSON document or unsupported
+permitted scalar course field are rejected. Names and location fields are returned
+at the top level; mother's maiden names, LRN and PhilSys are not returned. A malformed JSON document or unsupported
 shape returns sanitized 503 `UNIFIED_MATCHED_SOURCE_INVALID`; no source values are
 included in the error. The underlying view may reference private columns in its
 CTE, but its output projection and the API's allowlist do not expose them.
@@ -57,7 +59,7 @@ not a cross-request snapshot; concurrent source changes can move rows.
 The combined Matched Beneficiaries screen uses the staff alias and server-side
 agency/course/search filters. It loads one 50-record page at a time, keeps separate
 course rows for the same member, and shows agency, identifiers and course details
-without inventing names or locations absent from the feed. Cards count only the
+with the names and locations returned by the feed. Cards count only the
 current page, not nationwide totals. The CHED-only BCMD workflow retains
 the existing CHED source/cache. No nginx, table, view, migration-ledger, grant or
 payment changes are part of this release.

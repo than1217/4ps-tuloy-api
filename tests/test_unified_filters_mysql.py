@@ -2,7 +2,7 @@
 import json
 import mysql.connector
 from test_bcmd_mysql import mysql_candidate
-from routers.beneficiaries import UNIFIED_MATCHED_COLUMNS, unified_query
+from routers.beneficiaries import UNIFIED_BENEFICIARY_COLUMNS, unified_query
 from routers.staff import UNIFIED_OVERVIEW_COUNTS
 
 
@@ -11,15 +11,21 @@ def test_global_agency_course_search_and_literal_wildcards(mysql_candidate):
     cur = db.cursor(dictionary=True)
     try:
         cur.execute('CREATE TABLE unified_fixture (agency_name varchar(5),tuloy_id varchar(50),member_id int,'
-                    'enrollment_details json,created_at timestamp NULL,updated_at timestamp NULL)')
-        cur.execute(f'CREATE VIEW vw_unified_matched_enrollment AS SELECT {UNIFIED_MATCHED_COLUMNS} FROM unified_fixture')
+                    'first_name varchar(50),middle_name varchar(50),last_name varchar(50),'
+                    'region varchar(100),province varchar(100),municipality varchar(100),'
+                    'barangay varchar(100),enrollment_details json,created_at timestamp NULL,updated_at timestamp NULL)')
+        cur.execute(f'CREATE VIEW vw_unified_matched_enrollment AS SELECT {UNIFIED_BENEFICIARY_COLUMNS} FROM unified_fixture')
         for agency, member, kind, program in [('CHED', 1, 'degree', 'BS Synthetic'),
                 ('TESDA', 2, 'diploma', 'Synthetic Diploma'), ('TESDA', 2, 'short_course', 'A_100%'),
                 ('TESDA', 3, 'short_course', 'Aq100x')]:
             course = {'program_name': program}
             details = {kind: [course] if kind == 'short_course' else course}
-            cur.execute('INSERT INTO unified_fixture VALUES (%s,%s,%s,%s,%s,NULL)',
-                        (agency, f'SYN-{member}', member, json.dumps(details), '2026-10-30 00:00:00'))
+            cur.execute('''INSERT INTO unified_fixture
+                (agency_name,tuloy_id,member_id,first_name,middle_name,last_name,region,province,
+                 municipality,barangay,enrollment_details,created_at,updated_at)
+                VALUES (%s,%s,%s,%s,NULL,%s,%s,%s,%s,%s,%s,%s,NULL)''',
+                (agency, f'SYN-{member}', member, 'SYNTHETIC', 'BENEFICIARY', 'REGION XI',
+                 'DAVAO DE ORO', 'MACO', 'POBLACION', json.dumps(details), '2026-10-30 00:00:00'))
         db.commit()
         def rows(agency=None, kind=None, search='', offset=0, limit=50):
             sql, params = unified_query(agency, kind, search)

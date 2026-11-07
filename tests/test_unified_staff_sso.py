@@ -10,7 +10,7 @@ def test_sso_full_staff_can_read_unified_alias(client, full_staff_access, keys, 
     response = client.get('/v1/api/tuloy/staff/unified-matched-beneficiaries?limit=50&offset=0',
                           headers=headers(token(keys[0])))
     assert response.status_code == 200
-    assert response.json()['items'][0]['agency_name'] == 'TESDA'
+    assert response.json()['data'][0]['agency_name'] == 'TESDA'
     assert fake_db.queries('FROM vw_unified_matched_enrollment')[0][1] == (51, 0)
 
 

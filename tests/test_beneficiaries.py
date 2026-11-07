@@ -182,6 +182,13 @@ def test_unified_matched_bene_pagination_and_json_details(client, fake_db, path)
                 "agency_name": "CHED",
                 "tuloy_id": f"4ps-{i:04d}",
                 "member_id": 1000 + i,
+                "first_name": "SYNTHETIC",
+                "middle_name": None,
+                "last_name": "BENEFICIARY",
+                "region": "REGION XI",
+                "province": "DAVAO DE ORO",
+                "municipality": "MACO",
+                "barangay": "POBLACION",
                 "enrollment_details": '{"degree": {"course_type": "Degree", "program_name": "BS Synthetic"}}',
                 "created_at": "2026-10-30T00:00:00",
                 "updated_at": None,
@@ -192,11 +199,20 @@ def test_unified_matched_bene_pagination_and_json_details(client, fake_db, path)
     r = client.get(path+"?limit=2&offset=4", headers=bearer())
     assert r.status_code == 200
     body = r.json()
-    assert body["has_more"] and body["next_offset"] == 6 and len(body["items"]) == 2
-    assert body["items"][0]["enrollment_details"] == {
+    assert body["status"] is True
+    assert body["has_more"] and body["next_offset"] == 6 and len(body["data"]) == 2
+    assert body["data"][0]["enrollment_details"] == {
         "degree": {"course_type": "Degree", "program_name": "BS Synthetic"}
     }
+    assert {
+        key: body["data"][0][key]
+        for key in ("first_name", "middle_name", "last_name", "region", "province", "municipality", "barangay")
+    } == {
+        "first_name": "SYNTHETIC", "middle_name": None, "last_name": "BENEFICIARY",
+        "region": "REGION XI", "province": "DAVAO DE ORO", "municipality": "MACO", "barangay": "POBLACION",
+    }
     sql, params = fake_db.queries("vw_unified_matched_enrollment")[0]
+    assert "`region`,`province`,`municipality`,`barangay`" in sql
     assert params == (3, 4)
     assert 'ORDER BY BINARY agency_name,BINARY tuloy_id,member_id,created_at,updated_at' in sql
     assert 'CAST(enrollment_details AS CHAR CHARACTER SET utf8mb4) COLLATE utf8mb4_bin' in sql
@@ -228,7 +244,8 @@ def test_unified_feed_rejects_anonymous_and_partner_accounts(client, fake_db, pa
 @pytest.mark.parametrize('kind,fields', [
     ('degree', {'student_id': 'SYN-STUDENT', 'program_name': 'BS Synthetic', 'semester': 1}),
     ('diploma', {'uli_id': 'SYN-ULI', 'program_name': 'Synthetic Diploma', 'year_level': 1}),
-    ('short_course', {'uli_id': 'SYN-ULI', 'program_name': 'Synthetic Training', 'start_date': '2026-10-01'}),
+    ('short_course', {'status': 'ENROLLED', 'start_date': '2026-10-01',
+                      'qualification_name': 'Synthetic Training', 'enrolled_at': None}),
 ])
 def test_unified_course_fields_exclude_unreviewed_personal_data(client, fake_db, kind, fields):
     import json
@@ -244,25 +261,25 @@ def test_unified_course_fields_exclude_unreviewed_personal_data(client, fake_db,
     response = client.get('/GetUnifiedMatchedBene', headers=bearer())
     assert response.status_code == 200
     expected_course = [fields] if kind == 'short_course' else fields
-    assert response.json()['items'][0]['enrollment_details'] == {kind: expected_course}
+    assert response.json()['data'][0]['enrollment_details'] == {kind: expected_course}
     assert private not in response.text
 
 
 def test_unified_short_course_array_sanitizes_each_course(client, fake_db):
     import json
     details = {'short_course': [
-        {'program_name': 'Synthetic A', 'uli_id': 'SYN-ULI-A', 'private_field': 'PRIVATE'},
-        {'program_name': 'Synthetic B', 'uli_id': 'SYN-ULI-B', 'private_field': 'PRIVATE'},
+        {'status': 'ENROLLED', 'qualification_name': 'Synthetic A', 'private_field': 'PRIVATE'},
+        {'status': 'ENROLLED', 'qualification_name': 'Synthetic B', 'private_field': 'PRIVATE'},
     ]}
     fake_db.on(r'FROM vw_unified_matched_enrollment', lambda sql, p: [{
         'agency_name': 'TESDA', 'tuloy_id': 'SYNTHETIC', 'member_id': 1001,
         'enrollment_details': json.dumps(details), 'created_at': None, 'updated_at': None}])
     response = client.get('/GetUnifiedMatchedBene', headers=bearer())
     assert response.status_code == 200
-    assert response.json()['items'][0]['enrollment_details'] == {
+    assert response.json()['data'][0]['enrollment_details'] == {
         'short_course': [
-            {'program_name': 'Synthetic A', 'uli_id': 'SYN-ULI-A'},
-            {'program_name': 'Synthetic B', 'uli_id': 'SYN-ULI-B'},
+            {'status': 'ENROLLED', 'qualification_name': 'Synthetic A'},
+            {'status': 'ENROLLED', 'qualification_name': 'Synthetic B'},
         ]
     }
     assert 'PRIVATE' not in response.text

@@ -36,13 +36,20 @@ MATCHED_COLUMNS = (
 UNIFIED_MATCHED_COLUMNS = (
     "`agency_name`,`tuloy_id`,`member_id`,`enrollment_details`,`created_at`,`updated_at`"
 )
+UNIFIED_BENEFICIARY_COLUMNS = (
+    "`agency_name`,`tuloy_id`,`member_id`,`first_name`,`middle_name`,`last_name`,"
+    "`region`,`province`,`municipality`,`barangay`,`enrollment_details`,`created_at`,`updated_at`"
+)
 # Reviewed against staging SHOW CREATE VIEW, 2026-10-30. Never return arbitrary
-# nested fields if the view is later expanded with personal identifiers/names.
+# nested fields if the view is later expanded with personal identifiers or nested names.
 _ENROLLMENT_COMMON = frozenset({'course_type', 'program_name', 'enrollment_status', 'date_encoded', 'date_updated'})
 UNIFIED_DETAIL_FIELDS = {
     'degree': _ENROLLMENT_COMMON | {'student_id', 'date_enrolled', 'program_duration', 'academic_year', 'year_level', 'semester'},
     'diploma': _ENROLLMENT_COMMON | {'uli_id', 'date_enrolled', 'program_duration', 'academic_year', 'year_level', 'semester'},
-    'short_course': _ENROLLMENT_COMMON | {'uli_id', 'start_date', 'end_date'},
+    'short_course': frozenset({
+        'status', 'end_date', 'start_date', 'enrolled_at', 'date_encoded', 'date_updated',
+        'qualification_code', 'qualification_name',
+    }),
 }
 
 
@@ -453,9 +460,9 @@ def get_validated_enrollees(
 
 @router.get("/GetUnifiedMatchedBene", summary="List unified matched enrollments",
     description="DSWD bulk read under the existing matched-enrollment scope. Returns bounded "
-                "pages from vw_unified_matched_enrollment. Includes CHED degree enrollments and TESDA "
-                "diploma/short-course enrollments where that tuloy_id has no CHED match. Nested JSON "
-                "is restricted to reviewed course fields; personal name and national-ID fields are excluded.")
+                "pages from vw_unified_matched_enrollment. Includes beneficiary names and location plus "
+                "CHED degree and TESDA diploma/short-course details where that tuloy_id has no CHED match. "
+                "Nested JSON is restricted to reviewed course fields; national-ID fields are excluded.")
 def get_unified_matched_records(
     current_user: Principal = Depends(require_scope(LEGACY_CHED_READ, shared=True)),
     db=Depends(get_ods_connection),
@@ -467,7 +474,7 @@ def get_unified_matched_records(
 ):
     cursor = db.cursor(dictionary=True)
     try:
-        sql, params = unified_query(agency, course_type, search)
+        sql, params = unified_query(agency, course_type, search, include_beneficiary=True)
         cursor.execute(sql, (*params, limit + 1, offset))
         rows = cursor.fetchall()
     except Error as exc:
@@ -481,10 +488,21 @@ def get_unified_matched_records(
         raise ApiError(503, 'UNIFIED_MATCHED_SOURCE_INVALID', 'Unified enrollment data is not ready') from None
     audit("legacy.unified_matched.list", "success", actor=current_user.actor,
           returned=min(len(rows), limit), offset=offset)
-    return _page(rows, limit, offset)
+    has_more = len(rows) > limit
+    return jsonable_encoder(
+        {
+            "status": True,
+            "data": rows[:limit],
+            "limit": limit,
+            "offset": offset,
+            "has_more": has_more,
+            "next_offset": offset + limit if has_more else None,
+        },
+        custom_encoder={bytes: lambda value: value.hex()},
+    )
 
 
-def unified_query(agency=None, course_type=None, search='', *, recent=False):
+def unified_query(agency=None, course_type=None, search='', *, recent=False, include_beneficiary=False):
     """Fixed identifiers and bound values; filtering happens before pagination."""
     clauses, params = [], []
     if agency is not None:
@@ -500,11 +518,13 @@ def unified_query(agency=None, course_type=None, search='', *, recent=False):
         columns = ['tuloy_id', 'CAST(member_id AS CHAR)', *[
             f"JSON_UNQUOTE(JSON_EXTRACT(enrollment_details,'{path}'))" for path in (
                 '$.degree.program_name', '$.diploma.program_name', '$.short_course[*].program_name',
+                '$.short_course[*].qualification_name', '$.short_course[*].qualification_code',
                 '$.degree.student_id', '$.diploma.uli_id', '$.short_course[*].uli_id')]]
         clauses.append('(' + ' OR '.join(column + " LIKE %s ESCAPE '='" for column in columns) + ')')
         params.extend([pattern] * len(columns))
     where = 'WHERE ' + ' AND '.join(clauses) + ' ' if clauses else ''
-    return (f'SELECT {UNIFIED_MATCHED_COLUMNS} FROM vw_unified_matched_enrollment ' + where
+    columns = UNIFIED_BENEFICIARY_COLUMNS if include_beneficiary else UNIFIED_MATCHED_COLUMNS
+    return (f'SELECT {columns} FROM vw_unified_matched_enrollment ' + where
             + ('ORDER BY created_at DESC,updated_at DESC,' if recent else 'ORDER BY ')
             + 'BINARY agency_name,BINARY tuloy_id,member_id,created_at,updated_at,'
             + 'CAST(enrollment_details AS CHAR CHARACTER SET utf8mb4) COLLATE utf8mb4_bin LIMIT %s OFFSET %s', params)
