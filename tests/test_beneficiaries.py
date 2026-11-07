@@ -20,6 +20,26 @@ def test_verify_statuses(client, fake_db):
     assert client.post("/VerifyMemberBene", json=VERIFY_BODY, headers=bearer()).json()["status"] == "Multiple Match Found"
 
 
+def test_verify_4ps_preserves_database_status_strings(client, fake_db):
+    fake_db.on(r"FROM vw_verify_4ps_bene", lambda sql, p: [{
+        "tuloy_id": "4ps-0001",
+        "member_id": 1001,
+        "client_status": "CS1",
+        "roster_status": "Active",
+    }])
+
+    response = client.post("/Verify4psBene", json=VERIFY_BODY, headers=bearer())
+
+    assert response.status_code == 200
+    assert response.json() == {
+        "status": "Matched",
+        "tuloy_id": "4ps-0001",
+        "member_id": 1001,
+        "client_status": "CS1",
+        "roster_status": "Active",
+    }
+
+
 def test_verify_is_parameterized_and_bounded(client, fake_db):
     hostile = "x' OR '1'='1'; DROP TABLE api_users; --"
     body = {**VERIFY_BODY, "first_name": hostile, "lrn": "1 OR 1=1", "geocode": "`; SELECT"}
@@ -213,16 +233,39 @@ def test_unified_feed_rejects_anonymous_and_partner_accounts(client, fake_db, pa
 def test_unified_course_fields_exclude_unreviewed_personal_data(client, fake_db, kind, fields):
     import json
     private = 'PRIVATE-SYNTHETIC-DO-NOT-RETURN'
-    details = {kind: {**fields, 'mothers_maiden': private, 'mm_first_name': private,
-                     'lrn': private, 'philsys': private}, 'personal_details': {'name': private}}
+    course = {**fields, 'mothers_maiden': private, 'mm_first_name': private,
+              'lrn': private, 'philsys': private}
+    details = {kind: [course] if kind == 'short_course' else course,
+               'personal_details': {'name': private}}
     fake_db.on(r'FROM vw_unified_matched_enrollment', lambda sql, p: [{
         'agency_name': 'CHED' if kind == 'degree' else 'TESDA',
         'tuloy_id': 'SYNTHETIC', 'member_id': 1001, 'enrollment_details': json.dumps(details),
         'created_at': None, 'updated_at': None}])
     response = client.get('/GetUnifiedMatchedBene', headers=bearer())
     assert response.status_code == 200
-    assert response.json()['items'][0]['enrollment_details'] == {kind: fields}
+    expected_course = [fields] if kind == 'short_course' else fields
+    assert response.json()['items'][0]['enrollment_details'] == {kind: expected_course}
     assert private not in response.text
+
+
+def test_unified_short_course_array_sanitizes_each_course(client, fake_db):
+    import json
+    details = {'short_course': [
+        {'program_name': 'Synthetic A', 'uli_id': 'SYN-ULI-A', 'private_field': 'PRIVATE'},
+        {'program_name': 'Synthetic B', 'uli_id': 'SYN-ULI-B', 'private_field': 'PRIVATE'},
+    ]}
+    fake_db.on(r'FROM vw_unified_matched_enrollment', lambda sql, p: [{
+        'agency_name': 'TESDA', 'tuloy_id': 'SYNTHETIC', 'member_id': 1001,
+        'enrollment_details': json.dumps(details), 'created_at': None, 'updated_at': None}])
+    response = client.get('/GetUnifiedMatchedBene', headers=bearer())
+    assert response.status_code == 200
+    assert response.json()['items'][0]['enrollment_details'] == {
+        'short_course': [
+            {'program_name': 'Synthetic A', 'uli_id': 'SYN-ULI-A'},
+            {'program_name': 'Synthetic B', 'uli_id': 'SYN-ULI-B'},
+        ]
+    }
+    assert 'PRIVATE' not in response.text
 
 
 def test_unified_filters_are_bound_and_applied_before_pagination(client, fake_db):
@@ -239,6 +282,8 @@ def test_unified_filters_are_bound_and_applied_before_pagination(client, fake_db
     assert value not in sql and params[:2] == ('TESDA', '$.short_course')
     assert params[-2:] == (51, 100)
     assert params[2] == "%x=_=%' OR 1==1 --%"
+    assert "'$.short_course[*].program_name'" in sql
+    assert "'$.short_course[*].uli_id'" in sql
     assert sql.index('WHERE') < sql.index('ORDER BY') < sql.index('LIMIT')
 
 

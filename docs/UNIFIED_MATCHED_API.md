@@ -28,17 +28,20 @@ CHED degree rows and TESDA diploma/short-course rows **only when that tuloy_id
 has no CHED match**. The API preserves that behavior rather than changing the
 database view. A TESDA member can have both diploma and short-course rows.
 
-The response permits only these nested course fields:
+The response permits only these nested course fields. `degree` and `diploma`
+are course objects; `short_course` is an array of course objects as returned by
+the view:
 
-| Course object | Fields |
+| Course type | Fields |
 |---|---|
 | All three | course_type, program_name, enrollment_status, date_encoded, date_updated |
 | degree | student_id, date_enrolled, program_duration, academic_year, year_level, semester |
 | diploma | uli_id, date_enrolled, program_duration, academic_year, year_level, semester |
 | short_course | uli_id, start_date, end_date |
 
-Unknown top-level JSON objects and unknown course fields are removed. Nested
-objects/arrays in a permitted scalar course field are rejected. Mother's maiden
+Unknown top-level JSON objects and unknown course fields are removed. The API
+filters each short-course array item independently. Nested objects/arrays in a
+permitted scalar course field are rejected. Mother's maiden
 names, LRN and PhilSys are not returned. A malformed JSON document or unsupported
 shape returns sanitized 503 `UNIFIED_MATCHED_SOURCE_INVALID`; no source values are
 included in the error. The underlying view may reference private columns in its

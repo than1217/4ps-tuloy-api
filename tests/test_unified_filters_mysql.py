@@ -16,8 +16,10 @@ def test_global_agency_course_search_and_literal_wildcards(mysql_candidate):
         for agency, member, kind, program in [('CHED', 1, 'degree', 'BS Synthetic'),
                 ('TESDA', 2, 'diploma', 'Synthetic Diploma'), ('TESDA', 2, 'short_course', 'A_100%'),
                 ('TESDA', 3, 'short_course', 'Aq100x')]:
+            course = {'program_name': program}
+            details = {kind: [course] if kind == 'short_course' else course}
             cur.execute('INSERT INTO unified_fixture VALUES (%s,%s,%s,%s,%s,NULL)',
-                        (agency, f'SYN-{member}', member, json.dumps({kind: {'program_name': program}}), '2026-10-30 00:00:00'))
+                        (agency, f'SYN-{member}', member, json.dumps(details), '2026-10-30 00:00:00'))
         db.commit()
         def rows(agency=None, kind=None, search='', offset=0, limit=50):
             sql, params = unified_query(agency, kind, search)

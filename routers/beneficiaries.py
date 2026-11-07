@@ -51,16 +51,24 @@ def unified_details(value):
         value = json.loads(value)
     if not isinstance(value, dict) or not (value.keys() & UNIFIED_DETAIL_FIELDS.keys()):
         raise ValueError('Unexpected enrollment details shape')
+
+    def filter_course(course, allowed):
+        if not isinstance(course, dict):
+            raise ValueError('Unexpected course shape')
+        filtered = {key: item for key, item in course.items() if key in allowed}
+        if any(isinstance(item, (dict, list)) for item in filtered.values()):
+            raise ValueError('Unexpected nested course value')
+        return filtered
+
     result = {}
     for kind, allowed in UNIFIED_DETAIL_FIELDS.items():
         if kind not in value:
             continue
         course = value[kind]
-        if not isinstance(course, dict):
-            raise ValueError('Unexpected course shape')
-        result[kind] = {key: item for key, item in course.items() if key in allowed}
-        if any(isinstance(item, (dict, list)) for item in result[kind].values()):
-            raise ValueError('Unexpected nested course value')
+        if kind == 'short_course' and isinstance(course, list):
+            result[kind] = [filter_course(item, allowed) for item in course]
+        else:
+            result[kind] = filter_course(course, allowed)
     return result
 
 
@@ -491,8 +499,8 @@ def unified_query(agency=None, course_type=None, search='', *, recent=False):
         pattern = '%' + search.strip().replace('=', '==').replace('%', '=%').replace('_', '=_') + '%'
         columns = ['tuloy_id', 'CAST(member_id AS CHAR)', *[
             f"JSON_UNQUOTE(JSON_EXTRACT(enrollment_details,'{path}'))" for path in (
-                '$.degree.program_name', '$.diploma.program_name', '$.short_course.program_name',
-                '$.degree.student_id', '$.diploma.uli_id', '$.short_course.uli_id')]]
+                '$.degree.program_name', '$.diploma.program_name', '$.short_course[*].program_name',
+                '$.degree.student_id', '$.diploma.uli_id', '$.short_course[*].uli_id')]]
         clauses.append('(' + ' OR '.join(column + " LIKE %s ESCAPE '='" for column in columns) + ')')
         params.extend([pattern] * len(columns))
     where = 'WHERE ' + ' AND '.join(clauses) + ' ' if clauses else ''

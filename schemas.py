@@ -95,8 +95,8 @@ class Verify4psResult(BaseModel):
     status: str
     tuloy_id: Optional[Union[str, int]] = None
     member_id: Optional[int | str] = None
-    client_status: Optional[int] = None
-    roster_status: Optional[int] = None
+    client_status: Optional[str | int] = None
+    roster_status: Optional[str | int] = None
 
 
 class TesdaEnrollment(BaseModel):
@@ -159,4 +159,3 @@ class AppSettingsSchema(BaseModel):
     text_tagline_color: Optional[Annotated[str, StringConstraints(strip_whitespace=True, max_length=255)]] = "#C5221F"
     text_subtext_color: Optional[Annotated[str, StringConstraints(strip_whitespace=True, max_length=255)]] = "#475569"
     logos: list[LogoItem] = Field(default_factory=list)
-
